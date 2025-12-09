@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { 
   Check, Gift, Star, TreePine, Download, Clock, ShieldCheck, 
-  Heart, Zap, Snowflake, Lock, ChevronRight, PartyPopper, Gamepad2, Palette, Printer, Scissors, MessageCircle, Users, Smile
+  Heart, Zap, Snowflake, Lock, ChevronRight, PartyPopper, Printer, Scissors, MessageCircle, Users, Smile, PlayCircle
 } from "lucide-react";
 import UpsellModal from './UpsellModal';
 
@@ -61,31 +61,47 @@ const ChristmasLanding = () => {
            <TreePine className="absolute bottom-0 right-0 text-green-900" size={80} />
         </div>
 
-        <div className="max-w-4xl mx-auto text-center relative z-10">
-          <Badge className="bg-white text-red-700 hover:bg-slate-100 mb-6 px-6 py-2 text-base md:text-lg font-bold shadow-lg transform -rotate-2">
-            🎄 O Natal já começou!
-          </Badge>
-          <h1 className="text-3xl md:text-6xl font-extrabold mb-6 leading-tight drop-shadow-lg">
-            A Lembrancinha Perfeita <br/>
-            <span className="text-yellow-300">Pronta para Imprimir</span> <br className="md:hidden" />
-            <span className="inline-block bg-green-600 text-white px-3 py-1 rounded-lg transform -rotate-3 border-2 border-yellow-400 text-2xl md:text-5xl ml-2 shadow-xl mt-2 md:mt-0">
-              (+ BÔNUS)
-            </span>
-          </h1>
-          <p className="text-lg md:text-2xl mb-8 text-red-100 max-w-2xl mx-auto font-medium leading-relaxed">
-            Surpreenda neste Natal sem gastar muito com presentes caros. <br className="hidden md:block"/>
-            Baixe, imprima e monte lembrancinhas lindas em minutos!
-          </p>
-          <div className="flex flex-col w-full md:w-auto px-4">
-            <Button 
-              onClick={scrollToPricing}
-              className="bg-green-500 hover:bg-green-400 text-white border-b-4 border-green-700 font-black text-lg md:text-xl py-8 w-full md:w-auto md:px-12 rounded-full shadow-2xl transform transition flex items-center justify-center gap-2 animate-scale-pulse hover:scale-110 active:scale-95"
-            >
-              QUERO GARANTIR AGORA <ChevronRight size={24} />
-            </Button>
-          </div>
-          <div className="mt-6 flex items-center justify-center gap-2 text-xs md:text-base text-yellow-200 opacity-90 font-medium">
-             <ShieldCheck size={16} /> OFERTA LIMITADA • <Zap size={16} /> Entrega Imediata
+        <div className="max-w-6xl mx-auto relative z-10">
+          <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+            {/* Left Column: Text */}
+            <div className="text-center md:text-left">
+              <Badge className="bg-white text-red-700 hover:bg-slate-100 mb-6 px-6 py-2 text-base md:text-lg font-bold shadow-lg transform -rotate-2">
+                🎄 O Natal já começou!
+              </Badge>
+              <h1 className="text-3xl md:text-6xl font-extrabold mb-6 leading-tight drop-shadow-lg">
+                A Lembrancinha Perfeita <br/>
+                <span className="text-yellow-300">Pronta para Imprimir</span> <br className="md:hidden" />
+                <span className="inline-block bg-green-600 text-white px-3 py-1 rounded-lg transform -rotate-3 border-2 border-yellow-400 text-2xl md:text-5xl ml-2 shadow-xl mt-2 md:mt-0">
+                  (+ BÔNUS)
+                </span>
+              </h1>
+              <p className="text-lg md:text-2xl mb-8 text-red-100 max-w-2xl mx-auto md:mx-0 font-medium leading-relaxed">
+                Surpreenda neste Natal sem gastar muito com presentes caros. <br className="hidden md:block"/>
+                Baixe, imprima e monte lembrancinhas lindas em minutos!
+              </p>
+            </div>
+
+            {/* Right Column: Video + CTA */}
+            <div className="flex flex-col items-center">
+              {/* Video Placeholder */}
+              <div className="relative w-full max-w-[280px] mx-auto aspect-[9/16] bg-slate-900/50 rounded-2xl border-4 border-white/50 shadow-2xl flex items-center justify-center mb-6 cursor-pointer group">
+                  <div className="absolute inset-0 bg-black/20 rounded-xl"></div>
+                  <PlayCircle size={64} className="text-white/70 group-hover:text-white/90 transition-colors" />
+                  <p className="absolute bottom-4 text-white text-xs font-semibold bg-black/30 px-2 py-1 rounded">Assista ao vídeo!</p>
+              </div>
+
+              <div className="flex flex-col w-full md:w-auto px-4">
+                <Button 
+                  onClick={scrollToPricing}
+                  className="bg-green-500 hover:bg-green-400 text-white border-b-4 border-green-700 font-black text-lg md:text-xl py-8 w-full md:w-auto md:px-12 rounded-full shadow-2xl transform transition flex items-center justify-center gap-2 animate-scale-pulse hover:scale-110 active:scale-95"
+                >
+                  QUERO GARANTIR AGORA <ChevronRight size={24} />
+                </Button>
+              </div>
+              <div className="mt-6 flex items-center justify-center gap-2 text-xs md:text-base text-yellow-200 opacity-90 font-medium">
+                <ShieldCheck size={16} /> OFERTA LIMITADA • <Zap size={16} /> Entrega Imediata
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -245,21 +261,21 @@ const ChristmasLanding = () => {
 
             <div className="grid md:grid-cols-3 gap-6">
                 <BonusCard 
-                    icon={<CookieIcon />}
+                    imageSrc="/images/bonus-receitas.png"
                     title="RECEITAS DIVERTIDAS"
                     subtitle="DE NATAL"
                     desc="Receitas natalinas para fazer com as crianças: biscoitos, chocolate quente e cupcakes!"
                     price="37,00"
                 />
                 <BonusCard 
-                    icon={<Gamepad2 size={36} />}
+                    imageSrc="/images/bonus-jogos.png"
                     title="JOGOS NATALINOS"
                     subtitle="PARA IMPRIMIR"
                     desc="Caça ao tesouro, bingo de Natal, jogo da memória. Imprima e brinque na noite de Natal!"
                     price="29,00"
                 />
                 <BonusCard 
-                    icon={<Palette size={36} />}
+                    imageSrc="/images/bonus-decoracao.png"
                     title="PACK DE DECORAÇÃO"
                     subtitle="EXTRA"
                     desc="Mais moldes DIY, cartões personalizáveis e etiquetas para presentes!"
@@ -663,15 +679,15 @@ const EnhancedTestimonial = ({ name, role, text, initials, color, observation }:
     </div>
 );
 
-const BonusCard = ({ icon, title, subtitle, desc, price }: any) => (
-    <div className="bg-red-900/80 backdrop-blur-sm border-2 border-yellow-400 shadow-[0_0_20px_rgba(250,204,21,0.3)] rounded-xl p-6 text-center hover:bg-red-900 transition-colors transform hover:-translate-y-1">
-        <div className="bg-white/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-yellow-300 border border-yellow-400/50">
-            {icon}
+const BonusCard = ({ imageSrc, title, subtitle, desc, price }: any) => (
+    <div className="bg-red-900/80 backdrop-blur-sm border-2 border-yellow-400 shadow-[0_0_20px_rgba(250,204,21,0.3)] rounded-xl p-4 text-center hover:bg-red-900 transition-colors transform hover:-translate-y-1 flex flex-col">
+        <img src={imageSrc} alt={title} className="rounded-lg mb-4 w-full aspect-square object-cover border-2 border-yellow-400/50" />
+        <div className="flex-grow">
+            <h3 className="font-bold text-lg leading-tight text-white">{title}</h3>
+            <h4 className="font-bold text-lg leading-tight text-yellow-300 mb-3">{subtitle}</h4>
+            <p className="text-sm text-red-100 mb-4 h-16 leading-snug">{desc}</p>
         </div>
-        <h3 className="font-bold text-lg leading-tight text-white">{title}</h3>
-        <h4 className="font-bold text-lg leading-tight text-yellow-300 mb-3">{subtitle}</h4>
-        <p className="text-sm text-red-100 mb-4 h-16 leading-snug">{desc}</p>
-        <div className="border-t border-red-500/50 pt-4">
+        <div className="border-t border-red-500/50 pt-4 mt-auto">
             <span className="text-red-300 line-through text-sm block">R$ {price}</span>
             <span className="text-white font-bold text-lg bg-red-600 px-3 py-1 rounded-lg inline-block mt-1 shadow-sm">HOJE É GRÁTIS!</span>
         </div>
@@ -688,10 +704,6 @@ const PagamentoSeguro = () => (
             <span>100% Seguro</span>
         </div>
     </div>
-);
-
-const CookieIcon = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"/><path d="M8.5 8.5v.01"/><path d="M16 15.5v.01"/><path d="M12 12v.01"/><path d="M11 17v.01"/><path d="M7 14v.01"/></svg>
 );
 
 export default ChristmasLanding;
