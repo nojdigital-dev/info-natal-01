@@ -378,11 +378,12 @@ const ChristmasLanding = () => {
             
             <div className="grid md:grid-cols-2 gap-6 text-left">
                  <EnhancedTestimonial 
-                    name="Roberta O."
-                    role="Mãe de 2"
-                    text="Muito prático, chegou no email em 1 minuto. Já mandei imprimir. As crianças estão ansiosas para montar a árvore."
-                    initials="RO"
-                    color="bg-purple-100 text-purple-600"
+                    name="Amanda R."
+                    role="Mãe e Empreendedora"
+                    text="Achei que eram só umas lembrancinhas, mas o pacote é MUITO completo. A qualidade dos arquivos é impecável, tudo muito bem organizado. Facilitou demais a minha vida!"
+                    observation="Veio muito mais coisa do que eu esperava! Só os calendários de 2025 já valeram a pena, e tem material que vou conseguir usar até no Natal de 2026. Incrível!"
+                    initials="AR"
+                    color="bg-red-100 text-red-600"
                  />
                  <EnhancedTestimonial 
                     name="Juliana F."
@@ -614,21 +615,7 @@ const FAQItem = ({ question, answer }: { question: string, answer: string }) => 
     </AccordionItem>
 );
 
-const TestimonialCard = ({ name, text }: { name: string, text: string }) => (
-    <div className="bg-slate-50 p-6 rounded-xl border border-slate-100 shadow-sm relative">
-        <div className="flex justify-center mb-4 text-yellow-400 gap-1">
-            <Star size={16} fill="currentColor" />
-            <Star size={16} fill="currentColor" />
-            <Star size={16} fill="currentColor" />
-            <Star size={16} fill="currentColor" />
-            <Star size={16} fill="currentColor" />
-        </div>
-        <p className="text-slate-700 italic mb-4 leading-relaxed">"{text}"</p>
-        <p className="font-bold text-slate-900 text-sm">- {name}</p>
-    </div>
-);
-
-const EnhancedTestimonial = ({ name, role, text, initials, color }: any) => (
+const EnhancedTestimonial = ({ name, role, text, initials, color, observation }: any) => (
     <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100 shadow-sm flex flex-col md:flex-row gap-4 items-start hover:shadow-md transition-shadow">
         <div className={`w-12 h-12 ${color} rounded-full flex items-center justify-center font-bold text-lg shrink-0`}>
             {initials}
@@ -646,6 +633,12 @@ const EnhancedTestimonial = ({ name, role, text, initials, color }: any) => (
                 <Star size={14} fill="currentColor" />
             </div>
             <p className="text-slate-600 text-sm italic leading-relaxed">"{text}"</p>
+            {observation && (
+                <div className="mt-3 bg-green-50 border-l-4 border-green-400 text-green-800 p-3 rounded-r-lg text-xs">
+                    <p className="font-bold">Observação da cliente:</p>
+                    <p className="italic">"{observation}"</p>
+                </div>
+            )}
         </div>
     </div>
 );
