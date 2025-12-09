@@ -1,184 +1,294 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Check, Gift, Star, TreePine, Download, Clock, ShieldCheck, Heart } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { 
+  Check, Gift, Star, TreePine, Download, Clock, ShieldCheck, 
+  Heart, Zap, Snowflake, Users, Lock, ChevronRight, PartyPopper, Gamepad2, Palette
+} from "lucide-react";
 
 const ChristmasLanding = () => {
-  // Rola suavemente para a seção de preços
+  const [timeLeft, setTimeLeft] = useState({ hours: 6, minutes: 3, seconds: 15 });
+  const [todayDate, setTodayDate] = useState("");
+
+  // Countdown timer logic
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft(prev => {
+        if (prev.seconds > 0) return { ...prev, seconds: prev.seconds - 1 };
+        if (prev.minutes > 0) return { ...prev, minutes: prev.minutes - 1, seconds: 59 };
+        if (prev.hours > 0) return { ...prev, hours: prev.hours - 1, minutes: 59, seconds: 59 };
+        return prev;
+      });
+    }, 1000);
+
+    // Format today's date
+    const date = new Date();
+    const options: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'long' };
+    setTodayDate(date.toLocaleDateString('pt-BR', options));
+
+    return () => clearInterval(timer);
+  }, []);
+
   const scrollToPricing = () => {
     const element = document.getElementById('pricing');
     if (element) element.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <div className="min-h-screen bg-white font-sans text-slate-900">
+    <div className="min-h-screen bg-white font-sans text-slate-900 overflow-x-hidden">
       
+      {/* Top Notification Bar */}
+      <div className="bg-yellow-400 text-red-900 text-center py-2 px-4 font-bold text-sm md:text-base animate-pulse">
+        🎅 OFERTA VÁLIDA APENAS HOJE: {todayDate.toUpperCase()}
+      </div>
+
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-b from-red-700 to-red-600 text-white py-20 px-4 overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
-           {/* Pattern simulado com CSS ou SVG poderia ir aqui */}
-           <div className="absolute top-10 left-10"><TreePine size={64} /></div>
-           <div className="absolute bottom-10 right-10"><Gift size={64} /></div>
+      <section className="relative bg-gradient-to-br from-red-700 via-red-600 to-red-800 text-white py-16 md:py-24 px-4 overflow-hidden">
+        {/* Background Decorations */}
+        <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-20">
+           <Snowflake className="absolute top-10 left-[10%] animate-bounce" size={40} />
+           <Snowflake className="absolute top-40 right-[15%] animate-pulse" size={30} />
+           <TreePine className="absolute bottom-0 left-0 text-green-900" size={150} />
+           <TreePine className="absolute bottom-0 right-0 text-green-900" size={120} />
         </div>
 
         <div className="max-w-4xl mx-auto text-center relative z-10">
-          <Badge className="bg-green-600 hover:bg-green-700 text-white mb-6 px-4 py-1 text-lg border-none">
+          <Badge className="bg-white text-red-700 hover:bg-slate-100 mb-6 px-6 py-2 text-lg font-bold shadow-lg transform -rotate-2">
             🎄 O Natal já começou!
           </Badge>
-          <h1 className="text-4xl md:text-6xl font-extrabold mb-6 leading-tight drop-shadow-md">
-            Lembrancinhas de Natal Criativas <br/>
-            <span className="text-yellow-300">Prontas para Imprimir</span>
+          <h1 className="text-4xl md:text-6xl font-extrabold mb-6 leading-tight drop-shadow-lg">
+            A Lembrancinha Perfeita <br/>
+            <span className="text-yellow-300">Pronta para Imprimir</span>
           </h1>
-          <p className="text-xl md:text-2xl mb-8 text-red-100 max-w-2xl mx-auto">
-            Surpreenda quem você ama com presentes carinhosos e econômicos. Baixe, imprima e monte em casa hoje mesmo!
+          <p className="text-xl md:text-2xl mb-8 text-red-100 max-w-2xl mx-auto font-medium">
+            Surpreenda neste Natal sem gastar muito e sem perder tempo. <br/>
+            Baixe, imprima e monte em minutos!
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button 
-              size="lg" 
               onClick={scrollToPricing}
-              className="bg-green-600 hover:bg-green-700 text-white font-bold text-xl px-8 py-6 rounded-full shadow-lg transform transition hover:scale-105"
+              className="bg-green-500 hover:bg-green-400 text-white border-b-4 border-green-700 font-black text-xl px-10 py-8 rounded-full shadow-2xl transform transition hover:scale-105 active:scale-95 flex items-center gap-2"
             >
-              Quero Garantir Agora
+              QUERO GARANTIR AGORA <ChevronRight size={24} />
             </Button>
-            <span className="text-sm font-medium text-red-200 flex items-center gap-1">
-              <Clock size={16} /> Acesso imediato em PDF
-            </span>
+          </div>
+          <div className="mt-6 flex items-center justify-center gap-2 text-sm md:text-base text-yellow-200 opacity-90">
+             <ShieldCheck size={18} /> Compra Segura • <Zap size={18} /> Entrega Imediata
           </div>
         </div>
       </section>
 
-      {/* Problema / Solução */}
+      {/* Benefits / Social Proof Teaser */}
+      <section className="py-12 bg-white border-b border-slate-100">
+        <div className="max-w-6xl mx-auto px-4">
+            <div className="flex flex-col md:flex-row justify-center items-center gap-8 text-center md:text-left text-slate-600">
+                <div className="flex items-center gap-3">
+                    <div className="bg-red-100 p-3 rounded-full text-red-600"><Clock size={24} /></div>
+                    <div>
+                        <p className="font-bold text-slate-900">Economize Tempo</p>
+                        <p className="text-sm">Não enfrente filas de shoppings</p>
+                    </div>
+                </div>
+                <div className="flex items-center gap-3">
+                    <div className="bg-green-100 p-3 rounded-full text-green-600"><Heart size={24} /></div>
+                    <div>
+                        <p className="font-bold text-slate-900">Feito com Amor</p>
+                        <p className="text-sm">Presente com significado</p>
+                    </div>
+                </div>
+                <div className="flex items-center gap-3">
+                    <div className="bg-yellow-100 p-3 rounded-full text-yellow-600"><Download size={24} /></div>
+                    <div>
+                        <p className="font-bold text-slate-900">Acesso Imediato</p>
+                        <p className="text-sm">Receba no WhatsApp/Email agora</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </section>
+
+      {/* O que está incluso */}
       <section className="py-16 px-4 bg-slate-50">
-        <div className="max-w-5xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-red-700 mb-12">Não deixe para a última hora! 🎁</h2>
-          
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-100">
-              <div className="w-12 h-12 bg-red-100 text-red-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Clock size={24} />
-              </div>
-              <h3 className="font-bold text-lg mb-2">Sem tempo a perder</h3>
-              <p className="text-slate-600">Esqueça a correria em lojas lotadas. Você recebe os arquivos agora e resolve seus presentes em minutos.</p>
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-3xl font-bold text-center text-red-800 mb-2">O que você vai receber?</h2>
+          <p className="text-center text-slate-600 mb-10">Tudo o que você precisa para um Natal inesquecível</p>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="bg-white p-6 rounded-xl shadow-md border-l-4 border-red-500 flex items-start gap-4">
+                <Gift className="text-red-500 min-w-8 min-h-8" />
+                <div>
+                    <h3 className="font-bold text-lg">Cartão Árvore</h3>
+                    <p className="text-slate-600 text-sm">Design exclusivo para colocar chocolate Bis ou Batom. A lembrancinha mais econômica e amada!</p>
+                </div>
+            </div>
+            <div className="bg-white p-6 rounded-xl shadow-md border-l-4 border-green-500 flex items-start gap-4">
+                <PartyPopper className="text-green-500 min-w-8 min-h-8" />
+                <div>
+                    <h3 className="font-bold text-lg">Bambolê "Feliz Natal"</h3>
+                    <p className="text-slate-600 text-sm">Guirlanda criativa de papel para decorar presentes, árvore ou porta.</p>
+                </div>
+            </div>
+            <div className="bg-white p-6 rounded-xl shadow-md border-l-4 border-blue-500 flex items-start gap-4">
+                <Clock className="text-blue-500 min-w-8 min-h-8" />
+                <div>
+                    <h3 className="font-bold text-lg">Calendários 2025</h3>
+                    <p className="text-slate-600 text-sm">Modelos editáveis temáticos. Um presente útil para o ano todo.</p>
+                </div>
+            </div>
+            <div className="bg-white p-6 rounded-xl shadow-md border-l-4 border-yellow-500 flex items-start gap-4">
+                <TreePine className="text-yellow-500 min-w-8 min-h-8" />
+                <div>
+                    <h3 className="font-bold text-lg">Decoração de Porta</h3>
+                    <p className="text-slate-600 text-sm">Tags e itens para maçanetas que trazem o clima de Natal.</p>
+                </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Prova Social */}
+      <section className="py-16 px-4 bg-white">
+        <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-2xl font-bold text-slate-800 mb-10">Quem comprou, amou! ⭐⭐⭐⭐⭐</h2>
+            <div className="grid md:grid-cols-3 gap-6">
+                <TestimonialCard 
+                    name="Mariana Souza" 
+                    text="Salvou meu Natal! Imprimi para os professores do meu filho e todos amaram. Super barato de fazer."
+                />
+                <TestimonialCard 
+                    name="Carla Dias" 
+                    text="Os arquivos vêm perfeitos. A qualidade é ótima e o passo a passo ajuda muito."
+                />
+                <TestimonialCard 
+                    name="Patrícia Lima" 
+                    text="Comprei o pacote completo pelos bônus e valeu cada centavo. As crianças adoraram os jogos."
+                />
+            </div>
+        </div>
+      </section>
+
+      {/* BONUS SECTION */}
+      <section className="py-16 px-4 bg-red-900 text-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20"></div>
+        <div className="max-w-4xl mx-auto relative z-10">
+            <div className="text-center mb-10">
+                <span className="bg-yellow-400 text-red-900 font-bold px-4 py-1 rounded-full text-sm uppercase tracking-wider">Apenas no Plano Completo</span>
+                <h2 className="text-3xl md:text-4xl font-extrabold mt-4 mb-2">RECEBA AINDA 3 BÔNUS EXCLUSIVOS</h2>
+                <p className="text-red-200">Totalizando R$ 93,00 em presentes para você</p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-6">
+                <BonusCard 
+                    icon={<CookieIcon />}
+                    title="RECEITAS DIVERTIDAS"
+                    subtitle="DE NATAL"
+                    desc="Receitas natalinas para fazer com as crianças: biscoitos, chocolate quente e cupcakes!"
+                    price="37,00"
+                />
+                <BonusCard 
+                    icon={<Gamepad2 size={40} />}
+                    title="JOGOS NATALINOS"
+                    subtitle="PARA IMPRIMIR"
+                    desc="Caça ao tesouro, bingo de Natal, jogo da memória. Imprima e brinque!"
+                    price="29,00"
+                />
+                <BonusCard 
+                    icon={<Palette size={40} />}
+                    title="PACK DE DECORAÇÃO"
+                    subtitle="NATALINA"
+                    desc="Moldes DIY, cartões personalizáveis, etiquetas para presentes e muito mais!"
+                    price="27,00"
+                />
             </div>
             
-            <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-100">
-              <div className="w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Heart size={24} />
-              </div>
-              <h3 className="font-bold text-lg mb-2">Carinho nos detalhes</h3>
-              <p className="text-slate-600">Presentes feitos à mão têm muito mais valor sentimental. Demonstre gratidão de forma única.</p>
+            <div className="mt-10 text-center">
+                <p className="text-2xl font-bold text-yellow-300 animate-pulse">
+                    TOTAL EM BÔNUS: R$ 93,00 — HOJE É GRÁTIS! 🎁
+                </p>
+                <Button onClick={scrollToPricing} variant="link" className="text-white underline mt-2 text-lg hover:text-yellow-200">
+                    QUERO OS BÔNUS TAMBÉM! 🎁
+                </Button>
             </div>
-
-            <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-100">
-              <div className="w-12 h-12 bg-yellow-100 text-yellow-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Download size={24} />
-              </div>
-              <h3 className="font-bold text-lg mb-2">Econômico e Prático</h3>
-              <p className="text-slate-600">Arquivos em alta qualidade (PDF). Imprima quantas vezes quiser na sua impressora ou na gráfica.</p>
-            </div>
-          </div>
         </div>
       </section>
 
-      {/* O que está incluso (Showcase) */}
-      <section className="py-16 px-4">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-slate-900 mb-4">
-            O que você vai receber?
-          </h2>
-          <p className="text-center text-slate-600 mb-12 max-w-2xl mx-auto">
-            Kits completos com design profissional, prontos para recortar e montar.
-          </p>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <ShowcaseCard 
-              icon={<Gift className="text-red-500" size={32} />}
-              title="Cartão Árvore"
-              description="Perfeito para colocar um chocolate Bis ou Batom. Uma lembrancinha doce e barata."
-            />
-            <ShowcaseCard 
-              icon={<div className="text-green-600 border-2 border-green-600 rounded-full p-1"><div className="w-4 h-4 bg-green-600 rounded-full"></div></div>}
-              title="Bambolê Feliz Natal"
-              description="Uma guirlanda criativa de papel para decorar presentes ou pendurar na árvore."
-            />
-            <ShowcaseCard 
-              icon={<Clock className="text-blue-500" size={32} />}
-              title="Calendários Temáticos"
-              description="Calendários 2025 editáveis com tema natalino. Útil o ano todo!"
-            />
-            <ShowcaseCard 
-              icon={<TreePine className="text-green-700" size={32} />}
-              title="Decoração de Porta"
-              description="Itens decorativos para maçanetas que trazem o clima de Natal para qualquer ambiente."
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* Pricing Section */}
-      <section id="pricing" className="py-20 px-4 bg-red-50">
+      {/* Pricing Section with Countdown */}
+      <section id="pricing" className="py-16 px-4 bg-slate-100">
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-red-800 mb-12">
-            Escolha seu Kit de Natal
-          </h2>
+          
+          {/* Pitch & Countdown */}
+          <div className="text-center mb-10">
+            <div className="inline-block bg-red-600 text-white px-6 py-2 rounded-lg shadow-lg mb-6">
+                <div className="text-sm font-semibold uppercase tracking-wider mb-1">⏰ ESTA OFERTA EXPIRA EM:</div>
+                <div className="text-3xl md:text-4xl font-mono font-bold tracking-widest">
+                    {String(timeLeft.hours).padStart(2, '0')}:{String(timeLeft.minutes).padStart(2, '0')}:{String(timeLeft.seconds).padStart(2, '0')}
+                </div>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-slate-800">
+                Escolha Seu Plano e <br/><span className="text-red-600">Transforme Seu Natal</span>
+            </h2>
+          </div>
 
-          <div className="grid md:grid-cols-2 gap-8 items-center max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-8 items-stretch max-w-4xl mx-auto">
             
             {/* Basic Plan */}
-            <Card className="border-2 border-slate-200 shadow-lg hover:shadow-xl transition-shadow bg-white">
-              <CardHeader className="text-center pb-2">
-                <CardTitle className="text-xl font-bold text-slate-700">Kit Lembrancinha</CardTitle>
-                <CardDescription>O essencial para presentear</CardDescription>
+            <Card className="border border-slate-200 shadow-sm bg-white hover:border-slate-300 transition-all flex flex-col">
+              <CardHeader className="text-center pb-4 border-b border-slate-100">
+                <CardTitle className="text-xl font-bold text-slate-600">Kit Lembrancinha</CardTitle>
+                <CardDescription>Apenas o essencial</CardDescription>
               </CardHeader>
-              <CardContent className="text-center">
-                <div className="text-4xl font-extrabold text-slate-900 mb-2">R$ 10,00</div>
-                <div className="text-sm text-slate-500 mb-6">Pagamento único</div>
+              <CardContent className="text-center pt-6 flex-1 flex flex-col">
+                <div className="text-4xl font-extrabold text-slate-400 mb-2">R$ 10<span className="text-lg">,00</span></div>
                 
-                <ul className="text-left space-y-3 mb-8">
-                  <Feature text="Cartão Árvore para Chocolate" />
-                  <Feature text="Arquivo em PDF Alta Resolução" />
-                  <Feature text="Tutorial de montagem simples" />
-                  <Feature text="Acesso Vitalício" />
+                <ul className="text-left space-y-4 mb-8 mt-4 flex-1">
+                  <Feature text="+150 Dinâmicas Natalinas em PDF" />
+                  <Feature text="Acesso imediato" />
+                  <Feature text="Garantia de 7 dias" />
+                  <li className="text-slate-400 text-sm line-through flex items-center gap-2"><div className="w-5"></div> Sem bônus inclusos</li>
+                  <li className="text-slate-400 text-sm line-through flex items-center gap-2"><div className="w-5"></div> Sem materiais editáveis</li>
                 </ul>
                 
-                <Button className="w-full bg-slate-900 hover:bg-slate-800" size="lg">
-                  Comprar Kit Básico
+                <Button className="w-full bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold text-lg py-6" size="lg">
+                  COMPRAR KIT BÁSICO
                 </Button>
+                <div className="mt-4 flex justify-center opacity-50"><PagamentoSeguro /></div>
               </CardContent>
             </Card>
 
-            {/* Premium Plan - Featured */}
-            <Card className="border-2 border-red-500 shadow-2xl relative bg-white transform md:-translate-y-4">
-              <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                <Badge className="bg-red-600 text-white px-4 py-1 text-sm font-bold uppercase tracking-wide">
-                  Mais Vendido
+            {/* Premium Plan */}
+            <Card className="border-2 border-green-500 shadow-2xl relative bg-white transform md:-translate-y-6 flex flex-col">
+              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 w-full text-center">
+                <Badge className="bg-green-600 hover:bg-green-700 text-white px-6 py-1.5 text-sm font-bold uppercase tracking-wide shadow-md border-none">
+                  🎅 Recomendado • Mais Completo
                 </Badge>
               </div>
-              <CardHeader className="text-center pb-2 pt-8">
+              <CardHeader className="text-center pb-4 pt-10 border-b border-red-50 bg-red-50/50 rounded-t-xl">
                 <CardTitle className="text-2xl font-bold text-red-600">Pacote Natal Completo</CardTitle>
-                <CardDescription>A melhor opção para família e vendas</CardDescription>
+                <CardDescription className="text-red-800 font-medium">Você leva TUDO + Bônus</CardDescription>
               </CardHeader>
-              <CardContent className="text-center">
-                <div className="text-5xl font-extrabold text-slate-900 mb-2">R$ 27,00</div>
-                <div className="text-sm text-slate-500 mb-6">De <span className="line-through">R$ 47,90</span> por apenas R$ 27</div>
+              <CardContent className="text-center pt-6 flex-1 flex flex-col">
+                <div className="text-sm text-slate-500 font-medium mb-1">De <span className="line-through text-red-400">R$ 120,00</span> por apenas:</div>
+                <div className="text-6xl font-black text-green-600 mb-2 tracking-tight">R$ 27<span className="text-2xl font-bold text-slate-500">,00</span></div>
+                <div className="text-xs text-slate-400 mb-6">Pagamento único • Acesso Vitalício</div>
                 
-                <ul className="text-left space-y-3 mb-8">
-                  <Feature text="Cartão Árvore para Chocolate" highlighted />
-                  <Feature text="Bambolê “Feliz Natal”" highlighted />
-                  <Feature text="Calendários Editáveis 2025" highlighted />
-                  <Feature text="Decoração de Porta Natalina" highlighted />
-                  <Feature text="Bônus: Tags para presentes" />
-                  <Feature text="Direito de uso para revenda (impressos)" />
+                <ul className="text-left space-y-3 mb-8 bg-slate-50 p-4 rounded-lg border border-slate-100 flex-1">
+                  <Feature text="Passo a passo ilustrado de cada dinâmica" highlighted />
+                  <Feature text="Lista de materiais necessários" highlighted />
+                  <Feature text="Acesso imediato após a compra" highlighted />
+                  <Feature text="Garantia incondicional de 7 dias" highlighted />
+                  <Feature text="Os 3 Bônus Exclusivos (Receitas, Jogos, Decor)" highlighted />
+                  <Feature text="Arquivos Editáveis inclusos" highlighted />
                 </ul>
                 
-                <Button className="w-full bg-green-600 hover:bg-green-700 text-white font-bold text-lg h-12 shadow-lg animate-pulse hover:animate-none">
+                <Button className="w-full bg-green-600 hover:bg-green-500 text-white font-black text-xl py-8 shadow-green-200 shadow-xl rounded-lg animate-pulse hover:animate-none transform transition hover:-translate-y-1">
                   QUERO O PACOTE COMPLETO
                 </Button>
-                <p className="text-xs text-slate-500 mt-3 flex items-center justify-center gap-1">
-                  <ShieldCheck size={12} /> Compra 100% Segura
+                <p className="text-xs text-slate-500 mt-4 flex items-center justify-center gap-1">
+                  <ShieldCheck size={14} className="text-green-600" /> Risco Zero • Garantia de 7 Dias
                 </p>
+                <div className="mt-4 flex justify-center"><PagamentoSeguro /></div>
               </CardContent>
             </Card>
 
@@ -188,56 +298,116 @@ const ChristmasLanding = () => {
 
       {/* FAQ */}
       <section className="py-16 px-4 max-w-3xl mx-auto">
-        <h2 className="text-2xl font-bold text-center mb-8 text-slate-800">Perguntas Frequentes</h2>
-        <Accordion type="single" collapsible className="w-full">
-          <AccordionItem value="item-1">
-            <AccordionTrigger>Como recebo os arquivos?</AccordionTrigger>
-            <AccordionContent>
-              Assim que o pagamento for confirmado, você receberá um e-mail com o link para baixar todos os arquivos em PDF e materiais editáveis imediatamente.
-            </AccordionContent>
-          </AccordionItem>
-          <AccordionItem value="item-2">
-            <AccordionTrigger>Posso editar os arquivos?</AccordionTrigger>
-            <AccordionContent>
-              O pacote completo (R$ 27,00) inclui os calendários editáveis. Os demais itens vão em PDF prontos para imprimir para garantir a formatação correta.
-            </AccordionContent>
-          </AccordionItem>
-          <AccordionItem value="item-3">
-            <AccordionTrigger>Preciso de uma impressora profissional?</AccordionTrigger>
-            <AccordionContent>
-              Não! Os arquivos foram preparados para serem impressos em qualquer impressora caseira. Recomendamos usar papel fotográfico ou papel cartão (180g) para um melhor acabamento.
-            </AccordionContent>
-          </AccordionItem>
+        <h2 className="text-3xl font-bold text-center mb-10 text-slate-800 flex items-center justify-center gap-2">
+            <span className="text-red-600">?</span> Perguntas Frequentes
+        </h2>
+        <Accordion type="single" collapsible className="w-full space-y-2">
+          <FAQItem 
+            question="Como vou acessar o material após a compra?" 
+            answer="Assim que seu pagamento for confirmado, você receberá um e-mail automático com o link de acesso à nossa área de membros ou link direto de download (dependendo da plataforma). É imediato!" 
+          />
+          <FAQItem 
+            question="Quais formas de pagamento são aceitas?" 
+            answer="Aceitamos PIX (liberação imediata), cartão de crédito e boleto bancário. No cartão, a liberação também é na hora." 
+          />
+          <FAQItem 
+            question="Preciso de algum material especial para as atividades?" 
+            answer="Não! A maioria das atividades utiliza materiais simples que você já tem em casa, como tesoura, cola, lápis de cor e papel A4." 
+          />
+          <FAQItem 
+            question="As atividades são adequadas para fazer em família?" 
+            answer="Sim! O objetivo principal é unir a família. Temos atividades para as crianças fazerem sozinhas e outras para a família toda participar junto." 
+          />
+          <FAQItem 
+            question="Como funciona a garantia de 7 dias?" 
+            answer="É simples: se por qualquer motivo você não gostar do material, basta nos enviar um e-mail dentro de 7 dias e devolvemos 100% do seu dinheiro. Sem perguntas." 
+          />
+          <FAQItem 
+            question="Para qual idade as atividades são mais adequadas?" 
+            answer="Nosso kit é versátil! Temos atividades perfeitas para crianças de 3 a 10 anos, mas até os adultos se divertem montando as decorações e jogando os jogos em família." 
+          />
         </Accordion>
       </section>
 
       {/* Footer */}
-      <footer className="bg-slate-900 text-slate-400 py-8 text-center text-sm">
+      <footer className="bg-slate-900 text-slate-400 py-12 text-center text-sm border-t-4 border-red-600">
         <div className="container mx-auto px-4">
+          <div className="flex justify-center items-center gap-2 mb-6 text-slate-300">
+            <ShieldCheck /> Site Seguro
+          </div>
           <p className="mb-4">&copy; {new Date().getFullYear()} Natal Criativo. Todos os direitos reservados.</p>
-          <p>Dúvidas? Entre em contato pelo suporte.</p>
+          <p className="text-xs text-slate-600">Este site não é afiliado ao Facebook ou a qualquer entidade do Facebook. Depois que você sair do Facebook, a responsabilidade não é deles e sim do nosso site.</p>
         </div>
       </footer>
     </div>
   );
 };
 
-// Helper Components
-const ShowcaseCard = ({ icon, title, description }: { icon: React.ReactNode, title: string, description: string }) => (
-  <div className="flex flex-col items-center text-center p-6 bg-slate-50 rounded-lg border border-slate-100 hover:border-red-200 transition-colors">
-    <div className="mb-4 p-3 bg-white rounded-full shadow-sm">
-      {icon}
-    </div>
-    <h3 className="font-bold text-lg mb-2 text-slate-800">{title}</h3>
-    <p className="text-sm text-slate-600">{description}</p>
-  </div>
-);
+// --- Subcomponents ---
 
 const Feature = ({ text, highlighted = false }: { text: string, highlighted?: boolean }) => (
-  <li className="flex items-start gap-2 text-sm">
-    <Check className={`min-w-5 h-5 ${highlighted ? 'text-green-600' : 'text-slate-400'}`} />
-    <span className={highlighted ? 'font-medium text-slate-900' : 'text-slate-600'}>{text}</span>
+  <li className="flex items-start gap-3 text-sm">
+    <div className={`mt-0.5 min-w-5 h-5 rounded-full flex items-center justify-center ${highlighted ? 'bg-green-100 text-green-600' : 'bg-slate-200 text-slate-500'}`}>
+        <Check size={12} strokeWidth={4} />
+    </div>
+    <span className={highlighted ? 'font-semibold text-slate-800' : 'text-slate-600'}>{text}</span>
   </li>
+);
+
+const FAQItem = ({ question, answer }: { question: string, answer: string }) => (
+    <AccordionItem value={question} className="border border-slate-200 rounded-lg px-4 bg-white shadow-sm">
+        <AccordionTrigger className="text-left font-semibold text-slate-800 hover:text-red-600 hover:no-underline py-4">
+            {question}
+        </AccordionTrigger>
+        <AccordionContent className="text-slate-600 pb-4">
+            {answer}
+        </AccordionContent>
+    </AccordionItem>
+);
+
+const TestimonialCard = ({ name, text }: { name: string, text: string }) => (
+    <div className="bg-slate-50 p-6 rounded-xl border border-slate-100 shadow-sm relative">
+        <div className="flex justify-center mb-4 text-yellow-400 gap-1">
+            <Star size={16} fill="currentColor" />
+            <Star size={16} fill="currentColor" />
+            <Star size={16} fill="currentColor" />
+            <Star size={16} fill="currentColor" />
+            <Star size={16} fill="currentColor" />
+        </div>
+        <p className="text-slate-700 italic mb-4">"{text}"</p>
+        <p className="font-bold text-slate-900 text-sm">- {name}</p>
+    </div>
+);
+
+const BonusCard = ({ icon, title, subtitle, desc, price }: any) => (
+    <div className="bg-red-800/50 backdrop-blur-sm border border-red-700 rounded-xl p-6 text-center hover:bg-red-800 transition-colors">
+        <div className="bg-white/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-yellow-300">
+            {icon}
+        </div>
+        <h3 className="font-bold text-lg leading-tight text-white">{title}</h3>
+        <h4 className="font-bold text-lg leading-tight text-yellow-300 mb-3">{subtitle}</h4>
+        <p className="text-sm text-red-100 mb-4 h-16">{desc}</p>
+        <div className="border-t border-red-700 pt-4">
+            <span className="text-red-300 line-through text-sm block">R$ {price}</span>
+            <span className="text-white font-bold text-lg">HOJE É GRÁTIS!</span>
+        </div>
+    </div>
+);
+
+const PagamentoSeguro = () => (
+    <div className="flex items-center gap-2 opacity-70 scale-90">
+        <img src="https://img.icons8.com/color/48/visa.png" alt="Visa" className="h-6" />
+        <img src="https://img.icons8.com/color/48/mastercard.png" alt="Mastercard" className="h-6" />
+        <img src="https://img.icons8.com/color/48/pix.png" alt="Pix" className="h-6" />
+        <div className="flex flex-col text-[10px] leading-tight text-slate-500 text-left ml-1">
+            <span className="font-bold flex items-center gap-1"><Lock size={8} /> SSL</span>
+            <span>Seguro</span>
+        </div>
+    </div>
+);
+
+const CookieIcon = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2a10 10 0 1 0 10 10 4 4 0 0 1-5-5 4 4 0 0 1-5-5"/><path d="M8.5 8.5v.01"/><path d="M16 15.5v.01"/><path d="M12 12v.01"/><path d="M11 17v.01"/><path d="M7 14v.01"/></svg>
 );
 
 export default ChristmasLanding;
