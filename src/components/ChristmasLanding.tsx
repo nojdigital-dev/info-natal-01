@@ -77,7 +77,7 @@ const ChristmasLanding = () => {
           <div className="flex flex-col w-full md:w-auto px-4">
             <Button 
               onClick={scrollToPricing}
-              className="bg-green-500 hover:bg-green-400 text-white border-b-4 border-green-700 font-black text-lg md:text-xl py-8 w-full md:w-auto md:px-12 rounded-full shadow-2xl transform transition hover:scale-105 active:scale-95 flex items-center justify-center gap-2 animate-pulse hover:animate-none"
+              className="bg-green-500 hover:bg-green-400 text-white border-b-4 border-green-700 font-black text-lg md:text-xl py-8 w-full md:w-auto md:px-12 rounded-full shadow-2xl transform transition flex items-center justify-center gap-2 animate-scale-pulse hover:scale-110 active:scale-95"
             >
               QUERO GARANTIR AGORA <ChevronRight size={24} />
             </Button>
@@ -159,7 +159,7 @@ const ChristmasLanding = () => {
             <div className="mt-12 text-center">
                 <Button 
                 onClick={scrollToPricing} 
-                className="bg-red-600 hover:bg-red-500 text-white font-bold text-lg px-8 py-6 rounded-full shadow-lg animate-pulse"
+                className="bg-red-600 hover:bg-red-500 text-white font-bold text-lg px-8 py-6 rounded-full shadow-lg animate-scale-pulse hover:scale-110"
                 >
                     QUERO TRANSFORMAR MEU NATAL! 🎄
                 </Button>
@@ -272,7 +272,7 @@ const ChristmasLanding = () => {
                 <div className="w-full px-4 md:w-auto">
                     <Button 
                     onClick={scrollToPricing} 
-                    className="bg-yellow-400 hover:bg-yellow-300 text-red-900 font-black text-lg md:text-xl py-6 md:py-8 w-full md:px-12 rounded-full shadow-[0_0_20px_rgba(250,204,21,0.6)] transform transition hover:scale-105 animate-pulse hover:animate-none whitespace-normal h-auto leading-tight"
+                    className="bg-yellow-400 hover:bg-yellow-300 text-red-900 font-black text-lg md:text-xl py-6 md:py-8 w-full md:px-12 rounded-full shadow-[0_0_20px_rgba(250,204,21,0.6)] transform transition animate-scale-pulse hover:scale-110 whitespace-normal h-auto leading-tight"
                     >
                         QUERO OS BÔNUS TAMBÉM! 🎁
                     </Button>
@@ -315,7 +315,7 @@ const ChristmasLanding = () => {
                   <Feature text="Acesso imediato" />
                 </ul>
                 
-                <Button className="w-full bg-green-800 hover:bg-green-900 text-white font-bold text-base md:text-lg py-6 shadow-sm animate-pulse hover:animate-none" size="lg">
+                <Button className="w-full bg-green-800 hover:bg-green-900 text-white font-bold text-base md:text-lg py-6 shadow-sm animate-scale-pulse hover:scale-110" size="lg">
                   COMPRAR KIT BÁSICO
                 </Button>
                 <div className="mt-4 flex justify-center opacity-70"><PagamentoSeguro /></div>
@@ -355,7 +355,7 @@ const ChristmasLanding = () => {
                   <Feature text="BÔNUS 3: Pack de Decoração Extra" yellow />
                 </ul>
                 
-                <Button className="w-full bg-green-500 hover:bg-green-400 text-white border-b-4 border-green-700 font-black text-lg md:text-xl py-8 shadow-xl rounded-lg animate-pulse hover:animate-none transform transition hover:-translate-y-1 active:border-b-0 active:translate-y-1">
+                <Button className="w-full bg-green-500 hover:bg-green-400 text-white border-b-4 border-green-700 font-black text-lg md:text-xl py-8 shadow-xl rounded-lg animate-scale-pulse hover:scale-110 transform transition active:border-b-0 active:translate-y-1">
                   QUERO O PACOTE COMPLETO
                 </Button>
                 <p className="text-xs text-slate-500 mt-4 flex items-center justify-center gap-1">
@@ -381,7 +381,7 @@ const ChristmasLanding = () => {
                     name="Amanda R."
                     role="Mãe e Empreendedora"
                     text="Achei que eram só umas lembrancinhas, mas o pacote é MUITO completo. A qualidade dos arquivos é impecável, tudo muito bem organizado. Facilitou demais a minha vida!"
-                    observation="Veio muito mais coisa do que eu esperava! Só os calendários de 2025 já valeram a pena, e tem material que vou conseguir usar até no Natal de 2026. Incrível!"
+                    observation="Veio muito mais coisa do que eu esperava! Só os moldes de caixinhas já valeram a pena, e tem lembrancinha que vou conseguir usar até no Natal de 2026. Incrível!"
                     initials="AR"
                     color="bg-red-100 text-red-600"
                  />
@@ -539,7 +539,7 @@ const ChristmasLanding = () => {
               <div>
                   <Button 
                     onClick={scrollToPricing}
-                    className="bg-green-600 hover:bg-green-500 text-white font-black text-lg md:text-2xl py-8 px-8 md:px-16 rounded-full shadow-[0_0_40px_rgba(22,163,74,0.6)] transform transition hover:scale-105 active:scale-95 border-4 border-green-500/50"
+                    className="bg-green-600 hover:bg-green-500 text-white font-black text-lg md:text-2xl py-8 px-8 md:px-16 rounded-full shadow-[0_0_40px_rgba(22,163,74,0.6)] transform transition animate-scale-pulse hover:scale-110 active:scale-95 border-4 border-green-500/50"
                   >
                     QUERO VIVER UM NATAL ESPECIAL 🎄
                   </Button>
