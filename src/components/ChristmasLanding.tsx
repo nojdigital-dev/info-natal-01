@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { 
   Check, Gift, Star, TreePine, Download, Clock, ShieldCheck, 
-  Heart, Zap, Snowflake, Lock, ChevronRight, PartyPopper, Gamepad2, Palette
+  Heart, Zap, Snowflake, Lock, ChevronRight, PartyPopper, Gamepad2, Palette, Printer, Scissors
 } from "lucide-react";
 
 const ChristmasLanding = () => {
@@ -71,8 +71,8 @@ const ChristmasLanding = () => {
             </span>
           </h1>
           <p className="text-lg md:text-2xl mb-8 text-red-100 max-w-2xl mx-auto font-medium leading-relaxed">
-            Surpreenda neste Natal sem gastar muito e sem perder tempo. <br className="hidden md:block"/>
-            Baixe, imprima e monte em minutos!
+            Surpreenda neste Natal sem gastar muito com presentes caros. <br className="hidden md:block"/>
+            Baixe, imprima e monte lembrancinhas lindas em minutos!
           </p>
           <div className="flex flex-col w-full md:w-auto px-4">
             <Button 
@@ -93,24 +93,24 @@ const ChristmasLanding = () => {
         <div className="max-w-6xl mx-auto px-4">
             <div className="flex flex-col md:flex-row justify-center items-start md:items-center gap-6 text-left text-slate-600">
                 <div className="flex items-center gap-3 w-full md:w-auto">
-                    <div className="bg-red-100 p-3 rounded-full text-red-600 shrink-0"><Clock size={24} /></div>
+                    <div className="bg-red-100 p-3 rounded-full text-red-600 shrink-0"><Scissors size={24} /></div>
                     <div>
-                        <p className="font-bold text-slate-900 leading-tight">Economize Tempo</p>
-                        <p className="text-sm">Não enfrente filas de shoppings</p>
+                        <p className="font-bold text-slate-900 leading-tight">Fácil de Montar</p>
+                        <p className="text-sm">Basta imprimir, recortar e colar</p>
                     </div>
                 </div>
                 <div className="flex items-center gap-3 w-full md:w-auto">
                     <div className="bg-green-100 p-3 rounded-full text-green-600 shrink-0"><Heart size={24} /></div>
                     <div>
-                        <p className="font-bold text-slate-900 leading-tight">Feito com Amor</p>
-                        <p className="text-sm">Presente com significado</p>
+                        <p className="font-bold text-slate-900 leading-tight">Presente Econômico</p>
+                        <p className="text-sm">Gaste pouco e encante a todos</p>
                     </div>
                 </div>
                 <div className="flex items-center gap-3 w-full md:w-auto">
-                    <div className="bg-yellow-100 p-3 rounded-full text-yellow-600 shrink-0"><Download size={24} /></div>
+                    <div className="bg-yellow-100 p-3 rounded-full text-yellow-600 shrink-0"><Printer size={24} /></div>
                     <div>
-                        <p className="font-bold text-slate-900 leading-tight">Acesso Imediato</p>
-                        <p className="text-sm">Receba no WhatsApp/Email agora</p>
+                        <p className="font-bold text-slate-900 leading-tight">Imprima em Casa</p>
+                        <p className="text-sm">Ou na gráfica mais próxima</p>
                     </div>
                 </div>
             </div>
@@ -121,35 +121,35 @@ const ChristmasLanding = () => {
       <section className="py-12 px-4 bg-slate-50">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-2xl md:text-3xl font-bold text-center text-red-800 mb-2">O que você vai receber?</h2>
-          <p className="text-center text-slate-600 mb-8">Tudo o que você precisa para um Natal inesquecível</p>
+          <p className="text-center text-slate-600 mb-8">Modelos prontos para você imprimir e presentear</p>
 
           <div className="grid md:grid-cols-2 gap-4 md:gap-6">
             <div className="bg-white p-5 rounded-xl shadow-sm border-l-4 border-red-500 flex items-start gap-4 hover:shadow-md transition-shadow">
                 <Gift className="text-red-500 min-w-8 min-h-8 shrink-0" />
                 <div>
-                    <h3 className="font-bold text-lg text-slate-800">Cartão Árvore</h3>
-                    <p className="text-slate-600 text-sm leading-snug mt-1">Design exclusivo para colocar chocolate Bis ou Batom. A lembrancinha mais econômica e amada!</p>
+                    <h3 className="font-bold text-lg text-slate-800">Cartão Árvore de Chocolate</h3>
+                    <p className="text-slate-600 text-sm leading-snug mt-1">O molde perfeito para encaixar um Bis ou Batom. A lembrancinha mais barata e amada do Natal!</p>
                 </div>
             </div>
             <div className="bg-white p-5 rounded-xl shadow-sm border-l-4 border-green-500 flex items-start gap-4 hover:shadow-md transition-shadow">
                 <PartyPopper className="text-green-500 min-w-8 min-h-8 shrink-0" />
                 <div>
-                    <h3 className="font-bold text-lg text-slate-800">Bambolê "Feliz Natal"</h3>
-                    <p className="text-slate-600 text-sm leading-snug mt-1">Guirlanda criativa de papel para decorar presentes, árvore ou porta.</p>
+                    <h3 className="font-bold text-lg text-slate-800">Guirlanda "Feliz Natal"</h3>
+                    <p className="text-slate-600 text-sm leading-snug mt-1">Uma lembrancinha decorativa em formato de bambolê/guirlanda para enfeitar a árvore ou a porta.</p>
                 </div>
             </div>
             <div className="bg-white p-5 rounded-xl shadow-sm border-l-4 border-blue-500 flex items-start gap-4 hover:shadow-md transition-shadow">
                 <Clock className="text-blue-500 min-w-8 min-h-8 shrink-0" />
                 <div>
                     <h3 className="font-bold text-lg text-slate-800">Calendários 2025</h3>
-                    <p className="text-slate-600 text-sm leading-snug mt-1">Modelos editáveis temáticos. Um presente útil para o ano todo.</p>
+                    <p className="text-slate-600 text-sm leading-snug mt-1">Calendários temáticos prontos. Um mimo útil que todo mundo gosta de ganhar.</p>
                 </div>
             </div>
             <div className="bg-white p-5 rounded-xl shadow-sm border-l-4 border-yellow-500 flex items-start gap-4 hover:shadow-md transition-shadow">
                 <TreePine className="text-yellow-500 min-w-8 min-h-8 shrink-0" />
                 <div>
-                    <h3 className="font-bold text-lg text-slate-800">Decoração de Porta</h3>
-                    <p className="text-slate-600 text-sm leading-snug mt-1">Tags e itens para maçanetas que trazem o clima de Natal.</p>
+                    <h3 className="font-bold text-lg text-slate-800">Mimos de Porta</h3>
+                    <p className="text-slate-600 text-sm leading-snug mt-1">Tags decorativas para maçanetas. Um detalhe simples que transforma o ambiente.</p>
                 </div>
             </div>
           </div>
@@ -163,15 +163,15 @@ const ChristmasLanding = () => {
             <div className="grid md:grid-cols-3 gap-6">
                 <TestimonialCard 
                     name="Mariana Souza" 
-                    text="Salvou meu Natal! Imprimi para os professores do meu filho e todos amaram. Super barato de fazer."
+                    text="Fiz os cartões porta-bombom para os alunos da minha escola. Ficou super barato e todos adoraram a lembrança!"
                 />
                 <TestimonialCard 
                     name="Carla Dias" 
-                    text="Os arquivos vêm perfeitos. A qualidade é ótima e o passo a passo ajuda muito."
+                    text="Os arquivos vêm no tamanho certinho. Só imprimi na gráfica rápida e recortei em casa. Muito prático."
                 />
                 <TestimonialCard 
                     name="Patrícia Lima" 
-                    text="Comprei o pacote completo pelos bônus e valeu cada centavo. As crianças adoraram os jogos."
+                    text="Comprei o pacote completo e amei os bônus de jogos. Usei as lembrancinhas na ceia e foi um sucesso."
                 />
             </div>
         </div>
@@ -183,8 +183,8 @@ const ChristmasLanding = () => {
         <div className="max-w-4xl mx-auto relative z-10">
             <div className="text-center mb-10">
                 <span className="bg-yellow-400 text-red-900 font-bold px-4 py-1 rounded-full text-xs md:text-sm uppercase tracking-wider shadow-lg">Apenas no Plano Completo</span>
-                <h2 className="text-2xl md:text-5xl font-extrabold mt-6 mb-4 leading-tight">RECEBA AINDA <br/>3 BÔNUS EXCLUSIVOS</h2>
-                <p className="text-red-200 text-base md:text-lg">Totalizando R$ 93,00 em presentes para você</p>
+                <h2 className="text-2xl md:text-5xl font-extrabold mt-6 mb-4 leading-tight">ALÉM DAS LEMBRANCINHAS, <br/>RECEBA 3 BÔNUS EXCLUSIVOS</h2>
+                <p className="text-red-200 text-base md:text-lg">Para tornar seu Natal ainda mais divertido</p>
             </div>
 
             <div className="grid md:grid-cols-3 gap-6">
@@ -199,14 +199,14 @@ const ChristmasLanding = () => {
                     icon={<Gamepad2 size={36} />}
                     title="JOGOS NATALINOS"
                     subtitle="PARA IMPRIMIR"
-                    desc="Caça ao tesouro, bingo de Natal, jogo da memória. Imprima e brinque!"
+                    desc="Caça ao tesouro, bingo de Natal, jogo da memória. Imprima e brinque na noite de Natal!"
                     price="29,00"
                 />
                 <BonusCard 
                     icon={<Palette size={36} />}
                     title="PACK DE DECORAÇÃO"
-                    subtitle="NATALINA"
-                    desc="Moldes DIY, cartões personalizáveis, etiquetas para presentes e muito mais!"
+                    subtitle="EXTRA"
+                    desc="Mais moldes DIY, cartões personalizáveis e etiquetas para presentes!"
                     price="27,00"
                 />
             </div>
@@ -220,7 +220,7 @@ const ChristmasLanding = () => {
                     onClick={scrollToPricing} 
                     className="bg-yellow-400 hover:bg-yellow-300 text-red-900 font-black text-lg md:text-xl py-8 w-full md:px-12 rounded-full shadow-[0_0_20px_rgba(250,204,21,0.6)] transform transition hover:scale-105 animate-pulse hover:animate-none"
                     >
-                        QUERO OS BÔNUS TAMBÉM! 🎁
+                        QUERO AS LEMBRANCINHAS + BÔNUS! 🎁
                     </Button>
                 </div>
             </div>
@@ -240,7 +240,7 @@ const ChristmasLanding = () => {
                 </div>
             </div>
             <h2 className="text-2xl md:text-4xl font-extrabold text-slate-800 leading-tight">
-                Escolha Seu Plano e <br/><span className="text-red-600">Transforme Seu Natal</span>
+                Escolha Seu Plano e <br/><span className="text-red-600">Garanta Suas Lembrancinhas</span>
             </h2>
           </div>
 
@@ -249,19 +249,19 @@ const ChristmasLanding = () => {
             {/* Basic Plan (R$ 10) - Smaller & Dark Green Button */}
             <Card className="order-2 md:order-1 border border-slate-200 shadow-sm bg-white hover:border-slate-300 transition-all flex flex-col relative overflow-hidden group mt-0 md:mt-8">
               <CardHeader className="text-center pb-4 border-b border-slate-100 bg-slate-50">
-                <CardTitle className="text-lg md:text-xl font-bold text-slate-600">Kit Lembrancinha</CardTitle>
-                <CardDescription className="text-xs md:text-sm">Para quem quer apenas o básico</CardDescription>
+                <CardTitle className="text-lg md:text-xl font-bold text-slate-600">Kit Lembrancinha Básico</CardTitle>
+                <CardDescription className="text-xs md:text-sm">Apenas os arquivos essenciais</CardDescription>
               </CardHeader>
               <CardContent className="text-center pt-6 flex flex-col">
                 <div className="text-3xl md:text-4xl font-extrabold text-slate-700 mb-2">R$ 10<span className="text-lg">,00</span></div>
                 
                 <ul className="text-left space-y-3 mb-6 mt-4">
-                  <Feature text="+150 Dinâmicas Natalinas em PDF" />
+                  <Feature text="Moldes de Cartão Porta-Bombom" />
+                  <Feature text="Arquivos em PDF prontos para imprimir" />
                   <Feature text="Acesso imediato" />
-                  <Feature text="Garantia de 7 dias" />
                 </ul>
                 
-                <Button className="w-full bg-green-800 hover:bg-green-900 text-white font-bold text-base md:text-lg py-6 shadow-sm" size="lg">
+                <Button className="w-full bg-green-800 hover:bg-green-900 text-white font-bold text-base md:text-lg py-6 shadow-sm animate-pulse hover:animate-none" size="lg">
                   COMPRAR KIT BÁSICO
                 </Button>
                 <div className="mt-4 flex justify-center opacity-70"><PagamentoSeguro /></div>
@@ -281,7 +281,7 @@ const ChristmasLanding = () => {
 
               <CardHeader className="text-center pb-4 pt-12 border-b border-red-50 bg-red-50/50 rounded-t-lg">
                 <CardTitle className="text-xl md:text-2xl font-black text-red-600 uppercase tracking-tight">Pacote Natal Completo</CardTitle>
-                <CardDescription className="text-red-800 font-medium text-sm">Você leva TUDO + Bônus</CardDescription>
+                <CardDescription className="text-red-800 font-medium text-sm">Lembrancinhas + Jogos + Bônus</CardDescription>
               </CardHeader>
               <CardContent className="text-center pt-6 flex flex-col">
                 <div className="text-xs md:text-sm text-slate-500 font-medium mb-1">De <span className="line-through text-red-400">R$ 120,00</span> por apenas:</div>
@@ -289,17 +289,16 @@ const ChristmasLanding = () => {
                 <div className="text-xs text-green-700 font-medium bg-green-100 inline-block px-3 py-1 rounded-full mb-6 mx-auto">Pagamento único • Acesso Vitalício</div>
                 
                 <ul className="text-left space-y-3 mb-8 bg-slate-50 p-4 rounded-lg border border-slate-100">
-                  <Feature text="Passo a passo ilustrado de cada dinâmica" highlighted />
-                  <Feature text="Lista de materiais necessários" highlighted />
-                  <Feature text="Acesso imediato após a compra" highlighted />
-                  <Feature text="Garantia incondicional de 7 dias" highlighted />
-                  <Feature text="Arquivos Editáveis inclusos" highlighted />
+                  <Feature text="TODOS os moldes de lembrancinhas" highlighted />
+                  <Feature text="Arquivos Editáveis (Canva/PDF)" highlighted />
+                  <Feature text="Instruções de papel e impressão" highlighted />
+                  <Feature text="Garantia de 7 dias" highlighted />
                   
                   <div className="my-3 border-t border-slate-200"></div>
                   
                   <Feature text="BÔNUS 1: Receitas Divertidas" yellow />
-                  <Feature text="BÔNUS 2: Jogos Natalinos" yellow />
-                  <Feature text="BÔNUS 3: Pack de Decoração" yellow />
+                  <Feature text="BÔNUS 2: Jogos Natalinos em Família" yellow />
+                  <Feature text="BÔNUS 3: Pack de Decoração Extra" yellow />
                 </ul>
                 
                 <Button className="w-full bg-green-500 hover:bg-green-400 text-white border-b-4 border-green-700 font-black text-lg md:text-xl py-8 shadow-xl rounded-lg animate-pulse hover:animate-none transform transition hover:-translate-y-1 active:border-b-0 active:translate-y-1">
@@ -323,28 +322,24 @@ const ChristmasLanding = () => {
         </h2>
         <Accordion type="single" collapsible className="w-full space-y-2">
           <FAQItem 
-            question="Como vou acessar o material após a compra?" 
-            answer="Assim que seu pagamento for confirmado, você receberá um e-mail automático com o link de acesso à nossa área de membros ou link direto de download (dependendo da plataforma). É imediato!" 
+            question="Eu recebo o produto impresso em casa?" 
+            answer="Não. O produto é 100% digital. Você recebe os arquivos em PDF de alta qualidade por e-mail para baixar e imprimir quantas vezes quiser, na sua casa ou em uma gráfica." 
           />
           <FAQItem 
-            question="Quais formas de pagamento são aceitas?" 
-            answer="Aceitamos PIX (liberação imediata), cartão de crédito e boleto bancário. No cartão, a liberação também é na hora." 
+            question="Qual papel devo usar para imprimir?" 
+            answer="Para as lembrancinhas (caixinhas e cartões), recomendamos papel fotográfico ou papel offset com gramatura de 180g (mais durinho). Para os jogos e atividades, papel sulfite comum (75g) funciona perfeitamente." 
           />
           <FAQItem 
-            question="Preciso de algum material especial para as atividades?" 
-            answer="Não! A maioria das atividades utiliza materiais simples que você já tem em casa, como tesoura, cola, lápis de cor e papel A4." 
+            question="É difícil de montar?" 
+            answer="Super fácil! A maioria dos modelos só precisa de tesoura e, em alguns casos, um pouco de cola branca ou fita dupla face. É tão simples que até as crianças podem ajudar." 
           />
           <FAQItem 
-            question="As atividades são adequadas para fazer em família?" 
-            answer="Sim! O objetivo principal é unir a família. Temos atividades para as crianças fazerem sozinhas e outras para a família toda participar junto." 
+            question="Consigo editar os arquivos?" 
+            answer="No 'Pacote Natal Completo' (R$ 27), você recebe também os arquivos editáveis (links do Canva), onde pode alterar nomes e mensagens. No plano básico, os arquivos vão em PDF prontos para imprimir." 
           />
           <FAQItem 
-            question="Como funciona a garantia de 7 dias?" 
-            answer="É simples: se por qualquer motivo você não gostar do material, basta nos enviar um e-mail dentro de 7 dias e devolvemos 100% do seu dinheiro. Sem perguntas." 
-          />
-          <FAQItem 
-            question="Para qual idade as atividades são mais adequadas?" 
-            answer="Nosso kit é versátil! Temos atividades perfeitas para crianças de 3 a 10 anos, mas até os adultos se divertem montando as decorações e jogando os jogos em família." 
+            question="Como acesso meu material?" 
+            answer="Imediatamente após a confirmação do pagamento, você recebe um e-mail com o link de acesso. Se pagar no PIX ou Cartão, é na hora!" 
           />
         </Accordion>
       </section>
