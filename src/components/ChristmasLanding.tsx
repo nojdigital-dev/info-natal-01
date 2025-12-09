@@ -156,27 +156,6 @@ const ChristmasLanding = () => {
         </div>
       </section>
 
-      {/* Prova Social 1 */}
-      <section className="py-12 px-4 bg-white">
-        <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-2xl md:text-3xl font-bold text-slate-800 mb-8">Famílias que amaram! ⭐⭐⭐⭐⭐</h2>
-            <div className="grid md:grid-cols-3 gap-6">
-                <TestimonialCard 
-                    name="Mariana Souza" 
-                    text="Fiz os cartões porta-bombom para os alunos da minha escola. Ficou super barato e todos adoraram a lembrança!"
-                />
-                <TestimonialCard 
-                    name="Carla Dias" 
-                    text="Os arquivos vêm no tamanho certinho. Só imprimi na gráfica rápida e recortei em casa. Muito prático."
-                />
-                <TestimonialCard 
-                    name="Patrícia Lima" 
-                    text="Comprei o pacote completo e amei os bônus de jogos. Usei as lembrancinhas na ceia e foi um sucesso."
-                />
-            </div>
-        </div>
-      </section>
-
       {/* BONUS SECTION */}
       <section className="py-16 px-4 bg-red-900 text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20"></div>
@@ -218,9 +197,9 @@ const ChristmasLanding = () => {
                 <div className="w-full px-4 md:w-auto">
                     <Button 
                     onClick={scrollToPricing} 
-                    className="bg-yellow-400 hover:bg-yellow-300 text-red-900 font-black text-lg md:text-xl py-8 w-full md:px-12 rounded-full shadow-[0_0_20px_rgba(250,204,21,0.6)] transform transition hover:scale-105 animate-pulse hover:animate-none"
+                    className="bg-yellow-400 hover:bg-yellow-300 text-red-900 font-black text-lg md:text-xl py-6 md:py-8 w-full md:px-12 rounded-full shadow-[0_0_20px_rgba(250,204,21,0.6)] transform transition hover:scale-105 animate-pulse hover:animate-none whitespace-normal h-auto leading-tight"
                     >
-                        QUERO AS LEMBRANCINHAS + BÔNUS! 🎁
+                        QUERO OS BÔNUS TAMBÉM! 🎁
                     </Button>
                 </div>
             </div>
@@ -315,35 +294,43 @@ const ChristmasLanding = () => {
         </div>
       </section>
 
-      {/* Social Proof 2 - Post Pricing */}
-      <section className="py-12 px-4 bg-red-50 border-y border-red-100">
-        <div className="max-w-4xl mx-auto">
-          <h3 className="text-xl md:text-2xl font-bold text-center text-red-800 mb-8 flex items-center justify-center gap-2">
-            <MessageCircle className="fill-red-200" /> Quem comprou hoje disse:
-          </h3>
-          <div className="grid md:grid-cols-3 gap-4">
-             <div className="bg-white p-4 rounded-lg shadow-sm border border-red-100 text-sm">
-                <div className="flex items-center gap-2 mb-2">
-                  <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center text-green-600 font-bold text-xs">AC</div>
-                  <span className="font-bold text-slate-800">Ana Clara</span>
-                </div>
-                <p className="text-slate-600">"Acabei de baixar! O arquivo da guirlanda é lindo demais. Vou fazer hoje mesmo."</p>
-             </div>
-             <div className="bg-white p-4 rounded-lg shadow-sm border border-red-100 text-sm">
-                <div className="flex items-center gap-2 mb-2">
-                  <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 font-bold text-xs">JF</div>
-                  <span className="font-bold text-slate-800">Juliana F.</span>
-                </div>
-                <p className="text-slate-600">"Comprei o pacote completo e valeu muito a pena. Só os jogos já pagam o valor!"</p>
-             </div>
-             <div className="bg-white p-4 rounded-lg shadow-sm border border-red-100 text-sm">
-                <div className="flex items-center gap-2 mb-2">
-                  <div className="w-8 h-8 bg-yellow-100 rounded-full flex items-center justify-center text-yellow-600 font-bold text-xs">RO</div>
-                  <span className="font-bold text-slate-800">Roberta O.</span>
-                </div>
-                <p className="text-slate-600">"Muito prático, chegou no email em 1 minuto. Já mandei imprimir."</p>
-             </div>
-          </div>
+      {/* Prova Social 2 - (Moved below pricing and enhanced) */}
+      <section className="py-16 px-4 bg-white border-y border-slate-100">
+        <div className="max-w-4xl mx-auto text-center">
+            <div className="inline-block bg-slate-900 text-white px-6 py-2 rounded-full font-bold text-lg md:text-xl shadow-lg mb-10 transform -rotate-1">
+                Famílias que amaram! ⭐⭐⭐⭐⭐
+            </div>
+            
+            <div className="grid md:grid-cols-2 gap-6 text-left">
+                 <EnhancedTestimonial 
+                    name="Roberta O."
+                    role="Mãe de 2"
+                    text="Muito prático, chegou no email em 1 minuto. Já mandei imprimir. As crianças estão ansiosas para montar a árvore."
+                    initials="RO"
+                    color="bg-purple-100 text-purple-600"
+                 />
+                 <EnhancedTestimonial 
+                    name="Juliana F."
+                    role="Professora"
+                    text="Comprei o pacote completo e valeu muito a pena. Só os jogos já pagam o valor! Meus alunos adoraram as lembrancinhas."
+                    initials="JF"
+                    color="bg-blue-100 text-blue-600"
+                 />
+                 <EnhancedTestimonial 
+                    name="Carla Dias"
+                    role="Avó"
+                    text="Os arquivos vêm no tamanho certinho. Só imprimi na gráfica rápida e recortei em casa. Economizei muito nos presentes dos netos."
+                    initials="CD"
+                    color="bg-green-100 text-green-600"
+                 />
+                 <EnhancedTestimonial 
+                    name="Patrícia Lima"
+                    role="Mãe de 3"
+                    text="Fiz os cartões porta-bombom para a família toda. Todo mundo elogiou a criatividade. O material é lindo!"
+                    initials="PL"
+                    color="bg-yellow-100 text-yellow-600"
+                 />
+            </div>
         </div>
       </section>
 
@@ -376,14 +363,97 @@ const ChristmasLanding = () => {
         </Accordion>
       </section>
 
+      {/* Guarantee Section */}
+      <section className="py-16 px-4 bg-white">
+        <div className="max-w-4xl mx-auto">
+           <div className="bg-white rounded-3xl p-8 md:p-12 border-2 border-slate-100 shadow-xl flex flex-col md:flex-row items-center gap-10">
+              <div className="relative shrink-0">
+                 <div className="w-32 h-32 md:w-40 md:h-40 bg-green-800 rounded-full flex items-center justify-center border-4 border-yellow-400 shadow-lg relative z-10">
+                    <div className="text-center text-white">
+                        <span className="block text-5xl md:text-6xl font-black">7</span>
+                        <span className="block text-xs md:text-sm font-bold tracking-widest uppercase">Dias</span>
+                    </div>
+                 </div>
+                 <div className="absolute top-0 left-0 w-full h-full bg-green-100 rounded-full transform scale-110 -z-0"></div>
+              </div>
+              
+              <div className="text-center md:text-left flex-1">
+                 <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900 mb-4">Garantia Incondicional de 7 Dias</h2>
+                 <h3 className="text-lg md:text-xl font-bold text-green-600 mb-6">Seu Investimento Está 100% Protegido!</h3>
+                 
+                 <div className="space-y-3">
+                    <div className="flex items-start gap-3 bg-slate-50 p-3 rounded-lg">
+                       <div className="mt-1 w-5 h-5 bg-green-500 rounded text-white flex items-center justify-center shrink-0"><Check size={14} strokeWidth={4}/></div>
+                       <p className="text-sm text-slate-600 text-left"><span className="font-bold text-slate-800">Teste sem risco:</span> Baixe, olhe e use o material por 7 dias completos.</p>
+                    </div>
+                    <div className="flex items-start gap-3 bg-slate-50 p-3 rounded-lg">
+                       <div className="mt-1 w-5 h-5 bg-green-500 rounded text-white flex items-center justify-center shrink-0"><Check size={14} strokeWidth={4}/></div>
+                       <p className="text-sm text-slate-600 text-left"><span className="font-bold text-slate-800">Reembolso Total:</span> Se não gostar, devolvemos 100% do seu dinheiro.</p>
+                    </div>
+                    <div className="flex items-start gap-3 bg-slate-50 p-3 rounded-lg">
+                       <div className="mt-1 w-5 h-5 bg-green-500 rounded text-white flex items-center justify-center shrink-0"><Check size={14} strokeWidth={4}/></div>
+                       <p className="text-sm text-slate-600 text-left"><span className="font-bold text-slate-800">Zero Burocracia:</span> Sem perguntas chatas, apenas um email.</p>
+                    </div>
+                 </div>
+              </div>
+           </div>
+           
+           <div className="mt-8 text-center">
+             <Button 
+                onClick={scrollToPricing}
+                className="bg-yellow-400 hover:bg-yellow-300 text-red-900 font-bold px-8 py-6 rounded-full text-lg shadow-md"
+             >
+                O RISCO É TODO NOSSO - GARANTIR AGORA
+             </Button>
+           </div>
+        </div>
+      </section>
+
+      {/* Final CTA Red Section */}
+      <section className="py-16 px-4 bg-gradient-to-br from-red-600 to-red-800 text-white text-center relative overflow-hidden">
+          <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20"></div>
+          <div className="max-w-3xl mx-auto relative z-10">
+              <Clock className="w-16 h-16 mx-auto mb-6 text-yellow-300 animate-pulse" />
+              <h2 className="text-3xl md:text-5xl font-black mb-4 uppercase leading-tight">Não Deixe Este Natal <br/>Passar em Branco!</h2>
+              <p className="text-lg md:text-xl text-red-100 mb-8 max-w-2xl mx-auto">
+                Imagine a alegria da sua família ao receber lembrancinhas feitas por você. Crie memórias que vão durar para sempre... <br/>
+                <span className="font-bold text-white">Isso pode ser HOJE.</span>
+              </p>
+
+              <div className="bg-red-900/50 backdrop-blur-sm p-6 rounded-2xl border border-red-500 inline-block mb-8">
+                  <div className="text-sm font-bold uppercase tracking-widest text-red-200 mb-2">Oferta expira em:</div>
+                  <div className="text-4xl md:text-6xl font-mono font-black text-white">
+                    {String(timeLeft.hours).padStart(2, '0')}:{String(timeLeft.minutes).padStart(2, '0')}:{String(timeLeft.seconds).padStart(2, '0')}
+                  </div>
+              </div>
+
+              <div>
+                  <Button 
+                    onClick={scrollToPricing}
+                    className="bg-green-600 hover:bg-green-500 text-white font-black text-lg md:text-2xl py-8 px-8 md:px-16 rounded-full shadow-[0_10px_40px_rgba(0,0,0,0.3)] transform transition hover:scale-105 active:scale-95"
+                  >
+                    QUERO VIVER UM NATAL ESPECIAL 🎄
+                  </Button>
+                  
+                  <div className="mt-6 flex flex-col md:flex-row items-center justify-center gap-4 text-xs md:text-sm font-medium text-red-200 opacity-90">
+                      <span className="flex items-center gap-1"><Lock size={12}/> Pagamento 100% Seguro</span>
+                      <span className="hidden md:block">•</span>
+                      <span className="flex items-center gap-1"><Zap size={12}/> Acesso Imediato</span>
+                      <span className="hidden md:block">•</span>
+                      <span className="flex items-center gap-1"><ShieldCheck size={12}/> Garantia de 7 Dias</span>
+                  </div>
+              </div>
+          </div>
+      </section>
+
       {/* Footer */}
-      <footer className="bg-slate-900 text-slate-400 py-12 text-center text-sm border-t-4 border-red-600">
+      <footer className="bg-slate-900 text-slate-400 py-12 text-center text-sm border-t-4 border-yellow-400">
         <div className="container mx-auto px-4">
           <div className="flex justify-center items-center gap-2 mb-6 text-slate-300">
             <ShieldCheck /> Site Seguro
           </div>
           <p className="mb-4">&copy; {new Date().getFullYear()} Natal Criativo. Todos os direitos reservados.</p>
-          <p className="text-xs text-slate-600">Este site não é afiliado ao Facebook ou a qualquer entidade do Facebook. Depois que você sair do Facebook, a responsabilidade não é deles e sim do nosso site.</p>
+          <p className="text-xs text-slate-600 max-w-2xl mx-auto">Este site não é afiliado ao Facebook ou a qualquer entidade do Facebook. Depois que você sair do Facebook, a responsabilidade não é deles e sim do nosso site. Fazemos todos os esforços para indicar claramente e mostrar todas as provas do produto e usar resultados reais.</p>
         </div>
       </footer>
     </div>
@@ -438,6 +508,28 @@ const TestimonialCard = ({ name, text }: { name: string, text: string }) => (
         </div>
         <p className="text-slate-700 italic mb-4 leading-relaxed">"{text}"</p>
         <p className="font-bold text-slate-900 text-sm">- {name}</p>
+    </div>
+);
+
+const EnhancedTestimonial = ({ name, role, text, initials, color }: any) => (
+    <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100 shadow-sm flex flex-col md:flex-row gap-4 items-start hover:shadow-md transition-shadow">
+        <div className={`w-12 h-12 ${color} rounded-full flex items-center justify-center font-bold text-lg shrink-0`}>
+            {initials}
+        </div>
+        <div>
+            <div className="flex items-center gap-2 mb-1">
+                <h4 className="font-bold text-slate-900">{name}</h4>
+                <span className="text-xs text-slate-500 bg-white px-2 py-0.5 rounded-full border border-slate-200">{role}</span>
+            </div>
+            <div className="flex text-yellow-400 gap-0.5 mb-3">
+                <Star size={14} fill="currentColor" />
+                <Star size={14} fill="currentColor" />
+                <Star size={14} fill="currentColor" />
+                <Star size={14} fill="currentColor" />
+                <Star size={14} fill="currentColor" />
+            </div>
+            <p className="text-slate-600 text-sm italic leading-relaxed">"{text}"</p>
+        </div>
     </div>
 );
 
