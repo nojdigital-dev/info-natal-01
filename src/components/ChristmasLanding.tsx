@@ -7,8 +7,10 @@ import {
   Check, Gift, Star, TreePine, Download, Clock, ShieldCheck, 
   Heart, Zap, Snowflake, Lock, ChevronRight, PartyPopper, Gamepad2, Palette, Printer, Scissors, MessageCircle, Users, Smile
 } from "lucide-react";
+import UpsellModal from './UpsellModal';
 
 const ChristmasLanding = () => {
+  const [isUpsellModalOpen, setIsUpsellModalOpen] = useState(false);
   // Timer ajustado para 10 minutos
   const [timeLeft, setTimeLeft] = useState({ hours: 0, minutes: 10, seconds: 0 });
   const [todayDate, setTodayDate] = useState("");
@@ -159,7 +161,7 @@ const ChristmasLanding = () => {
             <div className="mt-12 text-center">
                 <Button 
                 onClick={scrollToPricing} 
-                className="bg-red-600 hover:bg-red-500 text-white font-bold text-lg px-8 py-6 rounded-full shadow-lg animate-scale-pulse hover:scale-110"
+                className="bg-red-600 hover:bg-red-500 text-white font-bold text-base md:text-lg px-6 md:px-8 py-6 rounded-full shadow-lg animate-scale-pulse hover:scale-110 whitespace-normal h-auto"
                 >
                     QUERO TRANSFORMAR MEU NATAL! 🎄
                 </Button>
@@ -300,8 +302,8 @@ const ChristmasLanding = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start max-w-4xl mx-auto">
             
-            {/* Basic Plan (R$ 10) - Smaller & Dark Green Button */}
-            <Card className="order-2 md:order-1 border border-slate-200 shadow-sm bg-white hover:border-slate-300 transition-all flex flex-col relative overflow-hidden group mt-0 md:mt-8">
+            {/* Basic Plan (R$ 10) */}
+            <Card className="order-1 border border-slate-200 shadow-sm bg-white hover:border-slate-300 transition-all flex flex-col relative overflow-hidden group">
               <CardHeader className="text-center pb-4 border-b border-slate-100 bg-slate-50">
                 <CardTitle className="text-lg md:text-xl font-bold text-slate-600">Kit Lembrancinha Básico</CardTitle>
                 <CardDescription className="text-xs md:text-sm">Apenas os arquivos essenciais</CardDescription>
@@ -315,18 +317,19 @@ const ChristmasLanding = () => {
                   <Feature text="Acesso imediato" />
                 </ul>
                 
-                <Button className="w-full bg-green-800 hover:bg-green-900 text-white font-bold text-base md:text-lg py-6 shadow-sm animate-scale-pulse hover:scale-110" size="lg">
+                <Button 
+                  onClick={() => setIsUpsellModalOpen(true)}
+                  className="w-full bg-green-800 hover:bg-green-900 text-white font-bold text-base md:text-lg py-6 shadow-sm animate-scale-pulse hover:scale-110" size="lg">
                   COMPRAR KIT BÁSICO
                 </Button>
                 <div className="mt-4 flex justify-center opacity-70"><PagamentoSeguro /></div>
               </CardContent>
             </Card>
 
-            {/* Premium Plan (R$ 27) - Larger & More Prominent */}
-            <Card className="order-1 md:order-2 border-4 border-yellow-400 shadow-2xl relative bg-white flex flex-col z-10 overflow-visible transform scale-105 md:scale-100 md:-translate-y-4 mb-4 md:mb-0">
+            {/* Premium Plan (R$ 19,90) */}
+            <Card className="order-2 border-4 border-yellow-400 shadow-2xl relative bg-white flex flex-col z-10 overflow-visible">
               <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-yellow-300 via-yellow-500 to-yellow-300 rounded-t-lg"></div>
               
-              {/* Badge positioned absolutely, ensuring no clipping with overflow-visible */}
               <div className="absolute -top-5 left-1/2 transform -translate-x-1/2 w-[90%] md:w-full text-center z-20">
                 <Badge className="bg-green-600 hover:bg-green-700 text-white px-4 md:px-8 py-2 text-xs md:text-sm font-bold uppercase tracking-wide shadow-lg border-2 border-white whitespace-nowrap">
                   🎅 Recomendado • Mais Completo
@@ -339,7 +342,7 @@ const ChristmasLanding = () => {
               </CardHeader>
               <CardContent className="text-center pt-6 flex flex-col">
                 <div className="text-xs md:text-sm text-slate-500 font-medium mb-1">De <span className="line-through text-red-400">R$ 120,00</span> por apenas:</div>
-                <div className="text-5xl md:text-6xl font-black text-green-600 mb-2 tracking-tight drop-shadow-sm">R$ 27<span className="text-2xl font-bold text-green-700">,00</span></div>
+                <div className="text-5xl md:text-6xl font-black text-green-600 mb-2 tracking-tight drop-shadow-sm">R$ 19<span className="text-2xl font-bold text-green-700">,90</span></div>
                 <div className="text-xs text-green-700 font-medium bg-green-100 inline-block px-3 py-1 rounded-full mb-6 mx-auto">Pagamento único • Acesso Vitalício</div>
                 
                 <ul className="text-left space-y-3 mb-8 bg-slate-50 p-4 rounded-lg border border-slate-100">
@@ -565,6 +568,23 @@ const ChristmasLanding = () => {
           <p className="text-xs text-slate-600 max-w-2xl mx-auto">Este site não é afiliado ao Facebook ou a qualquer entidade do Facebook. Depois que você sair do Facebook, a responsabilidade não é deles e sim do nosso site. Fazemos todos os esforços para indicar claramente e mostrar todas as provas do produto e usar resultados reais.</p>
         </div>
       </footer>
+
+      <UpsellModal 
+        isOpen={isUpsellModalOpen}
+        onClose={() => setIsUpsellModalOpen(false)}
+        onConfirm={() => {
+            console.log("Upsell accepted! Redirect to 14.90 checkout.");
+            setIsUpsellModalOpen(false);
+            // Aqui você colocaria o link de checkout para a oferta de R$14,90
+            // window.location.href = 'URL_CHECKOUT_14_90';
+        }}
+        onReject={() => {
+            console.log("Upsell rejected. Redirect to 10.00 checkout.");
+            setIsUpsellModalOpen(false);
+            // Aqui você colocaria o link de checkout para a oferta de R$10,00
+            // window.location.href = 'URL_CHECKOUT_10_00';
+        }}
+      />
     </div>
   );
 };
