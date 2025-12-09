@@ -49,8 +49,12 @@ const ChristmasLanding = () => {
       <section className="relative bg-gradient-to-br from-red-700 via-red-600 to-red-800 text-white py-12 md:py-24 px-4 overflow-hidden">
         {/* Background Decorations */}
         <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-20">
-           <Snowflake className="absolute top-10 left-[10%] animate-bounce" size={30} />
-           <Snowflake className="absolute top-40 right-[15%] animate-pulse" size={20} />
+           <Snowflake className="absolute top-10 left-[10%] animate-bounce text-white" size={30} />
+           <Snowflake className="absolute top-40 right-[15%] animate-pulse text-blue-100" size={20} />
+           <Star className="absolute top-20 left-[20%] text-yellow-300 animate-pulse" size={15} /> 
+           <Star className="absolute top-60 right-[10%] text-yellow-300 animate-pulse" size={25} /> 
+           <Gift className="absolute bottom-40 left-[5%] text-white rotate-12 opacity-60" size={40} />
+           <Gift className="absolute top-32 right-[5%] text-yellow-200 -rotate-12 opacity-40" size={30} />
            <TreePine className="absolute bottom-0 left-0 text-green-900" size={100} />
            <TreePine className="absolute bottom-0 right-0 text-green-900" size={80} />
         </div>
@@ -73,7 +77,7 @@ const ChristmasLanding = () => {
           <div className="flex flex-col w-full md:w-auto px-4">
             <Button 
               onClick={scrollToPricing}
-              className="bg-green-500 hover:bg-green-400 text-white border-b-4 border-green-700 font-black text-lg md:text-xl py-8 w-full md:w-auto md:px-12 rounded-full shadow-2xl transform transition hover:scale-105 active:scale-95 flex items-center justify-center gap-2"
+              className="bg-green-500 hover:bg-green-400 text-white border-b-4 border-green-700 font-black text-lg md:text-xl py-8 w-full md:w-auto md:px-12 rounded-full shadow-2xl transform transition hover:scale-105 active:scale-95 flex items-center justify-center gap-2 animate-pulse hover:animate-none"
             >
               QUERO GARANTIR AGORA <ChevronRight size={24} />
             </Button>
@@ -214,7 +218,7 @@ const ChristmasLanding = () => {
                 <div className="w-full px-4 md:w-auto">
                     <Button 
                     onClick={scrollToPricing} 
-                    className="bg-yellow-400 hover:bg-yellow-300 text-red-900 font-black text-lg md:text-xl py-8 w-full md:px-12 rounded-full shadow-[0_0_20px_rgba(250,204,21,0.6)] transform transition hover:scale-105"
+                    className="bg-yellow-400 hover:bg-yellow-300 text-red-900 font-black text-lg md:text-xl py-8 w-full md:px-12 rounded-full shadow-[0_0_20px_rgba(250,204,21,0.6)] transform transition hover:scale-105 animate-pulse hover:animate-none"
                     >
                         QUERO OS BÔNUS TAMBÉM! 🎁
                     </Button>
@@ -255,8 +259,6 @@ const ChristmasLanding = () => {
                   <Feature text="+150 Dinâmicas Natalinas em PDF" />
                   <Feature text="Acesso imediato" />
                   <Feature text="Garantia de 7 dias" />
-                  <li className="text-slate-400 text-xs md:text-sm opacity-60 flex items-center gap-2"><div className="w-5 flex justify-center"><div className="w-1.5 h-1.5 rounded-full bg-slate-300"></div></div> Sem bônus inclusos</li>
-                  <li className="text-slate-400 text-xs md:text-sm opacity-60 flex items-center gap-2"><div className="w-5 flex justify-center"><div className="w-1.5 h-1.5 rounded-full bg-slate-300"></div></div> Sem materiais editáveis</li>
                 </ul>
                 
                 <Button className="w-full bg-green-800 hover:bg-green-900 text-white font-bold text-base md:text-lg py-6 shadow-sm" size="lg">
@@ -413,8 +415,8 @@ const TestimonialCard = ({ name, text }: { name: string, text: string }) => (
 );
 
 const BonusCard = ({ icon, title, subtitle, desc, price }: any) => (
-    <div className="bg-red-900/80 backdrop-blur-sm border-2 border-red-400/80 shadow-[0_0_15px_rgba(239,68,68,0.4)] rounded-xl p-6 text-center hover:bg-red-900 transition-colors transform hover:-translate-y-1">
-        <div className="bg-white/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-yellow-300 border border-red-400/30">
+    <div className="bg-red-900/80 backdrop-blur-sm border-2 border-yellow-400 shadow-[0_0_20px_rgba(250,204,21,0.3)] rounded-xl p-6 text-center hover:bg-red-900 transition-colors transform hover:-translate-y-1">
+        <div className="bg-white/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-yellow-300 border border-yellow-400/50">
             {icon}
         </div>
         <h3 className="font-bold text-lg leading-tight text-white">{title}</h3>
