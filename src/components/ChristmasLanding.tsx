@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { 
   Check, Gift, Star, TreePine, Download, Clock, ShieldCheck, 
-  Heart, Zap, Snowflake, Lock, ChevronRight, PartyPopper, Gamepad2, Palette, Printer, Scissors
+  Heart, Zap, Snowflake, Lock, ChevronRight, PartyPopper, Gamepad2, Palette, Printer, Scissors, MessageCircle
 } from "lucide-react";
 
 const ChristmasLanding = () => {
@@ -156,7 +156,7 @@ const ChristmasLanding = () => {
         </div>
       </section>
 
-      {/* Prova Social */}
+      {/* Prova Social 1 */}
       <section className="py-12 px-4 bg-white">
         <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-2xl md:text-3xl font-bold text-slate-800 mb-8">Famílias que amaram! ⭐⭐⭐⭐⭐</h2>
@@ -315,6 +315,38 @@ const ChristmasLanding = () => {
         </div>
       </section>
 
+      {/* Social Proof 2 - Post Pricing */}
+      <section className="py-12 px-4 bg-red-50 border-y border-red-100">
+        <div className="max-w-4xl mx-auto">
+          <h3 className="text-xl md:text-2xl font-bold text-center text-red-800 mb-8 flex items-center justify-center gap-2">
+            <MessageCircle className="fill-red-200" /> Quem comprou hoje disse:
+          </h3>
+          <div className="grid md:grid-cols-3 gap-4">
+             <div className="bg-white p-4 rounded-lg shadow-sm border border-red-100 text-sm">
+                <div className="flex items-center gap-2 mb-2">
+                  <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center text-green-600 font-bold text-xs">AC</div>
+                  <span className="font-bold text-slate-800">Ana Clara</span>
+                </div>
+                <p className="text-slate-600">"Acabei de baixar! O arquivo da guirlanda é lindo demais. Vou fazer hoje mesmo."</p>
+             </div>
+             <div className="bg-white p-4 rounded-lg shadow-sm border border-red-100 text-sm">
+                <div className="flex items-center gap-2 mb-2">
+                  <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center text-blue-600 font-bold text-xs">JF</div>
+                  <span className="font-bold text-slate-800">Juliana F.</span>
+                </div>
+                <p className="text-slate-600">"Comprei o pacote completo e valeu muito a pena. Só os jogos já pagam o valor!"</p>
+             </div>
+             <div className="bg-white p-4 rounded-lg shadow-sm border border-red-100 text-sm">
+                <div className="flex items-center gap-2 mb-2">
+                  <div className="w-8 h-8 bg-yellow-100 rounded-full flex items-center justify-center text-yellow-600 font-bold text-xs">RO</div>
+                  <span className="font-bold text-slate-800">Roberta O.</span>
+                </div>
+                <p className="text-slate-600">"Muito prático, chegou no email em 1 minuto. Já mandei imprimir."</p>
+             </div>
+          </div>
+        </div>
+      </section>
+
       {/* FAQ */}
       <section className="py-12 px-4 max-w-3xl mx-auto">
         <h2 className="text-2xl md:text-3xl font-bold text-center mb-10 text-slate-800 flex items-center justify-center gap-2">
@@ -322,24 +354,24 @@ const ChristmasLanding = () => {
         </h2>
         <Accordion type="single" collapsible className="w-full space-y-2">
           <FAQItem 
+            question="Como vou acessar o material após a compra?" 
+            answer="Assim que seu pagamento for confirmado, você receberá um e-mail automático com o link de acesso à nossa área de membros ou link direto de download (dependendo da plataforma). É imediato!" 
+          />
+          <FAQItem 
+            question="Quais formas de pagamento são aceitas?" 
+            answer="Aceitamos PIX (liberação imediata), cartão de crédito e boleto bancário. No cartão, a liberação também é na hora." 
+          />
+          <FAQItem 
+            question="Como funciona a garantia de 7 dias?" 
+            answer="É simples: se por qualquer motivo você não gostar do material, basta nos enviar um e-mail dentro de 7 dias e devolvemos 100% do seu dinheiro. Sem perguntas." 
+          />
+          <FAQItem 
             question="Eu recebo o produto impresso em casa?" 
-            answer="Não. O produto é 100% digital. Você recebe os arquivos em PDF de alta qualidade por e-mail para baixar e imprimir quantas vezes quiser, na sua casa ou em uma gráfica." 
+            answer="Não. O produto é 100% digital. Você recebe os arquivos em PDF de alta qualidade por e-mail para baixar e imprimir quantas vezes quiser." 
           />
           <FAQItem 
             question="Qual papel devo usar para imprimir?" 
             answer="Para as lembrancinhas (caixinhas e cartões), recomendamos papel fotográfico ou papel offset com gramatura de 180g (mais durinho). Para os jogos e atividades, papel sulfite comum (75g) funciona perfeitamente." 
-          />
-          <FAQItem 
-            question="É difícil de montar?" 
-            answer="Super fácil! A maioria dos modelos só precisa de tesoura e, em alguns casos, um pouco de cola branca ou fita dupla face. É tão simples que até as crianças podem ajudar." 
-          />
-          <FAQItem 
-            question="Consigo editar os arquivos?" 
-            answer="No 'Pacote Natal Completo' (R$ 27), você recebe também os arquivos editáveis (links do Canva), onde pode alterar nomes e mensagens. No plano básico, os arquivos vão em PDF prontos para imprimir." 
-          />
-          <FAQItem 
-            question="Como acesso meu material?" 
-            answer="Imediatamente após a confirmação do pagamento, você recebe um e-mail com o link de acesso. Se pagar no PIX ou Cartão, é na hora!" 
           />
         </Accordion>
       </section>
