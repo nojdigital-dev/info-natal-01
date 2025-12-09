@@ -5,11 +5,12 @@ import { Badge } from "@/components/ui/badge";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { 
   Check, Gift, Star, TreePine, Download, Clock, ShieldCheck, 
-  Heart, Zap, Snowflake, Users, Lock, ChevronRight, PartyPopper, Gamepad2, Palette
+  Heart, Zap, Snowflake, Lock, ChevronRight, PartyPopper, Gamepad2, Palette
 } from "lucide-react";
 
 const ChristmasLanding = () => {
-  const [timeLeft, setTimeLeft] = useState({ hours: 6, minutes: 3, seconds: 15 });
+  // Timer ajustado para 10 minutos
+  const [timeLeft, setTimeLeft] = useState({ hours: 0, minutes: 10, seconds: 0 });
   const [todayDate, setTodayDate] = useState("");
 
   // Countdown timer logic
@@ -60,7 +61,10 @@ const ChristmasLanding = () => {
           </Badge>
           <h1 className="text-4xl md:text-6xl font-extrabold mb-6 leading-tight drop-shadow-lg">
             A Lembrancinha Perfeita <br/>
-            <span className="text-yellow-300">Pronta para Imprimir</span>
+            <span className="text-yellow-300">Pronta para Imprimir</span> <br className="md:hidden" />
+            <span className="inline-block bg-green-600 text-white px-3 py-1 rounded-lg transform -rotate-3 border-2 border-yellow-400 text-3xl md:text-5xl ml-2 shadow-xl">
+              (+ BÔNUS)
+            </span>
           </h1>
           <p className="text-xl md:text-2xl mb-8 text-red-100 max-w-2xl mx-auto font-medium">
             Surpreenda neste Natal sem gastar muito e sem perder tempo. <br/>
@@ -75,7 +79,7 @@ const ChristmasLanding = () => {
             </Button>
           </div>
           <div className="mt-6 flex items-center justify-center gap-2 text-sm md:text-base text-yellow-200 opacity-90">
-             <ShieldCheck size={18} /> Compra Segura • <Zap size={18} /> Entrega Imediata
+             <ShieldCheck size={18} /> OFERTA LIMITADA • <Zap size={18} /> Entrega Imediata
           </div>
         </div>
       </section>
@@ -116,28 +120,28 @@ const ChristmasLanding = () => {
           <p className="text-center text-slate-600 mb-10">Tudo o que você precisa para um Natal inesquecível</p>
 
           <div className="grid md:grid-cols-2 gap-6">
-            <div className="bg-white p-6 rounded-xl shadow-md border-l-4 border-red-500 flex items-start gap-4">
+            <div className="bg-white p-6 rounded-xl shadow-md border-l-4 border-red-500 flex items-start gap-4 hover:shadow-lg transition-shadow">
                 <Gift className="text-red-500 min-w-8 min-h-8" />
                 <div>
                     <h3 className="font-bold text-lg">Cartão Árvore</h3>
                     <p className="text-slate-600 text-sm">Design exclusivo para colocar chocolate Bis ou Batom. A lembrancinha mais econômica e amada!</p>
                 </div>
             </div>
-            <div className="bg-white p-6 rounded-xl shadow-md border-l-4 border-green-500 flex items-start gap-4">
+            <div className="bg-white p-6 rounded-xl shadow-md border-l-4 border-green-500 flex items-start gap-4 hover:shadow-lg transition-shadow">
                 <PartyPopper className="text-green-500 min-w-8 min-h-8" />
                 <div>
                     <h3 className="font-bold text-lg">Bambolê "Feliz Natal"</h3>
                     <p className="text-slate-600 text-sm">Guirlanda criativa de papel para decorar presentes, árvore ou porta.</p>
                 </div>
             </div>
-            <div className="bg-white p-6 rounded-xl shadow-md border-l-4 border-blue-500 flex items-start gap-4">
+            <div className="bg-white p-6 rounded-xl shadow-md border-l-4 border-blue-500 flex items-start gap-4 hover:shadow-lg transition-shadow">
                 <Clock className="text-blue-500 min-w-8 min-h-8" />
                 <div>
                     <h3 className="font-bold text-lg">Calendários 2025</h3>
                     <p className="text-slate-600 text-sm">Modelos editáveis temáticos. Um presente útil para o ano todo.</p>
                 </div>
             </div>
-            <div className="bg-white p-6 rounded-xl shadow-md border-l-4 border-yellow-500 flex items-start gap-4">
+            <div className="bg-white p-6 rounded-xl shadow-md border-l-4 border-yellow-500 flex items-start gap-4 hover:shadow-lg transition-shadow">
                 <TreePine className="text-yellow-500 min-w-8 min-h-8" />
                 <div>
                     <h3 className="font-bold text-lg">Decoração de Porta</h3>
@@ -151,7 +155,7 @@ const ChristmasLanding = () => {
       {/* Prova Social */}
       <section className="py-16 px-4 bg-white">
         <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-2xl font-bold text-slate-800 mb-10">Quem comprou, amou! ⭐⭐⭐⭐⭐</h2>
+            <h2 className="text-3xl font-bold text-slate-800 mb-10">Famílias que amaram! ⭐⭐⭐⭐⭐</h2>
             <div className="grid md:grid-cols-3 gap-6">
                 <TestimonialCard 
                     name="Mariana Souza" 
@@ -170,13 +174,13 @@ const ChristmasLanding = () => {
       </section>
 
       {/* BONUS SECTION */}
-      <section className="py-16 px-4 bg-red-900 text-white relative overflow-hidden">
+      <section className="py-20 px-4 bg-red-900 text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20"></div>
         <div className="max-w-4xl mx-auto relative z-10">
-            <div className="text-center mb-10">
+            <div className="text-center mb-12">
                 <span className="bg-yellow-400 text-red-900 font-bold px-4 py-1 rounded-full text-sm uppercase tracking-wider">Apenas no Plano Completo</span>
-                <h2 className="text-3xl md:text-4xl font-extrabold mt-4 mb-2">RECEBA AINDA 3 BÔNUS EXCLUSIVOS</h2>
-                <p className="text-red-200">Totalizando R$ 93,00 em presentes para você</p>
+                <h2 className="text-3xl md:text-5xl font-extrabold mt-6 mb-4">RECEBA AINDA <br/>3 BÔNUS EXCLUSIVOS</h2>
+                <p className="text-red-200 text-lg">Totalizando R$ 93,00 em presentes para você</p>
             </div>
 
             <div className="grid md:grid-cols-3 gap-6">
@@ -203,11 +207,14 @@ const ChristmasLanding = () => {
                 />
             </div>
             
-            <div className="mt-10 text-center">
-                <p className="text-2xl font-bold text-yellow-300 animate-pulse">
+            <div className="mt-12 text-center flex flex-col items-center">
+                <p className="text-xl md:text-2xl font-bold text-yellow-300 animate-pulse mb-6">
                     TOTAL EM BÔNUS: R$ 93,00 — HOJE É GRÁTIS! 🎁
                 </p>
-                <Button onClick={scrollToPricing} variant="link" className="text-white underline mt-2 text-lg hover:text-yellow-200">
+                <Button 
+                  onClick={scrollToPricing} 
+                  className="bg-yellow-400 hover:bg-yellow-300 text-red-900 font-black text-xl px-10 py-8 rounded-full shadow-[0_0_20px_rgba(250,204,21,0.6)] transform transition hover:scale-105"
+                >
                     QUERO OS BÔNUS TAMBÉM! 🎁
                 </Button>
             </div>
@@ -220,9 +227,9 @@ const ChristmasLanding = () => {
           
           {/* Pitch & Countdown */}
           <div className="text-center mb-10">
-            <div className="inline-block bg-red-600 text-white px-6 py-2 rounded-lg shadow-lg mb-6">
-                <div className="text-sm font-semibold uppercase tracking-wider mb-1">⏰ ESTA OFERTA EXPIRA EM:</div>
-                <div className="text-3xl md:text-4xl font-mono font-bold tracking-widest">
+            <div className="inline-block bg-red-600 text-white px-8 py-3 rounded-xl shadow-xl mb-8 transform hover:scale-105 transition-transform">
+                <div className="text-sm font-bold uppercase tracking-wider mb-1 text-red-100">⏰ ESTA OFERTA EXPIRA EM:</div>
+                <div className="text-4xl md:text-5xl font-mono font-black tracking-widest text-white drop-shadow-md">
                     {String(timeLeft.hours).padStart(2, '0')}:{String(timeLeft.minutes).padStart(2, '0')}:{String(timeLeft.seconds).padStart(2, '0')}
                 </div>
             </div>
@@ -234,23 +241,23 @@ const ChristmasLanding = () => {
           <div className="grid md:grid-cols-2 gap-8 items-stretch max-w-4xl mx-auto">
             
             {/* Basic Plan */}
-            <Card className="border border-slate-200 shadow-sm bg-white hover:border-slate-300 transition-all flex flex-col">
-              <CardHeader className="text-center pb-4 border-b border-slate-100">
+            <Card className="border border-slate-200 shadow-sm bg-white hover:border-slate-300 transition-all flex flex-col relative overflow-hidden group">
+              <CardHeader className="text-center pb-4 border-b border-slate-100 bg-slate-50">
                 <CardTitle className="text-xl font-bold text-slate-600">Kit Lembrancinha</CardTitle>
-                <CardDescription>Apenas o essencial</CardDescription>
+                <CardDescription>Para quem quer apenas o básico</CardDescription>
               </CardHeader>
               <CardContent className="text-center pt-6 flex-1 flex flex-col">
-                <div className="text-4xl font-extrabold text-slate-400 mb-2">R$ 10<span className="text-lg">,00</span></div>
+                <div className="text-4xl font-extrabold text-slate-700 mb-2">R$ 10<span className="text-lg">,00</span></div>
                 
                 <ul className="text-left space-y-4 mb-8 mt-4 flex-1">
                   <Feature text="+150 Dinâmicas Natalinas em PDF" />
                   <Feature text="Acesso imediato" />
                   <Feature text="Garantia de 7 dias" />
-                  <li className="text-slate-400 text-sm line-through flex items-center gap-2"><div className="w-5"></div> Sem bônus inclusos</li>
-                  <li className="text-slate-400 text-sm line-through flex items-center gap-2"><div className="w-5"></div> Sem materiais editáveis</li>
+                  <li className="text-slate-400 text-sm opacity-60 flex items-center gap-2"><div className="w-5 flex justify-center"><div className="w-1.5 h-1.5 rounded-full bg-slate-300"></div></div> Sem bônus inclusos</li>
+                  <li className="text-slate-400 text-sm opacity-60 flex items-center gap-2"><div className="w-5 flex justify-center"><div className="w-1.5 h-1.5 rounded-full bg-slate-300"></div></div> Sem materiais editáveis</li>
                 </ul>
                 
-                <Button className="w-full bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold text-lg py-6" size="lg">
+                <Button className="w-full bg-white border-2 border-slate-200 hover:border-slate-400 text-slate-700 font-bold text-lg py-6 shadow-sm hover:bg-slate-50" size="lg">
                   COMPRAR KIT BÁSICO
                 </Button>
                 <div className="mt-4 flex justify-center opacity-50"><PagamentoSeguro /></div>
@@ -258,31 +265,37 @@ const ChristmasLanding = () => {
             </Card>
 
             {/* Premium Plan */}
-            <Card className="border-2 border-green-500 shadow-2xl relative bg-white transform md:-translate-y-6 flex flex-col">
-              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 w-full text-center">
-                <Badge className="bg-green-600 hover:bg-green-700 text-white px-6 py-1.5 text-sm font-bold uppercase tracking-wide shadow-md border-none">
+            <Card className="border-4 border-yellow-400 shadow-2xl relative bg-white transform md:-translate-y-6 flex flex-col z-10 overflow-hidden">
+              <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-yellow-300 via-yellow-500 to-yellow-300"></div>
+              <div className="absolute -top-5 left-1/2 transform -translate-x-1/2 w-full text-center">
+                <Badge className="bg-green-600 hover:bg-green-700 text-white px-8 py-2 text-sm font-bold uppercase tracking-wide shadow-lg border-2 border-white mt-1">
                   🎅 Recomendado • Mais Completo
                 </Badge>
               </div>
-              <CardHeader className="text-center pb-4 pt-10 border-b border-red-50 bg-red-50/50 rounded-t-xl">
-                <CardTitle className="text-2xl font-bold text-red-600">Pacote Natal Completo</CardTitle>
+              <CardHeader className="text-center pb-4 pt-12 border-b border-red-50 bg-red-50/50">
+                <CardTitle className="text-2xl font-black text-red-600 uppercase tracking-tight">Pacote Natal Completo</CardTitle>
                 <CardDescription className="text-red-800 font-medium">Você leva TUDO + Bônus</CardDescription>
               </CardHeader>
               <CardContent className="text-center pt-6 flex-1 flex flex-col">
                 <div className="text-sm text-slate-500 font-medium mb-1">De <span className="line-through text-red-400">R$ 120,00</span> por apenas:</div>
-                <div className="text-6xl font-black text-green-600 mb-2 tracking-tight">R$ 27<span className="text-2xl font-bold text-slate-500">,00</span></div>
-                <div className="text-xs text-slate-400 mb-6">Pagamento único • Acesso Vitalício</div>
+                <div className="text-6xl font-black text-green-600 mb-2 tracking-tight drop-shadow-sm">R$ 27<span className="text-2xl font-bold text-green-700">,00</span></div>
+                <div className="text-xs text-green-700 font-medium bg-green-100 inline-block px-3 py-1 rounded-full mb-6 mx-auto">Pagamento único • Acesso Vitalício</div>
                 
                 <ul className="text-left space-y-3 mb-8 bg-slate-50 p-4 rounded-lg border border-slate-100 flex-1">
                   <Feature text="Passo a passo ilustrado de cada dinâmica" highlighted />
                   <Feature text="Lista de materiais necessários" highlighted />
                   <Feature text="Acesso imediato após a compra" highlighted />
                   <Feature text="Garantia incondicional de 7 dias" highlighted />
-                  <Feature text="Os 3 Bônus Exclusivos (Receitas, Jogos, Decor)" highlighted />
                   <Feature text="Arquivos Editáveis inclusos" highlighted />
+                  
+                  <div className="my-3 border-t border-slate-200"></div>
+                  
+                  <Feature text="BÔNUS 1: Receitas Divertidas" yellow />
+                  <Feature text="BÔNUS 2: Jogos Natalinos" yellow />
+                  <Feature text="BÔNUS 3: Pack de Decoração" yellow />
                 </ul>
                 
-                <Button className="w-full bg-green-600 hover:bg-green-500 text-white font-black text-xl py-8 shadow-green-200 shadow-xl rounded-lg animate-pulse hover:animate-none transform transition hover:-translate-y-1">
+                <Button className="w-full bg-green-500 hover:bg-green-400 text-white border-b-4 border-green-700 font-black text-xl py-8 shadow-xl rounded-lg animate-pulse hover:animate-none transform transition hover:-translate-y-1 active:border-b-0 active:translate-y-1">
                   QUERO O PACOTE COMPLETO
                 </Button>
                 <p className="text-xs text-slate-500 mt-4 flex items-center justify-center gap-1">
@@ -345,14 +358,29 @@ const ChristmasLanding = () => {
 
 // --- Subcomponents ---
 
-const Feature = ({ text, highlighted = false }: { text: string, highlighted?: boolean }) => (
-  <li className="flex items-start gap-3 text-sm">
-    <div className={`mt-0.5 min-w-5 h-5 rounded-full flex items-center justify-center ${highlighted ? 'bg-green-100 text-green-600' : 'bg-slate-200 text-slate-500'}`}>
-        <Check size={12} strokeWidth={4} />
-    </div>
-    <span className={highlighted ? 'font-semibold text-slate-800' : 'text-slate-600'}>{text}</span>
-  </li>
-);
+const Feature = ({ text, highlighted = false, yellow = false }: { text: string, highlighted?: boolean, yellow?: boolean }) => {
+  let bgClass = 'bg-slate-200 text-slate-500';
+  let textClass = 'text-slate-600';
+
+  if (highlighted) {
+    bgClass = 'bg-green-100 text-green-600';
+    textClass = 'font-semibold text-slate-800';
+  }
+  
+  if (yellow) {
+    bgClass = 'bg-yellow-400 text-red-900 shadow-sm';
+    textClass = 'font-bold text-red-900 bg-yellow-100 px-2 py-0.5 rounded w-full';
+  }
+
+  return (
+    <li className={`flex items-center gap-3 text-sm ${yellow ? 'mb-2' : ''}`}>
+      <div className={`mt-0.5 min-w-5 h-5 rounded-full flex items-center justify-center ${bgClass}`}>
+          <Check size={12} strokeWidth={4} />
+      </div>
+      <span className={textClass}>{text}</span>
+    </li>
+  );
+};
 
 const FAQItem = ({ question, answer }: { question: string, answer: string }) => (
     <AccordionItem value={question} className="border border-slate-200 rounded-lg px-4 bg-white shadow-sm">
@@ -380,16 +408,16 @@ const TestimonialCard = ({ name, text }: { name: string, text: string }) => (
 );
 
 const BonusCard = ({ icon, title, subtitle, desc, price }: any) => (
-    <div className="bg-red-800/50 backdrop-blur-sm border border-red-700 rounded-xl p-6 text-center hover:bg-red-800 transition-colors">
-        <div className="bg-white/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-yellow-300">
+    <div className="bg-red-900/80 backdrop-blur-sm border-2 border-red-400/80 shadow-[0_0_15px_rgba(239,68,68,0.4)] rounded-xl p-6 text-center hover:bg-red-900 transition-colors transform hover:-translate-y-1">
+        <div className="bg-white/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 text-yellow-300 border border-red-400/30">
             {icon}
         </div>
         <h3 className="font-bold text-lg leading-tight text-white">{title}</h3>
         <h4 className="font-bold text-lg leading-tight text-yellow-300 mb-3">{subtitle}</h4>
         <p className="text-sm text-red-100 mb-4 h-16">{desc}</p>
-        <div className="border-t border-red-700 pt-4">
+        <div className="border-t border-red-500/50 pt-4">
             <span className="text-red-300 line-through text-sm block">R$ {price}</span>
-            <span className="text-white font-bold text-lg">HOJE É GRÁTIS!</span>
+            <span className="text-white font-bold text-lg bg-red-600 px-3 py-1 rounded-lg inline-block mt-1 shadow-sm">HOJE É GRÁTIS!</span>
         </div>
     </div>
 );
