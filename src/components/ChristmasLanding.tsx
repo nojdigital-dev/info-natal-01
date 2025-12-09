@@ -9,6 +9,11 @@ import {
 } from "lucide-react";
 import UpsellModal from './UpsellModal';
 
+// Importing images directly
+import bonusReceitas from '@/assets/images/bonus-receitas.png';
+import bonusJogos from '@/assets/images/bonus-jogos.png';
+import bonusDecoracao from '@/assets/images/bonus-decoracao.png';
+
 const ChristmasLanding = () => {
   const [isUpsellModalOpen, setIsUpsellModalOpen] = useState(false);
   // Timer ajustado para 10 minutos
@@ -261,21 +266,21 @@ const ChristmasLanding = () => {
 
             <div className="grid md:grid-cols-3 gap-6">
                 <BonusCard 
-                    imageSrc="/images/bonus-receitas.png"
+                    imageSrc={bonusReceitas}
                     title="RECEITAS DIVERTIDAS"
                     subtitle="DE NATAL"
                     desc="Receitas natalinas para fazer com as crianças: biscoitos, chocolate quente e cupcakes!"
                     price="37,00"
                 />
                 <BonusCard 
-                    imageSrc="/images/bonus-jogos.png"
+                    imageSrc={bonusJogos}
                     title="JOGOS NATALINOS"
                     subtitle="PARA IMPRIMIR"
                     desc="Caça ao tesouro, bingo de Natal, jogo da memória. Imprima e brinque na noite de Natal!"
                     price="29,00"
                 />
                 <BonusCard 
-                    imageSrc="/images/bonus-decoracao.png"
+                    imageSrc={bonusDecoracao}
                     title="PACK DE DECORAÇÃO"
                     subtitle="EXTRA"
                     desc="Mais moldes DIY, cartões personalizáveis e etiquetas para presentes!"
