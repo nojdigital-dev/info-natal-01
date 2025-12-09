@@ -26,7 +26,7 @@ const UpsellModal: React.FC<UpsellModalProps> = ({ isOpen, onClose, onConfirm, o
             Oferta Exclusiva
           </DialogTitle>
           <DialogDescription className="text-slate-600 text-lg pt-2">
-            Adquira o Plano Premium por Apenas
+            Leve o <span className="font-bold text-slate-800">Pacote Natal Completo+</span> por Apenas
           </DialogDescription>
         </DialogHeader>
         <div className="p-6 pt-2 text-center">

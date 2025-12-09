@@ -48,7 +48,7 @@ const ChristmasLanding = () => {
       </div>
 
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-red-700 via-red-600 to-red-800 text-white py-12 md:py-24 px-4 overflow-hidden">
+      <section className="relative bg-gradient-to-br from-red-700 via-red-600 to-red-800 text-white py-8 md:py-24 px-4 overflow-hidden">
         {/* Background Decorations */}
         <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-20">
            <Snowflake className="absolute top-10 left-[10%] animate-bounce text-white" size={30} />
@@ -62,20 +62,20 @@ const ChristmasLanding = () => {
         </div>
 
         <div className="max-w-6xl mx-auto relative z-10">
-          <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+          <div className="grid md:grid-cols-2 gap-4 md:gap-12 items-center">
             {/* Left Column: Text */}
             <div className="text-center md:text-left">
-              <Badge className="bg-white text-red-700 hover:bg-slate-100 mb-6 px-6 py-2 text-base md:text-lg font-bold shadow-lg transform -rotate-2">
+              <Badge className="bg-white text-red-700 hover:bg-slate-100 mb-4 px-6 py-2 text-base md:text-lg font-bold shadow-lg transform -rotate-2">
                 🎄 O Natal já começou!
               </Badge>
-              <h1 className="text-3xl md:text-6xl font-extrabold mb-6 leading-tight drop-shadow-lg">
+              <h1 className="text-3xl md:text-6xl font-extrabold mb-2 md:mb-6 leading-tight drop-shadow-lg">
                 A Lembrancinha Perfeita <br/>
                 <span className="text-yellow-300">Pronta para Imprimir</span> <br className="md:hidden" />
                 <span className="inline-block bg-green-600 text-white px-3 py-1 rounded-lg transform -rotate-3 border-2 border-yellow-400 text-2xl md:text-5xl ml-2 shadow-xl mt-2 md:mt-0">
                   (+ BÔNUS)
                 </span>
               </h1>
-              <p className="text-lg md:text-2xl mb-8 text-red-100 max-w-2xl mx-auto md:mx-0 font-medium leading-relaxed">
+              <p className="text-lg md:text-2xl mb-4 md:mb-8 text-red-100 max-w-2xl mx-auto md:mx-0 font-medium leading-relaxed">
                 Surpreenda neste Natal sem gastar muito com presentes caros. <br className="hidden md:block"/>
                 Baixe, imprima e monte lembrancinhas lindas em minutos!
               </p>
@@ -84,7 +84,7 @@ const ChristmasLanding = () => {
             {/* Right Column: Video + CTA */}
             <div className="flex flex-col items-center">
               {/* Video Placeholder */}
-              <div className="relative w-full max-w-[280px] mx-auto aspect-[9/16] bg-slate-900/50 rounded-2xl border-4 border-white/50 shadow-2xl flex items-center justify-center mb-6 cursor-pointer group">
+              <div className="relative w-full max-w-[280px] md:max-w-[320px] mx-auto aspect-[9/16] bg-slate-900/50 rounded-2xl border-4 border-white/50 shadow-2xl flex items-center justify-center mb-4 cursor-pointer group hover:border-yellow-400 transition-colors">
                   <div className="absolute inset-0 bg-black/20 rounded-xl"></div>
                   <PlayCircle size={64} className="text-white/70 group-hover:text-white/90 transition-colors" />
                   <p className="absolute bottom-4 text-white text-xs font-semibold bg-black/30 px-2 py-1 rounded">Assista ao vídeo!</p>
@@ -98,7 +98,7 @@ const ChristmasLanding = () => {
                   QUERO GARANTIR AGORA <ChevronRight size={24} />
                 </Button>
               </div>
-              <div className="mt-6 flex items-center justify-center gap-2 text-xs md:text-base text-yellow-200 opacity-90 font-medium">
+              <div className="mt-4 flex items-center justify-center gap-2 text-xs md:text-base text-yellow-200 opacity-90 font-medium">
                 <ShieldCheck size={16} /> OFERTA LIMITADA • <Zap size={16} /> Entrega Imediata
               </div>
             </div>
