@@ -1,7 +1,7 @@
 import ChristmasLanding from "@/components/ChristmasLanding";
 
-const Index = () => {
+const Natal01 = () => {
   return <ChristmasLanding />;
 };
 
-export default Index;
+export default Natal01;
