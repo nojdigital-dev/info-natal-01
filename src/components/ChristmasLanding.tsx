@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { 
   Check, Gift, Star, TreePine, Download, Clock, ShieldCheck, 
-  Heart, Zap, Snowflake, Lock, ChevronRight, PartyPopper, Gamepad2, Palette, Printer, Scissors, MessageCircle
+  Heart, Zap, Snowflake, Lock, ChevronRight, PartyPopper, Gamepad2, Palette, Printer, Scissors, MessageCircle, Users, Smile
 } from "lucide-react";
 
 const ChristmasLanding = () => {
@@ -117,13 +117,63 @@ const ChristmasLanding = () => {
         </div>
       </section>
 
+      {/* NEW: Why Choose Section (Dark Green) */}
+      <section className="py-16 px-4 bg-green-900 text-white">
+        <div className="max-w-6xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-center mb-12 text-yellow-400">
+                Por Que Escolher Nossas Lembrancinhas?
+            </h2>
+            <div className="grid md:grid-cols-3 gap-8">
+                {/* Card 1 */}
+                <div className="bg-green-800 p-8 rounded-2xl border border-green-700 hover:border-yellow-400/50 transition-colors text-center">
+                    <div className="bg-white/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 text-yellow-300">
+                        <Users size={32} />
+                    </div>
+                    <h3 className="text-xl font-bold text-yellow-400 mb-4 uppercase">Economia Real</h3>
+                    <p className="text-green-100 leading-relaxed">
+                        Presenteie todos os amigos, familiares e colegas sem estourar o orçamento. Nossas lembrancinhas custam centavos para imprimir!
+                    </p>
+                </div>
+                {/* Card 2 */}
+                <div className="bg-green-800 p-8 rounded-2xl border border-green-700 hover:border-yellow-400/50 transition-colors text-center">
+                    <div className="bg-white/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 text-red-400">
+                        <Heart size={32} fill="currentColor" />
+                    </div>
+                    <h3 className="text-xl font-bold text-yellow-400 mb-4 uppercase">Feito com Amor</h3>
+                    <p className="text-green-100 leading-relaxed">
+                        Nada tem mais valor do que um presente feito à mão. Mostre que você se importa dedicando seu tempo para montar cada mimo.
+                    </p>
+                </div>
+                {/* Card 3 */}
+                <div className="bg-green-800 p-8 rounded-2xl border border-green-700 hover:border-yellow-400/50 transition-colors text-center">
+                    <div className="bg-white/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 text-yellow-300">
+                        <Star size={32} fill="currentColor" />
+                    </div>
+                    <h3 className="text-xl font-bold text-yellow-400 mb-4 uppercase">Praticidade Total</h3>
+                    <p className="text-green-100 leading-relaxed">
+                        Tudo pronto para você usar. Sem complicações, sem perder tempo criando arte. É só baixar, imprimir e montar!
+                    </p>
+                </div>
+            </div>
+            
+            <div className="mt-12 text-center">
+                <Button 
+                onClick={scrollToPricing} 
+                className="bg-red-600 hover:bg-red-500 text-white font-bold text-lg px-8 py-6 rounded-full shadow-lg animate-pulse"
+                >
+                    QUERO TRANSFORMAR MEU NATAL! 🎄
+                </Button>
+            </div>
+        </div>
+      </section>
+
       {/* O que está incluso */}
       <section className="py-12 px-4 bg-slate-50">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-2xl md:text-3xl font-bold text-center text-red-800 mb-2">O que você vai receber?</h2>
           <p className="text-center text-slate-600 mb-8">Modelos prontos para você imprimir e presentear</p>
 
-          <div className="grid md:grid-cols-2 gap-4 md:gap-6">
+          <div className="grid md:grid-cols-2 gap-4 md:gap-6 mb-12">
             <div className="bg-white p-5 rounded-xl shadow-sm border-l-4 border-red-500 flex items-start gap-4 hover:shadow-md transition-shadow">
                 <Gift className="text-red-500 min-w-8 min-h-8 shrink-0" />
                 <div>
@@ -153,6 +203,31 @@ const ChristmasLanding = () => {
                 </div>
             </div>
           </div>
+
+          {/* Big Checklist */}
+          <div className="bg-white p-6 md:p-8 rounded-2xl border-2 border-slate-200 shadow-sm">
+            <h3 className="text-xl font-bold text-slate-800 mb-6 flex items-center gap-2">
+                <Check className="text-green-600" /> Resumo do Pacote Completo:
+            </h3>
+            <div className="grid md:grid-cols-2 gap-y-3 gap-x-8">
+                <ChecklistItem text="Mais de 50 Moldes de Lembrancinhas" />
+                <ChecklistItem text="Opções para todas as idades (crianças e adultos)" />
+                <ChecklistItem text="Usam apenas papel, tesoura e cola (itens de casa)" />
+                <ChecklistItem text="Formato digital: baixe e imprima quando quiser" />
+                <ChecklistItem text="Presenteie todo mundo sem gastar uma fortuna" />
+                <ChecklistItem text="Instruções de montagem simples!" />
+                <ChecklistItem text="Separadas por categorias (caixinhas, cartões, tags)" />
+                <ChecklistItem text="Acesso imediato após a compra" />
+                <ChecklistItem text="Garantia incondicional de 7 dias" />
+                <li className="flex items-start gap-2 text-slate-700 bg-yellow-50 p-2 rounded-lg -ml-2">
+                    <div className="mt-1 min-w-5 h-5 bg-yellow-400 rounded-full flex items-center justify-center shrink-0 text-red-900 shadow-sm">
+                        <Gift size={12} strokeWidth={3} />
+                    </div>
+                    <span className="font-bold text-red-800">+3 BÔNUS EXCLUSIVOS (Jogos, Receitas e Decoração)</span>
+                </li>
+            </div>
+          </div>
+
         </div>
       </section>
 
@@ -294,7 +369,7 @@ const ChristmasLanding = () => {
         </div>
       </section>
 
-      {/* Prova Social 2 - (Moved below pricing and enhanced) */}
+      {/* Prova Social 2 */}
       <section className="py-16 px-4 bg-white border-y border-slate-100">
         <div className="max-w-4xl mx-auto text-center">
             <div className="inline-block bg-slate-900 text-white px-6 py-2 rounded-full font-bold text-lg md:text-xl shadow-lg mb-10 transform -rotate-1">
@@ -363,10 +438,11 @@ const ChristmasLanding = () => {
         </Accordion>
       </section>
 
-      {/* Guarantee Section */}
+      {/* Guarantee Section (Highlighted) */}
       <section className="py-16 px-4 bg-white">
         <div className="max-w-4xl mx-auto">
-           <div className="bg-white rounded-3xl p-8 md:p-12 border-2 border-slate-100 shadow-xl flex flex-col md:flex-row items-center gap-10">
+           {/* Enhanced Card Background */}
+           <div className="bg-gradient-to-br from-yellow-50 via-amber-50 to-orange-50 rounded-3xl p-8 md:p-12 border-2 border-yellow-200 shadow-xl flex flex-col md:flex-row items-center gap-10">
               <div className="relative shrink-0">
                  <div className="w-32 h-32 md:w-40 md:h-40 bg-green-800 rounded-full flex items-center justify-center border-4 border-yellow-400 shadow-lg relative z-10">
                     <div className="text-center text-white">
@@ -374,7 +450,7 @@ const ChristmasLanding = () => {
                         <span className="block text-xs md:text-sm font-bold tracking-widest uppercase">Dias</span>
                     </div>
                  </div>
-                 <div className="absolute top-0 left-0 w-full h-full bg-green-100 rounded-full transform scale-110 -z-0"></div>
+                 <div className="absolute top-0 left-0 w-full h-full bg-green-200 rounded-full transform scale-110 -z-0 blur-sm"></div>
               </div>
               
               <div className="text-center md:text-left flex-1">
@@ -382,15 +458,15 @@ const ChristmasLanding = () => {
                  <h3 className="text-lg md:text-xl font-bold text-green-600 mb-6">Seu Investimento Está 100% Protegido!</h3>
                  
                  <div className="space-y-3">
-                    <div className="flex items-start gap-3 bg-slate-50 p-3 rounded-lg">
+                    <div className="flex items-start gap-3 bg-white/60 p-3 rounded-lg border border-yellow-100">
                        <div className="mt-1 w-5 h-5 bg-green-500 rounded text-white flex items-center justify-center shrink-0"><Check size={14} strokeWidth={4}/></div>
                        <p className="text-sm text-slate-600 text-left"><span className="font-bold text-slate-800">Teste sem risco:</span> Baixe, olhe e use o material por 7 dias completos.</p>
                     </div>
-                    <div className="flex items-start gap-3 bg-slate-50 p-3 rounded-lg">
+                    <div className="flex items-start gap-3 bg-white/60 p-3 rounded-lg border border-yellow-100">
                        <div className="mt-1 w-5 h-5 bg-green-500 rounded text-white flex items-center justify-center shrink-0"><Check size={14} strokeWidth={4}/></div>
                        <p className="text-sm text-slate-600 text-left"><span className="font-bold text-slate-800">Reembolso Total:</span> Se não gostar, devolvemos 100% do seu dinheiro.</p>
                     </div>
-                    <div className="flex items-start gap-3 bg-slate-50 p-3 rounded-lg">
+                    <div className="flex items-start gap-3 bg-white/60 p-3 rounded-lg border border-yellow-100">
                        <div className="mt-1 w-5 h-5 bg-green-500 rounded text-white flex items-center justify-center shrink-0"><Check size={14} strokeWidth={4}/></div>
                        <p className="text-sm text-slate-600 text-left"><span className="font-bold text-slate-800">Zero Burocracia:</span> Sem perguntas chatas, apenas um email.</p>
                     </div>
@@ -409,18 +485,50 @@ const ChristmasLanding = () => {
         </div>
       </section>
 
-      {/* Final CTA Red Section */}
-      <section className="py-16 px-4 bg-gradient-to-br from-red-600 to-red-800 text-white text-center relative overflow-hidden">
-          <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20"></div>
+      {/* Final CTA Red Section with Particles */}
+      <section className="py-20 px-4 bg-gradient-to-br from-red-600 to-red-800 text-white text-center relative overflow-hidden">
+          {/* Particles Effect */}
+          <div className="absolute inset-0 pointer-events-none">
+             {[...Array(20)].map((_, i) => (
+                <Snowflake 
+                    key={i}
+                    className="absolute text-white/20 animate-pulse" 
+                    style={{
+                        top: `${Math.random() * 100}%`,
+                        left: `${Math.random() * 100}%`,
+                        animationDuration: `${Math.random() * 3 + 2}s`,
+                        width: `${Math.random() * 20 + 10}px`,
+                        height: `${Math.random() * 20 + 10}px`,
+                        opacity: Math.random() * 0.5
+                    }}
+                />
+             ))}
+             {[...Array(15)].map((_, i) => (
+                <Star 
+                    key={i + 20}
+                    className="absolute text-yellow-300/40 animate-spin" 
+                    style={{
+                        top: `${Math.random() * 100}%`,
+                        left: `${Math.random() * 100}%`,
+                        animationDuration: `${Math.random() * 10 + 10}s`,
+                        width: `${Math.random() * 15 + 5}px`,
+                        height: `${Math.random() * 15 + 5}px`,
+                    }}
+                />
+             ))}
+          </div>
+
           <div className="max-w-3xl mx-auto relative z-10">
               <Clock className="w-16 h-16 mx-auto mb-6 text-yellow-300 animate-pulse" />
-              <h2 className="text-3xl md:text-5xl font-black mb-4 uppercase leading-tight">Não Deixe Este Natal <br/>Passar em Branco!</h2>
-              <p className="text-lg md:text-xl text-red-100 mb-8 max-w-2xl mx-auto">
+              <h2 className="text-3xl md:text-5xl font-black mb-4 uppercase leading-tight drop-shadow-md">
+                Não Deixe Este Natal <br/>Passar em Branco!
+              </h2>
+              <p className="text-lg md:text-xl text-red-100 mb-8 max-w-2xl mx-auto drop-shadow-sm">
                 Imagine a alegria da sua família ao receber lembrancinhas feitas por você. Crie memórias que vão durar para sempre... <br/>
-                <span className="font-bold text-white">Isso pode ser HOJE.</span>
+                <span className="font-bold text-white bg-red-900/50 px-2 rounded">Isso pode ser HOJE.</span>
               </p>
 
-              <div className="bg-red-900/50 backdrop-blur-sm p-6 rounded-2xl border border-red-500 inline-block mb-8">
+              <div className="bg-red-900/50 backdrop-blur-md p-6 rounded-2xl border border-red-400 inline-block mb-8 shadow-xl">
                   <div className="text-sm font-bold uppercase tracking-widest text-red-200 mb-2">Oferta expira em:</div>
                   <div className="text-4xl md:text-6xl font-mono font-black text-white">
                     {String(timeLeft.hours).padStart(2, '0')}:{String(timeLeft.minutes).padStart(2, '0')}:{String(timeLeft.seconds).padStart(2, '0')}
@@ -430,7 +538,7 @@ const ChristmasLanding = () => {
               <div>
                   <Button 
                     onClick={scrollToPricing}
-                    className="bg-green-600 hover:bg-green-500 text-white font-black text-lg md:text-2xl py-8 px-8 md:px-16 rounded-full shadow-[0_10px_40px_rgba(0,0,0,0.3)] transform transition hover:scale-105 active:scale-95"
+                    className="bg-green-600 hover:bg-green-500 text-white font-black text-lg md:text-2xl py-8 px-8 md:px-16 rounded-full shadow-[0_0_40px_rgba(22,163,74,0.6)] transform transition hover:scale-105 active:scale-95 border-4 border-green-500/50"
                   >
                     QUERO VIVER UM NATAL ESPECIAL 🎄
                   </Button>
@@ -461,6 +569,15 @@ const ChristmasLanding = () => {
 };
 
 // --- Subcomponents ---
+
+const ChecklistItem = ({ text }: { text: string }) => (
+    <li className="flex items-start gap-2 text-slate-700">
+        <div className="mt-1 min-w-5 h-5 bg-green-100 rounded-full flex items-center justify-center shrink-0 text-green-600">
+            <Check size={12} strokeWidth={3} />
+        </div>
+        <span>{text}</span>
+    </li>
+);
 
 const Feature = ({ text, highlighted = false, yellow = false }: { text: string, highlighted?: boolean, yellow?: boolean }) => {
   let bgClass = 'bg-slate-200 text-slate-500';
