@@ -6,7 +6,8 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { 
   Check, Star, Activity, ShieldCheck, 
   Heart, Zap, ChevronRight, Users, PlayCircle,
-  Timer, Trophy, Footprints, AlertCircle, TrendingUp, Dumbbell
+  Timer, Trophy, Footprints, AlertCircle, TrendingUp, Dumbbell,
+  Medal, Flame
 } from "lucide-react";
 import RunningUpsellModal from './RunningUpsellModal';
 
@@ -43,9 +44,9 @@ const RunningLanding = () => {
   return (
     <div className="min-h-screen bg-white font-sans text-slate-900 overflow-x-hidden">
       
-      {/* Top Notification Bar */}
-      <div className="bg-blue-900 text-white text-center py-2 px-4 font-bold text-xs md:text-sm animate-pulse sticky top-0 z-50 shadow-md">
-        🏃‍♂️ OFERTA VÁLIDA APENAS HOJE: {todayDate.toUpperCase()}
+      {/* Top Notification Bar - ORANGE as requested */}
+      <div className="bg-orange-500 text-white text-center py-3 px-4 font-bold text-sm md:text-base animate-pulse sticky top-0 z-50 shadow-md flex items-center justify-center gap-2">
+        🏃‍♂️👟 OFERTA VÁLIDA APENAS HOJE: {todayDate.toUpperCase()} 🏁🔥
       </div>
 
       {/* Hero Section */}
@@ -75,7 +76,7 @@ const RunningLanding = () => {
               </h1>
               <p className="text-lg md:text-xl mb-4 md:mb-8 text-blue-100 max-w-2xl mx-auto md:mx-0 font-medium leading-relaxed">
                 Suas corridas ficam mais difíceis a cada dia? As dores só aumentam? <br className="hidden md:block"/>
-                Descubra o ajuste biomecânico que já salvou o joelho e a performance de mais de 18.000 corredores.
+                Descubra o ajuste biomecânico que já salvou o joelho e a performance de mais de 9.000 corredores.
               </p>
             </div>
 
@@ -109,37 +110,78 @@ const RunningLanding = () => {
         </div>
       </section>
 
-      {/* Pain Points / Identification */}
-      <section className="py-8 md:py-12 bg-white border-b border-slate-100">
-        <div className="max-w-6xl mx-auto px-4">
-            <h3 className="text-center text-slate-500 font-bold uppercase tracking-widest text-sm mb-6">O Método SDC é para você que:</h3>
-            <div className="flex flex-col md:flex-row justify-center items-start md:items-center gap-6 text-left text-slate-600">
-                <div className="flex items-center gap-3 w-full md:w-auto p-4 bg-slate-50 rounded-xl">
-                    <div className="bg-red-100 p-3 rounded-full text-red-600 shrink-0"><AlertCircle size={24} /></div>
-                    <div>
-                        <p className="font-bold text-slate-900 leading-tight">Sente dores constantes</p>
-                        <p className="text-sm">Joelho, canelite, quadril ou pé</p>
-                    </div>
-                </div>
-                <div className="flex items-center gap-3 w-full md:w-auto p-4 bg-slate-50 rounded-xl">
-                    <div className="bg-blue-100 p-3 rounded-full text-blue-600 shrink-0"><TrendingUp size={24} /></div>
-                    <div>
-                        <p className="font-bold text-slate-900 leading-tight">Está Estagnado</p>
-                        <p className="text-sm">Treina mas não evolui distância</p>
-                    </div>
-                </div>
-                <div className="flex items-center gap-3 w-full md:w-auto p-4 bg-slate-50 rounded-xl">
-                    <div className="bg-orange-100 p-3 rounded-full text-orange-600 shrink-0"><ShieldCheck size={24} /></div>
-                    <div>
-                        <p className="font-bold text-slate-900 leading-tight">Tem Medo de Lesão</p>
-                        <p className="text-sm">Quer correr a vida toda</p>
-                    </div>
-                </div>
+      {/* NEW: Alert/Attention Section (Substituted text) */}
+      <section className="py-12 bg-yellow-50 border-b border-yellow-200">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+            <div className="inline-block bg-red-600 text-white px-4 py-1 rounded font-bold text-sm uppercase mb-6 shadow-sm">
+                ⚠️ A Verdade Que Ninguém Te Conta
+            </div>
+            <h2 className="text-2xl md:text-4xl font-extrabold text-slate-800 mb-6 leading-tight">
+                Entenda de uma vez por todas... <br/>
+                <span className="text-red-600">A culpa não é sua!</span>
+            </h2>
+            <p className="text-lg md:text-xl text-slate-700 leading-relaxed mb-6 font-medium">
+                Você só está passando por esse ciclo de dor e lesão porque 
+                <span className="bg-yellow-200 px-1 mx-1 rounded">não possui o ajuste biomecânico correto</span> 
+                para a sua estrutura corporal.
+            </p>
+            <p className="text-base md:text-lg text-slate-600 max-w-2xl mx-auto">
+                É exatamente por isso que você precisa do <strong>MÉTODO SDC</strong>. Não é sobre correr menos, é sobre correr com a técnica que o seu corpo precisa para não quebrar.
+            </p>
+        </div>
+      </section>
+
+      {/* NEW: Who is this for Section (Detailed List) */}
+      <section className="py-16 bg-white">
+        <div className="max-w-5xl mx-auto px-4">
+            <h2 className="text-2xl md:text-3xl font-black text-center text-blue-900 mb-10 uppercase tracking-tight">
+                O Método SDC foi desenhado exclusivamente para:
+            </h2>
+            
+            <div className="grid md:grid-cols-2 gap-4">
+                <TargetAudienceItem 
+                    icon={<AlertCircle className="text-red-500" />}
+                    text="Quem está tratando lesões e busca alívio imediato das dores."
+                />
+                <TargetAudienceItem 
+                    icon={<ShieldCheck className="text-green-500" />}
+                    text="Corredores que querem perder o medo de se machucar novamente."
+                />
+                <TargetAudienceItem 
+                    icon={<Activity className="text-orange-500" />}
+                    text="Quem já corre, mas sente incômodos frequentes e quer uma solução definitiva."
+                />
+                <TargetAudienceItem 
+                    icon={<TrendingUp className="text-blue-500" />}
+                    text="Quem busca evoluir na distância e velocidade sem 'quebrar' o corpo."
+                />
+                <TargetAudienceItem 
+                    icon={<Users className="text-purple-500" />}
+                    text="Treinadores e Profissionais que desejam se especializar em prevenção."
+                />
+                <TargetAudienceItem 
+                    icon={<Medal className="text-yellow-500" />}
+                    text="Corredores de todos os níveis (iniciantes a veteranos) que querem performance."
+                />
+                <TargetAudienceItem 
+                    icon={<Flame className="text-red-400" />}
+                    text="Quem já pensou em 'pendurar os tênis' por frustração ou dor."
+                />
+                <TargetAudienceItem 
+                    icon={<Dumbbell className="text-slate-500" />}
+                    text="Quem está cansado de treinos genéricos que não funcionam."
+                />
+            </div>
+
+            <div className="mt-10 bg-blue-50 border border-blue-200 p-6 rounded-xl text-center">
+                <p className="text-lg md:text-xl font-bold text-blue-800">
+                    Se você se identificou com pelo menos <span className="text-red-600 underline decoration-4 decoration-yellow-400">2 pontos acima</span>, o Método SDC é obrigatório para você.
+                </p>
             </div>
         </div>
       </section>
 
-      {/* NEW: Why Choose Section (Dark Blue) */}
+      {/* Why Choose Section (Dark Blue) */}
       <section className="py-16 px-4 bg-slate-900 text-white">
         <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
@@ -252,7 +294,7 @@ const RunningLanding = () => {
                     <div className="mt-1 min-w-5 h-5 bg-blue-500 rounded-full flex items-center justify-center shrink-0 text-white shadow-sm">
                         <Trophy size={12} strokeWidth={3} />
                     </div>
-                    <span className="font-bold text-blue-800">+3 BÔNUS DE ALTA PERFORMANCE (Tênis, Aquecimento e Planilhas)</span>
+                    <span className="font-bold text-blue-800">+3 BÔNUS DE ALTA PERFORMANCE</span>
                 </li>
             </div>
           </div>
@@ -260,7 +302,7 @@ const RunningLanding = () => {
         </div>
       </section>
 
-      {/* BONUS SECTION */}
+      {/* BONUS SECTION - MODIFIED */}
       <section className="py-16 px-4 bg-blue-800 text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-30"></div>
         <div className="max-w-4xl mx-auto relative z-10">
@@ -271,32 +313,35 @@ const RunningLanding = () => {
             </div>
 
             <div className="grid md:grid-cols-3 gap-6">
+                {/* Bonus 1 Modified */}
                 <BonusCardPlaceholder 
-                    icon={<Footprints size={48} className="text-orange-400" />}
-                    title="GUIA DE TÊNIS"
-                    subtitle="DEFINITIVO"
-                    desc="Não gaste dinheiro à toa. Saiba qual o melhor tênis para o seu pé e objetivo (amortecimento vs performance)."
-                    price="47,00"
+                    icon={<AlertCircle size={48} className="text-red-400" />}
+                    title="SOS LESÕES"
+                    subtitle="+ GUIA DE TÊNIS"
+                    desc="Protocolo completo para tratar dores (canelite, joelho, fascite) com guia extra para escolher o tênis ideal."
+                    price="67,00"
                 />
+                {/* Bonus 2 Modified */}
                 <BonusCardPlaceholder 
-                    icon={<Activity size={48} className="text-green-400" />}
-                    title="AQUECIMENTO"
-                    subtitle="TURBO 5 MIN"
-                    desc="O protocolo rápido para ativar a musculatura antes de correr e evitar 90% das lesões."
-                    price="39,00"
+                    icon={<Dumbbell size={48} className="text-orange-400" />}
+                    title="FORTALECIMENTO"
+                    subtitle="ESPECÍFICO"
+                    desc="Cronograma prático para fazer em casa. Treinos para 5k, 10k, 21k, 42k e Ultra. Blinde suas articulações."
+                    price="59,00"
                 />
+                {/* Bonus 3 Same */}
                 <BonusCardPlaceholder 
                     icon={<Timer size={48} className="text-yellow-400" />}
                     title="PACK DE"
                     subtitle="PLANILHAS"
-                    desc="PDFs prontos para imprimir: treinos de 5k, 10k e 21k organizados por semanas."
+                    desc="PDFs prontos para imprimir: treinos de todas as distâncias organizados por semanas."
                     price="57,00"
                 />
             </div>
             
             <div className="mt-12 text-center flex flex-col items-center w-full">
                 <p className="text-lg md:text-2xl font-bold text-yellow-300 animate-pulse mb-6 px-4">
-                    TOTAL EM BÔNUS: R$ 143,00 — HOJE É GRÁTIS! 🎁
+                    TOTAL EM BÔNUS: R$ 183,00 — HOJE É GRÁTIS! 🎁
                 </p>
                 <div className="w-full px-4 md:w-auto">
                     <Button 
@@ -380,9 +425,9 @@ const RunningLanding = () => {
                   
                   <div className="my-3 border-t border-slate-200"></div>
                   
-                  <Feature text="BÔNUS 1: Guia de Tênis Ideal" yellow />
-                  <Feature text="BÔNUS 2: Aquecimento Turbo" yellow />
-                  <Feature text="BÔNUS 3: Pack de Planilhas (5k a 21k)" yellow />
+                  <Feature text="BÔNUS 1: SOS Lesões + Guia Tênis" yellow />
+                  <Feature text="BÔNUS 2: Fortalecimento Específico" yellow />
+                  <Feature text="BÔNUS 3: Pack de Planilhas" yellow />
                 </ul>
                 
                 <Button className="w-full bg-green-600 hover:bg-green-500 text-white border-b-4 border-green-800 font-black text-lg md:text-xl py-8 shadow-xl rounded-lg animate-scale-pulse hover:scale-110 transform transition active:border-b-0 active:translate-y-1 uppercase italic">
@@ -399,7 +444,7 @@ const RunningLanding = () => {
         </div>
       </section>
 
-      {/* Prova Social - Adapted from user Images */}
+      {/* Prova Social - Tweaked numbers */}
       <section className="py-16 px-4 bg-white border-y border-slate-100">
         <div className="max-w-4xl mx-auto text-center">
             <div className="inline-block bg-slate-900 text-white px-6 py-2 rounded-full font-bold text-lg md:text-xl shadow-lg mb-10 transform -rotate-1">
@@ -407,42 +452,42 @@ const RunningLanding = () => {
             </div>
             
             <div className="grid md:grid-cols-2 gap-6 text-left">
-                 {/* Image 1: Priscilla (Fratura -> 22k Trail) */}
+                 {/* Image 1: Priscilla (Tweaked to 23k Trail, 2h18m) */}
                  <EnhancedTestimonial 
                     name="Priscila M."
                     role="Trail Runner"
-                    text="O excesso de treinos me levou a uma fratura por estresse na fíbula. Tive que parar totalmente. Mas ao retornar com o programa de fortalecimento certo do Método SDC, não só voltei como fiz meus primeiros 22k Trail em 2h26m!"
-                    result="22KM TRAIL CONCLUÍDO"
+                    text="O excesso de treinos me levou a uma fratura por estresse. Tive que parar totalmente. Mas ao retornar com o programa de fortalecimento certo do Método SDC, fiz meus primeiros 23k Trail em 2h18m sem sentir o joelho!"
+                    result="23KM TRAIL CONCLUÍDO"
                     initials="PM"
                     color="bg-orange-100 text-orange-600"
                  />
                  
-                 {/* Image 2: Stefano (10k -19min) */}
+                 {/* Image 2: Stefano (10k -15min) */}
                  <EnhancedTestimonial 
                     name="Estevão R."
                     role="Corredor Amador"
-                    text="As dores no quadril e joelho eram constantes. Através do fortalecimento voltado para a corrida e treino certo, baixei 19 minutos nos meus 10kms! Saí de 1h05 para 45min."
-                    result="-19 MINUTOS NOS 10K"
+                    text="As dores no quadril eram constantes. Através do fortalecimento voltado para a corrida, baixei 15 minutos nos meus 10kms! Saí de 1h02 para 47min voando."
+                    result="-15 MINUTOS NOS 10K"
                     initials="ER"
                     color="bg-green-100 text-green-600"
                  />
 
-                 {/* Image 3: Cris (Sedentary -> Ultra) */}
+                 {/* Image 3: Cris (60k Ultra) */}
                  <EnhancedTestimonial 
                     name="Cristiano L."
                     role="Ultramaratonista"
-                    text="O sobrepeso e as dores limitavam minha vida. Ao ajustar os treinos, as dores sumiram. Saí do sedentarismo total para me tornar Ultramaratonista de 55K!"
-                    result="DE SEDENTÁRIO A ULTRA 55K"
+                    text="O sobrepeso e as dores limitavam minha vida. Ao ajustar os treinos, as dores sumiram. Saí do sedentarismo para me tornar Ultramaratonista de 60K!"
+                    result="DE SEDENTÁRIO A ULTRA 60K"
                     initials="CL"
                     color="bg-blue-100 text-blue-600"
                  />
 
-                 {/* Image 4: Juscelia (5k sub 20) */}
+                 {/* Image 4: Juscelia (5k 21:15) */}
                  <EnhancedTestimonial 
                     name="Júlia C."
                     role="Atleta Master"
-                    text="Os médicos mandaram eu parar de correr e comprar uma bicicleta por causa da fascite plantar. Após o programa, consegui correr os 5kms abaixo de 20 minutos (19:23) aos 45 anos!"
-                    result="5KM EM 19:23"
+                    text="Os médicos mandaram eu parar de correr por causa da fascite plantar. Após o programa, consegui correr os 5kms em 21:15 aos 45 anos e sem dor no dia seguinte!"
+                    result="5KM EM 21:15"
                     initials="JC"
                     color="bg-purple-100 text-purple-600"
                  />
@@ -450,15 +495,23 @@ const RunningLanding = () => {
         </div>
       </section>
 
-      {/* FAQ */}
+      {/* FAQ - UPDATED */}
       <section className="py-12 px-4 max-w-3xl mx-auto">
         <h2 className="text-2xl md:text-3xl font-bold text-center mb-10 text-slate-800 flex items-center justify-center gap-2">
             <span className="text-blue-600">?</span> Perguntas Frequentes
         </h2>
         <Accordion type="single" collapsible className="w-full space-y-2">
           <FAQItem 
-            question="Como acesso o programa?" 
-            answer="Imediatamente após a confirmação do pagamento, você recebe um e-mail com login e senha para nossa área de membros exclusiva, onde todas as aulas e materiais estão organizados." 
+            question="Como vou acessar o material após a compra?" 
+            answer="Imediatamente após a confirmação do pagamento, você recebe um e-mail com login e senha para nossa área de membros exclusiva, onde todas as aulas e materiais estão organizados e prontos para assistir." 
+          />
+          <FAQItem 
+            question="Quais formas de pagamento são aceitas?" 
+            answer="Aceitamos Cartão de Crédito (podendo parcelar), PIX (com aprovação imediata) e Boleto Bancário. O ambiente é 100% seguro e criptografado." 
+          />
+          <FAQItem 
+            question="Como funciona a garantia de 7 dias?" 
+            answer="O risco é zero para você. Você compra, acessa o conteúdo, testa os treinos e, se por qualquer motivo achar que não é para você, basta nos enviar um único e-mail dentro de 7 dias que devolvemos 100% do seu dinheiro. Sem letras miúdas." 
           />
           <FAQItem 
             question="Serve para quem nunca correu?" 
@@ -471,10 +524,6 @@ const RunningLanding = () => {
           <FAQItem 
             question="Tenho uma lesão grave, posso fazer?" 
             answer="O método é preventivo e educativo. Se você está em fase aguda de dor (impossibilitado de andar), recomendamos consultar um médico presencialmente. O método é ideal para a fase de reabilitação e retorno aos treinos." 
-          />
-          <FAQItem 
-            question="E se eu não gostar?" 
-            answer="Você tem 7 dias de garantia incondicional. Se achar que o conteúdo não é para você, basta enviar um e-mail e devolvemos 100% do seu dinheiro. O risco é todo nosso." 
           />
         </Accordion>
       </section>
@@ -572,7 +621,7 @@ const RunningLanding = () => {
                       <span className="hidden md:block">•</span>
                       <span className="flex items-center gap-1"><Zap size={12}/> Acesso Imediato</span>
                       <span className="hidden md:block">•</span>
-                      <span className="flex items-center gap-1"><Heart size={12}/> +18.000 Alunos</span>
+                      <span className="flex items-center gap-1"><Heart size={12}/> +9.000 Alunos</span>
                   </div>
               </div>
           </div>
@@ -616,6 +665,15 @@ const ChecklistItem = ({ text }: { text: string }) => (
         </div>
         <span>{text}</span>
     </li>
+);
+
+const TargetAudienceItem = ({ icon, text }: { icon: any, text: string }) => (
+    <div className="flex items-start gap-4 p-4 rounded-xl bg-slate-50 border border-slate-100 hover:shadow-md transition-shadow">
+        <div className="bg-white p-3 rounded-full shadow-sm shrink-0">
+            {icon}
+        </div>
+        <p className="text-slate-700 font-medium leading-snug self-center">{text}</p>
+    </div>
 );
 
 const Feature = ({ text, highlighted = false, yellow = false }: { text: string, highlighted?: boolean, yellow?: boolean }) => {
