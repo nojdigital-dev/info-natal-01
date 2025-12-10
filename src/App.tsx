@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Natal01 from "./pages/Natal01";
 import ReceitasPets from "./pages/ReceitasPets";
+import SemDoresCorredor from "./pages/SemDoresCorredor";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -18,6 +19,7 @@ const App = () => (
         <Routes>
           <Route path="/natal01" element={<Natal01 />} />
           <Route path="/receitas-natural-pets" element={<ReceitasPets />} />
+          <Route path="/sem-dores-corredor" element={<SemDoresCorredor />} />
           <Route path="/" element={<Navigate to="/natal01" replace />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
