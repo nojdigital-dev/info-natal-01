@@ -268,27 +268,27 @@ const PetRecipesLanding = () => {
                     title="BISCOITOS NATURAIS"
                     subtitle="CROCANTES"
                     desc="Receitas de petiscos funcionais para treinar e agradar sem culpa. Nada de farinha branca!"
-                    price="27,00"
+                    price="39,00"
                 />
                 <BonusCardPlaceholder 
                     icon={<Info size={48} className="text-blue-400" />}
                     title="PICOLÉS NATURAIS"
                     subtitle="PARA O VERÃO"
                     desc="Refresque seu pet nos dias quentes com sorvetes de frutas e caldos nutritivos."
-                    price="19,00"
+                    price="29,00"
                 />
                 <BonusCardPlaceholder 
                     icon={<AlertTriangle size={48} className="text-red-400" />}
                     title="CHECKLIST DE"
                     subtitle="PROIBIDOS"
                     desc="Tabela rápida para colar na geladeira: saiba na hora o que é tóxico e o que é seguro."
-                    price="15,00"
+                    price="26,00"
                 />
             </div>
             
             <div className="mt-12 text-center flex flex-col items-center w-full">
                 <p className="text-lg md:text-2xl font-bold text-orange-300 animate-pulse mb-6 px-4">
-                    TOTAL EM BÔNUS: R$ 61,00 — HOJE É GRÁTIS! 🎁
+                    TOTAL EM BÔNUS: R$ 94,00 — HOJE É GRÁTIS! 🎁
                 </p>
                 <div className="w-full px-4 md:w-auto">
                     <Button 

@@ -23,10 +23,10 @@ const PetUpsellModal: React.FC<UpsellModalProps> = ({ isOpen, onClose, onConfirm
       <DialogContent className="sm:max-w-[425px] p-0 overflow-hidden rounded-2xl border-none shadow-2xl bg-white">
         <DialogHeader className="p-6 pb-0 text-center">
           <DialogTitle className="text-3xl font-extrabold text-green-700 uppercase tracking-tight">
-            Oferta Veterinária
+            Oferta Exclusiva
           </DialogTitle>
           <DialogDescription className="text-slate-600 text-lg pt-2">
-            Leve o <span className="font-bold text-slate-800">Guia de Saúde Total + Bônus</span> por Apenas
+            Leve o <span className="font-bold text-slate-800">Pacote Saúde Total Pet</span> por Apenas
           </DialogDescription>
         </DialogHeader>
         <div className="p-6 pt-2 text-center">
