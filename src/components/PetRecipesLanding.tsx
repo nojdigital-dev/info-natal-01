@@ -50,7 +50,7 @@ const PetRecipesLanding = () => {
 
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-green-700 via-green-600 to-green-800 text-white py-8 md:py-24 px-4 overflow-hidden">
-        {/* Background Decorations - INCREASED PARTICLES */}
+        {/* Background Decorations - INCREASED PARTICLES & VISIBILITY */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
            {/* Original Big Icons */}
            <PawPrint className="absolute top-10 left-[10%] animate-bounce text-white opacity-40" size={40} />
@@ -60,31 +60,31 @@ const PetRecipesLanding = () => {
            <Heart className="absolute bottom-40 left-[5%] text-white rotate-12 opacity-30" size={50} />
            <Heart className="absolute top-32 right-[5%] text-orange-200 -rotate-12 opacity-40" size={40} />
 
-           {/* Generated Particle Field */}
-           {[...Array(25)].map((_, i) => (
+           {/* Generated Particle Field - High Density */}
+           {[...Array(50)].map((_, i) => (
               <PawPrint 
                   key={`p-${i}`}
-                  className="absolute text-white/10 animate-pulse" 
-                  size={Math.random() * 20 + 10}
+                  className="absolute text-white/30 animate-pulse" 
+                  size={Math.random() * 25 + 15}
                   style={{
                       top: `${Math.random() * 100}%`,
                       left: `${Math.random() * 100}%`,
                       animationDuration: `${Math.random() * 3 + 2}s`,
-                      opacity: Math.random() * 0.2 + 0.1,
+                      opacity: Math.random() * 0.4 + 0.2,
                       transform: `rotate(${Math.random() * 45 - 22}deg)`
                   }}
               />
            ))}
-           {[...Array(15)].map((_, i) => (
+           {[...Array(30)].map((_, i) => (
               <Bone 
                   key={`b-${i}`}
-                  className="absolute text-orange-200/20 animate-bounce" 
-                  size={Math.random() * 15 + 10}
+                  className="absolute text-orange-200/40 animate-bounce" 
+                  size={Math.random() * 20 + 12}
                   style={{
                       top: `${Math.random() * 100}%`,
                       left: `${Math.random() * 100}%`,
                       animationDuration: `${Math.random() * 5 + 3}s`,
-                      opacity: Math.random() * 0.2 + 0.1,
+                      opacity: Math.random() * 0.5 + 0.2,
                       transform: `rotate(${Math.random() * 90}deg)`
                   }}
               />
