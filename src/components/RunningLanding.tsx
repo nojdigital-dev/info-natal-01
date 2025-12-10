@@ -459,9 +459,11 @@ const RunningLanding = () => {
                   <Feature text="BÔNUS 3: Pack de Planilhas" yellow />
                 </ul>
                 
-                <Button className="w-full bg-green-600 hover:bg-green-500 text-white border-b-4 border-green-800 font-black text-lg md:text-xl py-8 shadow-xl rounded-lg animate-scale-pulse hover:scale-110 transform transition active:border-b-0 active:translate-y-1 uppercase italic whitespace-normal h-auto leading-tight">
-                  QUERO CORRER MELHOR AGORA
-                </Button>
+                <a href="https://pay.lowify.com.br/checkout.php?product_id=phc7ku" className="w-full no-underline">
+                  <Button className="w-full bg-green-600 hover:bg-green-500 text-white border-b-4 border-green-800 font-black text-lg md:text-xl py-8 shadow-xl rounded-lg animate-scale-pulse hover:scale-110 transform transition active:border-b-0 active:translate-y-1 uppercase italic whitespace-normal h-auto leading-tight">
+                    QUERO CORRER MELHOR AGORA
+                  </Button>
+                </a>
                 <p className="text-xs text-slate-500 mt-4 flex items-center justify-center gap-1">
                   <ShieldCheck size={14} className="text-green-600" /> Compra Segura • Garantia de 7 Dias
                 </p>
@@ -667,14 +669,10 @@ const RunningLanding = () => {
         isOpen={isUpsellModalOpen}
         onClose={() => setIsUpsellModalOpen(false)}
         onConfirm={() => {
-            console.log("Upsell accepted! Redirect to 14.90 checkout.");
-            setIsUpsellModalOpen(false);
-            // Link de checkout R$14,90
+            window.location.href = 'https://pay.lowify.com.br/go.php?offer=g8vujok';
         }}
         onReject={() => {
-            console.log("Upsell rejected. Redirect to 10.00 checkout.");
-            setIsUpsellModalOpen(false);
-            // Link de checkout R$10,00
+            window.location.href = 'https://pay.lowify.com.br/checkout?product_id=8Ev48V';
         }}
       />
     </div>
