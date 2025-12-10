@@ -54,16 +54,45 @@ const ChristmasLanding = () => {
 
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-red-700 via-red-600 to-red-800 text-white py-8 md:py-24 px-4 overflow-hidden">
-        {/* Background Decorations */}
-        <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-20">
-           <Snowflake className="absolute top-10 left-[10%] animate-bounce text-white" size={30} />
-           <Snowflake className="absolute top-40 right-[15%] animate-pulse text-blue-100" size={20} />
-           <Star className="absolute top-20 left-[20%] text-yellow-300 animate-pulse" size={15} /> 
-           <Star className="absolute top-60 right-[10%] text-yellow-300 animate-pulse" size={25} /> 
-           <Gift className="absolute bottom-40 left-[5%] text-white rotate-12 opacity-60" size={40} />
-           <Gift className="absolute top-32 right-[5%] text-yellow-200 -rotate-12 opacity-40" size={30} />
-           <TreePine className="absolute bottom-0 left-0 text-green-900" size={100} />
-           <TreePine className="absolute bottom-0 right-0 text-green-900" size={80} />
+        {/* Background Decorations - INCREASED PARTICLES */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+           {/* Original Big Icons */}
+           <Snowflake className="absolute top-10 left-[10%] animate-bounce text-white opacity-40" size={40} />
+           <Snowflake className="absolute top-40 right-[15%] animate-pulse text-blue-100 opacity-40" size={30} />
+           <Star className="absolute top-20 left-[20%] text-yellow-300 animate-pulse opacity-50" size={25} /> 
+           <Star className="absolute top-60 right-[10%] text-yellow-300 animate-pulse opacity-50" size={35} /> 
+           <Gift className="absolute bottom-40 left-[5%] text-white rotate-12 opacity-30" size={50} />
+           <Gift className="absolute top-32 right-[5%] text-yellow-200 -rotate-12 opacity-30" size={40} />
+           <TreePine className="absolute bottom-0 left-0 text-green-900 opacity-60" size={120} />
+           <TreePine className="absolute bottom-0 right-0 text-green-900 opacity-60" size={100} />
+
+           {/* Generated Particle Field - SNOW & STARS */}
+           {[...Array(40)].map((_, i) => (
+              <Snowflake 
+                  key={`s-${i}`}
+                  className="absolute text-white/20 animate-pulse" 
+                  size={Math.random() * 20 + 10}
+                  style={{
+                      top: `${Math.random() * 100}%`,
+                      left: `${Math.random() * 100}%`,
+                      animationDuration: `${Math.random() * 4 + 2}s`,
+                      opacity: Math.random() * 0.3 + 0.1,
+                  }}
+              />
+           ))}
+           {[...Array(20)].map((_, i) => (
+              <Star 
+                  key={`st-${i}`}
+                  className="absolute text-yellow-300/30 animate-spin" 
+                  size={Math.random() * 15 + 8}
+                  style={{
+                      top: `${Math.random() * 100}%`,
+                      left: `${Math.random() * 100}%`,
+                      animationDuration: `${Math.random() * 10 + 5}s`,
+                      opacity: Math.random() * 0.4 + 0.1,
+                  }}
+              />
+           ))}
         </div>
 
         <div className="max-w-6xl mx-auto relative z-10">

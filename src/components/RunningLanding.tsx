@@ -51,13 +51,42 @@ const RunningLanding = () => {
 
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-blue-600 via-blue-500 to-blue-700 text-white py-8 md:py-24 px-4 overflow-hidden">
-        {/* Background Decorations */}
-        <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-20">
-           <Activity className="absolute top-10 left-[10%] animate-pulse text-white" size={30} />
-           <Timer className="absolute top-40 right-[15%] animate-pulse text-yellow-300" size={20} />
-           <Zap className="absolute top-20 left-[20%] text-orange-300 animate-pulse" size={15} /> 
-           <Footprints className="absolute bottom-40 left-[5%] text-white rotate-12 opacity-60" size={40} />
-           <Trophy className="absolute top-32 right-[5%] text-yellow-300 -rotate-12 opacity-40" size={30} />
+        {/* Background Decorations - INCREASED PARTICLES */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+           {/* Original Big Icons */}
+           <Activity className="absolute top-10 left-[10%] animate-pulse text-white opacity-30" size={40} />
+           <Timer className="absolute top-40 right-[15%] animate-pulse text-yellow-300 opacity-30" size={30} />
+           <Zap className="absolute top-20 left-[20%] text-orange-300 animate-pulse opacity-30" size={25} /> 
+           <Footprints className="absolute bottom-40 left-[5%] text-white rotate-12 opacity-20" size={60} />
+           <Trophy className="absolute top-32 right-[5%] text-yellow-300 -rotate-12 opacity-30" size={40} />
+           
+           {/* Generated Particle Field */}
+           {[...Array(30)].map((_, i) => (
+              <Activity 
+                  key={`p-${i}`}
+                  className="absolute text-white/10 animate-pulse" 
+                  size={Math.random() * 20 + 10}
+                  style={{
+                      top: `${Math.random() * 100}%`,
+                      left: `${Math.random() * 100}%`,
+                      animationDuration: `${Math.random() * 3 + 2}s`,
+                      opacity: Math.random() * 0.2 + 0.1,
+                  }}
+              />
+           ))}
+           {[...Array(15)].map((_, i) => (
+              <Zap 
+                  key={`z-${i}`}
+                  className="absolute text-yellow-300/20 animate-bounce" 
+                  size={Math.random() * 15 + 10}
+                  style={{
+                      top: `${Math.random() * 100}%`,
+                      left: `${Math.random() * 100}%`,
+                      animationDuration: `${Math.random() * 5 + 3}s`,
+                      opacity: Math.random() * 0.2 + 0.1,
+                  }}
+              />
+           ))}
         </div>
 
         <div className="max-w-6xl mx-auto relative z-10">
@@ -97,7 +126,7 @@ const RunningLanding = () => {
               <div className="flex flex-col w-full md:w-auto px-4">
                 <Button 
                   onClick={scrollToPricing}
-                  className="bg-orange-500 hover:bg-orange-400 text-white border-b-4 border-orange-700 font-black text-lg md:text-xl py-6 md:py-8 w-full md:w-auto md:px-12 rounded-full shadow-2xl transform transition flex items-center justify-center gap-2 animate-scale-pulse hover:scale-110 active:scale-95 italic uppercase whitespace-normal h-auto leading-tight"
+                  className="bg-orange-500 hover:bg-orange-400 text-white border-b-4 border-orange-700 font-black text-lg md:text-xl py-8 w-full md:w-auto md:px-12 rounded-full shadow-2xl transform transition flex items-center justify-center gap-2 animate-scale-pulse hover:scale-110 active:scale-95 italic uppercase whitespace-normal h-auto leading-tight"
                 >
                   QUERO CORRER SEM DOR <ChevronRight size={24} className="shrink-0" />
                 </Button>
@@ -430,7 +459,7 @@ const RunningLanding = () => {
                   <Feature text="BÔNUS 3: Pack de Planilhas" yellow />
                 </ul>
                 
-                <Button className="w-full bg-green-600 hover:bg-green-500 text-white border-b-4 border-green-800 font-black text-lg md:text-xl py-6 md:py-8 px-4 shadow-xl rounded-lg animate-scale-pulse hover:scale-110 transform transition active:border-b-0 active:translate-y-1 uppercase italic whitespace-normal h-auto leading-tight">
+                <Button className="w-full bg-green-600 hover:bg-green-500 text-white border-b-4 border-green-800 font-black text-lg md:text-xl py-8 shadow-xl rounded-lg animate-scale-pulse hover:scale-110 transform transition active:border-b-0 active:translate-y-1 uppercase italic whitespace-normal h-auto leading-tight">
                   QUERO CORRER MELHOR AGORA
                 </Button>
                 <p className="text-xs text-slate-500 mt-4 flex items-center justify-center gap-1">
