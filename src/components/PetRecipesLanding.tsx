@@ -400,11 +400,11 @@ const PetRecipesLanding = () => {
             
             <div className="grid md:grid-cols-2 gap-6 text-left">
                  <EnhancedTestimonial 
-                    name="Marina S."
+                    name="Juliana S."
                     role="Mãe da Mel"
-                    text="Marina quase perdeu a Mel por causa da ração 'premium'. Mas tudo mudou com as receitas naturais. Em 30 dias, a Mel voltou a brincar como filhote — sem remédios, sem crises, só com alimentação de verdade."
+                    text="Eu quase perdi a Mel por causa da ração 'premium' que prometia saúde. Mas tudo mudou quando conheci as receitas naturais. Em 30 dias, a Mel voltou a brincar como filhote — sem remédios, sem crises, só com alimentação de verdade."
                     observation="Eu achava que dar comida natural dava trabalho, mas com o guia de congelamento eu faço tudo no domingo e fico tranquila a semana toda!"
-                    initials="MS"
+                    initials="JS"
                     color="bg-orange-100 text-orange-600"
                  />
                  <EnhancedTestimonial 
@@ -439,6 +439,18 @@ const PetRecipesLanding = () => {
         </h2>
         <Accordion type="single" collapsible className="w-full space-y-2">
           <FAQItem 
+            question="Como vou acessar o material após a compra?" 
+            answer="Assim que seu pagamento for confirmado, você receberá um e-mail automático com o link para baixar todos os livros digitais (PDFs). O acesso é imediato!" 
+          />
+          <FAQItem 
+            question="Quais formas de pagamento são aceitas?" 
+            answer="Aceitamos PIX (liberação imediata), cartão de crédito e boleto bancário. No cartão, a liberação também é na hora." 
+          />
+          <FAQItem 
+            question="Como funciona a garantia de 7 dias?" 
+            answer="É simples: se por qualquer motivo você não gostar do material, basta nos enviar um e-mail dentro de 7 dias e devolvemos 100% do seu dinheiro, sem perguntas." 
+          />
+          <FAQItem 
             question="Serve para cães e gatos?" 
             answer="Sim! O guia possui seções específicas tanto para cães quanto para gatos, respeitando a necessidade nutricional de cada espécie (gatos precisam de mais taurina, por exemplo)." 
           />
@@ -453,10 +465,6 @@ const PetRecipesLanding = () => {
           <FAQItem 
             question="Meu cachorro é idoso, ele pode comer?" 
             answer="Com certeza! Inclusive é altamente recomendado. Alimentos naturais são mais fáceis de digerir e têm mais água, o que protege os rins dos pets idosos." 
-          />
-          <FAQItem 
-            question="Como recebo o material?" 
-            answer="O acesso é 100% online. Assim que o pagamento for aprovado, você recebe um e-mail com o link para baixar todos os livros digitais (PDFs) no seu celular ou computador." 
           />
         </Accordion>
       </section>
