@@ -97,9 +97,9 @@ const RunningLanding = () => {
               <div className="flex flex-col w-full md:w-auto px-4">
                 <Button 
                   onClick={scrollToPricing}
-                  className="bg-orange-500 hover:bg-orange-400 text-white border-b-4 border-orange-700 font-black text-lg md:text-xl py-8 w-full md:w-auto md:px-12 rounded-full shadow-2xl transform transition flex items-center justify-center gap-2 animate-scale-pulse hover:scale-110 active:scale-95 italic uppercase"
+                  className="bg-orange-500 hover:bg-orange-400 text-white border-b-4 border-orange-700 font-black text-lg md:text-xl py-6 md:py-8 w-full md:w-auto md:px-12 rounded-full shadow-2xl transform transition flex items-center justify-center gap-2 animate-scale-pulse hover:scale-110 active:scale-95 italic uppercase whitespace-normal h-auto leading-tight"
                 >
-                  QUERO CORRER SEM DOR <ChevronRight size={24} />
+                  QUERO CORRER SEM DOR <ChevronRight size={24} className="shrink-0" />
                 </Button>
               </div>
               <div className="mt-4 flex items-center justify-center gap-2 text-xs md:text-base text-blue-100 opacity-90 font-medium">
@@ -230,7 +230,7 @@ const RunningLanding = () => {
             <div className="mt-12 text-center">
                 <Button 
                 onClick={scrollToPricing} 
-                className="bg-blue-600 hover:bg-blue-500 text-white font-bold text-base md:text-lg px-6 md:px-8 py-6 rounded-full shadow-lg animate-scale-pulse hover:scale-110 whitespace-normal h-auto uppercase"
+                className="bg-blue-600 hover:bg-blue-500 text-white font-bold text-base md:text-lg px-6 md:px-8 py-6 rounded-full shadow-lg animate-scale-pulse hover:scale-110 whitespace-normal h-auto uppercase leading-tight"
                 >
                     QUERO DESCOBRIR A VERSÃO SEM DOR 🏃‍♂️
                 </Button>
@@ -391,7 +391,7 @@ const RunningLanding = () => {
                 
                 <Button 
                   onClick={() => setIsUpsellModalOpen(true)}
-                  className="w-full bg-slate-700 hover:bg-slate-800 text-white font-bold text-base md:text-lg py-6 shadow-sm animate-scale-pulse hover:scale-110" size="lg">
+                  className="w-full bg-slate-700 hover:bg-slate-800 text-white font-bold text-base md:text-lg py-6 px-4 shadow-sm animate-scale-pulse hover:scale-110 whitespace-normal h-auto leading-tight" size="lg">
                   QUERO O BÁSICO
                 </Button>
                 <div className="mt-4 flex justify-center opacity-70"><PagamentoSeguro /></div>
@@ -430,7 +430,7 @@ const RunningLanding = () => {
                   <Feature text="BÔNUS 3: Pack de Planilhas" yellow />
                 </ul>
                 
-                <Button className="w-full bg-green-600 hover:bg-green-500 text-white border-b-4 border-green-800 font-black text-lg md:text-xl py-8 shadow-xl rounded-lg animate-scale-pulse hover:scale-110 transform transition active:border-b-0 active:translate-y-1 uppercase italic">
+                <Button className="w-full bg-green-600 hover:bg-green-500 text-white border-b-4 border-green-800 font-black text-lg md:text-xl py-6 md:py-8 px-4 shadow-xl rounded-lg animate-scale-pulse hover:scale-110 transform transition active:border-b-0 active:translate-y-1 uppercase italic whitespace-normal h-auto leading-tight">
                   QUERO CORRER MELHOR AGORA
                 </Button>
                 <p className="text-xs text-slate-500 mt-4 flex items-center justify-center gap-1">
@@ -444,7 +444,7 @@ const RunningLanding = () => {
         </div>
       </section>
 
-      {/* Prova Social - Tweaked numbers */}
+      {/* Prova Social - Adapted from user Images */}
       <section className="py-16 px-4 bg-white border-y border-slate-100">
         <div className="max-w-4xl mx-auto text-center">
             <div className="inline-block bg-slate-900 text-white px-6 py-2 rounded-full font-bold text-lg md:text-xl shadow-lg mb-10 transform -rotate-1">
@@ -452,42 +452,42 @@ const RunningLanding = () => {
             </div>
             
             <div className="grid md:grid-cols-2 gap-6 text-left">
-                 {/* Image 1: Priscilla (Tweaked to 23k Trail, 2h18m) */}
+                 {/* Image 1: Priscilla (Fratura -> 22k Trail) */}
                  <EnhancedTestimonial 
                     name="Priscila M."
                     role="Trail Runner"
-                    text="O excesso de treinos me levou a uma fratura por estresse. Tive que parar totalmente. Mas ao retornar com o programa de fortalecimento certo do Método SDC, fiz meus primeiros 23k Trail em 2h18m sem sentir o joelho!"
-                    result="23KM TRAIL CONCLUÍDO"
+                    text="O excesso de treinos me levou a uma fratura por estresse na fíbula. Tive que parar totalmente. Mas ao retornar com o programa de fortalecimento certo do Método SDC, não só voltei como fiz meus primeiros 22k Trail em 2h26m!"
+                    result="22KM TRAIL CONCLUÍDO"
                     initials="PM"
                     color="bg-orange-100 text-orange-600"
                  />
                  
-                 {/* Image 2: Stefano (10k -15min) */}
+                 {/* Image 2: Stefano (10k -19min) */}
                  <EnhancedTestimonial 
                     name="Estevão R."
                     role="Corredor Amador"
-                    text="As dores no quadril eram constantes. Através do fortalecimento voltado para a corrida, baixei 15 minutos nos meus 10kms! Saí de 1h02 para 47min voando."
-                    result="-15 MINUTOS NOS 10K"
+                    text="As dores no quadril e joelho eram constantes. Através do fortalecimento voltado para a corrida e treino certo, baixei 19 minutos nos meus 10kms! Saí de 1h05 para 45min."
+                    result="-19 MINUTOS NOS 10K"
                     initials="ER"
                     color="bg-green-100 text-green-600"
                  />
 
-                 {/* Image 3: Cris (60k Ultra) */}
+                 {/* Image 3: Cris (Sedentary -> Ultra) */}
                  <EnhancedTestimonial 
                     name="Cristiano L."
                     role="Ultramaratonista"
-                    text="O sobrepeso e as dores limitavam minha vida. Ao ajustar os treinos, as dores sumiram. Saí do sedentarismo para me tornar Ultramaratonista de 60K!"
-                    result="DE SEDENTÁRIO A ULTRA 60K"
+                    text="O sobrepeso e as dores limitavam minha vida. Ao ajustar os treinos, as dores sumiram. Saí do sedentarismo total para me tornar Ultramaratonista de 55K!"
+                    result="DE SEDENTÁRIO A ULTRA 55K"
                     initials="CL"
                     color="bg-blue-100 text-blue-600"
                  />
 
-                 {/* Image 4: Juscelia (5k 21:15) */}
+                 {/* Image 4: Juscelia (5k sub 20) */}
                  <EnhancedTestimonial 
                     name="Júlia C."
                     role="Atleta Master"
-                    text="Os médicos mandaram eu parar de correr por causa da fascite plantar. Após o programa, consegui correr os 5kms em 21:15 aos 45 anos e sem dor no dia seguinte!"
-                    result="5KM EM 21:15"
+                    text="Os médicos mandaram eu parar de correr e comprar uma bicicleta por causa da fascite plantar. Após o programa, consegui correr os 5kms abaixo de 20 minutos (19:23) aos 45 anos!"
+                    result="5KM EM 19:23"
                     initials="JC"
                     color="bg-purple-100 text-purple-600"
                  />
@@ -495,23 +495,15 @@ const RunningLanding = () => {
         </div>
       </section>
 
-      {/* FAQ - UPDATED */}
+      {/* FAQ */}
       <section className="py-12 px-4 max-w-3xl mx-auto">
         <h2 className="text-2xl md:text-3xl font-bold text-center mb-10 text-slate-800 flex items-center justify-center gap-2">
             <span className="text-blue-600">?</span> Perguntas Frequentes
         </h2>
         <Accordion type="single" collapsible className="w-full space-y-2">
           <FAQItem 
-            question="Como vou acessar o material após a compra?" 
-            answer="Imediatamente após a confirmação do pagamento, você recebe um e-mail com login e senha para nossa área de membros exclusiva, onde todas as aulas e materiais estão organizados e prontos para assistir." 
-          />
-          <FAQItem 
-            question="Quais formas de pagamento são aceitas?" 
-            answer="Aceitamos Cartão de Crédito (podendo parcelar), PIX (com aprovação imediata) e Boleto Bancário. O ambiente é 100% seguro e criptografado." 
-          />
-          <FAQItem 
-            question="Como funciona a garantia de 7 dias?" 
-            answer="O risco é zero para você. Você compra, acessa o conteúdo, testa os treinos e, se por qualquer motivo achar que não é para você, basta nos enviar um único e-mail dentro de 7 dias que devolvemos 100% do seu dinheiro. Sem letras miúdas." 
+            question="Como acesso o programa?" 
+            answer="Imediatamente após a confirmação do pagamento, você recebe um e-mail com login e senha para nossa área de membros exclusiva, onde todas as aulas e materiais estão organizados." 
           />
           <FAQItem 
             question="Serve para quem nunca correu?" 
@@ -524,6 +516,10 @@ const RunningLanding = () => {
           <FAQItem 
             question="Tenho uma lesão grave, posso fazer?" 
             answer="O método é preventivo e educativo. Se você está em fase aguda de dor (impossibilitado de andar), recomendamos consultar um médico presencialmente. O método é ideal para a fase de reabilitação e retorno aos treinos." 
+          />
+          <FAQItem 
+            question="E se eu não gostar?" 
+            answer="Você tem 7 dias de garantia incondicional. Se achar que o conteúdo não é para você, basta enviar um e-mail e devolvemos 100% do seu dinheiro. O risco é todo nosso." 
           />
         </Accordion>
       </section>
@@ -563,7 +559,7 @@ const RunningLanding = () => {
            <div className="mt-8 text-center">
              <Button 
                 onClick={scrollToPricing}
-                className="bg-orange-500 hover:bg-orange-400 text-white font-bold px-8 py-6 rounded-full text-lg shadow-md uppercase"
+                className="bg-orange-500 hover:bg-orange-400 text-white font-bold px-8 py-6 rounded-full text-lg shadow-md uppercase whitespace-normal h-auto leading-tight"
              >
                 Testar Método Sem Risco
              </Button>
@@ -575,7 +571,7 @@ const RunningLanding = () => {
       <section className="py-20 px-4 bg-gradient-to-br from-blue-900 to-slate-900 text-white text-center relative overflow-hidden">
           {/* Particles Effect */}
           <div className="absolute inset-0 pointer-events-none">
-             {[...Array(20)].map((_, i) => (
+             {[...Array(40)].map((_, i) => (
                 <Activity 
                     key={i}
                     className="absolute text-white/10 animate-pulse" 
@@ -583,8 +579,8 @@ const RunningLanding = () => {
                         top: `${Math.random() * 100}%`,
                         left: `${Math.random() * 100}%`,
                         animationDuration: `${Math.random() * 3 + 2}s`,
-                        width: `${Math.random() * 20 + 10}px`,
-                        height: `${Math.random() * 20 + 10}px`,
+                        width: `${Math.random() * 30 + 20}px`,
+                        height: `${Math.random() * 30 + 20}px`,
                         opacity: Math.random() * 0.5,
                     }}
                 />
@@ -611,7 +607,7 @@ const RunningLanding = () => {
               <div>
                   <Button 
                     onClick={scrollToPricing}
-                    className="bg-green-600 hover:bg-green-500 text-white font-black text-lg md:text-2xl py-8 px-8 md:px-16 rounded-full shadow-[0_0_40px_rgba(22,163,74,0.6)] transform transition animate-scale-pulse hover:scale-110 active:scale-95 border-4 border-green-500/50 uppercase italic"
+                    className="bg-green-600 hover:bg-green-500 text-white font-black text-lg md:text-2xl py-8 px-8 md:px-16 rounded-full shadow-[0_0_40px_rgba(22,163,74,0.6)] transform transition animate-scale-pulse hover:scale-110 active:scale-95 border-4 border-green-500/50 uppercase italic whitespace-normal h-auto leading-tight"
                   >
                     QUERO SUPERAR MEUS LIMITES 🚀
                   </Button>

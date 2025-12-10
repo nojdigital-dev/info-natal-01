@@ -98,9 +98,9 @@ const ChristmasLanding = () => {
               <div className="flex flex-col w-full md:w-auto px-4">
                 <Button 
                   onClick={scrollToPricing}
-                  className="bg-green-500 hover:bg-green-400 text-white border-b-4 border-green-700 font-black text-lg md:text-xl py-8 w-full md:w-auto md:px-12 rounded-full shadow-2xl transform transition flex items-center justify-center gap-2 animate-scale-pulse hover:scale-110 active:scale-95"
+                  className="bg-green-500 hover:bg-green-400 text-white border-b-4 border-green-700 font-black text-lg md:text-xl py-8 w-full md:w-auto md:px-12 rounded-full shadow-2xl transform transition flex items-center justify-center gap-2 animate-scale-pulse hover:scale-110 active:scale-95 whitespace-normal h-auto leading-tight"
                 >
-                  QUERO GARANTIR AGORA <ChevronRight size={24} />
+                  QUERO GARANTIR AGORA <ChevronRight size={24} className="shrink-0" />
                 </Button>
               </div>
               <div className="mt-4 flex items-center justify-center gap-2 text-xs md:text-base text-yellow-200 opacity-90 font-medium">
@@ -182,7 +182,7 @@ const ChristmasLanding = () => {
             <div className="mt-12 text-center">
                 <Button 
                 onClick={scrollToPricing} 
-                className="bg-red-600 hover:bg-red-500 text-white font-bold text-base md:text-lg px-6 md:px-8 py-6 rounded-full shadow-lg animate-scale-pulse hover:scale-110 whitespace-normal h-auto"
+                className="bg-red-600 hover:bg-red-500 text-white font-bold text-base md:text-lg px-6 md:px-8 py-6 rounded-full shadow-lg animate-scale-pulse hover:scale-110 whitespace-normal h-auto leading-tight"
                 >
                     QUERO TRANSFORMAR MEU NATAL! 🎄
                 </Button>
@@ -340,7 +340,7 @@ const ChristmasLanding = () => {
                 
                 <Button 
                   onClick={() => setIsUpsellModalOpen(true)}
-                  className="w-full bg-green-800 hover:bg-green-900 text-white font-bold text-base md:text-lg py-6 shadow-sm animate-scale-pulse hover:scale-110" size="lg">
+                  className="w-full bg-green-800 hover:bg-green-900 text-white font-bold text-base md:text-lg py-6 shadow-sm animate-scale-pulse hover:scale-110 whitespace-normal h-auto leading-tight" size="lg">
                   COMPRAR KIT BÁSICO
                 </Button>
                 <div className="mt-4 flex justify-center opacity-70"><PagamentoSeguro /></div>
@@ -379,7 +379,7 @@ const ChristmasLanding = () => {
                   <Feature text="BÔNUS 3: Pack de Decoração Extra" yellow />
                 </ul>
                 
-                <Button className="w-full bg-green-500 hover:bg-green-400 text-white border-b-4 border-green-700 font-black text-lg md:text-xl py-8 shadow-xl rounded-lg animate-scale-pulse hover:scale-110 transform transition active:border-b-0 active:translate-y-1">
+                <Button className="w-full bg-green-500 hover:bg-green-400 text-white border-b-4 border-green-700 font-black text-lg md:text-xl py-8 shadow-xl rounded-lg animate-scale-pulse hover:scale-110 transform transition active:border-b-0 active:translate-y-1 whitespace-normal h-auto leading-tight">
                   QUERO O PACOTE COMPLETO
                 </Button>
                 <p className="text-xs text-slate-500 mt-4 flex items-center justify-center gap-1">
@@ -502,7 +502,7 @@ const ChristmasLanding = () => {
            <div className="mt-8 text-center">
              <Button 
                 onClick={scrollToPricing}
-                className="bg-yellow-400 hover:bg-yellow-300 text-red-900 font-bold px-8 py-6 rounded-full text-lg shadow-md"
+                className="bg-yellow-400 hover:bg-yellow-300 text-red-900 font-bold px-8 py-6 rounded-full text-lg shadow-md whitespace-normal h-auto leading-tight"
              >
                 O RISCO É TODO NOSSO - GARANTIR AGORA
              </Button>
@@ -514,7 +514,7 @@ const ChristmasLanding = () => {
       <section className="py-20 px-4 bg-gradient-to-br from-red-600 to-red-800 text-white text-center relative overflow-hidden">
           {/* Particles Effect */}
           <div className="absolute inset-0 pointer-events-none">
-             {[...Array(20)].map((_, i) => (
+             {[...Array(40)].map((_, i) => (
                 <Snowflake 
                     key={i}
                     className="absolute text-white/20 animate-pulse" 
@@ -522,22 +522,22 @@ const ChristmasLanding = () => {
                         top: `${Math.random() * 100}%`,
                         left: `${Math.random() * 100}%`,
                         animationDuration: `${Math.random() * 3 + 2}s`,
-                        width: `${Math.random() * 20 + 10}px`,
-                        height: `${Math.random() * 20 + 10}px`,
+                        width: `${Math.random() * 30 + 20}px`,
+                        height: `${Math.random() * 30 + 20}px`,
                         opacity: Math.random() * 0.5
                     }}
                 />
              ))}
-             {[...Array(15)].map((_, i) => (
+             {[...Array(30)].map((_, i) => (
                 <Star 
-                    key={i + 20}
+                    key={i + 40}
                     className="absolute text-yellow-300/40 animate-spin" 
                     style={{
                         top: `${Math.random() * 100}%`,
                         left: `${Math.random() * 100}%`,
                         animationDuration: `${Math.random() * 10 + 10}s`,
-                        width: `${Math.random() * 15 + 5}px`,
-                        height: `${Math.random() * 15 + 5}px`,
+                        width: `${Math.random() * 20 + 10}px`,
+                        height: `${Math.random() * 20 + 10}px`,
                     }}
                 />
              ))}
@@ -563,7 +563,7 @@ const ChristmasLanding = () => {
               <div>
                   <Button 
                     onClick={scrollToPricing}
-                    className="bg-green-600 hover:bg-green-500 text-white font-black text-lg md:text-2xl py-8 px-8 md:px-16 rounded-full shadow-[0_0_40px_rgba(22,163,74,0.6)] transform transition animate-scale-pulse hover:scale-110 active:scale-95 border-4 border-green-500/50"
+                    className="bg-green-600 hover:bg-green-500 text-white font-black text-lg md:text-2xl py-8 px-8 md:px-16 rounded-full shadow-[0_0_40px_rgba(22,163,74,0.6)] transform transition animate-scale-pulse hover:scale-110 active:scale-95 border-4 border-green-500/50 whitespace-normal h-auto leading-tight"
                   >
                     QUERO VIVER UM NATAL ESPECIAL 🎄
                   </Button>

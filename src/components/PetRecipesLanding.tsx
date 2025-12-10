@@ -81,7 +81,7 @@ const PetRecipesLanding = () => {
             </div>
 
             {/* Right Column: Video + CTA */}
-            <div className="flex flex-col items-center">
+            <div className="flex flex-col items-center text-center">
               {/* Video Placeholder */}
               <div className="relative w-full max-w-[280px] md:max-w-[320px] mx-auto aspect-[9/16] bg-slate-900/50 rounded-2xl border-4 border-white/50 shadow-2xl flex items-center justify-center mb-4 cursor-pointer group hover:border-orange-400 transition-colors">
                   <div className="absolute inset-0 bg-black/20 rounded-xl"></div>
@@ -92,9 +92,9 @@ const PetRecipesLanding = () => {
               <div className="flex flex-col w-full md:w-auto px-4">
                 <Button 
                   onClick={scrollToPricing}
-                  className="bg-orange-500 hover:bg-orange-400 text-white border-b-4 border-orange-700 font-black text-lg md:text-xl py-8 w-full md:w-auto md:px-12 rounded-full shadow-2xl transform transition flex items-center justify-center gap-2 animate-scale-pulse hover:scale-110 active:scale-95"
+                  className="bg-orange-500 hover:bg-orange-400 text-white border-b-4 border-orange-700 font-black text-lg md:text-xl py-6 md:py-8 w-full md:w-auto md:px-12 rounded-full shadow-2xl transform transition flex items-center justify-center gap-2 animate-scale-pulse hover:scale-110 active:scale-95 whitespace-normal h-auto leading-tight"
                 >
-                  SALVAR A SAÚDE DELE AGORA <ChevronRight size={24} />
+                  SALVAR A SAÚDE DELE AGORA <ChevronRight size={24} className="shrink-0" />
                 </Button>
               </div>
               <div className="mt-4 flex items-center justify-center gap-2 text-xs md:text-base text-green-200 opacity-90 font-medium">
@@ -180,7 +180,7 @@ const PetRecipesLanding = () => {
             <div className="mt-12 text-center">
                 <Button 
                 onClick={scrollToPricing} 
-                className="bg-green-600 hover:bg-green-500 text-white font-bold text-base md:text-lg px-6 md:px-8 py-6 rounded-full shadow-lg animate-scale-pulse hover:scale-110 whitespace-normal h-auto"
+                className="bg-green-600 hover:bg-green-500 text-white font-bold text-base md:text-lg px-6 md:px-8 py-6 rounded-full shadow-lg animate-scale-pulse hover:scale-110 whitespace-normal h-auto leading-tight"
                 >
                     QUERO APRENDER AS RECEITAS NATURAIS 🐾
                 </Button>
@@ -377,7 +377,7 @@ const PetRecipesLanding = () => {
                   <Feature text="BÔNUS 3: Tabela de Alimentos Proibidos" yellow />
                 </ul>
                 
-                <Button className="w-full bg-green-600 hover:bg-green-500 text-white border-b-4 border-green-800 font-black text-lg md:text-xl py-8 shadow-xl rounded-lg animate-scale-pulse hover:scale-110 transform transition active:border-b-0 active:translate-y-1">
+                <Button className="w-full bg-green-600 hover:bg-green-500 text-white border-b-4 border-green-800 font-black text-lg md:text-xl py-6 md:py-8 px-4 shadow-xl rounded-lg animate-scale-pulse hover:scale-110 transform transition active:border-b-0 active:translate-y-1 whitespace-normal h-auto leading-tight">
                   QUERO SAÚDE TOTAL PRO MEU PET
                 </Button>
                 <p className="text-xs text-slate-500 mt-4 flex items-center justify-center gap-1">
@@ -504,7 +504,7 @@ const PetRecipesLanding = () => {
            <div className="mt-8 text-center">
              <Button 
                 onClick={scrollToPricing}
-                className="bg-green-600 hover:bg-green-500 text-white font-bold px-8 py-6 rounded-full text-lg shadow-md"
+                className="bg-green-600 hover:bg-green-500 text-white font-bold px-8 py-6 rounded-full text-lg shadow-md whitespace-normal h-auto leading-tight"
              >
                 PROTEGER MEU PET SEM RISCOS
              </Button>
@@ -516,7 +516,7 @@ const PetRecipesLanding = () => {
       <section className="py-20 px-4 bg-gradient-to-br from-green-800 to-green-950 text-white text-center relative overflow-hidden">
           {/* Particles Effect */}
           <div className="absolute inset-0 pointer-events-none">
-             {[...Array(20)].map((_, i) => (
+             {[...Array(40)].map((_, i) => (
                 <PawPrint 
                     key={i}
                     className="absolute text-white/10 animate-pulse" 
@@ -524,8 +524,8 @@ const PetRecipesLanding = () => {
                         top: `${Math.random() * 100}%`,
                         left: `${Math.random() * 100}%`,
                         animationDuration: `${Math.random() * 3 + 2}s`,
-                        width: `${Math.random() * 20 + 10}px`,
-                        height: `${Math.random() * 20 + 10}px`,
+                        width: `${Math.random() * 30 + 20}px`,
+                        height: `${Math.random() * 30 + 20}px`,
                         opacity: Math.random() * 0.5,
                         transform: `rotate(${Math.random() * 360}deg)`
                     }}
@@ -553,7 +553,7 @@ const PetRecipesLanding = () => {
               <div>
                   <Button 
                     onClick={scrollToPricing}
-                    className="bg-orange-500 hover:bg-orange-400 text-white font-black text-lg md:text-2xl py-8 px-8 md:px-16 rounded-full shadow-[0_0_40px_rgba(249,115,22,0.6)] transform transition animate-scale-pulse hover:scale-110 active:scale-95 border-4 border-orange-400/50"
+                    className="bg-orange-500 hover:bg-orange-400 text-white font-black text-lg md:text-2xl py-8 px-8 md:px-16 rounded-full shadow-[0_0_40px_rgba(249,115,22,0.6)] transform transition animate-scale-pulse hover:scale-110 active:scale-95 border-4 border-orange-400/50 whitespace-normal h-auto leading-tight"
                   >
                     QUERO DAR VIDA LONGA AO MEU PET 🐾
                   </Button>
