@@ -141,7 +141,7 @@ const PetRecipesLanding = () => {
                 O Segredo que a Indústria Esconde
             </h2>
             <p className="text-center text-slate-300 max-w-2xl mx-auto mb-12">
-                A Dra. Clara Moretti descobriu que 87% das rações "premium" contêm substâncias proibidas na Europa. Seu pet pode estar ingerindo toxinas todos os dias.
+                A Dra. Sofia Almeida descobriu que 87% das rações "premium" contêm substâncias proibidas na Europa. Seu pet pode estar ingerindo toxinas todos os dias.
             </p>
 
             <div className="grid md:grid-cols-3 gap-8">
@@ -417,7 +417,7 @@ const PetRecipesLanding = () => {
                  <EnhancedTestimonial 
                     name="Dra. Ana Paula"
                     role="Veterinária"
-                    text="Sempre indico alimentação natural, mas os tutores tinham dificuldade em balancear. Esse material da Dra. Clara é perfeito, seguro e muito didático."
+                    text="Sempre indico alimentação natural, mas os tutores tinham dificuldade em balancear. Esse material da Dra. Sofia é perfeito, seguro e muito didático."
                     initials="AP"
                     color="bg-green-100 text-green-600"
                  />
