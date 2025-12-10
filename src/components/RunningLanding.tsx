@@ -51,39 +51,39 @@ const RunningLanding = () => {
 
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-blue-600 via-blue-500 to-blue-700 text-white py-8 md:py-24 px-4 overflow-hidden">
-        {/* Background Decorations - INCREASED PARTICLES & VISIBILITY */}
+        {/* Background Decorations - OPTIMIZED PARTICLES */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
            {/* Original Big Icons */}
-           <Activity className="absolute top-10 left-[10%] animate-pulse text-white opacity-40" size={40} />
-           <Timer className="absolute top-40 right-[15%] animate-pulse text-yellow-300 opacity-40" size={30} />
-           <Zap className="absolute top-20 left-[20%] text-orange-300 animate-pulse opacity-40" size={25} /> 
-           <Footprints className="absolute bottom-40 left-[5%] text-white rotate-12 opacity-30" size={60} />
-           <Trophy className="absolute top-32 right-[5%] text-yellow-300 -rotate-12 opacity-40" size={40} />
+           <Activity className="absolute top-10 left-[10%] animate-pulse text-white opacity-30" size={40} />
+           <Timer className="absolute top-40 right-[15%] animate-pulse text-yellow-300 opacity-30" size={30} />
+           <Zap className="absolute top-20 left-[20%] text-orange-300 animate-pulse opacity-30" size={25} /> 
+           <Footprints className="absolute bottom-40 left-[5%] text-white rotate-12 opacity-20" size={60} />
+           <Trophy className="absolute top-32 right-[5%] text-yellow-300 -rotate-12 opacity-30" size={40} />
            
-           {/* Generated Particle Field - High Density & Visibility */}
-           {[...Array(50)].map((_, i) => (
+           {/* Generated Particle Field - Reduced Count */}
+           {[...Array(25)].map((_, i) => (
               <Activity 
                   key={`p-${i}`}
-                  className="absolute text-white/30 animate-pulse" 
-                  size={Math.random() * 25 + 15}
+                  className="absolute text-white/10 animate-pulse" 
+                  size={Math.random() * 20 + 10}
                   style={{
                       top: `${Math.random() * 100}%`,
                       left: `${Math.random() * 100}%`,
                       animationDuration: `${Math.random() * 3 + 2}s`,
-                      opacity: Math.random() * 0.4 + 0.2,
+                      opacity: Math.random() * 0.2 + 0.1,
                   }}
               />
            ))}
-           {[...Array(30)].map((_, i) => (
+           {[...Array(15)].map((_, i) => (
               <Zap 
                   key={`z-${i}`}
-                  className="absolute text-yellow-300/40 animate-bounce" 
-                  size={Math.random() * 20 + 12}
+                  className="absolute text-yellow-300/20 animate-bounce" 
+                  size={Math.random() * 15 + 10}
                   style={{
                       top: `${Math.random() * 100}%`,
                       left: `${Math.random() * 100}%`,
                       animationDuration: `${Math.random() * 5 + 3}s`,
-                      opacity: Math.random() * 0.5 + 0.2,
+                      opacity: Math.random() * 0.2 + 0.1,
                   }}
               />
            ))}
@@ -598,9 +598,9 @@ const RunningLanding = () => {
 
       {/* Final CTA Section */}
       <section className="py-20 px-4 bg-gradient-to-br from-blue-900 to-slate-900 text-white text-center relative overflow-hidden">
-          {/* Particles Effect */}
+          {/* Particles Effect - REDUCED */}
           <div className="absolute inset-0 pointer-events-none">
-             {[...Array(40)].map((_, i) => (
+             {[...Array(20)].map((_, i) => (
                 <Activity 
                     key={i}
                     className="absolute text-white/10 animate-pulse" 

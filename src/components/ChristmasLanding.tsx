@@ -54,7 +54,7 @@ const ChristmasLanding = () => {
 
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-red-700 via-red-600 to-red-800 text-white py-8 md:py-24 px-4 overflow-hidden">
-        {/* Background Decorations - INCREASED PARTICLES */}
+        {/* Background Decorations - OPTIMIZED PARTICLES */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
            {/* Original Big Icons */}
            <Snowflake className="absolute top-10 left-[10%] animate-bounce text-white opacity-40" size={40} />
@@ -66,8 +66,8 @@ const ChristmasLanding = () => {
            <TreePine className="absolute bottom-0 left-0 text-green-900 opacity-60" size={120} />
            <TreePine className="absolute bottom-0 right-0 text-green-900 opacity-60" size={100} />
 
-           {/* Generated Particle Field - SNOW & STARS */}
-           {[...Array(40)].map((_, i) => (
+           {/* Generated Particle Field - REDUCED COUNT */}
+           {[...Array(20)].map((_, i) => (
               <Snowflake 
                   key={`s-${i}`}
                   className="absolute text-white/20 animate-pulse" 
@@ -80,7 +80,7 @@ const ChristmasLanding = () => {
                   }}
               />
            ))}
-           {[...Array(20)].map((_, i) => (
+           {[...Array(10)].map((_, i) => (
               <Star 
                   key={`st-${i}`}
                   className="absolute text-yellow-300/30 animate-spin" 
@@ -541,9 +541,9 @@ const ChristmasLanding = () => {
 
       {/* Final CTA Red Section with Particles */}
       <section className="py-20 px-4 bg-gradient-to-br from-red-600 to-red-800 text-white text-center relative overflow-hidden">
-          {/* Particles Effect */}
+          {/* Particles Effect - REDUCED */}
           <div className="absolute inset-0 pointer-events-none">
-             {[...Array(40)].map((_, i) => (
+             {[...Array(20)].map((_, i) => (
                 <Snowflake 
                     key={i}
                     className="absolute text-white/20 animate-pulse" 
@@ -557,7 +557,7 @@ const ChristmasLanding = () => {
                     }}
                 />
              ))}
-             {[...Array(30)].map((_, i) => (
+             {[...Array(15)].map((_, i) => (
                 <Star 
                     key={i + 40}
                     className="absolute text-yellow-300/40 animate-spin" 
