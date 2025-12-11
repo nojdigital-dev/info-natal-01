@@ -153,7 +153,7 @@ const RunningLanding = () => {
               {/* Right Column: Video + CTA */}
               <div className="flex flex-col items-center">
                 {/* Image Placeholder */}
-                <div className="relative w-full max-w-[280px] md:max-w-[320px] mx-auto aspect-[9/16] rounded-2xl shadow-2xl flex items-center justify-center mb-4">
+                <div className="relative w-full max-w-[280px] md:max-w-[320px] mx-auto aspect-square rounded-2xl shadow-2xl flex items-center justify-center mb-4">
                     <img 
                         src="https://i.imgur.com/KdmTqto.jpeg" 
                         alt="Corredor em movimento sem dores" 

@@ -155,7 +155,7 @@ const PetRecipesLanding = () => {
               {/* Right Column: Video + CTA */}
               <div className="flex flex-col items-center text-center">
                 {/* Image Placeholder */}
-                <div className="relative w-full max-w-[280px] md:max-w-[320px] mx-auto aspect-[9/16] bg-slate-900/50 rounded-2xl border-4 border-white/50 shadow-2xl flex items-center justify-center mb-4 group hover:border-orange-400 transition-colors">
+                <div className="relative w-full max-w-[280px] md:max-w-[320px] mx-auto aspect-square bg-slate-900/50 rounded-2xl border-4 border-white/50 shadow-2xl flex items-center justify-center mb-4 group hover:border-orange-400 transition-colors">
                     <img 
                         src="https://i.imgur.com/kpQ3z8I.jpeg" 
                         alt="Cachorro feliz comendo comida natural" 
