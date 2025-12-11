@@ -159,11 +159,13 @@ const ChristmasLanding = () => {
 
               {/* Right Column: Video + CTA */}
               <div className="flex flex-col items-center">
-                {/* Video Placeholder */}
-                <div className="relative w-full max-w-[280px] md:max-w-[320px] mx-auto aspect-[9/16] bg-slate-900/50 rounded-2xl border-4 border-white/50 shadow-2xl flex items-center justify-center mb-4 cursor-pointer group hover:border-yellow-400 transition-colors">
-                    <div className="absolute inset-0 bg-black/20 rounded-xl"></div>
-                    <PlayCircle size={64} className="text-white/70 group-hover:text-white/90 transition-colors" />
-                    <p className="absolute bottom-4 text-white text-xs font-semibold bg-black/30 px-2 py-1 rounded">Assista ao vídeo!</p>
+                {/* Image Placeholder */}
+                <div className="relative w-full max-w-[280px] md:max-w-[320px] mx-auto aspect-[9/16] bg-slate-900/50 rounded-2xl border-4 border-white/50 shadow-2xl flex items-center justify-center mb-4 group hover:border-yellow-400 transition-colors">
+                    <img 
+                        src="https://i.imgur.com/CkzUmzk.jpeg" 
+                        alt="Amostra das Lembrancinhas de Natal" 
+                        className="rounded-xl object-cover w-full h-full"
+                    />
                 </div>
 
                 <div className="flex flex-col w-full md:w-auto px-4">

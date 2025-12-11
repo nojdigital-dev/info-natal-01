@@ -152,16 +152,13 @@ const RunningLanding = () => {
 
               {/* Right Column: Video + CTA */}
               <div className="flex flex-col items-center">
-                {/* Video Placeholder */}
-                <div className="relative w-full max-w-[280px] md:max-w-[320px] mx-auto aspect-[9/16] bg-slate-900/50 rounded-2xl border-4 border-white/50 shadow-2xl flex items-center justify-center mb-4 cursor-pointer group hover:border-yellow-400 transition-colors">
-                    <div className="absolute inset-0 bg-black/40 rounded-xl"></div>
-                    <PlayCircle size={64} className="text-white/80 group-hover:text-white transition-colors" />
-                    <p className="absolute bottom-4 text-white text-xs font-semibold bg-black/30 px-2 py-1 rounded">Ver transformação de alunos</p>
-                    
-                    {/* Mock Player UI */}
-                    <div className="absolute bottom-12 left-4 right-4 h-1 bg-white/30 rounded-full overflow-hidden">
-                      <div className="h-full w-1/3 bg-orange-500"></div>
-                    </div>
+                {/* Image Placeholder */}
+                <div className="relative w-full max-w-[280px] md:max-w-[320px] mx-auto aspect-[9/16] rounded-2xl shadow-2xl flex items-center justify-center mb-4">
+                    <img 
+                        src="https://i.imgur.com/KdmTqto.jpeg" 
+                        alt="Corredor em movimento sem dores" 
+                        className="rounded-2xl object-cover w-full h-full"
+                    />
                 </div>
 
                 <div className="flex flex-col w-full md:w-auto px-4">
