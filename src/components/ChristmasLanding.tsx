@@ -9,6 +9,7 @@ import {
   Heart, Zap, Snowflake, Lock, ChevronRight, PartyPopper, Printer, Scissors, MessageCircle, Users, Smile, PlayCircle
 } from "lucide-react";
 import UpsellModal from './UpsellModal';
+import UtmifyScript from './UtmifyScript';
 
 // Importing images directly
 import bonusReceitas from '@/assets/images/bonus-receitas.png';
@@ -87,6 +88,7 @@ const ChristmasLanding = () => {
         <meta property="og:description" content="Surpreenda neste Natal sem gastar muito com presentes caros. Baixe, imprima e monte lembrancinhas lindas em minutos!" />
         <meta property="og:image" content="/images/bonus-decoracao.png" />
       </Helmet>
+      <UtmifyScript />
       <div className="min-h-screen bg-white font-sans text-slate-900 overflow-x-hidden">
         
         {/* Top Notification Bar */}

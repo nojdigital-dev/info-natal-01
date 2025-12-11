@@ -11,6 +11,7 @@ import {
   Medal, Flame
 } from "lucide-react";
 import RunningUpsellModal from './RunningUpsellModal';
+import UtmifyScript from './UtmifyScript';
 
 declare global {
   interface Window {
@@ -83,6 +84,7 @@ const RunningLanding = () => {
         <meta property="og:title" content="Método SDC - Corra Sem Dores e Quebre Seus Recordes" />
         <meta property="og:description" content="Fortaleça, previna e trate lesões da corrida de forma simples. O ajuste biomecânico que já salvou mais de 9.000 corredores." />
       </Helmet>
+      <UtmifyScript />
       <div className="min-h-screen bg-white font-sans text-slate-900 overflow-x-hidden">
         
         {/* Top Notification Bar - ORANGE as requested */}

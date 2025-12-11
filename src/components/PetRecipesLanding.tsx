@@ -10,6 +10,7 @@ import {
   PawPrint, Bone, Utensils, Apple, Info, AlertTriangle, Syringe
 } from "lucide-react";
 import PetUpsellModal from './PetUpsellModal';
+import UtmifyScript from './UtmifyScript';
 
 declare global {
   interface Window {
@@ -82,6 +83,7 @@ const PetRecipesLanding = () => {
         <meta property="og:title" content="Receitas Naturais para Pets - Saúde e Longevidade" />
         <meta property="og:description" content="Devolva a energia do seu melhor amigo com receitas naturais, simples e baratas. Aprovado por veterinários." />
       </Helmet>
+      <UtmifyScript />
       <div className="min-h-screen bg-white font-sans text-slate-900 overflow-x-hidden">
         
         {/* Top Notification Bar */}
