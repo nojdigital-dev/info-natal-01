@@ -8,7 +8,7 @@
   ],
   "build": {
     "env": {
-      "NPM_FROZEN_LOCKFILE": "false"
+      "PNPM_FROZEN_LOCKFILE": "false"
     }
   }
 }
