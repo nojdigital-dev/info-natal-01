@@ -8,7 +8,6 @@ import ReceitasPets from "./pages/ReceitasPets";
 import SemDoresCorredor from "./pages/SemDoresCorredor";
 import NotFound from "./pages/NotFound";
 import Index from "./pages/Index";
-import FacebookPixel from "./components/FacebookPixel";
 
 const queryClient = new QueryClient();
 
@@ -18,7 +17,6 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <FacebookPixel />
         <Routes>
           <Route path="/natal01" element={<Natal01 />} />
           <Route path="/receitas-natural-pets" element={<ReceitasPets />} />
