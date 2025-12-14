@@ -5,8 +5,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { 
-  Check, Gift, Star, TreePine, Download, Clock, ShieldCheck, 
-  Heart, Zap, Snowflake, Lock, ChevronRight, PartyPopper, Printer, Scissors, MessageCircle, Users, Smile, PlayCircle
+  Check, Gift, Star, TreePine, Clock, ShieldCheck, 
+  Heart, Zap, Snowflake, Lock, ChevronRight, PartyPopper, Printer, Scissors, Users
 } from "lucide-react";
 import UpsellModal from './UpsellModal';
 import UtmifyScript from './UtmifyScript';
@@ -24,11 +24,38 @@ declare global {
 
 const ChristmasLanding = () => {
   const [isUpsellModalOpen, setIsUpsellModalOpen] = useState(false);
-  // Timer ajustado para 10 minutos
   const [timeLeft, setTimeLeft] = useState({ hours: 0, minutes: 10, seconds: 0 });
   const [todayDate, setTodayDate] = useState("");
 
-  // Facebook Pixel & Tracking Script
+  // Função Helper para aplicar UTMs em URLs de redirecionamento manual
+  const applyUtms = (url: string) => {
+    try {
+        const currentSearchParams = new URLSearchParams(window.location.search);
+        const paramsString = currentSearchParams.toString();
+        
+        if (!paramsString) return url;
+
+        // Lógica do SCK baseada no script fornecido
+        let sck = "";
+        const currentUrl = window.location.href;
+        if (currentUrl.indexOf("?") !== -1) {
+             const a = currentSearchParams.get("utm_source");
+             const n = currentSearchParams.get("utm_medium");
+             const o = currentSearchParams.get("utm_campaign");
+             const m = currentSearchParams.get("utm_term");
+             const c = currentSearchParams.get("utm_content");
+             sck = `&sck=${a || ""}|${n || ""}|${o || ""}|${m || ""}|${c || ""}`;
+        }
+
+        const separator = url.indexOf("?") === -1 ? "?" : "&";
+        return `${url}${separator}${paramsString}${sck}`;
+    } catch (e) {
+        console.error("Erro ao aplicar UTMs:", e);
+        return url;
+    }
+  };
+
+  // Facebook Pixel & Tracking Script para links <a>
   useEffect(() => {
     // 1. Facebook Pixel
     const script = document.createElement('script');
@@ -50,7 +77,7 @@ const ChristmasLanding = () => {
     noscript.innerHTML = `<img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1422521156061159&ev=PageView&noscript=1" />`;
     document.head.appendChild(noscript);
 
-    // 2. UTM & SCK Tracking Script
+    // 2. UTM & SCK Tracking Script (Para tags <a> existentes)
     const prefix = ["https://pay.lowify.com.br"];
 
     function getParams() {
@@ -67,7 +94,6 @@ const ChristmasLanding = () => {
                 if (e.indexOf("?") !== -1) {
                     t = `&sck=${a || ""}|${n || ""}|${o || ""}|${m || ""}|${c || ""}`;
                 }
-                console.log(t);
             }
         } catch (err) {
             console.error(err);
@@ -108,7 +134,6 @@ const ChristmasLanding = () => {
       });
     }, 1000);
 
-    // Format today's date
     const date = new Date();
     const options: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'long' };
     setTodayDate(date.toLocaleDateString('pt-BR', options));
@@ -140,9 +165,8 @@ const ChristmasLanding = () => {
 
         {/* Hero Section */}
         <section className="relative bg-gradient-to-br from-red-700 via-red-600 to-red-800 text-white py-8 md:py-24 px-4 overflow-hidden">
-          {/* Background Decorations - OPTIMIZED PARTICLES */}
+          {/* Background Decorations */}
           <div className="absolute inset-0 pointer-events-none overflow-hidden">
-            {/* Original Big Icons */}
             <Snowflake className="absolute top-10 left-[10%] animate-bounce text-white opacity-40" size={40} />
             <Snowflake className="absolute top-40 right-[15%] animate-pulse text-blue-100 opacity-40" size={30} />
             <Star className="absolute top-20 left-[20%] text-yellow-300 animate-pulse opacity-50" size={25} /> 
@@ -152,7 +176,6 @@ const ChristmasLanding = () => {
             <TreePine className="absolute bottom-0 left-0 text-green-900 opacity-60" size={120} />
             <TreePine className="absolute bottom-0 right-0 text-green-900 opacity-60" size={100} />
 
-            {/* Generated Particle Field - REDUCED COUNT */}
             {[...Array(20)].map((_, i) => (
                 <Snowflake 
                     key={`s-${i}`}
@@ -183,7 +206,6 @@ const ChristmasLanding = () => {
 
           <div className="max-w-6xl mx-auto relative z-10">
             <div className="grid md:grid-cols-2 gap-4 md:gap-12 items-center">
-              {/* Left Column: Text */}
               <div className="text-center md:text-left">
                 <Badge className="bg-white text-red-700 hover:bg-slate-100 mb-4 px-6 py-2 text-base md:text-lg font-bold shadow-lg transform -rotate-2">
                   🎄 O Natal já começou!
@@ -201,9 +223,7 @@ const ChristmasLanding = () => {
                 </p>
               </div>
 
-              {/* Right Column: Video + CTA */}
               <div className="flex flex-col items-center">
-                {/* Image Placeholder */}
                 <div className="relative w-full max-w-[280px] md:max-w-[320px] mx-auto aspect-square bg-slate-900/50 rounded-2xl border-4 border-white/50 shadow-2xl flex items-center justify-center mb-4 group hover:border-yellow-400 transition-colors">
                     <img 
                         src="https://i.imgur.com/CkzUmzk.jpeg" 
@@ -264,7 +284,6 @@ const ChristmasLanding = () => {
                   Por Que Escolher Nossas Lembrancinhas?
               </h2>
               <div className="grid md:grid-cols-3 gap-8">
-                  {/* Card 1 */}
                   <div className="bg-green-800 p-8 rounded-2xl border border-green-700 hover:border-yellow-400/50 transition-colors text-center">
                       <div className="bg-white/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 text-yellow-300">
                           <Users size={32} />
@@ -274,7 +293,6 @@ const ChristmasLanding = () => {
                           Presenteie todos os amigos, familiares e colegas sem estourar o orçamento. Nossas lembrancinhas custam centavos para imprimir!
                       </p>
                   </div>
-                  {/* Card 2 */}
                   <div className="bg-green-800 p-8 rounded-2xl border border-green-700 hover:border-yellow-400/50 transition-colors text-center">
                       <div className="bg-white/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 text-red-400">
                           <Heart size={32} fill="currentColor" />
@@ -284,7 +302,6 @@ const ChristmasLanding = () => {
                           Nada tem mais valor do que um presente feito à mão. Mostre que você se importa dedicando seu tempo para montar cada mimo.
                       </p>
                   </div>
-                  {/* Card 3 */}
                   <div className="bg-green-800 p-8 rounded-2xl border border-green-700 hover:border-yellow-400/50 transition-colors text-center">
                       <div className="bg-white/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 text-yellow-300">
                           <Star size={32} fill="currentColor" />
@@ -344,7 +361,6 @@ const ChristmasLanding = () => {
               </div>
             </div>
 
-            {/* Big Checklist */}
             <div className="bg-white p-6 md:p-8 rounded-2xl border-2 border-slate-200 shadow-sm">
               <h3 className="text-xl font-bold text-slate-800 mb-6 flex items-center gap-2">
                   <Check className="text-green-600" /> Resumo do Pacote Completo:
@@ -425,7 +441,6 @@ const ChristmasLanding = () => {
         <section id="pricing" className="py-12 md:py-16 px-4 bg-slate-100">
           <div className="max-w-5xl mx-auto">
             
-            {/* Pitch & Countdown */}
             <div className="text-center mb-10">
               <div className="inline-block bg-red-600 text-white px-6 py-2 rounded-xl shadow-xl mb-8 transform hover:scale-105 transition-transform">
                   <div className="text-xs md:text-sm font-bold uppercase tracking-wider mb-1 text-red-100">⏰ ESTA OFERTA EXPIRA EM:</div>
@@ -631,7 +646,6 @@ const ChristmasLanding = () => {
 
         {/* Final CTA Red Section with Particles */}
         <section className="py-20 px-4 bg-gradient-to-br from-red-600 to-red-800 text-white text-center relative overflow-hidden">
-            {/* Particles Effect - REDUCED */}
             <div className="absolute inset-0 pointer-events-none">
               {[...Array(20)].map((_, i) => (
                   <Snowflake 
@@ -713,10 +727,10 @@ const ChristmasLanding = () => {
           isOpen={isUpsellModalOpen}
           onClose={() => setIsUpsellModalOpen(false)}
           onConfirm={() => {
-              window.location.href = 'https://pay.lowify.com.br/go.php?offer=b0ol57g';
+              window.location.href = applyUtms('https://pay.lowify.com.br/go.php?offer=b0ol57g');
           }}
           onReject={() => {
-              window.location.href = 'https://pay.lowify.com.br/checkout?product_id=JGEKFU';
+              window.location.href = applyUtms('https://pay.lowify.com.br/checkout?product_id=JGEKFU');
           }}
         />
       </div>

@@ -20,9 +20,36 @@ declare global {
 
 const PetRecipesLanding = () => {
   const [isUpsellModalOpen, setIsUpsellModalOpen] = useState(false);
-  // Timer ajustado para 10 minutos
   const [timeLeft, setTimeLeft] = useState({ hours: 0, minutes: 10, seconds: 0 });
   const [todayDate, setTodayDate] = useState("");
+
+  // Função Helper para aplicar UTMs em URLs de redirecionamento manual
+  const applyUtms = (url: string) => {
+    try {
+        const currentSearchParams = new URLSearchParams(window.location.search);
+        const paramsString = currentSearchParams.toString();
+        
+        if (!paramsString) return url;
+
+        // Lógica do SCK baseada no script fornecido
+        let sck = "";
+        const currentUrl = window.location.href;
+        if (currentUrl.indexOf("?") !== -1) {
+             const a = currentSearchParams.get("utm_source");
+             const n = currentSearchParams.get("utm_medium");
+             const o = currentSearchParams.get("utm_campaign");
+             const m = currentSearchParams.get("utm_term");
+             const c = currentSearchParams.get("utm_content");
+             sck = `&sck=${a || ""}|${n || ""}|${o || ""}|${m || ""}|${c || ""}`;
+        }
+
+        const separator = url.indexOf("?") === -1 ? "?" : "&";
+        return `${url}${separator}${paramsString}${sck}`;
+    } catch (e) {
+        console.error("Erro ao aplicar UTMs:", e);
+        return url;
+    }
+  };
 
   // Facebook Pixel & Tracking Script
   useEffect(() => {
@@ -63,7 +90,6 @@ const PetRecipesLanding = () => {
                 if (e.indexOf("?") !== -1) {
                     t = `&sck=${a || ""}|${n || ""}|${o || ""}|${m || ""}|${c || ""}`;
                 }
-                console.log(t);
             }
         } catch (err) {
             console.error(err);
@@ -104,7 +130,6 @@ const PetRecipesLanding = () => {
       });
     }, 1000);
 
-    // Format today's date
     const date = new Date();
     const options: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'long' };
     setTodayDate(date.toLocaleDateString('pt-BR', options));
@@ -135,9 +160,7 @@ const PetRecipesLanding = () => {
 
         {/* Hero Section */}
         <section className="relative bg-gradient-to-br from-green-700 via-green-600 to-green-800 text-white py-8 md:py-24 px-4 overflow-hidden">
-          {/* Background Decorations - OPTIMIZED PARTICLES */}
           <div className="absolute inset-0 pointer-events-none overflow-hidden">
-            {/* Original Big Icons */}
             <PawPrint className="absolute top-10 left-[10%] animate-bounce text-white opacity-40" size={40} />
             <PawPrint className="absolute top-40 right-[15%] animate-pulse text-green-100 opacity-40" size={30} />
             <Bone className="absolute top-20 left-[20%] text-orange-200 animate-pulse opacity-40" size={25} /> 
@@ -145,7 +168,6 @@ const PetRecipesLanding = () => {
             <Heart className="absolute bottom-40 left-[5%] text-white rotate-12 opacity-30" size={50} />
             <Heart className="absolute top-32 right-[5%] text-orange-200 -rotate-12 opacity-40" size={40} />
 
-            {/* Generated Particle Field - Reduced Count */}
             {[...Array(25)].map((_, i) => (
                 <PawPrint 
                     key={`p-${i}`}
@@ -178,7 +200,6 @@ const PetRecipesLanding = () => {
 
           <div className="max-w-6xl mx-auto relative z-10">
             <div className="grid md:grid-cols-2 gap-4 md:gap-12 items-center">
-              {/* Left Column: Text */}
               <div className="text-center md:text-left">
                 <Badge className="bg-white text-green-700 hover:bg-slate-100 mb-4 px-6 py-2 text-base md:text-lg font-bold shadow-lg transform -rotate-2">
                   🐶 Saúde e Longevidade
@@ -196,9 +217,7 @@ const PetRecipesLanding = () => {
                 </p>
               </div>
 
-              {/* Right Column: Video + CTA */}
               <div className="flex flex-col items-center text-center">
-                {/* Image Placeholder */}
                 <div className="relative w-full max-w-[280px] md:max-w-[320px] mx-auto aspect-square bg-slate-900/50 rounded-2xl border-4 border-white/50 shadow-2xl flex items-center justify-center mb-4 group hover:border-orange-400 transition-colors">
                     <img 
                         src="https://i.imgur.com/kpQ3z8I.jpeg" 
@@ -263,7 +282,6 @@ const PetRecipesLanding = () => {
               </p>
 
               <div className="grid md:grid-cols-3 gap-8">
-                  {/* Card 1 */}
                   <div className="bg-slate-800 p-8 rounded-2xl border border-slate-700 hover:border-orange-400/50 transition-colors text-center">
                       <div className="bg-white/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 text-orange-300">
                           <Zap size={32} />
@@ -273,7 +291,6 @@ const PetRecipesLanding = () => {
                           Em poucos dias, tutores relatam que seus pets voltam a brincar como filhotes. O corpo desinflama e a disposição volta.
                       </p>
                   </div>
-                  {/* Card 2 */}
                   <div className="bg-slate-800 p-8 rounded-2xl border border-slate-700 hover:border-orange-400/50 transition-colors text-center">
                       <div className="bg-white/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 text-green-400">
                           <Heart size={32} fill="currentColor" />
@@ -283,7 +300,6 @@ const PetRecipesLanding = () => {
                           Coceiras, quedas de pelo e problemas de pele muitas vezes somem apenas trocando a ração processada por comida natural.
                       </p>
                   </div>
-                  {/* Card 3 */}
                   <div className="bg-slate-800 p-8 rounded-2xl border border-slate-700 hover:border-orange-400/50 transition-colors text-center">
                       <div className="bg-white/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6 text-orange-300">
                           <Users size={32} fill="currentColor" />
@@ -424,7 +440,6 @@ const PetRecipesLanding = () => {
         <section id="pricing" className="py-12 md:py-16 px-4 bg-slate-100">
           <div className="max-w-5xl mx-auto">
             
-            {/* Pitch & Countdown */}
             <div className="text-center mb-10">
               <div className="inline-block bg-red-600 text-white px-6 py-2 rounded-xl shadow-xl mb-8 transform hover:scale-105 transition-transform">
                   <div className="text-xs md:text-sm font-bold uppercase tracking-wider mb-1 text-red-100">⏰ ESTA OFERTA EXPIRA EM:</div>
@@ -704,10 +719,10 @@ const PetRecipesLanding = () => {
           isOpen={isUpsellModalOpen}
           onClose={() => setIsUpsellModalOpen(false)}
           onConfirm={() => {
-              window.location.href = 'https://pay.lowify.com.br/go.php?offer=d5rm24l';
+              window.location.href = applyUtms('https://pay.lowify.com.br/go.php?offer=d5rm24l');
           }}
           onReject={() => {
-              window.location.href = 'https://pay.lowify.com.br/checkout?product_id=T4PKqS';
+              window.location.href = applyUtms('https://pay.lowify.com.br/checkout?product_id=T4PKqS');
           }}
         />
       </div>

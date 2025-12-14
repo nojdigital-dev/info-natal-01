@@ -21,9 +21,36 @@ declare global {
 
 const RunningLanding = () => {
   const [isUpsellModalOpen, setIsUpsellModalOpen] = useState(false);
-  // Timer ajustado para 10 minutos
   const [timeLeft, setTimeLeft] = useState({ hours: 0, minutes: 10, seconds: 0 });
   const [todayDate, setTodayDate] = useState("");
+
+  // Função Helper para aplicar UTMs em URLs de redirecionamento manual
+  const applyUtms = (url: string) => {
+    try {
+        const currentSearchParams = new URLSearchParams(window.location.search);
+        const paramsString = currentSearchParams.toString();
+        
+        if (!paramsString) return url;
+
+        // Lógica do SCK baseada no script fornecido
+        let sck = "";
+        const currentUrl = window.location.href;
+        if (currentUrl.indexOf("?") !== -1) {
+             const a = currentSearchParams.get("utm_source");
+             const n = currentSearchParams.get("utm_medium");
+             const o = currentSearchParams.get("utm_campaign");
+             const m = currentSearchParams.get("utm_term");
+             const c = currentSearchParams.get("utm_content");
+             sck = `&sck=${a || ""}|${n || ""}|${o || ""}|${m || ""}|${c || ""}`;
+        }
+
+        const separator = url.indexOf("?") === -1 ? "?" : "&";
+        return `${url}${separator}${paramsString}${sck}`;
+    } catch (e) {
+        console.error("Erro ao aplicar UTMs:", e);
+        return url;
+    }
+  };
 
   // Facebook Pixel & Tracking Script
   useEffect(() => {
@@ -64,7 +91,6 @@ const RunningLanding = () => {
                 if (e.indexOf("?") !== -1) {
                     t = `&sck=${a || ""}|${n || ""}|${o || ""}|${m || ""}|${c || ""}`;
                 }
-                console.log(t);
             }
         } catch (err) {
             console.error(err);
@@ -105,7 +131,6 @@ const RunningLanding = () => {
       });
     }, 1000);
 
-    // Format today's date
     const date = new Date();
     const options: Intl.DateTimeFormatOptions = { day: 'numeric', month: 'long' };
     setTodayDate(date.toLocaleDateString('pt-BR', options));
@@ -136,16 +161,13 @@ const RunningLanding = () => {
 
         {/* Hero Section */}
         <section className="relative bg-gradient-to-br from-blue-600 via-blue-500 to-blue-700 text-white py-8 md:py-24 px-4 overflow-hidden">
-          {/* Background Decorations - OPTIMIZED PARTICLES */}
           <div className="absolute inset-0 pointer-events-none overflow-hidden">
-            {/* Original Big Icons */}
             <Activity className="absolute top-10 left-[10%] animate-pulse text-white opacity-30" size={40} />
             <Timer className="absolute top-40 right-[15%] animate-pulse text-yellow-300 opacity-30" size={30} />
             <Zap className="absolute top-20 left-[20%] text-orange-300 animate-pulse opacity-30" size={25} /> 
             <Footprints className="absolute bottom-40 left-[5%] text-white rotate-12 opacity-20" size={60} />
             <Trophy className="absolute top-32 right-[5%] text-yellow-300 -rotate-12 opacity-30" size={40} />
             
-            {/* Generated Particle Field - Reduced Count */}
             {[...Array(25)].map((_, i) => (
                 <Activity 
                     key={`p-${i}`}
@@ -176,7 +198,6 @@ const RunningLanding = () => {
 
           <div className="max-w-6xl mx-auto relative z-10">
             <div className="grid md:grid-cols-2 gap-4 md:gap-12 items-center">
-              {/* Left Column: Text */}
               <div className="text-center md:text-left">
                 <Badge className="bg-orange-500 text-white hover:bg-orange-600 mb-4 px-6 py-2 text-base md:text-lg font-bold shadow-lg transform -rotate-2 border-2 border-white">
                   🚀 Método SDC: Sem Dores Corredor
@@ -194,9 +215,7 @@ const RunningLanding = () => {
                 </p>
               </div>
 
-              {/* Right Column: Video + CTA */}
               <div className="flex flex-col items-center">
-                {/* Image Placeholder */}
                 <div className="relative w-full max-w-[280px] md:max-w-[320px] mx-auto aspect-square rounded-2xl shadow-2xl flex items-center justify-center mb-4">
                     <img 
                         src="https://i.imgur.com/KdmTqto.jpeg" 
@@ -470,7 +489,6 @@ const RunningLanding = () => {
         <section id="pricing" className="py-12 md:py-16 px-4 bg-slate-100">
           <div className="max-w-5xl mx-auto">
             
-            {/* Pitch & Countdown */}
             <div className="text-center mb-10">
               <div className="inline-block bg-red-600 text-white px-6 py-2 rounded-xl shadow-xl mb-8 transform hover:scale-105 transition-transform">
                   <div className="text-xs md:text-sm font-bold uppercase tracking-wider mb-1 text-red-100">⏰ PREÇO SOBE EM:</div>
@@ -751,10 +769,10 @@ const RunningLanding = () => {
           isOpen={isUpsellModalOpen}
           onClose={() => setIsUpsellModalOpen(false)}
           onConfirm={() => {
-              window.location.href = 'https://pay.lowify.com.br/go.php?offer=g8vujok';
+              window.location.href = applyUtms('https://pay.lowify.com.br/go.php?offer=g8vujok');
           }}
           onReject={() => {
-              window.location.href = 'https://pay.lowify.com.br/checkout?product_id=8Ev48V';
+              window.location.href = applyUtms('https://pay.lowify.com.br/checkout?product_id=8Ev48V');
           }}
         />
       </div>
