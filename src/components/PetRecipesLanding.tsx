@@ -24,8 +24,9 @@ const PetRecipesLanding = () => {
   const [timeLeft, setTimeLeft] = useState({ hours: 0, minutes: 10, seconds: 0 });
   const [todayDate, setTodayDate] = useState("");
 
-  // Facebook Pixel
+  // Facebook Pixel & Tracking Script
   useEffect(() => {
+    // 1. Facebook Pixel
     const script = document.createElement('script');
     script.innerHTML = `
       !function(f,b,e,v,n,t,s)
@@ -44,6 +45,47 @@ const PetRecipesLanding = () => {
     const noscript = document.createElement('noscript');
     noscript.innerHTML = `<img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1364692138479827&ev=PageView&noscript=1" />`;
     document.head.appendChild(noscript);
+
+    // 2. UTM & SCK Tracking Script
+    const prefix = ["https://pay.lowify.com.br"];
+
+    function getParams() {
+        let t = "";
+        const e = window.top?.location.href || window.location.href;
+        try {
+            const r = new URL(e);
+            if (r) {
+                const a = r.searchParams.get("utm_source"),
+                    n = r.searchParams.get("utm_medium"),
+                    o = r.searchParams.get("utm_campaign"),
+                    m = r.searchParams.get("utm_term"),
+                    c = r.searchParams.get("utm_content");
+                if (e.indexOf("?") !== -1) {
+                    t = `&sck=${a || ""}|${n || ""}|${o || ""}|${m || ""}|${c || ""}`;
+                }
+                console.log(t);
+            }
+        } catch (err) {
+            console.error(err);
+        }
+        return t;
+    }
+
+    const t = new URLSearchParams(window.location.search);
+    if (t.toString()) {
+        const links = document.querySelectorAll("a");
+        links.forEach((e) => {
+            for (let r = 0; r < prefix.length; r++) {
+                if (e.href.indexOf(prefix[r]) !== -1) {
+                    if (e.href.indexOf("?") === -1) {
+                        e.href += "?" + t.toString() + getParams();
+                    } else {
+                        e.href += "&" + t.toString() + getParams();
+                    }
+                }
+            }
+        });
+    }
 
     return () => {
       document.head.removeChild(script);
