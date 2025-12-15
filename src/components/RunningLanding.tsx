@@ -8,7 +8,7 @@ import {
   Check, Star, Activity, ShieldCheck, 
   Heart, Zap, ChevronRight, Users, PlayCircle,
   Timer, Trophy, Footprints, AlertCircle, TrendingUp, Dumbbell,
-  Medal, Flame
+  Medal, Flame, AlertTriangle
 } from "lucide-react";
 import RunningUpsellModal from './RunningUpsellModal';
 import UtmifyScript from './UtmifyScript';
@@ -243,8 +243,8 @@ const RunningLanding = () => {
         {/* NEW: Alert/Attention Section (Substituted text) */}
         <section className="py-12 bg-yellow-50 border-b border-yellow-200">
           <div className="max-w-4xl mx-auto px-4 text-center">
-              <div className="inline-block bg-red-600 text-white px-4 py-1 rounded font-bold text-sm uppercase mb-6 shadow-sm">
-                  ⚠️ A Verdade Que Ninguém Te Conta
+              <div className="inline-flex items-center gap-2 bg-red-600 text-white px-4 py-1 rounded font-bold text-sm uppercase mb-6 shadow-sm">
+                  <AlertTriangle size={18} className="text-yellow-300" /> A Verdade Que Ninguém Te Conta
               </div>
               <h2 className="text-2xl md:text-4xl font-extrabold text-slate-800 mb-6 leading-tight">
                   Entenda de uma vez por todas... <br/>
@@ -258,56 +258,6 @@ const RunningLanding = () => {
               <p className="text-base md:text-lg text-slate-600 max-w-2xl mx-auto">
                   É exatamente por isso que você precisa do <strong>MÉTODO SDC</strong>. Não é sobre correr menos, é sobre correr com a técnica que o seu corpo precisa para não quebrar.
               </p>
-          </div>
-        </section>
-
-        {/* NEW: Who is this for Section (Detailed List) */}
-        <section className="py-16 bg-white">
-          <div className="max-w-5xl mx-auto px-4">
-              <h2 className="text-2xl md:text-3xl font-black text-center text-blue-900 mb-10 uppercase tracking-tight">
-                  O Método SDC foi desenhado exclusivamente para:
-              </h2>
-              
-              <div className="grid md:grid-cols-2 gap-4">
-                  <TargetAudienceItem 
-                      icon={<AlertCircle className="text-red-500" />}
-                      text="Quem está tratando lesões e busca alívio imediato das dores."
-                  />
-                  <TargetAudienceItem 
-                      icon={<ShieldCheck className="text-green-500" />}
-                      text="Corredores que querem perder o medo de se machucar novamente."
-                  />
-                  <TargetAudienceItem 
-                      icon={<Activity className="text-orange-500" />}
-                      text="Quem já corre, mas sente incômodos frequentes e quer uma solução definitiva."
-                  />
-                  <TargetAudienceItem 
-                      icon={<TrendingUp className="text-blue-500" />}
-                      text="Quem busca evoluir na distância e velocidade sem 'quebrar' o corpo."
-                  />
-                  <TargetAudienceItem 
-                      icon={<Users className="text-purple-500" />}
-                      text="Treinadores e Profissionais que desejam se especializar em prevenção."
-                  />
-                  <TargetAudienceItem 
-                      icon={<Medal className="text-yellow-500" />}
-                      text="Corredores de todos os níveis (iniciantes a veteranos) que querem performance."
-                  />
-                  <TargetAudienceItem 
-                      icon={<Flame className="text-red-400" />}
-                      text="Quem já pensou em 'pendurar os tênis' por frustração ou dor."
-                  />
-                  <TargetAudienceItem 
-                      icon={<Dumbbell className="text-slate-500" />}
-                      text="Quem está cansado de treinos genéricos que não funcionam."
-                  />
-              </div>
-
-              <div className="mt-10 bg-blue-50 border border-blue-200 p-6 rounded-xl text-center">
-                  <p className="text-lg md:text-xl font-bold text-blue-800">
-                      Se você se identificou com pelo menos <span className="text-red-600 underline decoration-4 decoration-yellow-400">2 pontos acima</span>, o Método SDC é obrigatório para você.
-                  </p>
-              </div>
           </div>
         </section>
 
