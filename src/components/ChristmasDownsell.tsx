@@ -120,7 +120,7 @@ const ChristmasDownsell = () => {
 
             <div className="bg-slate-100 p-4 text-center border-t border-slate-200">
                 <a 
-                    href={applyUtms('/obrigado-natal-final-2025x26')} // Pula direto para o obrigado se negar o downsell
+                    href={applyUtms('/obgado-natal-final-2025x26')} // Pula direto para o obrigado se negar o downsell
                     className="text-xs text-slate-400 hover:text-red-500 underline decoration-slate-300 transition-colors"
                 >
                     Não, eu realmente não quero aproveitar essa oportunidade única.
