@@ -4,6 +4,8 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Natal01 from "./pages/Natal01";
+import NatalUpsell from "./pages/NatalUpsell";
+import NatalThankYou from "./pages/NatalThankYou";
 import ReceitasPets from "./pages/ReceitasPets";
 import SemDoresCorredor from "./pages/SemDoresCorredor";
 import NotFound from "./pages/NotFound";
@@ -19,6 +21,9 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/natal01" element={<Natal01 />} />
+          <Route path="/natal01-upsell01" element={<NatalUpsell />} />
+          <Route path="/obrigado-natal-final-x9z2" element={<NatalThankYou />} />
+          
           <Route path="/receitas-natural-pets" element={<ReceitasPets />} />
           <Route path="/sem-dores-corredor" element={<SemDoresCorredor />} />
           <Route path="/" element={<Index />} />
