@@ -2,10 +2,11 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Check, ShieldCheck, AlertCircle, Lock, Gift, Star, ArrowDown } from "lucide-react";
+import { Check, ShieldCheck, AlertCircle, Lock, Gift, Star, ArrowDown, VolumeX, Volume2 } from "lucide-react";
 
 const ChristmasUpsell = () => {
   const [showOffer, setShowOffer] = useState(false);
+  const [showFakePlay, setShowFakePlay] = useState(true);
   const [timeLeft, setTimeLeft] = useState(10 * 60); // 10 minutes
   const offerRef = useRef<HTMLDivElement>(null);
 
@@ -27,6 +28,7 @@ const ChristmasUpsell = () => {
     // Timer para mostrar oferta (01:38 = 98000ms)
     const timer = setTimeout(() => {
       setShowOffer(true);
+      setShowFakePlay(false); // Remove o fake play quando a oferta aparece pra limpar a tela
       // Scroll suave para o botão se necessário, mas a seta ajuda
     }, 98000);
 
@@ -39,6 +41,7 @@ const ChristmasUpsell = () => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Enter') {
         setShowOffer(true);
+        setShowFakePlay(false);
       }
     };
 
@@ -85,16 +88,35 @@ const ChristmasUpsell = () => {
           )}
 
           {/* VSL Container - 9:16 (Vertical) */}
-          {/* max-w-[340px] faz ficar com largura de celular no desktop */}
           <div className="relative w-full max-w-[340px] mx-auto aspect-[9/16] bg-black rounded-2xl shadow-2xl overflow-hidden mb-6 border-4 border-slate-800">
              <iframe 
                 src="https://player.vimeo.com/video/1144136982?h=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;title=0&amp;byline=0&amp;portrait=0&amp;sidedock=0&amp;controls=1&amp;background=1&amp;transparent=0&amp;loop=0" 
                 frameBorder="0" 
                 allow="autoplay; fullscreen; picture-in-picture; clipboard-write" 
                 title="65 Melhores Dinâmicas em Vídeo" 
-                className="absolute top-0 left-0 w-full h-full scale-[1.35] md:scale-100" // Pequeno zoom no mobile para preencher melhor se o vídeo não for nativo 9:16
+                className="absolute top-0 left-0 w-full h-full scale-[1.35] md:scale-100"
                 style={{ objectFit: 'cover' }}
              ></iframe>
+
+             {/* Fake Play Button Overlay */}
+             {showFakePlay && (
+               <div 
+                 className="absolute inset-0 z-20 flex items-center justify-center bg-black/10 cursor-pointer group"
+                 onClick={() => setShowFakePlay(false)}
+               >
+                 <div className="absolute top-10 left-0 right-0 mx-auto w-max bg-black/60 backdrop-blur-sm text-white px-4 py-2 rounded-full flex items-center gap-2 text-sm font-medium animate-in fade-in slide-in-from-top-4 duration-500">
+                    <VolumeX size={16} className="text-red-400" /> Seu vídeo já começou
+                 </div>
+                 
+                 <div className="bg-white/90 p-4 rounded-full shadow-lg scale-100 animate-pulse group-hover:scale-110 transition-transform">
+                    <Volume2 size={32} className="text-slate-900 fill-slate-900" />
+                 </div>
+                 
+                 <div className="absolute top-[55%] left-0 right-0 text-center">
+                    <span className="text-white font-bold text-shadow-sm uppercase text-xs tracking-wider bg-black/40 px-2 py-1 rounded">Clique para ouvir</span>
+                 </div>
+               </div>
+             )}
           </div>
 
           {/* Offer Section (Hidden initially) */}
@@ -112,10 +134,15 @@ const ChristmasUpsell = () => {
                 <div className="font-bold text-xl mb-1 flex items-center gap-2 text-red-600">
                   <Gift /> CONSEGUIMOS 50% DE DESCONTO!
                 </div>
-                <p className="text-lg">De <span className="line-through text-slate-400">R$ 12,90</span> <span className="font-black bg-green-600 text-white px-2 py-0.5 rounded ml-1 text-xl">POR APENAS R$ 6,00</span></p>
+                <div className="text-lg flex flex-col md:flex-row items-center gap-1 md:gap-2">
+                  <span>De <span className="line-through text-slate-400">R$ 12,90</span></span>
+                  <span className="font-black bg-green-600 text-white px-2 py-0.5 rounded text-xl md:text-xl text-center shadow-sm block w-full md:w-auto mt-1 md:mt-0">
+                    POR APENAS R$ 6,00
+                  </span>
+                </div>
               </div>
 
-              {/* Main CTA */}
+              {/* Main CTA 1 */}
               <div className="max-w-md mx-auto mb-6">
                 <Button 
                   onClick={() => window.location.href = applyUtms('https://pay.lowify.com.br/checkout.php?product_id=0QCYwH')}
@@ -136,6 +163,10 @@ const ChristmasUpsell = () => {
                     <Star className="text-yellow-400 fill-current" /> O que você vai levar agora:
                   </h3>
                   <ul className="space-y-3 text-left max-w-sm mx-auto">
+                    <li className="flex items-start gap-3 bg-green-50 p-2 rounded-md border border-green-100">
+                      <div className="bg-green-600 p-1 rounded-full"><Check className="text-white w-3 h-3" strokeWidth={4} /></div> 
+                      <span className="text-green-800 font-bold">TODO MATERIAL COMPLETO +</span>
+                    </li>
                     <li className="flex items-start gap-3">
                       <div className="bg-green-100 p-1 rounded-full"><Check className="text-green-600 w-4 h-4" /></div> 
                       <span className="text-slate-700 font-medium">100 Dinâmicas Divertidas em Vídeo</span>
@@ -156,6 +187,17 @@ const ChristmasUpsell = () => {
                 </CardContent>
               </Card>
 
+              {/* Main CTA 2 (Repetição) */}
+              <div className="max-w-md mx-auto mb-8">
+                <Button 
+                  onClick={() => window.location.href = applyUtms('https://pay.lowify.com.br/checkout.php?product_id=0QCYwH')}
+                  className="w-full bg-green-600 hover:bg-green-500 text-white font-black text-xl md:text-2xl py-8 rounded-xl shadow-[0_4px_14px_0_rgba(22,163,74,0.6)] transform transition hover:scale-105 active:scale-95 border-b-4 border-green-800 whitespace-normal h-auto leading-tight flex flex-col gap-1"
+                >
+                  <span>SIM! QUERO POR R$ 6,00</span>
+                  <span className="text-xs font-normal opacity-90 uppercase tracking-widest">Adicionar ao meu pedido agora</span>
+                </Button>
+              </div>
+
               {/* Downsell Link - Leads to Downsell Page */}
               <div className="pb-12">
                 <a 
@@ -172,7 +214,7 @@ const ChristmasUpsell = () => {
           {/* Footer Info */}
           {!showOffer && (
              <div className="mt-8 pt-6 pb-20 text-center">
-                 <p className="text-xs text-slate-400 animate-pulse">Carregando sua oferta especial...</p>
+                 <p className="text-xs text-slate-400 animate-pulse">Carregando seu material especial...</p>
              </div>
           )}
 

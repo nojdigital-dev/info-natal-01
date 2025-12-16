@@ -45,9 +45,10 @@ const ChristmasThankYou = () => {
               href="https://drive.google.com/drive/folders/1ocXy7OjqbQv1gr2nOiqNqgmfLD_modoR?usp=sharing" 
               target="_blank" 
               rel="noopener noreferrer"
+              className="block w-full"
             >
-              <Button className="w-full bg-green-600 hover:bg-green-500 text-white font-bold text-lg py-6 rounded-lg shadow-lg transform transition hover:scale-105 active:scale-95">
-                <Download className="mr-2" /> ACESSAR DRIVE AGORA
+              <Button className="w-full bg-green-600 hover:bg-green-500 text-white font-bold text-lg py-6 rounded-lg shadow-lg transform transition hover:scale-105 active:scale-95 whitespace-normal h-auto leading-tight">
+                <Download className="mr-2 shrink-0" /> ACESSAR MATERIAL AGORA
               </Button>
             </a>
           </div>

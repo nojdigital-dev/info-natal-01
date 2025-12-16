@@ -96,6 +96,9 @@ const ChristmasDownsell = () => {
                          <li className="flex items-center gap-2 text-sm text-slate-700">
                             <Check size={16} className="text-green-600 shrink-0" /> Sorteio do Pacote 2026
                          </li>
+                         <li className="flex items-center gap-2 text-sm text-slate-700">
+                            <Check size={16} className="text-green-600 shrink-0" /> Acesso Vitalício
+                         </li>
                     </ul>
                 </div>
 
