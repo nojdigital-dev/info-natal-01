@@ -43,10 +43,17 @@ const ChristmasUpsell = () => {
 
     window.addEventListener('keydown', handleKeyDown);
 
+    // Injetar o script do v.turb player
+    const script = document.createElement("script");
+    script.src = "https://scripts.converteai.net/eba76355-5284-4bc9-887e-541862b4eefe/players/6940d14daba852f9cccf8094/v4/player.js";
+    script.async = true;
+    document.head.appendChild(script);
+
     return () => {
       clearTimeout(timer);
       clearInterval(countdown);
       window.removeEventListener('keydown', handleKeyDown);
+      document.head.removeChild(script); // Limpar o script ao desmontar o componente
     };
   }, []);
 
@@ -55,7 +62,6 @@ const ChristmasUpsell = () => {
       <Helmet>
         <title>Espere! Oferta Especial de Natal</title>
         <meta name="robots" content="noindex, nofollow" />
-        {/* Removido o script do Vimeo */}
       </Helmet>
       
       <div className="min-h-screen bg-slate-50 font-sans text-slate-900 pb-20">
@@ -86,9 +92,6 @@ const ChristmasUpsell = () => {
           {/* v.turb Embed Container */}
           <div className="relative w-full max-w-[340px] mx-auto rounded-2xl shadow-2xl overflow-hidden mb-6 border-4 border-slate-800 ring-4 ring-slate-200/50">
             <vturb-smartplayer id="vid-6940d14daba852f9cccf8094" style={{display: 'block', margin: '0 auto', width: '100%', maxWidth: '400px'}}></vturb-smartplayer> 
-            <script type="text/javascript"> 
-              {`var s=document.createElement("script"); s.src="https://scripts.converteai.net/eba76355-5284-4bc9-887e-541862b4eefe/players/6940d14daba852f9cccf8094/v4/player.js", s.async=!0,document.head.appendChild(s);`}
-            </script>
           </div>
 
           {/* Offer Section (Hidden initially) */}
