@@ -3,7 +3,6 @@ import { Helmet } from 'react-helmet-async';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Check, ShieldCheck, AlertCircle, Lock, Gift, Star, ArrowDown } from "lucide-react";
-import CustomVideoPlayer from './CustomVideoPlayer';
 
 const ChristmasUpsell = () => {
   const [showOffer, setShowOffer] = useState(false);
@@ -28,7 +27,6 @@ const ChristmasUpsell = () => {
     // Timer para mostrar oferta (01:38 = 98000ms)
     const timer = setTimeout(() => {
       setShowOffer(true);
-      // Scroll suave para o botão se necessário, mas a seta ajuda
     }, 98000);
 
     // Countdown do topo
@@ -57,6 +55,7 @@ const ChristmasUpsell = () => {
       <Helmet>
         <title>Espere! Oferta Especial de Natal</title>
         <meta name="robots" content="noindex, nofollow" />
+        <script src="https://player.vimeo.com/api/player.js"></script>
       </Helmet>
       
       <div className="min-h-screen bg-slate-50 font-sans text-slate-900 pb-20">
@@ -78,31 +77,34 @@ const ChristmasUpsell = () => {
             <span className="text-slate-700 text-lg md:text-2xl normal-case font-bold">Mas falta apenas 1 passo para liberar seus bônus exclusivos...</span>
           </h1>
           
-          {/* Texto que some quando a oferta aparece */}
           {!showOffer && (
             <p className="text-slate-500 text-sm mb-6 animate-pulse">
               Assista ao vídeo abaixo para entender (é rapidinho)
             </p>
           )}
 
-          {/* VSL Container - 9:16 (Vertical) */}
+          {/* Vimeo Embed Container */}
           <div className="relative w-full max-w-[340px] mx-auto aspect-[9/16] bg-black rounded-2xl shadow-2xl overflow-hidden mb-6 border-4 border-slate-800 ring-4 ring-slate-200/50">
-             <CustomVideoPlayer 
-                src="/video-upsell.mp4" 
-                onPlay={() => console.log('Video playing with sound')}
-             />
+            <div style={{padding:'177.78% 0 0 0',position:'relative'}}>
+              <iframe 
+                src="https://player.vimeo.com/video/1146805163?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&muted=1&loop=1" 
+                frameBorder="0" 
+                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
+                referrerPolicy="strict-origin-when-cross-origin" 
+                style={{position:'absolute',top:0,left:0,width:'100%',height:'100%'}} 
+                title="video-upsell">
+              </iframe>
+            </div>
           </div>
 
           {/* Offer Section (Hidden initially) */}
           {showOffer && (
             <div ref={offerRef} className="animate-in fade-in slide-in-from-bottom-10 duration-700">
               
-              {/* Seta animada apontando para a oferta */}
               <div className="flex justify-center mb-2 -mt-4 relative z-10">
                 <ArrowDown className="text-red-600 w-12 h-12 animate-bounce drop-shadow-md" strokeWidth={3} />
               </div>
 
-              {/* Discount Alert */}
               <div className="bg-yellow-50 border-2 border-yellow-400 text-yellow-900 p-4 rounded-xl max-w-xl mx-auto mb-6 flex flex-col items-center shadow-lg relative overflow-hidden">
                 <div className="absolute top-0 left-0 w-full h-1 bg-yellow-400"></div>
                 <div className="font-bold text-xl mb-1 flex items-center gap-2 text-red-600">
@@ -116,7 +118,6 @@ const ChristmasUpsell = () => {
                 </div>
               </div>
 
-              {/* Main CTA 1 */}
               <div className="max-w-md mx-auto mb-6">
                 <Button 
                   onClick={() => window.location.href = applyUtms('https://pay.lowify.com.br/checkout.php?product_id=0QCYwH')}
@@ -130,7 +131,6 @@ const ChristmasUpsell = () => {
                 </div>
               </div>
 
-              {/* Benefits List */}
               <Card className="max-w-xl mx-auto bg-white border-2 border-slate-100 shadow-sm mb-8">
                 <CardContent className="pt-6">
                   <h3 className="font-bold text-slate-800 text-lg mb-4 flex items-center justify-center gap-2">
@@ -161,7 +161,6 @@ const ChristmasUpsell = () => {
                 </CardContent>
               </Card>
 
-              {/* Main CTA 2 (Repetição) */}
               <div className="max-w-md mx-auto mb-8">
                 <Button 
                   onClick={() => window.location.href = applyUtms('https://pay.lowify.com.br/checkout.php?product_id=0QCYwH')}
@@ -172,7 +171,6 @@ const ChristmasUpsell = () => {
                 </Button>
               </div>
 
-              {/* Downsell Link - Leads to Downsell Page */}
               <div className="pb-12">
                 <a 
                   href={applyUtms('/natal01-downsell01')}
@@ -185,7 +183,6 @@ const ChristmasUpsell = () => {
             </div>
           )}
 
-          {/* Footer Info */}
           {!showOffer && (
              <div className="mt-8 pt-6 pb-20 text-center">
                  <p className="text-xs text-slate-400 animate-pulse">Carregando seu material especial...</p>
