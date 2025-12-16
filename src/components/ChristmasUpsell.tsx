@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Check, ShieldCheck, AlertCircle, Lock, Gift, Star, ArrowDown } from "lucide-react";
 import CustomVideoPlayer from './CustomVideoPlayer';
-import videoUpsell from '@/assets/video-upsell.mp4';
 
 const ChristmasUpsell = () => {
   const [showOffer, setShowOffer] = useState(false);
@@ -89,7 +88,7 @@ const ChristmasUpsell = () => {
           {/* VSL Container - 9:16 (Vertical) */}
           <div className="relative w-full max-w-[340px] mx-auto aspect-[9/16] bg-black rounded-2xl shadow-2xl overflow-hidden mb-6 border-4 border-slate-800 ring-4 ring-slate-200/50">
              <CustomVideoPlayer 
-                src={videoUpsell} 
+                src="/video-upsell.mp4" 
                 onPlay={() => console.log('Video playing with sound')}
              />
           </div>
