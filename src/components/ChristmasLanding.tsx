@@ -95,7 +95,7 @@ const ChristmasLanding = () => {
                     t = `&sck=${a || ""}|${n || ""}|${o || ""}|${m || ""}|${c || ""}`;
                 }
             }
-        } catch (err) {
+            } catch (err) {
             console.error(err);
         }
         return t;
@@ -154,6 +154,15 @@ const ChristmasLanding = () => {
         <meta property="og:title" content="Natal Criativo - Lembrancinhas para Imprimir" />
         <meta property="og:description" content="Surpreenda neste Natal sem gastar muito com presentes caros. Baixe, imprima e monte lembrancinhas lindas em minutos!" />
         <meta property="og:image" content="/images/bonus-decoracao.png" />
+        {/* Scripts e links de pré-carregamento para v.turb */}
+        <script>{`!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);`}</script>
+        <link rel="preload" href="https://scripts.converteai.net/eba76355-5284-4bc9-887e-541862b4eefe/players/6940d14daba852f9cccf8094/v4/player.js" as="script" />
+        <link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script" />
+        <link rel="preload" href="https://cdn.converteai.net/eba76355-5284-4bc9-887e-541862b4eefe/6940d140bc119d9ec6d8c467/main.m3u8" as="fetch" />
+        <link rel="dns-prefetch" href="https://cdn.converteai.net" />
+        <link rel="dns-prefetch" href="https://scripts.converteai.net" />
+        <link rel="dns-prefetch" href="https://images.converteai.net" />
+        <link rel="dns-prefetch" href="https://api.vturb.com.br" />
       </Helmet>
       <UtmifyScript />
       <div className="min-h-screen bg-white font-sans text-slate-900 overflow-x-hidden">

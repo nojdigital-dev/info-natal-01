@@ -55,7 +55,7 @@ const ChristmasUpsell = () => {
       <Helmet>
         <title>Espere! Oferta Especial de Natal</title>
         <meta name="robots" content="noindex, nofollow" />
-        <script src="https://player.vimeo.com/api/player.js"></script>
+        {/* Removido o script do Vimeo */}
       </Helmet>
       
       <div className="min-h-screen bg-slate-50 font-sans text-slate-900 pb-20">
@@ -83,18 +83,12 @@ const ChristmasUpsell = () => {
             </p>
           )}
 
-          {/* Vimeo Embed Container */}
-          <div className="relative w-full max-w-[340px] mx-auto aspect-[9/16] bg-black rounded-2xl shadow-2xl overflow-hidden mb-6 border-4 border-slate-800 ring-4 ring-slate-200/50">
-            <div style={{padding:'177.78% 0 0 0',position:'relative'}}>
-              <iframe 
-                src="https://player.vimeo.com/video/1146805163?badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&muted=1&loop=1" 
-                frameBorder="0" 
-                allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
-                referrerPolicy="strict-origin-when-cross-origin" 
-                style={{position:'absolute',top:0,left:0,width:'100%',height:'100%'}} 
-                title="video-upsell">
-              </iframe>
-            </div>
+          {/* v.turb Embed Container */}
+          <div className="relative w-full max-w-[340px] mx-auto rounded-2xl shadow-2xl overflow-hidden mb-6 border-4 border-slate-800 ring-4 ring-slate-200/50">
+            <vturb-smartplayer id="vid-6940d14daba852f9cccf8094" style={{display: 'block', margin: '0 auto', width: '100%', maxWidth: '400px'}}></vturb-smartplayer> 
+            <script type="text/javascript"> 
+              {`var s=document.createElement("script"); s.src="https://scripts.converteai.net/eba76355-5284-4bc9-887e-541862b4eefe/players/6940d14daba852f9cccf8094/v4/player.js", s.async=!0,document.head.appendChild(s);`}
+            </script>
           </div>
 
           {/* Offer Section (Hidden initially) */}
