@@ -2,11 +2,11 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Check, ShieldCheck, AlertCircle, Lock, Gift, Star, ArrowDown, VolumeX, Volume2 } from "lucide-react";
+import { Check, ShieldCheck, AlertCircle, Lock, Gift, Star, ArrowDown } from "lucide-react";
+import CustomVideoPlayer from './CustomVideoPlayer';
 
 const ChristmasUpsell = () => {
   const [showOffer, setShowOffer] = useState(false);
-  const [showFakePlay, setShowFakePlay] = useState(true);
   const [timeLeft, setTimeLeft] = useState(10 * 60); // 10 minutes
   const offerRef = useRef<HTMLDivElement>(null);
 
@@ -28,7 +28,6 @@ const ChristmasUpsell = () => {
     // Timer para mostrar oferta (01:38 = 98000ms)
     const timer = setTimeout(() => {
       setShowOffer(true);
-      setShowFakePlay(false); // Remove o fake play quando a oferta aparece pra limpar a tela
       // Scroll suave para o botão se necessário, mas a seta ajuda
     }, 98000);
 
@@ -41,7 +40,6 @@ const ChristmasUpsell = () => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Enter') {
         setShowOffer(true);
-        setShowFakePlay(false);
       }
     };
 
@@ -88,35 +86,12 @@ const ChristmasUpsell = () => {
           )}
 
           {/* VSL Container - 9:16 (Vertical) */}
-          <div className="relative w-full max-w-[340px] mx-auto aspect-[9/16] bg-black rounded-2xl shadow-2xl overflow-hidden mb-6 border-4 border-slate-800">
-             <iframe 
-                src="https://player.vimeo.com/video/1144136982?h=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;title=0&amp;byline=0&amp;portrait=0&amp;sidedock=0&amp;controls=1&amp;background=1&amp;transparent=0&amp;loop=0" 
-                frameBorder="0" 
-                allow="autoplay; fullscreen; picture-in-picture; clipboard-write" 
-                title="65 Melhores Dinâmicas em Vídeo" 
-                className="absolute top-0 left-0 w-full h-full scale-[1.35] md:scale-100"
-                style={{ objectFit: 'cover' }}
-             ></iframe>
-
-             {/* Fake Play Button Overlay */}
-             {showFakePlay && (
-               <div 
-                 className="absolute inset-0 z-20 flex items-center justify-center bg-black/10 cursor-pointer group"
-                 onClick={() => setShowFakePlay(false)}
-               >
-                 <div className="absolute top-10 left-0 right-0 mx-auto w-max bg-black/60 backdrop-blur-sm text-white px-4 py-2 rounded-full flex items-center gap-2 text-sm font-medium animate-in fade-in slide-in-from-top-4 duration-500">
-                    <VolumeX size={16} className="text-red-400" /> Seu vídeo já começou
-                 </div>
-                 
-                 <div className="bg-white/90 p-4 rounded-full shadow-lg scale-100 animate-pulse group-hover:scale-110 transition-transform">
-                    <Volume2 size={32} className="text-slate-900 fill-slate-900" />
-                 </div>
-                 
-                 <div className="absolute top-[55%] left-0 right-0 text-center">
-                    <span className="text-white font-bold text-shadow-sm uppercase text-xs tracking-wider bg-black/40 px-2 py-1 rounded">Clique para ouvir</span>
-                 </div>
-               </div>
-             )}
+          <div className="relative w-full max-w-[340px] mx-auto aspect-[9/16] bg-black rounded-2xl shadow-2xl overflow-hidden mb-6 border-4 border-slate-800 ring-4 ring-slate-200/50">
+             {/* Importante: Adicione o arquivo 'video-upsell.mp4' na pasta 'public' */}
+             <CustomVideoPlayer 
+                src="/video-upsell.mp4" 
+                onPlay={() => console.log('Video playing with sound')}
+             />
           </div>
 
           {/* Offer Section (Hidden initially) */}
