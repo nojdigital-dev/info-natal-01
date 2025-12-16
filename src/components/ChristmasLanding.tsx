@@ -39,11 +39,11 @@ const ChristmasLanding = () => {
         let sck = "";
         const currentUrl = window.location.href;
         if (currentUrl.indexOf("?") !== -1) {
-             const a = currentSearchParams.get("utm_source");
-             const n = currentSearchParams.get("utm_medium");
-             const o = currentSearchParams.get("utm_campaign");
-             const m = currentSearchParams.get("utm_term");
-             const c = currentSearchParams.get("utm_content");
+             const a = currentSearchParams.get("utm_source"),
+                    n = currentSearchParams.get("utm_medium"),
+                    o = currentSearchParams.get("utm_campaign"),
+                    m = currentSearchParams.get("utm_term"),
+                    c = currentSearchParams.get("utm_content");
              sck = `&sck=${a || ""}|${n || ""}|${o || ""}|${m || ""}|${c || ""}`;
         }
 
