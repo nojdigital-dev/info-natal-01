@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Natal01 from "./pages/Natal01";
 import NatalUpsell from "./pages/NatalUpsell";
+import NatalDownsell from "./pages/NatalDownsell";
 import NatalThankYou from "./pages/NatalThankYou";
 import ReceitasPets from "./pages/ReceitasPets";
 import SemDoresCorredor from "./pages/SemDoresCorredor";
@@ -22,7 +23,9 @@ const App = () => (
         <Routes>
           <Route path="/natal01" element={<Natal01 />} />
           <Route path="/natal01-upsell01" element={<NatalUpsell />} />
-          <Route path="/obrigado-natal-final-x9z2" element={<NatalThankYou />} />
+          <Route path="/natal01-downsell01" element={<NatalDownsell />} />
+          
+          <Route path="/obgdo-natal-final-2025x26" element={<NatalThankYou />} />
           
           <Route path="/receitas-natural-pets" element={<ReceitasPets />} />
           <Route path="/sem-dores-corredor" element={<SemDoresCorredor />} />
