@@ -9,7 +9,8 @@ import NatalDownsell from "./pages/NatalDownsell";
 import NatalThankYou from "./pages/NatalThankYou";
 import ReceitasPets from "./pages/ReceitasPets";
 import SemDoresCorredor from "./pages/SemDoresCorredor";
-import PascoaLanding from "./components/PascoaLanding"; // Importado diretamente pois não foi criado em pages/
+import PascoaLanding from "./components/PascoaLanding"; 
+import ShopeeLanding from "./components/ShopeeLanding"; // Import da Shopee
 import NotFound from "./pages/NotFound";
 import Index from "./pages/Index";
 
@@ -31,8 +32,10 @@ const App = () => (
           <Route path="/receitas-natural-pets" element={<ReceitasPets />} />
           <Route path="/sem-dores-corredor" element={<SemDoresCorredor />} />
           
-          {/* Nova Rota de Páscoa */}
           <Route path="/pascoa01" element={<PascoaLanding />} />
+
+          {/* Nova Rota Shopee */}
+          <Route path="/shopee01" element={<ShopeeLanding />} />
 
           <Route path="/" element={<Index />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
