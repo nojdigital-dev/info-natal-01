@@ -240,6 +240,54 @@ const LeisCantadasLanding = () => {
                     </CardContent>
                 </Card>
             </div>
+          </div>
+        </section>
+
+        {/* AI Bonus Section */}
+        <section className="py-20 px-4 bg-gradient-to-b from-purple-900 to-slate-950 relative overflow-hidden">
+            <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20"></div>
+            
+            <div className="max-w-4xl mx-auto relative z-10 text-center">
+                <span className="inline-block py-1 px-3 rounded-full bg-white/10 border border-white/20 text-white text-xs font-bold mb-4 uppercase tracking-widest">
+                    Tecnologia Exclusiva
+                </span>
+                <h2 className="text-3xl md:text-5xl font-black text-white mb-6">
+                    Apresentando: <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">LC Studio IA</span> 🤖
+                </h2>
+                <p className="text-lg md:text-xl text-purple-100 mb-8 max-w-2xl mx-auto">
+                    Não achou a música que queria? Sem problemas. <br/>
+                    Com nossa Inteligência Artificial, você cola o texto da lei e <strong>a IA cria uma música exclusiva para você em segundos.</strong>
+                </p>
+
+                <div className="bg-slate-900/50 backdrop-blur-md p-8 rounded-3xl border border-purple-500/30 inline-block shadow-2xl">
+                    <div className="flex flex-col md:flex-row items-center gap-8 text-left">
+                        <div className="bg-slate-800 p-4 rounded-xl border border-slate-700 w-full md:w-64">
+                            <div className="text-xs text-slate-500 mb-2 uppercase font-bold">Input (Texto)</div>
+                            <div className="h-2 bg-slate-600 rounded w-3/4 mb-2"></div>
+                            <div className="h-2 bg-slate-600 rounded w-1/2 mb-2"></div>
+                            <div className="h-2 bg-slate-600 rounded w-full mb-4"></div>
+                            <div className="flex justify-end"><Zap size={16} className="text-yellow-400"/></div>
+                        </div>
+                        <ChevronRight className="hidden md:block text-purple-500" size={32} />
+                        <div className="bg-slate-800 p-4 rounded-xl border border-green-500/50 w-full md:w-64 relative overflow-hidden">
+                             <div className="absolute inset-0 bg-green-500/10 animate-pulse"></div>
+                             <div className="text-xs text-green-400 mb-2 uppercase font-bold flex items-center gap-1"><Music size={12}/> Output (Música)</div>
+                             <div className="flex items-center gap-3">
+                                 <div className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center text-black"><Play size={16} fill="black"/></div>
+                                 <div className="flex-1 space-y-1">
+                                     <div className="h-1.5 bg-slate-600 rounded-full w-full">
+                                         <div className="h-full bg-green-500 w-2/3"></div>
+                                     </div>
+                                 </div>
+                             </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <p className="mt-8 text-sm text-purple-200 font-bold uppercase tracking-wide">
+                    *Créditos de criação inclusos em todos os planos
+                </p>
+            </div>
         </section>
 
         {/* Pricing Section (UPDATED) */}
