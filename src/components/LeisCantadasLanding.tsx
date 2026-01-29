@@ -146,8 +146,8 @@ const LeisCantadasLanding = () => {
                  </div>
 
                  {/* Decorative Elements */}
-                 <Music className="absolute -top-5 -right-5 md:-top-10 md:-right-10 text-pink-500/20 animate-bounce" size={50} md:size={80} />
-                 <Headphones className="absolute -bottom-5 -left-5 md:-bottom-10 md:-left-10 text-purple-500/20 animate-pulse" size={50} md:size={80} />
+                 <Music className="absolute -top-5 -right-5 md:-top-10 md:-right-10 text-pink-500/20 animate-bounce w-[50px] h-[50px] md:w-[80px] md:h-[80px]" />
+                 <Headphones className="absolute -bottom-5 -left-5 md:-bottom-10 md:-left-10 text-purple-500/20 animate-pulse w-[50px] h-[50px] md:w-[80px] md:h-[80px]" />
               </div>
 
             </div>
