@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { 
   Check, Star, ShieldCheck, 
-  Zap, ChevronRight, ChefHat, Scale, HeartPulse, Droplet, Candy, Lock, Clock, HelpCircle, ArrowRight
+  Zap, ChevronRight, ChefHat, Scale, HeartPulse, Droplet, Candy, Lock, HelpCircle, ArrowRight
 } from "lucide-react";
 import SobremesasUpsellModal from './SobremesasUpsellModal';
 import UtmifyScript from './UtmifyScript';
@@ -14,6 +14,7 @@ import UtmifyScript from './UtmifyScript';
 // Images (Unsplash & Placeholders)
 const heroImg = "https://images.unsplash.com/photo-1587314168485-3236d6710814?q=80&w=1000&auto=format&fit=crop"; 
 const imgExpert = "https://images.unsplash.com/photo-1583394293214-28ded15ee548?q=80&w=1000&auto=format&fit=crop"; // Chef woman
+const imgHappyEating = "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?q=80&w=1000&auto=format&fit=crop"; // Woman eating donut/sweet happy
 
 // Carousel Images
 const carouselImages = [
@@ -81,7 +82,7 @@ const SobremesasLanding = () => {
             100% { transform: translateX(-50%); }
           }
           .animate-scroll {
-            animation: scroll 20s linear infinite;
+            animation: scroll 30s linear infinite;
           }
         `}</style>
       </Helmet>
@@ -180,79 +181,92 @@ const SobremesasLanding = () => {
           </div>
         </section>
 
-        {/* Benefits Section (Improved) */}
-        <section className="py-16 px-4 bg-slate-900 text-white relative overflow-hidden">
+        {/* Benefits Section (Totally Revamped) */}
+        <section className="py-20 px-4 bg-slate-900 text-white relative overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
           <div className="max-w-6xl mx-auto relative z-10">
-              <h2 className="text-3xl md:text-5xl font-extrabold text-center mb-16 text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-purple-400">
-                  O Fim da "Dieta Chata"
+              <h2 className="text-3xl md:text-5xl font-extrabold text-center mb-6 text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-purple-400">
+                  Esqueça a "Dieta Chata" Para Sempre
               </h2>
+              <p className="text-center text-slate-400 mb-16 max-w-2xl mx-auto">
+                  Não é sobre deixar de comer o que gosta. É sobre comer de forma inteligente. Veja o que acontece com seu corpo quando você troca o açúcar pelas nossas receitas:
+              </p>
               
-              <div className="grid md:grid-cols-3 gap-6">
-                  {/* Benefit Card 1 */}
-                  <div className="bg-slate-800 p-8 rounded-3xl border border-slate-700 hover:border-pink-500 transition-colors group">
-                      <div className="bg-slate-700 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-pink-500 transition-colors">
-                          <Zap className="text-white w-8 h-8" />
+              <div className="flex flex-col md:flex-row items-center gap-12">
+                  {/* Left Column */}
+                  <div className="flex-1 space-y-8">
+                      <div className="flex gap-4 text-right md:flex-row-reverse items-start">
+                          <div className="bg-pink-600/20 p-3 rounded-xl text-pink-400 shrink-0 border border-pink-600/30">
+                              <Zap size={28} />
+                          </div>
+                          <div>
+                              <h3 className="text-xl font-bold text-white mb-2">Fim da Compulsão</h3>
+                              <p className="text-slate-400 text-sm leading-relaxed">Chega de atacar a geladeira de madrugada. Nossas receitas saciam a vontade real de doce.</p>
+                          </div>
                       </div>
-                      <h3 className="text-xl font-bold mb-3 text-white">Controle a Compulsão</h3>
-                      <p className="text-slate-400 leading-relaxed">
-                          Chega de atacar a geladeira. Nossas receitas saciam a vontade real de doce, mantendo você na linha.
-                      </p>
+                      <div className="flex gap-4 text-right md:flex-row-reverse items-start">
+                          <div className="bg-blue-600/20 p-3 rounded-xl text-blue-400 shrink-0 border border-blue-600/30">
+                              <Droplet size={28} />
+                          </div>
+                          <div>
+                              <h3 className="text-xl font-bold text-white mb-2">Controle Glicêmico</h3>
+                              <p className="text-slate-400 text-sm leading-relaxed">Perfeito para diabéticos. Desfrute de doces incríveis sem causar picos de insulina perigosos.</p>
+                          </div>
+                      </div>
+                      <div className="flex gap-4 text-right md:flex-row-reverse items-start">
+                          <div className="bg-green-600/20 p-3 rounded-xl text-green-400 shrink-0 border border-green-600/30">
+                              <Scale size={28} />
+                          </div>
+                          <div>
+                              <h3 className="text-xl font-bold text-white mb-2">Perca Peso Comendo</h3>
+                              <p className="text-slate-400 text-sm leading-relaxed">Substitua calorias vazias por nutrientes e veja a balança descer enquanto come brownie.</p>
+                          </div>
+                      </div>
                   </div>
 
-                  {/* Benefit Card 2 */}
-                  <div className="bg-slate-800 p-8 rounded-3xl border border-slate-700 hover:border-blue-500 transition-colors group">
-                      <div className="bg-slate-700 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-blue-500 transition-colors">
-                          <Droplet className="text-white w-8 h-8" />
+                  {/* Center Image */}
+                  <div className="w-full md:w-[350px] shrink-0 relative group">
+                      <div className="absolute inset-0 bg-gradient-to-tr from-pink-500 to-purple-600 rounded-full blur-2xl opacity-40 group-hover:opacity-60 transition-opacity duration-700"></div>
+                      <img 
+                          src={imgHappyEating} 
+                          alt="Mulher feliz comendo doce fit" 
+                          className="relative rounded-3xl shadow-2xl border-4 border-slate-700 w-full object-cover aspect-[3/4] transform hover:scale-105 transition-transform duration-500 z-10"
+                      />
+                      {/* Floating Badge */}
+                      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 bg-white/90 backdrop-blur-md text-slate-900 px-6 py-2 rounded-full font-bold shadow-lg whitespace-nowrap z-20 flex items-center gap-2 border-2 border-pink-500">
+                          <HeartPulse className="text-red-500 fill-current" /> Saúde & Sabor
                       </div>
-                      <h3 className="text-xl font-bold mb-3 text-white">Controle a Glicemia</h3>
-                      <p className="text-slate-400 leading-relaxed">
-                          Perfeito para diabéticos e pré-diabéticos. Desfrute de doces incríveis sem causar picos de insulina.
-                      </p>
                   </div>
 
-                  {/* Benefit Card 3 */}
-                  <div className="bg-slate-800 p-8 rounded-3xl border border-slate-700 hover:border-green-500 transition-colors group">
-                      <div className="bg-slate-700 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-green-500 transition-colors">
-                          <Scale className="text-white w-8 h-8" />
+                  {/* Right Column */}
+                  <div className="flex-1 space-y-8">
+                      <div className="flex gap-4 items-start">
+                          <div className="bg-purple-600/20 p-3 rounded-xl text-purple-400 shrink-0 border border-purple-600/30">
+                              <ChefHat size={28} />
+                          </div>
+                          <div>
+                              <h3 className="text-xl font-bold text-white mb-2">Zero Experiência</h3>
+                              <p className="text-slate-400 text-sm leading-relaxed">Não sabe cozinhar? Sem problemas. Receitas de liquidificador, caneca e muito fáceis de fazer.</p>
+                          </div>
                       </div>
-                      <h3 className="text-xl font-bold mb-3 text-white">Emagreça com Prazer</h3>
-                      <p className="text-slate-400 leading-relaxed">
-                          Substitua calorias vazias por nutrientes. Veja a balança descer enquanto você come seu brownie favorito.
-                      </p>
-                  </div>
-
-                  {/* Benefit Card 4 */}
-                  <div className="bg-slate-800 p-8 rounded-3xl border border-slate-700 hover:border-purple-500 transition-colors group">
-                      <div className="bg-slate-700 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-purple-500 transition-colors">
-                          <HeartPulse className="text-white w-8 h-8" />
+                      <div className="flex gap-4 items-start">
+                          <div className="bg-yellow-600/20 p-3 rounded-xl text-yellow-400 shrink-0 border border-yellow-600/30">
+                              <ShieldCheck size={28} />
+                          </div>
+                          <div>
+                              <h3 className="text-xl font-bold text-white mb-2">Saúde da Família</h3>
+                              <p className="text-slate-400 text-sm leading-relaxed">Seu filho vai amar os sabores da infância, mas com uma nutrição equilibrada e saudável.</p>
+                          </div>
                       </div>
-                      <h3 className="text-xl font-bold mb-3 text-white">Digestão Leve</h3>
-                      <p className="text-slate-400 leading-relaxed">
-                          Zero glúten e zero lactose significa zero inchaço. Sinta-se leve e energizada após cada sobremesa.
-                      </p>
-                  </div>
-
-                  {/* Benefit Card 5 */}
-                  <div className="bg-slate-800 p-8 rounded-3xl border border-slate-700 hover:border-yellow-500 transition-colors group">
-                      <div className="bg-slate-700 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-yellow-500 transition-colors">
-                          <ShieldCheck className="text-white w-8 h-8" />
+                      <div className="flex gap-4 items-start">
+                          <div className="bg-red-600/20 p-3 rounded-xl text-red-400 shrink-0 border border-red-600/30">
+                              <HeartPulse size={28} />
+                          </div>
+                          <div>
+                              <h3 className="text-xl font-bold text-white mb-2">Digestão Leve</h3>
+                              <p className="text-slate-400 text-sm leading-relaxed">Sem glúten e sem lactose significa zero inchaço. Sinta-se leve e energizada após cada sobremesa.</p>
+                          </div>
                       </div>
-                      <h3 className="text-xl font-bold mb-3 text-white">Saúde para Família</h3>
-                      <p className="text-slate-400 leading-relaxed">
-                          Seu filho vai amar os sabores da infância, mas com uma nutrição equilibrada e saudável.
-                      </p>
-                  </div>
-
-                  {/* Benefit Card 6 */}
-                  <div className="bg-slate-800 p-8 rounded-3xl border border-slate-700 hover:border-red-500 transition-colors group">
-                      <div className="bg-slate-700 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-red-500 transition-colors">
-                          <ChefHat className="text-white w-8 h-8" />
-                      </div>
-                      <h3 className="text-xl font-bold mb-3 text-white">Fácil de Fazer</h3>
-                      <p className="text-slate-400 leading-relaxed">
-                          Sem ingredientes alienígenas. Tudo o que você precisa está no mercado da esquina. Simples e rápido.
-                      </p>
                   </div>
               </div>
           </div>
@@ -385,28 +399,28 @@ const SobremesasLanding = () => {
           </div>
         </section>
 
-        {/* Guarantee Section (Improved) */}
-        <section className="py-16 px-4 bg-white relative overflow-hidden">
-             <div className="max-w-4xl mx-auto bg-gradient-to-r from-yellow-50 to-orange-50 p-8 md:p-12 rounded-[3rem] border-2 border-yellow-200 shadow-xl flex flex-col md:flex-row items-center gap-8 md:gap-12 relative z-10">
+        {/* Guarantee Section (Chamativa Colorida) */}
+        <section className="py-16 px-4 bg-gradient-to-br from-yellow-400 via-orange-400 to-red-400 relative overflow-hidden">
+             {/* Background decorative elements */}
+             <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20"></div>
+             
+             <div className="max-w-4xl mx-auto bg-white/90 backdrop-blur-md p-8 md:p-12 rounded-[3rem] shadow-2xl border-4 border-white/50 flex flex-col md:flex-row items-center gap-8 md:gap-12 relative z-10">
                  
                  <div className="shrink-0 relative">
-                     <div className="w-32 h-32 bg-slate-900 rounded-full flex items-center justify-center border-4 border-yellow-400 shadow-xl relative z-10">
+                     <div className="w-40 h-40 bg-gradient-to-br from-yellow-300 to-orange-500 rounded-full flex items-center justify-center border-4 border-white shadow-xl relative z-10 transform -rotate-12">
                         <div className="text-center text-white">
-                            <span className="block text-4xl font-black text-yellow-400">7</span>
-                            <span className="block text-xs font-bold uppercase tracking-widest">Dias</span>
+                            <ShieldCheck size={64} className="mx-auto mb-1 drop-shadow-md" />
+                            <span className="block text-2xl font-black uppercase tracking-tighter drop-shadow-md">7 DIAS</span>
                         </div>
                      </div>
-                     <div className="absolute top-0 left-0 w-full h-full bg-yellow-400 rounded-full blur-xl opacity-40 animate-pulse"></div>
                  </div>
 
                  <div className="text-center md:text-left">
-                     <h3 className="text-3xl font-black text-slate-900 mb-2">Garantia Blindada de Satisfação</h3>
-                     <p className="text-slate-700 text-lg leading-relaxed mb-6">
-                         Eu assumo todo o risco. Você entra, baixa as receitas, faz aquele bolo de chocolate... Se você não amar o sabor ou achar difícil, eu devolvo 100% do seu dinheiro. Sem letras miúdas.
+                     <h3 className="text-3xl md:text-4xl font-black text-slate-900 mb-2 uppercase italic tracking-tight">Garantia Blindada</h3>
+                     <h4 className="text-xl font-bold text-red-600 mb-4 bg-red-100 px-4 py-1 inline-block rounded-lg transform -rotate-1 border border-red-200">Risco Zero Absoluto para Você</h4>
+                     <p className="text-slate-700 text-lg leading-relaxed mb-6 font-medium">
+                         Você não precisa decidir agora. <span className="font-bold">Entre, baixe as receitas e faça o teste.</span> Se você não amar o sabor ou achar difícil (o que duvido), eu devolvo 100% do seu dinheiro imediatamente. Basta um único e-mail.
                      </p>
-                     <div className="inline-flex items-center gap-2 bg-white px-4 py-2 rounded-lg shadow-sm border border-slate-100 text-sm font-bold text-slate-600">
-                        <ShieldCheck className="text-green-600"/> Risco Zero para você
-                     </div>
                  </div>
              </div>
         </section>
@@ -485,11 +499,11 @@ const SobremesasLanding = () => {
 
             <div className="max-w-3xl mx-auto relative z-10">
                 <h2 className="text-3xl md:text-5xl font-black mb-6 uppercase leading-tight">
-                    Última Chance para Garantir <br/> <span className="text-pink-500">O Pacote Completo</span>
+                    Não Deixe para Amanhã o Corpo <br/> <span className="text-pink-500">(e o Doce) que Você Pode Ter Hoje!</span>
                 </h2>
                 
                 <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-6 rounded-2xl inline-block mb-8">
-                    <p className="text-slate-300 text-sm uppercase tracking-widest font-bold mb-2">Desconto expira em:</p>
+                    <p className="text-slate-300 text-sm uppercase tracking-widest font-bold mb-2">Oferta expira em:</p>
                     <div className="text-4xl md:text-6xl font-mono font-black text-white">
                       {String(timeLeft.hours).padStart(2, '0')}:{String(timeLeft.minutes).padStart(2, '0')}:{String(timeLeft.seconds).padStart(2, '0')}
                     </div>
@@ -511,7 +525,7 @@ const SobremesasLanding = () => {
         </section>
 
         {/* Footer */}
-        <footer className="bg-slate-950 text-slate-500 py-12 text-center text-sm border-t border-slate-900">
+        <footer className="bg-slate-950 text-slate-500 py-12 text-center text-sm border-t-8 border-pink-500">
           <div className="container mx-auto px-4">
             <p className="mb-4 font-bold text-slate-300 text-lg">🧁 Sobremesas Zero</p>
             <p className="mb-4">&copy; {new Date().getFullYear()} Todos os direitos reservados.</p>
