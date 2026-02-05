@@ -69,10 +69,10 @@ const SobremesasLanding = () => {
   // Benefits Data
   const benefits = [
     { title: "Fim da Compulsão", text: "Chega de atacar a geladeira de madrugada. Nossas receitas saciam a vontade real de doce.", icon: <Zap size={32} /> },
-    { title: "Controle Glicêmico", text: "Perfeito para diabéticos. Desfrute de doces incríveis sem causar picos de insulina.", icon: <Droplet size={32} /> },
+    { title: "Controle Glicêmico", text: "Perfeito para diabéticos e pré-diabéticos. Desfrute de doces incríveis sem causar picos de insulina.", icon: <Droplet size={32} /> },
     { title: "Perca Peso Comendo", text: "Substitua calorias vazias por nutrientes e veja a balança descer enquanto come brownie.", icon: <Scale size={32} /> },
     { title: "Zero Experiência", text: "Não sabe cozinhar? Sem problemas. Receitas de liquidificador, caneca e muito fáceis.", icon: <ChefHat size={32} /> },
-    { title: "Saúde da Família", text: "Seu filho vai amar os sabores da infância, mas com uma nutrição equilibrada.", icon: <ShieldCheck size={32} /> },
+    { title: "Saúde da Família", text: "Seu filho vai amar os sabores da infância, mas com uma nutrição equilibrada e saudável.", icon: <ShieldCheck size={32} /> },
     { title: "Digestão Leve", text: "Sem glúten e sem lactose significa zero inchaço. Sinta-se leve após cada sobremesa.", icon: <HeartPulse size={32} /> },
   ];
 
@@ -501,12 +501,12 @@ const SobremesasLanding = () => {
         </section>
 
         {/* Bonuses Section (With Photos) */}
-        <section className="py-12 md:py-20 px-4 bg-gradient-to-b from-pink-50 to-white relative overflow-hidden">
+        <section className="py-12 md:py-20 px-4 bg-gradient-to-br from-purple-800 to-pink-700 relative overflow-hidden">
             <div className="max-w-5xl mx-auto relative z-10">
                 <div className="text-center mb-8 md:mb-12">
-                    <span className="bg-purple-600 text-white font-bold px-4 py-1 rounded-full text-xs uppercase tracking-wider shadow-lg">Presente Exclusivo</span>
-                    <h2 className="text-2xl md:text-5xl font-extrabold mt-4 mb-2 text-slate-900">GANHE 3 BÔNUS DE GRAÇA</h2>
-                    <p className="text-slate-600 text-sm md:text-lg">Levando o pacote hoje, você não paga nada por esses guias extras:</p>
+                    <span className="bg-white text-purple-800 font-bold px-4 py-1 rounded-full text-xs uppercase tracking-wider shadow-lg">Presente Exclusivo</span>
+                    <h2 className="text-2xl md:text-5xl font-extrabold mt-4 mb-2 text-white">GANHE 3 BÔNUS DE GRAÇA</h2>
+                    <p className="text-pink-100 text-sm md:text-lg">Levando o pacote hoje, você não paga nada por esses guias extras:</p>
                 </div>
 
                 <div className="grid md:grid-cols-3 gap-6 md:gap-8">
@@ -531,10 +531,10 @@ const SobremesasLanding = () => {
                 </div>
                 
                 <div className="mt-8 md:mt-12 text-center">
-                    <p className="text-base md:text-xl font-bold text-pink-600 mb-6">Valor Total dos Bônus: <span className="line-through text-slate-400">R$ 119,70</span> = <span className="bg-green-100 text-green-700 px-2 rounded">GRÁTIS HOJE</span></p>
+                    <p className="text-base md:text-xl font-bold text-white mb-6">Valor Total dos Bônus: <span className="line-through text-pink-300">R$ 119,70</span> = <span className="bg-yellow-400 text-purple-900 px-2 rounded">GRÁTIS HOJE</span></p>
                     <Button 
                         onClick={scrollToPricing}
-                        className="bg-purple-600 hover:bg-purple-500 text-white font-bold text-base md:text-lg px-8 py-6 rounded-full shadow-lg animate-pulse w-full md:w-auto"
+                        className="bg-yellow-400 hover:bg-yellow-300 text-purple-900 font-black text-base md:text-lg px-8 py-6 rounded-full shadow-lg animate-pulse w-full md:w-auto transform hover:scale-105 transition-transform"
                     >
                         QUERO GARANTIR MEUS BÔNUS
                     </Button>
