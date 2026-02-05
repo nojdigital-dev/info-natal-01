@@ -12,7 +12,8 @@ import SemDoresCorredor from "./pages/SemDoresCorredor";
 import PascoaLanding from "./components/PascoaLanding"; 
 import ShopeeLanding from "./components/ShopeeLanding"; 
 import LeisCantadasLanding from "./components/LeisCantadasLanding";
-import USChristmasLanding from "./components/USChristmasLanding"; // Novo Import
+import USChristmasLanding from "./components/USChristmasLanding"; 
+import SobremesasLanding from "./components/SobremesasLanding"; // Novo Import
 import NotFound from "./pages/NotFound";
 import Index from "./pages/Index";
 
@@ -39,11 +40,12 @@ const App = () => (
 
           <Route path="/leis-cantadas" element={<LeisCantadasLanding />} />
           
-          {/* Nova Rota US */}
           <Route path="/christmas-us" element={<USChristmasLanding />} />
 
+          {/* Nova Rota Sobremesas */}
+          <Route path="/sobremesas-zero" element={<SobremesasLanding />} />
+
           <Route path="/" element={<Index />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
