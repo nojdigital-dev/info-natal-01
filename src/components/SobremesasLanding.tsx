@@ -72,7 +72,7 @@ const SobremesasLanding = () => {
     { title: "Controle Glicêmico", text: "Perfeito para diabéticos e pré-diabéticos. Desfrute de doces incríveis sem causar picos de insulina.", icon: <Droplet size={32} /> },
     { title: "Perca Peso Comendo", text: "Substitua calorias vazias por nutrientes e veja a balança descer enquanto come brownie.", icon: <Scale size={32} /> },
     { title: "Zero Experiência", text: "Não sabe cozinhar? Sem problemas. Receitas de liquidificador, caneca e muito fáceis.", icon: <ChefHat size={32} /> },
-    { title: "Saúde da Família", text: "Seu filho vai amar os sabores da infância, mas com uma nutrição equilibrada e saudável.", icon: <ShieldCheck size={32} /> },
+    { title: "Saúde da Família", text: "Seu filho vai amar os sabores da infância, mas com uma nutrição equilibrada.", icon: <ShieldCheck size={32} /> },
     { title: "Digestão Leve", text: "Sem glúten e sem lactose significa zero inchaço. Sinta-se leve após cada sobremesa.", icon: <HeartPulse size={32} /> },
   ];
 
@@ -198,6 +198,13 @@ const SobremesasLanding = () => {
           @keyframes subtle-pulse {
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.02); }
+          }
+          @keyframes scale-only-pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+          }
+          .animate-scale-pulse {
+            animation: scale-only-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
           }
           .btn-hypnotic {
             background: linear-gradient(110deg, #16a34a 25%, #4ade80 50%, #16a34a 75%);
@@ -534,7 +541,7 @@ const SobremesasLanding = () => {
                     <p className="text-base md:text-xl font-bold text-white mb-6">Valor Total dos Bônus: <span className="line-through text-pink-300">R$ 119,70</span> = <span className="bg-yellow-400 text-purple-900 px-2 rounded">GRÁTIS HOJE</span></p>
                     <Button 
                         onClick={scrollToPricing}
-                        className="bg-yellow-400 hover:bg-yellow-300 text-purple-900 font-black text-base md:text-lg px-8 py-6 rounded-full shadow-lg animate-pulse w-full md:w-auto transform hover:scale-105 transition-transform"
+                        className="bg-yellow-400 hover:bg-yellow-300 text-purple-900 font-black text-base md:text-lg px-8 py-6 rounded-full shadow-lg animate-scale-pulse w-full md:w-auto transform hover:scale-105 transition-transform"
                     >
                         QUERO GARANTIR MEUS BÔNUS
                     </Button>
@@ -579,8 +586,7 @@ const SobremesasLanding = () => {
                  
                  <Button 
                     onClick={() => setIsUpsellModalOpen(true)}
-                    variant="outline" 
-                    className="w-full border-slate-300 text-slate-600 hover:bg-slate-100 py-6 text-sm"
+                    className="w-full bg-green-100 hover:bg-green-200 text-green-700 font-bold py-6 text-sm border border-green-200 shadow-none"
                  >
                     QUERO O BÁSICO
                  </Button>
@@ -643,12 +649,21 @@ const SobremesasLanding = () => {
                      </div>
                  </div>
 
-                 <div className="text-center md:text-left">
+                 <div className="text-center md:text-left flex-1">
                      <h3 className="text-2xl md:text-4xl font-black text-slate-900 mb-2 uppercase italic tracking-tight">Garantia Blindada</h3>
                      <h4 className="text-lg md:text-xl font-bold text-red-600 mb-4 bg-red-100 px-4 py-1 inline-block rounded-lg transform -rotate-1 border border-red-200">Risco Zero Absoluto para Você</h4>
                      <p className="text-slate-700 text-base md:text-lg leading-relaxed mb-6 font-medium">
-                         Você não precisa decidir agora. <span className="font-bold">Entre, baixe as receitas e faça o teste.</span> Se você não amar o sabor ou achar difícil (o que duvido), eu devolvo 100% do seu dinheiro imediatamente. Basta um único e-mail.
+                         Você não precisa decidir agora. <span className="font-bold">Entre, baixe as receitas e faça o teste.</span> Se você não amar o sabor ou achar difícil, devolvo 100% do seu dinheiro.
                      </p>
+                     
+                     <div className="text-center md:text-left">
+                        <Button 
+                            onClick={scrollToPricing}
+                            className="bg-red-600 hover:bg-red-500 text-white font-bold py-6 px-8 rounded-full shadow-lg flex items-center gap-2 mx-auto md:mx-0 animate-pulse transition-transform hover:scale-105"
+                        >
+                            QUERO TESTAR SEM RISCOS
+                        </Button>
+                     </div>
                  </div>
              </div>
         </section>
@@ -681,7 +696,7 @@ const SobremesasLanding = () => {
                 <h2 className="text-2xl md:text-3xl font-extrabold text-center text-slate-900 mb-8 md:mb-10 flex items-center justify-center gap-2">
                     <HelpCircle className="text-pink-500"/> Perguntas Frequentes
                 </h2>
-                <Accordion type="single" collapsible className="w-full space-y-3">
+                <Accordion type="single" collapsible className="w-full space-y-3 mb-10">
                     <AccordionItem value="item-1" className="border border-pink-100 rounded-xl px-4 bg-pink-50/50">
                         <AccordionTrigger className="text-left font-bold text-slate-800 text-sm md:text-base hover:text-pink-600 hover:no-underline">O acesso é imediato?</AccordionTrigger>
                         <AccordionContent className="text-slate-600 text-sm">
@@ -713,6 +728,15 @@ const SobremesasLanding = () => {
                         </AccordionContent>
                     </AccordionItem>
                 </Accordion>
+
+                <div className="text-center">
+                    <Button 
+                        onClick={scrollToPricing}
+                        className="bg-pink-600 hover:bg-pink-500 text-white font-bold py-4 px-10 rounded-full shadow-md animate-scale-pulse transition-transform hover:scale-105"
+                    >
+                        AINDA TENHO DÚVIDAS (GARANTIR AGORA)
+                    </Button>
+                </div>
             </div>
         </section>
 
@@ -776,7 +800,7 @@ const SobremesasLanding = () => {
                 <div className="mt-8 text-center">
                     <Button 
                         onClick={scrollToPricing}
-                        className="bg-slate-800 hover:bg-slate-700 text-white font-bold py-6 px-10 rounded-full shadow-lg flex items-center gap-2 mx-auto animate-pulse"
+                        className="bg-pink-600 hover:bg-pink-700 text-white font-bold py-6 px-10 rounded-full shadow-lg flex items-center gap-2 mx-auto animate-scale-pulse"
                     >
                         <ThumbsUp size={18} /> QUERO FAZER PARTE DESSA TURMA
                     </Button>
