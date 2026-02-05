@@ -218,6 +218,12 @@ const SobremesasLanding = () => {
             animation: shimmer 1s linear infinite, subtle-pulse 3s ease-in-out infinite;
             transform: scale(1.03);
           }
+          .btn-shiny {
+            background: linear-gradient(110deg, #ec4899 25%, #f472b6 50%, #ec4899 75%);
+            background-size: 200% 100%;
+            animation: shimmer 3s linear infinite, scale-only-pulse 2s ease-in-out infinite;
+            border-bottom: 4px solid #be185d;
+          }
           /* Custom Fade Animation for Mobile Slider */
           .fade-in-slide {
             animation: fadeInSlide 0.5s ease-out forwards;
@@ -250,7 +256,7 @@ const SobremesasLanding = () => {
           <div className="max-w-6xl mx-auto relative z-10">
             <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
               
-              {/* Text Content - Explicit Centering for Mobile */}
+              {/* Text Content */}
               <div className="flex flex-col items-center text-center md:items-start md:text-left order-2 md:order-1">
                 <Badge className="bg-purple-100 text-purple-700 hover:bg-purple-200 mb-4 px-3 py-1 text-xs md:text-sm font-bold border border-purple-200 inline-flex items-center gap-2 shadow-sm">
                   <ChefHat size={14} /> Receitas Validadas por Nutricionista
@@ -340,33 +346,32 @@ const SobremesasLanding = () => {
           </div>
         </section>
 
-        {/* Benefits Section (Vibrant Background, Swipeable & Controlled) */}
-        <section className="py-12 md:py-20 px-4 bg-orange-600 text-white relative overflow-hidden">
+        {/* Benefits Section (Pink Background) */}
+        <section className="py-12 md:py-20 px-4 bg-pink-600 text-white relative overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
           <div className="max-w-6xl mx-auto relative z-10">
               <h2 className="text-2xl md:text-5xl font-extrabold text-center mb-4 text-white leading-tight">
                   Esqueça a "Dieta Chata"
               </h2>
-              <p className="text-center text-orange-100 mb-8 md:mb-16 max-w-2xl mx-auto text-sm md:text-base px-2">
+              <p className="text-center text-pink-100 mb-8 md:mb-16 max-w-2xl mx-auto text-sm md:text-base px-2">
                   Veja o que acontece com seu corpo quando você troca o açúcar pelas nossas receitas:
               </p>
               
-              {/* MOBILE LAYOUT: VIBRANT ANIMATED CARD WITH CONTROLS */}
+              {/* MOBILE LAYOUT */}
               <div className="md:hidden relative">
                   <div 
                     className="bg-slate-900 rounded-3xl p-6 border border-slate-800 shadow-2xl relative overflow-hidden h-[450px] flex flex-col items-center text-center mx-auto max-w-sm"
                     onTouchStart={handleTouchStart}
                     onTouchEnd={handleTouchEnd}
                   >
-                      
                       {/* Image Circle */}
-                      <div className="w-28 h-28 rounded-full border-4 border-orange-500 overflow-hidden mb-6 shadow-[0_0_30px_rgba(249,115,22,0.4)] shrink-0 bg-slate-800">
+                      <div className="w-28 h-28 rounded-full border-4 border-pink-400 overflow-hidden mb-6 shadow-[0_0_30px_rgba(236,72,153,0.4)] shrink-0 bg-slate-800">
                           <img src={imgHappyEating} alt="Happy" className="w-full h-full object-cover opacity-90" />
                       </div>
 
                       {/* Animated Content */}
                       <div key={activeBenefit} className="fade-in-slide flex-1 flex flex-col items-center justify-center w-full">
-                          <div className="bg-slate-800 p-4 rounded-full text-orange-400 mb-4 inline-block border border-slate-700 shadow-inner">
+                          <div className="bg-slate-800 p-4 rounded-full text-pink-300 mb-4 inline-block border border-slate-700 shadow-inner">
                               {benefits[activeBenefit].icon}
                           </div>
                           <h3 className="text-xl font-bold text-white mb-2">{benefits[activeBenefit].title}</h3>
@@ -387,7 +392,7 @@ const SobremesasLanding = () => {
                                   <div 
                                     key={idx} 
                                     onClick={() => { resetAutoPlay(); setActiveBenefit(idx); }}
-                                    className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${idx === activeBenefit ? 'w-6 bg-orange-500' : 'w-1.5 bg-slate-700'}`}
+                                    className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${idx === activeBenefit ? 'w-6 bg-pink-400' : 'w-1.5 bg-slate-700'}`}
                                   />
                               ))}
                           </div>
@@ -397,31 +402,29 @@ const SobremesasLanding = () => {
                           </Button>
                       </div>
                   </div>
-                  <p className="text-center text-orange-200/60 text-xs mt-4 animate-pulse flex items-center justify-center gap-1">
+                  <p className="text-center text-pink-200/60 text-xs mt-4 animate-pulse flex items-center justify-center gap-1">
                       <span className="text-lg">👈</span> Deslize para ver mais <span className="text-lg">👉</span>
                   </p>
               </div>
 
-              {/* DESKTOP LAYOUT: EXPANSIVE GRID */}
+              {/* DESKTOP LAYOUT */}
               <div className="hidden md:flex flex-row items-center gap-12">
-                  {/* Left Column */}
                   <div className="flex-1 space-y-8">
                       {benefits.slice(0, 3).map((item, idx) => (
                           <div key={idx} className="flex gap-4 text-right flex-row-reverse items-start group">
-                              <div className="bg-slate-900 p-4 rounded-xl text-orange-400 shrink-0 border border-slate-800 shadow-lg group-hover:border-orange-500/50 transition-colors">
+                              <div className="bg-slate-900 p-4 rounded-xl text-pink-300 shrink-0 border border-slate-800 shadow-lg group-hover:border-pink-500/50 transition-colors">
                                   {item.icon}
                               </div>
                               <div>
                                   <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
-                                  <p className="text-orange-100 text-sm leading-relaxed">{item.text}</p>
+                                  <p className="text-pink-100 text-sm leading-relaxed">{item.text}</p>
                               </div>
                           </div>
                       ))}
                   </div>
 
-                  {/* Center Image */}
                   <div className="w-[350px] shrink-0 relative group">
-                      <div className="absolute inset-0 bg-gradient-to-tr from-orange-400 to-red-600 rounded-full blur-2xl opacity-40 group-hover:opacity-60 transition-opacity duration-700"></div>
+                      <div className="absolute inset-0 bg-gradient-to-tr from-pink-400 to-purple-600 rounded-full blur-2xl opacity-40 group-hover:opacity-60 transition-opacity duration-700"></div>
                       <img 
                           src={imgHappyEating} 
                           alt="Mulher feliz comendo doce fit" 
@@ -429,16 +432,15 @@ const SobremesasLanding = () => {
                       />
                   </div>
 
-                  {/* Right Column */}
                   <div className="flex-1 space-y-8">
                       {benefits.slice(3, 6).map((item, idx) => (
                           <div key={idx} className="flex gap-4 items-start group">
-                              <div className="bg-slate-900 p-4 rounded-xl text-orange-400 shrink-0 border border-slate-800 shadow-lg group-hover:border-orange-500/50 transition-colors">
+                              <div className="bg-slate-900 p-4 rounded-xl text-pink-300 shrink-0 border border-slate-800 shadow-lg group-hover:border-pink-500/50 transition-colors">
                                   {item.icon}
                               </div>
                               <div>
                                   <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
-                                  <p className="text-orange-100 text-sm leading-relaxed">{item.text}</p>
+                                  <p className="text-pink-100 text-sm leading-relaxed">{item.text}</p>
                               </div>
                           </div>
                       ))}
@@ -447,7 +449,7 @@ const SobremesasLanding = () => {
           </div>
         </section>
 
-        {/* First Social Proof Section */}
+        {/* First Social Proof Section with CTA */}
         <section className="py-16 md:py-20 px-4 bg-white">
             <div className="max-w-6xl mx-auto">
                 <div className="text-center mb-12 md:mb-16">
@@ -492,7 +494,7 @@ const SobremesasLanding = () => {
                         <p className="text-slate-600 text-sm italic">"Meu filho tem intolerância a lactose e glúten. Era uma luta achar lanches pra ele. Esse material salvou a lancheira da escola!"</p>
                     </div>
 
-                    {/* Review 4 (Patricia Removed - Replaced with Generic) */}
+                    {/* Review 4 */}
                     <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 mt-0 md:mt-8">
                         <div className="flex items-center gap-3 mb-4">
                             <div className="w-12 h-12 rounded-full border-2 border-pink-200 bg-pink-100 flex items-center justify-center font-bold text-pink-600">AS</div>
@@ -504,14 +506,23 @@ const SobremesasLanding = () => {
                         <p className="text-slate-600 text-sm italic">"As receitas de torta são maravilhosas. Ninguém diz que é fit. Servi no almoço de domingo e acabou tudo!"</p>
                     </div>
                 </div>
+
+                <div className="mt-12 text-center">
+                    <Button 
+                        onClick={scrollToPricing}
+                        className="btn-shiny text-white font-black text-lg py-6 px-10 rounded-full shadow-xl animate-scale-pulse transition-transform hover:scale-105 flex items-center justify-center gap-2 mx-auto"
+                    >
+                        <HeartPulse size={20} /> QUERO ESSES RESULTADOS
+                    </Button>
+                </div>
             </div>
         </section>
 
-        {/* Bonuses Section (With Photos) */}
-        <section className="py-12 md:py-20 px-4 bg-gradient-to-br from-purple-800 to-pink-700 relative overflow-hidden">
+        {/* Bonuses Section (Pink Background) */}
+        <section className="py-12 md:py-20 px-4 bg-gradient-to-br from-pink-600 to-pink-800 relative overflow-hidden">
             <div className="max-w-5xl mx-auto relative z-10">
                 <div className="text-center mb-8 md:mb-12">
-                    <span className="bg-white text-purple-800 font-bold px-4 py-1 rounded-full text-xs uppercase tracking-wider shadow-lg">Presente Exclusivo</span>
+                    <span className="bg-white text-pink-700 font-bold px-4 py-1 rounded-full text-xs uppercase tracking-wider shadow-lg">Presente Exclusivo</span>
                     <h2 className="text-2xl md:text-5xl font-extrabold mt-4 mb-2 text-white">GANHE 3 BÔNUS DE GRAÇA</h2>
                     <p className="text-pink-100 text-sm md:text-lg">Levando o pacote hoje, você não paga nada por esses guias extras:</p>
                 </div>
@@ -541,7 +552,7 @@ const SobremesasLanding = () => {
                     <p className="text-base md:text-xl font-bold text-white mb-6">Valor Total dos Bônus: <span className="line-through text-pink-300">R$ 119,70</span> = <span className="bg-yellow-400 text-purple-900 px-2 rounded">GRÁTIS HOJE</span></p>
                     <Button 
                         onClick={scrollToPricing}
-                        className="bg-yellow-400 hover:bg-yellow-300 text-purple-900 font-black text-base md:text-lg px-8 py-6 rounded-full shadow-lg animate-scale-pulse w-full md:w-auto transform hover:scale-105 transition-transform"
+                        className="btn-shiny text-white font-black text-base md:text-lg px-8 py-6 rounded-full shadow-lg animate-scale-pulse w-full md:w-auto transform hover:scale-105 transition-transform"
                     >
                         QUERO GARANTIR MEUS BÔNUS
                     </Button>
@@ -586,7 +597,7 @@ const SobremesasLanding = () => {
                  
                  <Button 
                     onClick={() => setIsUpsellModalOpen(true)}
-                    className="w-full bg-green-100 hover:bg-green-200 text-green-700 font-bold py-6 text-sm border border-green-200 shadow-none"
+                    className="w-full bg-green-100 hover:bg-green-200 text-green-700 font-bold py-6 text-sm border border-green-200 shadow-none transition-colors"
                  >
                     QUERO O BÁSICO
                  </Button>
@@ -659,7 +670,7 @@ const SobremesasLanding = () => {
                      <div className="text-center md:text-left">
                         <Button 
                             onClick={scrollToPricing}
-                            className="bg-red-600 hover:bg-red-500 text-white font-bold py-6 px-8 rounded-full shadow-lg flex items-center gap-2 mx-auto md:mx-0 animate-pulse transition-transform hover:scale-105"
+                            className="bg-red-600 hover:bg-red-500 text-white font-bold py-6 px-8 rounded-full shadow-lg flex items-center gap-2 mx-auto md:mx-0 animate-scale-pulse transition-transform hover:scale-105"
                         >
                             QUERO TESTAR SEM RISCOS
                         </Button>
@@ -800,9 +811,9 @@ const SobremesasLanding = () => {
                 <div className="mt-8 text-center">
                     <Button 
                         onClick={scrollToPricing}
-                        className="bg-pink-600 hover:bg-pink-700 text-white font-bold py-6 px-10 rounded-full shadow-lg flex items-center gap-2 mx-auto animate-scale-pulse"
+                        className="btn-shiny text-white font-black text-lg py-6 px-10 rounded-full shadow-lg animate-scale-pulse transition-transform hover:scale-105 flex items-center justify-center gap-2 mx-auto"
                     >
-                        <ThumbsUp size={18} /> QUERO FAZER PARTE DESSA TURMA
+                        <ThumbsUp size={20} /> QUERO FAZER PARTE DESSA TURMA
                     </Button>
                 </div>
             </div>
