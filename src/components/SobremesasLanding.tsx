@@ -6,15 +6,15 @@ import { Badge } from "@/components/ui/badge";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { 
   Check, Star, ShieldCheck, 
-  Zap, ChevronRight, ChefHat, Scale, HeartPulse, Droplet, Candy, Lock, HelpCircle, ArrowRight
+  Zap, ChevronRight, ChefHat, Scale, HeartPulse, Droplet, Candy, Lock, HelpCircle, ArrowRight, Utensils
 } from "lucide-react";
 import SobremesasUpsellModal from './SobremesasUpsellModal';
 import UtmifyScript from './UtmifyScript';
 
-// Images (Unsplash & Placeholders)
+// Images
 const heroImg = "https://images.unsplash.com/photo-1587314168485-3236d6710814?q=80&w=1000&auto=format&fit=crop"; 
-const imgExpert = "https://images.unsplash.com/photo-1583394293214-28ded15ee548?q=80&w=1000&auto=format&fit=crop"; // Chef woman
-const imgHappyEating = "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?q=80&w=1000&auto=format&fit=crop"; // Woman eating donut/sweet happy
+const imgExpert = "https://images.unsplash.com/photo-1583394293214-28ded15ee548?q=80&w=1000&auto=format&fit=crop"; 
+const imgHappyEating = "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?q=80&w=1000&auto=format&fit=crop"; 
 
 // Carousel Images
 const carouselImages = [
@@ -31,7 +31,13 @@ const carouselImages = [
 // Bonus Images
 const imgBonus1 = "https://images.unsplash.com/photo-1535920527002-b35e96722eb9?q=80&w=500&auto=format&fit=crop"; // Torta
 const imgBonus2 = "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?q=80&w=500&auto=format&fit=crop"; // Pancakes/Lanche
-const imgBonus3 = "https://images.unsplash.com/photo-1600788907416-456578634209?q=80&w=500&auto=format&fit=crop"; // Geleia
+const imgBonus3 = "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=500&auto=format&fit=crop"; // Almoço Fit
+
+// Social Proof Images
+const avatar1 = "https://randomuser.me/api/portraits/women/44.jpg";
+const avatar2 = "https://randomuser.me/api/portraits/women/68.jpg";
+const avatar3 = "https://randomuser.me/api/portraits/women/12.jpg";
+const avatar4 = "https://randomuser.me/api/portraits/women/90.jpg";
 
 const SobremesasLanding = () => {
   const [isUpsellModalOpen, setIsUpsellModalOpen] = useState(false);
@@ -74,7 +80,7 @@ const SobremesasLanding = () => {
   return (
     <>
       <Helmet>
-        <title>300+ Sobremesas Zero - Coma Sem Culpa</title>
+        <title>350+ Sobremesas Zero - Coma Sem Culpa</title>
         <meta name="description" content="Descubra como comer suas sobremesas favoritas de domingo a domingo sem engordar. Receitas Zero Açúcar, Glúten e Lactose." />
         <style>{`
           @keyframes scroll {
@@ -83,6 +89,26 @@ const SobremesasLanding = () => {
           }
           .animate-scroll {
             animation: scroll 30s linear infinite;
+          }
+          @keyframes shimmer {
+            0% { background-position: 200% center; }
+            100% { background-position: -200% center; }
+          }
+          @keyframes subtle-pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+          }
+          .btn-hypnotic {
+            background: linear-gradient(110deg, #16a34a 25%, #4ade80 50%, #16a34a 75%);
+            background-size: 200% 100%;
+            animation: shimmer 3s linear infinite, subtle-pulse 3s ease-in-out infinite;
+            border-bottom: 4px solid #14532d;
+          }
+          .btn-hypnotic:hover {
+            background: linear-gradient(110deg, #16a34a 35%, #86efac 50%, #16a34a 65%);
+            background-size: 200% 100%;
+            animation: shimmer 1s linear infinite, subtle-pulse 3s ease-in-out infinite;
+            transform: scale(1.03);
           }
         `}</style>
       </Helmet>
@@ -112,20 +138,20 @@ const SobremesasLanding = () => {
                 </h1>
                 
                 <p className="text-lg md:text-xl mb-8 text-slate-600 font-medium leading-relaxed">
-                  + de 300 Sobremesas Deliciosas: <span className="font-bold text-red-500">Zero Açúcar</span>, <span className="font-bold text-red-500">Zero Glúten</span> e <span className="font-bold text-red-500">Zero Lactose</span>. <br/>
+                  + de 350 Sobremesas Deliciosas: <span className="font-bold text-red-500">Zero Açúcar</span>, <span className="font-bold text-red-500">Zero Glúten</span> e <span className="font-bold text-red-500">Zero Lactose</span>. <br/>
                   Emagreça sem abrir mão do prazer.
                 </p>
                 
                 <div className="flex flex-col gap-4">
                     <Button 
                         onClick={scrollToPricing}
-                        className="bg-green-600 hover:bg-green-500 text-white border-b-4 border-green-800 font-black text-xl py-8 px-10 rounded-full shadow-2xl transform transition hover:scale-105 active:scale-95 flex items-center justify-center gap-2 w-full md:w-fit mx-auto md:mx-0"
+                        className="btn-hypnotic text-white font-black text-xl py-8 px-10 rounded-full shadow-2xl flex items-center justify-center gap-2 w-full md:w-fit mx-auto md:mx-0 transition-all"
                     >
                         QUERO BAIXAR AS RECEITAS <ChevronRight size={24} />
                     </Button>
                     <div className="flex items-center justify-center md:justify-start gap-2 text-sm text-slate-500 font-semibold">
                         <div className="flex text-yellow-400"><Star fill="currentColor" size={16}/><Star fill="currentColor" size={16}/><Star fill="currentColor" size={16}/><Star fill="currentColor" size={16}/><Star fill="currentColor" size={16}/></div>
-                        <span>(2.137) Avaliações • 97% Aprovado</span>
+                        <span>(5.482) Avaliações • 97% Aprovado</span>
                     </div>
                 </div>
               </div>
@@ -173,10 +199,10 @@ const SobremesasLanding = () => {
 
           <div className="max-w-4xl mx-auto mt-12 bg-pink-50 border border-pink-200 rounded-2xl p-6 text-center mx-4">
               <h3 className="text-xl font-bold text-pink-700 mb-2 flex items-center justify-center gap-2">
-                  <Candy className="animate-spin-slow" /> Sim! São mais de 300 receitas!
+                  <Candy className="animate-spin-slow" /> Sim! São mais de 350 receitas!
               </h3>
-              <p className="text-slate-600">
-                  Beijinho, Forrobodó, Geleias, Bolos, Tortas... Tudo <span className="font-bold">Zero Açúcar, Zero Glúten e Zero Lactose</span> com o sabor das tradicionais!
+              <p className="text-slate-600 max-w-2xl mx-auto">
+                  Do clássico Brigadeiro ao sofisticado Cheesecake: redescubra o prazer de comer <strong>Beijinho, Mousses, Bolos e Tortas</strong> com a mesma textura e sabor das originais, mas totalmente <strong>Zero Açúcar, Zero Glúten e Zero Lactose</strong>.
               </p>
           </div>
         </section>
@@ -210,7 +236,7 @@ const SobremesasLanding = () => {
                           </div>
                           <div>
                               <h3 className="text-xl font-bold text-white mb-2">Controle Glicêmico</h3>
-                              <p className="text-slate-400 text-sm leading-relaxed">Perfeito para diabéticos. Desfrute de doces incríveis sem causar picos de insulina perigosos.</p>
+                              <p className="text-slate-400 text-sm leading-relaxed">Perfeito para diabéticos e pré-diabéticos. Desfrute de doces incríveis sem causar picos de insulina perigosos.</p>
                           </div>
                       </div>
                       <div className="flex gap-4 text-right md:flex-row-reverse items-start">
@@ -272,6 +298,66 @@ const SobremesasLanding = () => {
           </div>
         </section>
 
+        {/* NEW Social Proof Section (Advanced Design) */}
+        <section className="py-20 px-4 bg-white">
+            <div className="max-w-6xl mx-auto">
+                <div className="text-center mb-16">
+                    <span className="text-pink-600 font-bold tracking-widest uppercase text-sm bg-pink-50 px-4 py-1 rounded-full">Depoimentos Reais</span>
+                    <h2 className="text-3xl md:text-5xl font-black text-slate-900 mt-4">Elas Já Estão <span className="text-purple-600">Amando os Resultados</span></h2>
+                </div>
+
+                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    {/* Review 1 */}
+                    <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+                        <div className="flex items-center gap-3 mb-4">
+                            <img src={avatar1} alt="User" className="w-12 h-12 rounded-full border-2 border-pink-200" />
+                            <div>
+                                <h4 className="font-bold text-slate-900 text-sm">Juliana Castro</h4>
+                                <div className="flex text-yellow-400 text-xs"><Star size={12} fill="currentColor"/><Star size={12} fill="currentColor"/><Star size={12} fill="currentColor"/><Star size={12} fill="currentColor"/><Star size={12} fill="currentColor"/></div>
+                            </div>
+                        </div>
+                        <p className="text-slate-600 text-sm italic">"Eu sou diabética e achava que nunca mais ia comer um pudim gostoso na vida. Fiz o pudim do e-book e chorei de emoção. É idêntico!"</p>
+                    </div>
+
+                    {/* Review 2 */}
+                    <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 mt-0 md:mt-8">
+                        <div className="flex items-center gap-3 mb-4">
+                            <img src={avatar2} alt="User" className="w-12 h-12 rounded-full border-2 border-pink-200" />
+                            <div>
+                                <h4 className="font-bold text-slate-900 text-sm">Carla Dias</h4>
+                                <div className="flex text-yellow-400 text-xs"><Star size={12} fill="currentColor"/><Star size={12} fill="currentColor"/><Star size={12} fill="currentColor"/><Star size={12} fill="currentColor"/><Star size={12} fill="currentColor"/></div>
+                            </div>
+                        </div>
+                        <p className="text-slate-600 text-sm italic">"Perdi 4kg em 1 mês só trocando o doce da padaria pelas receitas da Dra. Isabela. O bolo de pote é sensacional."</p>
+                    </div>
+
+                    {/* Review 3 */}
+                    <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+                        <div className="flex items-center gap-3 mb-4">
+                            <img src={avatar3} alt="User" className="w-12 h-12 rounded-full border-2 border-pink-200" />
+                            <div>
+                                <h4 className="font-bold text-slate-900 text-sm">Renata Souza</h4>
+                                <div className="flex text-yellow-400 text-xs"><Star size={12} fill="currentColor"/><Star size={12} fill="currentColor"/><Star size={12} fill="currentColor"/><Star size={12} fill="currentColor"/><Star size={12} fill="currentColor"/></div>
+                            </div>
+                        </div>
+                        <p className="text-slate-600 text-sm italic">"Meu filho tem intolerância a lactose e glúten. Era uma luta achar lanches pra ele. Esse material salvou a lancheira da escola!"</p>
+                    </div>
+
+                    {/* Review 4 */}
+                    <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 mt-0 md:mt-8">
+                        <div className="flex items-center gap-3 mb-4">
+                            <img src={avatar4} alt="User" className="w-12 h-12 rounded-full border-2 border-pink-200" />
+                            <div>
+                                <h4 className="font-bold text-slate-900 text-sm">Patrícia Lima</h4>
+                                <div className="flex text-yellow-400 text-xs"><Star size={12} fill="currentColor"/><Star size={12} fill="currentColor"/><Star size={12} fill="currentColor"/><Star size={12} fill="currentColor"/><Star size={12} fill="currentColor"/></div>
+                            </div>
+                        </div>
+                        <p className="text-slate-600 text-sm italic">"Já comprei vários e-books, mas nenhum tão completo e bonito quanto esse. As fotos dão água na boca e as receitas funcionam mesmo."</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         {/* Bonuses Section (With Photos) */}
         <section className="py-16 px-4 bg-gradient-to-b from-pink-50 to-white relative overflow-hidden">
             <div className="max-w-5xl mx-auto relative z-10">
@@ -296,14 +382,14 @@ const SobremesasLanding = () => {
                     />
                     <PhotoBonusCard 
                         image={imgBonus3}
-                        title="GELEIAS CASEIRAS"
-                        desc="Aprenda a fazer geleias 100% fruta e zero açúcar para acompanhar."
-                        price="19,90"
+                        title="ALMOÇO & JANTAR FIT"
+                        desc="Pratos salgados deliciosos para você manter a dieta o dia todo."
+                        price="49,90"
                     />
                 </div>
                 
                 <div className="mt-12 text-center">
-                    <p className="text-xl font-bold text-pink-600 mb-6">Valor Total dos Bônus: <span className="line-through text-slate-400">R$ 89,70</span> = <span className="bg-green-100 text-green-700 px-2 rounded">GRÁTIS HOJE</span></p>
+                    <p className="text-xl font-bold text-pink-600 mb-6">Valor Total dos Bônus: <span className="line-through text-slate-400">R$ 119,70</span> = <span className="bg-green-100 text-green-700 px-2 rounded">GRÁTIS HOJE</span></p>
                     <Button 
                         onClick={scrollToPricing}
                         className="bg-purple-600 hover:bg-purple-500 text-white font-bold text-lg px-8 py-6 rounded-full shadow-lg animate-pulse"
@@ -334,19 +420,19 @@ const SobremesasLanding = () => {
               
               {/* Anchor Plan (Decoy) - R$ 10 */}
               <div className="order-2 md:order-1 bg-white p-6 rounded-3xl border border-slate-200 shadow-sm hover:shadow-md transition-all relative mt-4">
-                 <h3 className="text-xl font-bold text-slate-500 mb-2">Pacote Básico</h3>
-                 <p className="text-xs text-slate-400 mb-6">Apenas para conhecer</p>
+                 <h3 className="text-xl font-bold text-slate-500 mb-2">Acesso ao Livro Digital</h3>
+                 <p className="text-xs text-slate-400 mb-6">Acesso básico aos arquivos</p>
                  
                  <div className="mb-6">
                     <span className="text-4xl font-extrabold text-slate-700">R$ 10,00</span>
                  </div>
 
                  <ul className="space-y-3 mb-8 text-sm text-slate-500">
-                    <li className="flex items-center gap-2"><Check size={16}/> Algumas Receitas Zero</li>
-                    <li className="flex items-center gap-2"><Check size={16}/> Acesso PDF simples</li>
+                    <li className="flex items-center gap-2"><Check size={16}/> Todas as 350+ Receitas</li>
+                    <li className="flex items-center gap-2"><Check size={16}/> Arquivo PDF Completo</li>
                     <li className="flex items-center gap-2 text-red-400 line-through"><Check size={16}/> Sem Bônus de Tortas</li>
                     <li className="flex items-center gap-2 text-red-400 line-through"><Check size={16}/> Sem Bônus de Lanches</li>
-                    <li className="flex items-center gap-2 text-red-400 line-through"><Check size={16}/> Sem Bônus de Geleias</li>
+                    <li className="flex items-center gap-2 text-red-400 line-through"><Check size={16}/> Sem Bônus de Almoço/Jantar</li>
                  </ul>
                  
                  <Button 
@@ -365,7 +451,7 @@ const SobremesasLanding = () => {
                  </div>
                  
                  <h3 className="text-2xl font-black text-pink-600 text-center mb-1 uppercase">Pacote Premium</h3>
-                 <p className="text-sm text-center text-slate-500 mb-6">Todas as 300+ Receitas + Bônus</p>
+                 <p className="text-sm text-center text-slate-500 mb-6">Todas as 350+ Receitas + Bônus</p>
                  
                  <div className="text-center mb-6 bg-pink-50 py-4 rounded-2xl border border-pink-100">
                     <p className="text-xs text-slate-400 line-through mb-1">De R$ 97,00 por</p>
@@ -376,16 +462,16 @@ const SobremesasLanding = () => {
                  </div>
                  
                  <ul className="space-y-3 mb-8 text-sm md:text-base font-medium text-slate-700">
-                    <li className="flex items-center gap-3"><div className="bg-green-100 p-1 rounded-full text-green-600"><Check size={14} strokeWidth={4}/></div> <span>300+ Receitas Zero</span></li>
+                    <li className="flex items-center gap-3"><div className="bg-green-100 p-1 rounded-full text-green-600"><Check size={14} strokeWidth={4}/></div> <span>350+ Receitas Zero</span></li>
                     <li className="flex items-center gap-3"><div className="bg-green-100 p-1 rounded-full text-green-600"><Check size={14} strokeWidth={4}/></div> <span>BÔNUS 1: Tortas Doces</span></li>
                     <li className="flex items-center gap-3"><div className="bg-green-100 p-1 rounded-full text-green-600"><Check size={14} strokeWidth={4}/></div> <span>BÔNUS 2: Lanche da Tarde</span></li>
-                    <li className="flex items-center gap-3"><div className="bg-green-100 p-1 rounded-full text-green-600"><Check size={14} strokeWidth={4}/></div> <span>BÔNUS 3: Geleias Caseiras</span></li>
+                    <li className="flex items-center gap-3"><div className="bg-green-100 p-1 rounded-full text-green-600"><Check size={14} strokeWidth={4}/></div> <span>BÔNUS 3: Almoço & Jantar Fit</span></li>
                     <li className="flex items-center gap-3"><div className="bg-green-100 p-1 rounded-full text-green-600"><Check size={14} strokeWidth={4}/></div> <span>Atualizações Gratuitas</span></li>
                  </ul>
 
                  <Button 
                     onClick={() => window.location.href = applyUtms('https://pay.lowify.com.br/checkout?product_id=sobremesas-premium-19')}
-                    className="w-full bg-green-600 hover:bg-green-500 text-white font-black text-xl py-8 rounded-xl shadow-[0_4px_0_rgb(21,128,61)] active:shadow-none active:translate-y-1 transition-all whitespace-normal h-auto leading-tight"
+                    className="btn-hypnotic w-full text-white font-black text-xl py-8 rounded-xl shadow-[0_4px_0_rgb(21,128,61)] active:shadow-none active:translate-y-1 transition-all whitespace-normal h-auto leading-tight"
                  >
                     QUERO O PACOTE COMPLETO
                  </Button>
@@ -461,18 +547,24 @@ const SobremesasLanding = () => {
                         </AccordionContent>
                     </AccordionItem>
                     <AccordionItem value="item-2" className="border border-pink-100 rounded-xl px-4 bg-pink-50/50">
-                        <AccordionTrigger className="text-slate-800 font-bold hover:text-pink-600 hover:no-underline">Sou diabético(a), posso comer?</AccordionTrigger>
+                        <AccordionTrigger className="text-slate-800 font-bold hover:text-pink-600 hover:no-underline">É realmente Zero Açúcar?</AccordionTrigger>
                         <AccordionContent className="text-slate-600">
-                            Com certeza! Todas as receitas são Zero Açúcar e pensadas para não gerar picos de insulina. Porém, sempre recomendamos consultar seu médico.
+                            Sim! Todas as receitas utilizam adoçantes naturais (como Xilitol, Eritritol ou Stevia) que não elevam a glicemia e são seguros para diabéticos.
                         </AccordionContent>
                     </AccordionItem>
                     <AccordionItem value="item-3" className="border border-pink-100 rounded-xl px-4 bg-pink-50/50">
+                        <AccordionTrigger className="text-slate-800 font-bold hover:text-pink-600 hover:no-underline">Contém Glúten ou Lactose?</AccordionTrigger>
+                        <AccordionContent className="text-slate-600">
+                            Não! Todas as receitas foram adaptadas para serem 100% livres de glúten (usamos farinhas funcionais como amêndoas, coco, arroz) e sem lactose.
+                        </AccordionContent>
+                    </AccordionItem>
+                    <AccordionItem value="item-4" className="border border-pink-100 rounded-xl px-4 bg-pink-50/50">
                         <AccordionTrigger className="text-slate-800 font-bold hover:text-pink-600 hover:no-underline">Os ingredientes são caros?</AccordionTrigger>
                         <AccordionContent className="text-slate-600">
                             Não. Focamos em ingredientes acessíveis que você encontra em qualquer supermercado ou loja de produtos naturais. Nada de itens importados impossíveis de achar.
                         </AccordionContent>
                     </AccordionItem>
-                    <AccordionItem value="item-4" className="border border-pink-100 rounded-xl px-4 bg-pink-50/50">
+                    <AccordionItem value="item-5" className="border border-pink-100 rounded-xl px-4 bg-pink-50/50">
                         <AccordionTrigger className="text-slate-800 font-bold hover:text-pink-600 hover:no-underline">É livro físico ou digital?</AccordionTrigger>
                         <AccordionContent className="text-slate-600">
                             É um produto 100% digital (E-book em PDF). Você não paga frete e pode acessar pelo celular, tablet ou computador, ou imprimir se preferir.
@@ -512,7 +604,7 @@ const SobremesasLanding = () => {
                 <div>
                     <Button 
                         onClick={scrollToPricing}
-                        className="bg-green-600 hover:bg-green-500 text-white font-black text-xl md:text-2xl py-8 px-12 rounded-full shadow-[0_0_40px_rgba(34,197,94,0.6)] transform transition hover:scale-105 active:scale-95 animate-pulse"
+                        className="btn-hypnotic text-white font-black text-xl md:text-2xl py-8 px-12 rounded-full shadow-[0_0_40px_rgba(34,197,94,0.6)] transform transition hover:scale-105 active:scale-95 animate-pulse"
                     >
                         QUERO APROVEITAR AGORA <ArrowRight className="ml-2" />
                     </Button>
