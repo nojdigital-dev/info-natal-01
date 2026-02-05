@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -6,14 +6,15 @@ import { Badge } from "@/components/ui/badge";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { 
   Check, Star, ShieldCheck, 
-  Zap, ChevronRight, ChefHat, Scale, HeartPulse, Droplet, Candy, Lock, HelpCircle, ArrowRight, ThumbsUp
+  Zap, ChevronRight, ChefHat, Scale, HeartPulse, Droplet, Candy, Lock, HelpCircle, ArrowRight, ThumbsUp, ArrowLeft
 } from "lucide-react";
 import SobremesasUpsellModal from './SobremesasUpsellModal';
 import UtmifyScript from './UtmifyScript';
 
 // Images
 const heroImg = "https://images.unsplash.com/photo-1587314168485-3236d6710814?q=80&w=1000&auto=format&fit=crop"; 
-const imgExpert = "https://images.unsplash.com/photo-1583394293214-28ded15ee548?q=80&w=1000&auto=format&fit=crop"; 
+// Female Expert Image
+const imgExpert = "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&w=1000&auto=format&fit=crop"; 
 const imgHappyEating = "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?q=80&w=1000&auto=format&fit=crop"; 
 
 // Carousel Images
@@ -37,7 +38,6 @@ const imgBonus3 = "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=8
 const avatar1 = "https://randomuser.me/api/portraits/women/44.jpg";
 const avatar2 = "https://randomuser.me/api/portraits/women/68.jpg";
 const avatar3 = "https://randomuser.me/api/portraits/women/12.jpg";
-// Removed Avatar 4
 const avatar5 = "https://randomuser.me/api/portraits/men/32.jpg";
 const avatar6 = "https://randomuser.me/api/portraits/women/22.jpg";
 
@@ -55,25 +55,101 @@ const SobremesasLanding = () => {
   const [isUpsellModalOpen, setIsUpsellModalOpen] = useState(false);
   const [timeLeft, setTimeLeft] = useState({ hours: 4, minutes: 22, seconds: 35 });
   const [todayDate, setTodayDate] = useState("");
+  
+  // Benefits Section Logic
   const [activeBenefit, setActiveBenefit] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const autoPlayRef = useRef<NodeJS.Timeout | null>(null);
+  const touchStartX = useRef<number | null>(null);
 
-  // Benefits Data for Animation
+  // Carousel Logic
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const [isCarouselHovered, setIsCarouselHovered] = useState(false);
+
+  // Benefits Data
   const benefits = [
-    { title: "Fim da Compulsão", text: "Chega de atacar a geladeira de madrugada. Nossas receitas saciam a vontade real de doce.", icon: <Zap size={28} /> },
-    { title: "Controle Glicêmico", text: "Perfeito para diabéticos e pré-diabéticos. Desfrute de doces incríveis sem causar picos de insulina.", icon: <Droplet size={28} /> },
-    { title: "Perca Peso Comendo", text: "Substitua calorias vazias por nutrientes e veja a balança descer enquanto come brownie.", icon: <Scale size={28} /> },
-    { title: "Zero Experiência", text: "Não sabe cozinhar? Sem problemas. Receitas de liquidificador, caneca e muito fáceis de fazer.", icon: <ChefHat size={28} /> },
-    { title: "Saúde da Família", text: "Seu filho vai amar os sabores da infância, mas com uma nutrição equilibrada e saudável.", icon: <ShieldCheck size={28} /> },
-    { title: "Digestão Leve", text: "Sem glúten e sem lactose significa zero inchaço. Sinta-se leve após cada sobremesa.", icon: <HeartPulse size={28} /> },
+    { title: "Fim da Compulsão", text: "Chega de atacar a geladeira de madrugada. Nossas receitas saciam a vontade real de doce.", icon: <Zap size={32} /> },
+    { title: "Controle Glicêmico", text: "Perfeito para diabéticos. Desfrute de doces incríveis sem causar picos de insulina.", icon: <Droplet size={32} /> },
+    { title: "Perca Peso Comendo", text: "Substitua calorias vazias por nutrientes e veja a balança descer enquanto come brownie.", icon: <Scale size={32} /> },
+    { title: "Zero Experiência", text: "Não sabe cozinhar? Sem problemas. Receitas de liquidificador, caneca e muito fáceis.", icon: <ChefHat size={32} /> },
+    { title: "Saúde da Família", text: "Seu filho vai amar os sabores da infância, mas com uma nutrição equilibrada.", icon: <ShieldCheck size={32} /> },
+    { title: "Digestão Leve", text: "Sem glúten e sem lactose significa zero inchaço. Sinta-se leve após cada sobremesa.", icon: <HeartPulse size={32} /> },
   ];
 
-  // Auto-switch benefits on mobile
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveBenefit((prev) => (prev + 1) % benefits.length);
-    }, 4000); // Change every 4 seconds
-    return () => clearInterval(interval);
+  // Auto-switch benefits
+  const resetAutoPlay = useCallback(() => {
+    if (autoPlayRef.current) clearTimeout(autoPlayRef.current);
+    setIsAutoPlaying(false);
+    autoPlayRef.current = setTimeout(() => {
+      setIsAutoPlaying(true);
+    }, 10000); // 10 seconds pause
   }, []);
+
+  useEffect(() => {
+    let interval: NodeJS.Timeout;
+    if (isAutoPlaying) {
+      interval = setInterval(() => {
+        setActiveBenefit((prev) => (prev + 1) % benefits.length);
+      }, 4000);
+    }
+    return () => clearInterval(interval);
+  }, [isAutoPlaying, benefits.length]);
+
+  const handleNextBenefit = () => {
+    resetAutoPlay();
+    setActiveBenefit((prev) => (prev + 1) % benefits.length);
+  };
+
+  const handlePrevBenefit = () => {
+    resetAutoPlay();
+    setActiveBenefit((prev) => (prev - 1 + benefits.length) % benefits.length);
+  };
+
+  // Swipe Logic for Benefits
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null) return;
+    const touchEndX = e.changedTouches[0].clientX;
+    const diff = touchStartX.current - touchEndX;
+
+    if (Math.abs(diff) > 50) { // Threshold for swipe
+      if (diff > 0) handleNextBenefit(); // Swipe Left
+      else handlePrevBenefit(); // Swipe Right
+    }
+    touchStartX.current = null;
+  };
+
+  // Infinite Scroll Logic (JS driven for drag support)
+  useEffect(() => {
+    const scrollContainer = carouselRef.current;
+    if (!scrollContainer) return;
+
+    let scrollAmount = 0;
+    const speed = 1; // Pixels per frame
+    let animationId: number;
+
+    const step = () => {
+      if (!isCarouselHovered) {
+        scrollAmount += speed;
+        if (scrollAmount >= scrollContainer.scrollWidth / 2) {
+          scrollAmount = 0;
+          scrollContainer.scrollLeft = 0;
+        } else {
+          scrollContainer.scrollLeft = scrollAmount;
+        }
+      } else {
+        // Sync scrollAmount when user drags manually
+        scrollAmount = scrollContainer.scrollLeft;
+      }
+      animationId = requestAnimationFrame(step);
+    };
+
+    animationId = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(animationId);
+  }, [isCarouselHovered]);
 
   // UTM Helper
   const applyUtms = (url: string) => {
@@ -112,16 +188,9 @@ const SobremesasLanding = () => {
     <>
       <Helmet>
         <title>350+ Sobremesas Zero - Coma Sem Culpa</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
         <meta name="description" content="Descubra como comer suas sobremesas favoritas de domingo a domingo sem engordar. Receitas Zero Açúcar, Glúten e Lactose." />
         <style>{`
-          @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-          }
-          .animate-scroll {
-            animation: scroll 30s linear infinite;
-          }
           @keyframes shimmer {
             0% { background-position: 200% center; }
             100% { background-position: -200% center; }
@@ -150,6 +219,14 @@ const SobremesasLanding = () => {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
           }
+          /* Hide scrollbar for carousel */
+          .no-scrollbar::-webkit-scrollbar {
+            display: none;
+          }
+          .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+          }
         `}</style>
       </Helmet>
       <UtmifyScript />
@@ -161,12 +238,13 @@ const SobremesasLanding = () => {
            🧁 DESCONTO ESPECIAL SÓ HOJE: {todayDate.toUpperCase()}
         </div>
 
-        {/* Hero Section */}
-        <section className="relative bg-gradient-to-br from-pink-50 via-purple-50 to-white py-8 md:py-24 px-4 overflow-hidden">
+        {/* Hero Section - Optimized Centering */}
+        <section className="relative bg-gradient-to-br from-pink-50 via-purple-50 to-white py-10 md:py-24 px-4 overflow-hidden">
           <div className="max-w-6xl mx-auto relative z-10">
             <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
               
-              <div className="text-center md:text-left order-2 md:order-1">
+              {/* Text Content - Explicit Centering for Mobile */}
+              <div className="flex flex-col items-center text-center md:items-start md:text-left order-2 md:order-1">
                 <Badge className="bg-purple-100 text-purple-700 hover:bg-purple-200 mb-4 px-3 py-1 text-xs md:text-sm font-bold border border-purple-200 inline-flex items-center gap-2 shadow-sm">
                   <ChefHat size={14} /> Receitas Validadas por Nutricionista
                 </Badge>
@@ -177,25 +255,26 @@ const SobremesasLanding = () => {
                   <span className="bg-pink-600 text-white px-2 transform -rotate-1 inline-block mt-2 text-2xl md:text-5xl shadow-sm">SEM CULPA!</span>
                 </h1>
                 
-                <p className="text-base md:text-xl mb-6 text-slate-600 font-medium leading-relaxed px-2 md:px-0">
+                <p className="text-base md:text-xl mb-6 text-slate-600 font-medium leading-relaxed px-2 md:px-0 max-w-lg md:max-w-none">
                   + de 350 Sobremesas Deliciosas: <span className="font-bold text-red-500 whitespace-nowrap">Zero Açúcar</span>, <span className="font-bold text-red-500 whitespace-nowrap">Zero Glúten</span> e <span className="font-bold text-red-500 whitespace-nowrap">Zero Lactose</span>. <br className="hidden md:block"/>
                   Emagreça sem abrir mão do prazer.
                 </p>
                 
-                <div className="flex flex-col gap-4">
+                <div className="flex flex-col gap-4 w-full md:w-auto items-center md:items-start">
                     <Button 
                         onClick={scrollToPricing}
-                        className="btn-hypnotic text-white font-black text-lg md:text-xl py-7 px-8 rounded-full shadow-xl flex items-center justify-center gap-2 w-full md:w-fit mx-auto md:mx-0 transition-all uppercase tracking-wide"
+                        className="btn-hypnotic text-white font-black text-lg md:text-xl py-7 px-8 rounded-full shadow-xl flex items-center justify-center gap-2 w-full md:w-fit transition-all uppercase tracking-wide"
                     >
                         QUERO BAIXAR AS RECEITAS <ChevronRight size={24} strokeWidth={3} />
                     </Button>
-                    <div className="flex items-center justify-center md:justify-start gap-2 text-xs md:text-sm text-slate-500 font-semibold">
+                    <div className="flex items-center justify-center gap-2 text-xs md:text-sm text-slate-500 font-semibold">
                         <div className="flex text-yellow-400"><Star fill="currentColor" size={14}/><Star fill="currentColor" size={14}/><Star fill="currentColor" size={14}/><Star fill="currentColor" size={14}/><Star fill="currentColor" size={14}/></div>
                         <span>(5.482) Avaliações • 97% Aprovado</span>
                     </div>
                 </div>
               </div>
 
+              {/* Image Content */}
               <div className="relative order-1 md:order-2 flex justify-center mt-2 md:mt-0">
                  <div className="relative w-[280px] md:w-[350px] aspect-square">
                     <div className="absolute inset-0 bg-pink-200 rounded-full blur-3xl opacity-30 animate-pulse"></div>
@@ -215,21 +294,28 @@ const SobremesasLanding = () => {
           </div>
         </section>
 
-        {/* Infinite Carousel Section */}
+        {/* Manual + Auto Scroll Carousel Section */}
         <section className="py-8 bg-white overflow-hidden border-y border-slate-100">
           <div className="text-center mb-6 px-4">
               <h2 className="text-xl md:text-3xl font-extrabold text-slate-900">O Que Você Vai Poder Comer?</h2>
-              <p className="text-slate-500 text-xs md:text-sm">Sim, tudo isso na versão fit!</p>
+              <p className="text-slate-500 text-xs md:text-sm">Arraste para o lado e veja as delícias fit 👆</p>
           </div>
           
-          <div className="relative w-full">
-             <div className="flex w-[200%] animate-scroll hover:pause">
-                {[...carouselImages, ...carouselImages].map((item, index) => (
-                   <div key={index} className="w-[120px] md:w-[200px] shrink-0 mx-2 md:mx-4">
-                      <div className="relative rounded-xl overflow-hidden shadow-md aspect-square group">
-                         <img src={item.img} alt={item.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
-                         <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-2 md:p-3">
-                            <span className="text-white font-bold text-[10px] md:text-lg">{item.name}</span>
+          <div 
+            className="relative w-full overflow-x-auto no-scrollbar cursor-grab active:cursor-grabbing"
+            ref={carouselRef}
+            onMouseEnter={() => setIsCarouselHovered(true)}
+            onMouseLeave={() => setIsCarouselHovered(false)}
+            onTouchStart={() => setIsCarouselHovered(true)}
+            onTouchEnd={() => setIsCarouselHovered(false)}
+          >
+             <div className="flex w-fit px-4">
+                {[...carouselImages, ...carouselImages, ...carouselImages].map((item, index) => (
+                   <div key={index} className="w-[140px] md:w-[220px] shrink-0 mx-2 md:mx-4 select-none">
+                      <div className="relative rounded-xl overflow-hidden shadow-md aspect-square group pointer-events-none">
+                         <img src={item.img} alt={item.name} className="w-full h-full object-cover" />
+                         <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-2 md:p-4">
+                            <span className="text-white font-bold text-sm md:text-lg drop-shadow-md">{item.name}</span>
                          </div>
                       </div>
                    </div>
@@ -247,49 +333,65 @@ const SobremesasLanding = () => {
           </div>
         </section>
 
-        {/* Benefits Section (Hybrid: Mobile Animated / Desktop Grid) */}
-        <section className="py-12 md:py-20 px-4 bg-slate-900 text-white relative overflow-hidden">
-          <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
+        {/* Benefits Section (Vibrant Background, Swipeable & Controlled) */}
+        <section className="py-12 md:py-20 px-4 bg-orange-600 text-white relative overflow-hidden">
+          <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
           <div className="max-w-6xl mx-auto relative z-10">
-              <h2 className="text-2xl md:text-5xl font-extrabold text-center mb-4 text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-purple-400 leading-tight">
+              <h2 className="text-2xl md:text-5xl font-extrabold text-center mb-4 text-white leading-tight">
                   Esqueça a "Dieta Chata"
               </h2>
-              <p className="text-center text-slate-400 mb-8 md:mb-16 max-w-2xl mx-auto text-sm md:text-base px-2">
+              <p className="text-center text-orange-100 mb-8 md:mb-16 max-w-2xl mx-auto text-sm md:text-base px-2">
                   Veja o que acontece com seu corpo quando você troca o açúcar pelas nossas receitas:
               </p>
               
-              {/* MOBILE LAYOUT: ANIMATED CARD */}
-              <div className="md:hidden">
-                  <div className="bg-slate-800 rounded-3xl p-6 border border-slate-700 shadow-2xl relative overflow-hidden h-[420px] flex flex-col items-center text-center">
+              {/* MOBILE LAYOUT: VIBRANT ANIMATED CARD WITH CONTROLS */}
+              <div className="md:hidden relative">
+                  <div 
+                    className="bg-slate-900 rounded-3xl p-6 border border-slate-800 shadow-2xl relative overflow-hidden h-[450px] flex flex-col items-center text-center mx-auto max-w-sm"
+                    onTouchStart={handleTouchStart}
+                    onTouchEnd={handleTouchEnd}
+                  >
                       
                       {/* Image Circle */}
-                      <div className="w-32 h-32 rounded-full border-4 border-pink-500 overflow-hidden mb-6 shadow-[0_0_30px_rgba(236,72,153,0.3)] shrink-0">
-                          <img src={imgHappyEating} alt="Happy" className="w-full h-full object-cover" />
+                      <div className="w-28 h-28 rounded-full border-4 border-orange-500 overflow-hidden mb-6 shadow-[0_0_30px_rgba(249,115,22,0.4)] shrink-0 bg-slate-800">
+                          <img src={imgHappyEating} alt="Happy" className="w-full h-full object-cover opacity-90" />
                       </div>
 
                       {/* Animated Content */}
-                      <div key={activeBenefit} className="fade-in-slide flex-1 flex flex-col items-center justify-center">
-                          <div className="bg-slate-700/50 p-4 rounded-full text-pink-400 mb-4 inline-block">
+                      <div key={activeBenefit} className="fade-in-slide flex-1 flex flex-col items-center justify-center w-full">
+                          <div className="bg-slate-800 p-4 rounded-full text-orange-400 mb-4 inline-block border border-slate-700 shadow-inner">
                               {benefits[activeBenefit].icon}
                           </div>
                           <h3 className="text-xl font-bold text-white mb-2">{benefits[activeBenefit].title}</h3>
-                          <p className="text-slate-300 text-sm leading-relaxed max-w-xs">
+                          <p className="text-slate-400 text-sm leading-relaxed px-2">
                               {benefits[activeBenefit].text}
                           </p>
                       </div>
 
-                      {/* Progress Indicators */}
-                      <div className="flex gap-2 mt-6">
-                          {benefits.map((_, idx) => (
-                              <div 
-                                key={idx} 
-                                className={`h-1.5 rounded-full transition-all duration-300 ${idx === activeBenefit ? 'w-6 bg-pink-500' : 'w-1.5 bg-slate-600'}`}
-                              />
-                          ))}
+                      {/* Controls */}
+                      <div className="flex items-center justify-between w-full mt-4 px-2">
+                          <Button size="icon" variant="ghost" onClick={handlePrevBenefit} className="text-slate-500 hover:text-white hover:bg-slate-800 rounded-full">
+                              <ArrowLeft />
+                          </Button>
+                          
+                          {/* Progress Dots */}
+                          <div className="flex gap-1.5">
+                              {benefits.map((_, idx) => (
+                                  <div 
+                                    key={idx} 
+                                    onClick={() => { resetAutoPlay(); setActiveBenefit(idx); }}
+                                    className={`h-1.5 rounded-full transition-all duration-300 cursor-pointer ${idx === activeBenefit ? 'w-6 bg-orange-500' : 'w-1.5 bg-slate-700'}`}
+                                  />
+                              ))}
+                          </div>
+
+                          <Button size="icon" variant="ghost" onClick={handleNextBenefit} className="text-slate-500 hover:text-white hover:bg-slate-800 rounded-full">
+                              <ArrowRight />
+                          </Button>
                       </div>
                   </div>
-                  <p className="text-center text-slate-500 text-xs mt-4 animate-pulse">
-                      (Desliza automaticamente...)
+                  <p className="text-center text-orange-200/60 text-xs mt-4 animate-pulse flex items-center justify-center gap-1">
+                      <span className="text-lg">👈</span> Deslize para ver mais <span className="text-lg">👉</span>
                   </p>
               </div>
 
@@ -299,12 +401,12 @@ const SobremesasLanding = () => {
                   <div className="flex-1 space-y-8">
                       {benefits.slice(0, 3).map((item, idx) => (
                           <div key={idx} className="flex gap-4 text-right flex-row-reverse items-start group">
-                              <div className="bg-slate-800 p-3 rounded-xl text-pink-400 shrink-0 border border-slate-700 group-hover:border-pink-500/50 transition-colors">
+                              <div className="bg-slate-900 p-4 rounded-xl text-orange-400 shrink-0 border border-slate-800 shadow-lg group-hover:border-orange-500/50 transition-colors">
                                   {item.icon}
                               </div>
                               <div>
                                   <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
-                                  <p className="text-slate-400 text-sm leading-relaxed">{item.text}</p>
+                                  <p className="text-orange-100 text-sm leading-relaxed">{item.text}</p>
                               </div>
                           </div>
                       ))}
@@ -312,11 +414,11 @@ const SobremesasLanding = () => {
 
                   {/* Center Image */}
                   <div className="w-[350px] shrink-0 relative group">
-                      <div className="absolute inset-0 bg-gradient-to-tr from-pink-500 to-purple-600 rounded-full blur-2xl opacity-40 group-hover:opacity-60 transition-opacity duration-700"></div>
+                      <div className="absolute inset-0 bg-gradient-to-tr from-orange-400 to-red-600 rounded-full blur-2xl opacity-40 group-hover:opacity-60 transition-opacity duration-700"></div>
                       <img 
                           src={imgHappyEating} 
                           alt="Mulher feliz comendo doce fit" 
-                          className="relative rounded-3xl shadow-2xl border-4 border-slate-700 w-full object-cover aspect-[3/4] transform hover:scale-105 transition-transform duration-500 z-10"
+                          className="relative rounded-3xl shadow-2xl border-4 border-slate-900 w-full object-cover aspect-[3/4] transform hover:scale-105 transition-transform duration-500 z-10"
                       />
                   </div>
 
@@ -324,18 +426,78 @@ const SobremesasLanding = () => {
                   <div className="flex-1 space-y-8">
                       {benefits.slice(3, 6).map((item, idx) => (
                           <div key={idx} className="flex gap-4 items-start group">
-                              <div className="bg-slate-800 p-3 rounded-xl text-purple-400 shrink-0 border border-slate-700 group-hover:border-purple-500/50 transition-colors">
+                              <div className="bg-slate-900 p-4 rounded-xl text-orange-400 shrink-0 border border-slate-800 shadow-lg group-hover:border-orange-500/50 transition-colors">
                                   {item.icon}
                               </div>
                               <div>
                                   <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
-                                  <p className="text-slate-400 text-sm leading-relaxed">{item.text}</p>
+                                  <p className="text-orange-100 text-sm leading-relaxed">{item.text}</p>
                               </div>
                           </div>
                       ))}
                   </div>
               </div>
           </div>
+        </section>
+
+        {/* First Social Proof Section */}
+        <section className="py-16 md:py-20 px-4 bg-white">
+            <div className="max-w-6xl mx-auto">
+                <div className="text-center mb-12 md:mb-16">
+                    <span className="text-pink-600 font-bold tracking-widest uppercase text-xs md:text-sm bg-pink-50 px-4 py-1 rounded-full">Depoimentos Reais</span>
+                    <h2 className="text-2xl md:text-5xl font-black text-slate-900 mt-4">Elas Já Estão <span className="text-purple-600">Amando os Resultados</span></h2>
+                </div>
+
+                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    {/* Review 1 */}
+                    <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+                        <div className="flex items-center gap-3 mb-4">
+                            <img src={avatar1} alt="User" className="w-12 h-12 rounded-full border-2 border-pink-200" />
+                            <div>
+                                <h4 className="font-bold text-slate-900 text-sm">Juliana Castro</h4>
+                                <div className="flex text-yellow-400 text-xs"><Star size={12} fill="currentColor"/><Star size={12} fill="currentColor"/><Star size={12} fill="currentColor"/><Star size={12} fill="currentColor"/><Star size={12} fill="currentColor"/></div>
+                            </div>
+                        </div>
+                        <p className="text-slate-600 text-sm italic">"Eu sou diabética e achava que nunca mais ia comer um pudim gostoso na vida. Fiz o pudim do e-book e chorei de emoção. É idêntico!"</p>
+                    </div>
+
+                    {/* Review 2 */}
+                    <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 mt-0 md:mt-8">
+                        <div className="flex items-center gap-3 mb-4">
+                            <img src={avatar2} alt="User" className="w-12 h-12 rounded-full border-2 border-pink-200" />
+                            <div>
+                                <h4 className="font-bold text-slate-900 text-sm">Carla Dias</h4>
+                                <div className="flex text-yellow-400 text-xs"><Star size={12} fill="currentColor"/><Star size={12} fill="currentColor"/><Star size={12} fill="currentColor"/><Star size={12} fill="currentColor"/><Star size={12} fill="currentColor"/></div>
+                            </div>
+                        </div>
+                        <p className="text-slate-600 text-sm italic">"Perdi 4kg em 1 mês só trocando o doce da padaria pelas receitas da Dra. Isabela. O bolo de pote é sensacional."</p>
+                    </div>
+
+                    {/* Review 3 */}
+                    <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
+                        <div className="flex items-center gap-3 mb-4">
+                            <img src={avatar3} alt="User" className="w-12 h-12 rounded-full border-2 border-pink-200" />
+                            <div>
+                                <h4 className="font-bold text-slate-900 text-sm">Renata Souza</h4>
+                                <div className="flex text-yellow-400 text-xs"><Star size={12} fill="currentColor"/><Star size={12} fill="currentColor"/><Star size={12} fill="currentColor"/><Star size={12} fill="currentColor"/><Star size={12} fill="currentColor"/></div>
+                            </div>
+                        </div>
+                        <p className="text-slate-600 text-sm italic">"Meu filho tem intolerância a lactose e glúten. Era uma luta achar lanches pra ele. Esse material salvou a lancheira da escola!"</p>
+                    </div>
+
+                    {/* Review 4 (Patricia Removed - Replaced with Generic) */}
+                    <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 mt-0 md:mt-8">
+                        <div className="flex items-center gap-3 mb-4">
+                            <div className="w-12 h-12 rounded-full border-2 border-pink-200 bg-pink-100 flex items-center justify-center font-bold text-pink-600">AS</div>
+                            <div>
+                                <h4 className="font-bold text-slate-900 text-sm">Ana Silva</h4>
+                                <div className="flex text-yellow-400 text-xs"><Star size={12} fill="currentColor"/><Star size={12} fill="currentColor"/><Star size={12} fill="currentColor"/><Star size={12} fill="currentColor"/><Star size={12} fill="currentColor"/></div>
+                            </div>
+                        </div>
+                        <p className="text-slate-600 text-sm italic">"As receitas de torta são maravilhosas. Ninguém diz que é fit. Servi no almoço de domingo e acabou tudo!"</p>
+                    </div>
+                </div>
+            </div>
         </section>
 
         {/* Bonuses Section (With Photos) */}
@@ -438,7 +600,7 @@ const SobremesasLanding = () => {
                     <div className="flex justify-center items-baseline gap-1">
                         <span className="text-5xl md:text-6xl font-black text-green-600 tracking-tighter">R$ 19,90</span>
                     </div>
-                    <p className="text-[10px] text-green-700 font-bold mt-1 bg-green-100 inline-block px-2 py-0.5 rounded">Pagamento Único • Acesso Vitalício</p>
+                    <p className="text-[10px] md:text-xs text-green-700 font-bold mt-1 bg-green-100 inline-block px-2 py-0.5 rounded">Pagamento Único • Acesso Vitalício</p>
                  </div>
                  
                  <ul className="space-y-3 mb-6 text-sm font-medium text-slate-700">
@@ -451,7 +613,7 @@ const SobremesasLanding = () => {
 
                  <Button 
                     onClick={() => window.location.href = applyUtms('https://pay.lowify.com.br/checkout?product_id=sobremesas-premium-19')}
-                    className="btn-hypnotic w-full text-white font-black text-lg py-8 rounded-xl shadow-[0_4px_0_rgb(21,128,61)] active:shadow-none active:translate-y-1 transition-all whitespace-normal h-auto leading-tight"
+                    className="btn-hypnotic w-full text-white font-black text-lg md:text-xl py-8 rounded-xl shadow-[0_4px_0_rgb(21,128,61)] active:shadow-none active:translate-y-1 transition-all whitespace-normal h-auto leading-tight"
                  >
                     QUERO O PACOTE COMPLETO
                  </Button>
@@ -467,9 +629,10 @@ const SobremesasLanding = () => {
 
         {/* Guarantee Section */}
         <section className="py-12 md:py-16 px-4 bg-gradient-to-br from-yellow-400 via-orange-400 to-red-400 relative overflow-hidden">
+             {/* Background decorative elements */}
              <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20"></div>
              
-             <div className="max-w-4xl mx-auto bg-white/90 backdrop-blur-md p-6 md:p-12 rounded-[2rem] shadow-2xl border-4 border-white/50 flex flex-col md:flex-row items-center gap-6 md:gap-12 relative z-10">
+             <div className="max-w-4xl mx-auto bg-white/90 backdrop-blur-md p-8 md:p-12 rounded-[2rem] md:rounded-[3rem] shadow-2xl border-4 border-white/50 flex flex-col md:flex-row items-center gap-8 md:gap-12 relative z-10">
                  
                  <div className="shrink-0 relative">
                      <div className="w-32 h-32 md:w-40 md:h-40 bg-gradient-to-br from-yellow-300 to-orange-500 rounded-full flex items-center justify-center border-4 border-white shadow-xl relative z-10 transform -rotate-12">
@@ -482,8 +645,8 @@ const SobremesasLanding = () => {
 
                  <div className="text-center md:text-left">
                      <h3 className="text-2xl md:text-4xl font-black text-slate-900 mb-2 uppercase italic tracking-tight">Garantia Blindada</h3>
-                     <h4 className="text-base md:text-xl font-bold text-red-600 mb-4 bg-red-100 px-4 py-1 inline-block rounded-lg transform -rotate-1 border border-red-200">Risco Zero Absoluto para Você</h4>
-                     <p className="text-slate-700 text-sm md:text-lg leading-relaxed mb-6 font-medium">
+                     <h4 className="text-lg md:text-xl font-bold text-red-600 mb-4 bg-red-100 px-4 py-1 inline-block rounded-lg transform -rotate-1 border border-red-200">Risco Zero Absoluto para Você</h4>
+                     <p className="text-slate-700 text-base md:text-lg leading-relaxed mb-6 font-medium">
                          Você não precisa decidir agora. <span className="font-bold">Entre, baixe as receitas e faça o teste.</span> Se você não amar o sabor ou achar difícil (o que duvido), eu devolvo 100% do seu dinheiro imediatamente. Basta um único e-mail.
                      </p>
                  </div>
