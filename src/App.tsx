@@ -14,7 +14,8 @@ import ShopeeLanding from "./components/ShopeeLanding";
 import LeisCantadasLanding from "./components/LeisCantadasLanding";
 import USChristmasLanding from "./components/USChristmasLanding"; 
 import SobremesasLanding from "./components/SobremesasLanding";
-import EducacaoKidsLanding from "./components/EducacaoKidsLanding"; // Novo Import
+import EducacaoKidsLanding from "./components/EducacaoKidsLanding";
+import EducacaoKidsV2Landing from "./components/EducacaoKidsV2Landing"; // Novo Import V2
 import NotFound from "./pages/NotFound";
 import Index from "./pages/Index";
 
@@ -45,8 +46,8 @@ const App = () => (
 
           <Route path="/sobremesas-zero" element={<SobremesasLanding />} />
           
-          {/* Nova Rota Educação Kids */}
           <Route path="/educacao-kids" element={<EducacaoKidsLanding />} />
+          <Route path="/educacao-kids-v2" element={<EducacaoKidsV2Landing />} /> {/* Nova Rota */}
 
           <Route path="/" element={<Index />} />
           <Route path="*" element={<NotFound />} />
