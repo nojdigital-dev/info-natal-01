@@ -251,6 +251,16 @@ const EducacaoKidsV2Landing = () => {
                         O que realmente atrasa seu filho é a <strong className="text-red-500 bg-red-50 px-1">falta de estímulo fonético na fase certa</strong>. O cérebro precisa "ver" o som antes de ler. Mas calma, a culpa não é sua! Ninguém te ensinou isso... até agora.
                     </p>
                 </div>
+
+                {/* Extra CTA */}
+                <div className="text-center mt-8">
+                    <Button 
+                        onClick={scrollToPricing}
+                        className="btn-hypnotic text-white font-black text-lg md:text-xl py-6 px-10 rounded-full w-full md:w-auto mx-auto shadow-lg"
+                    >
+                        QUERO AJUDAR MEU FILHO AGORA
+                    </Button>
+                </div>
             </div>
         </section>
 
@@ -258,7 +268,7 @@ const EducacaoKidsV2Landing = () => {
         <section className="py-12 px-4 bg-slate-900 text-white text-center">
             <div className="max-w-md mx-auto">
                 <h2 className="text-2xl font-bold mb-6">Veja como é fácil ensinar seu filho(a) a ler...</h2>
-                <div className="aspect-[9/16] bg-slate-800 rounded-3xl border-4 border-slate-700 overflow-hidden relative shadow-2xl mx-auto">
+                <div className="aspect-[9/16] bg-slate-800 rounded-3xl border-4 border-slate-700 overflow-hidden relative shadow-2xl mx-auto mb-8">
                     <img src={vslPlaceholder} alt="Video Placeholder" className="w-full h-full object-cover opacity-50" />
                     <div className="absolute inset-0 flex flex-col items-center justify-center">
                         <div className="w-20 h-20 bg-green-500 rounded-full flex items-center justify-center cursor-pointer hover:scale-110 transition-transform shadow-xl animate-pulse">
@@ -296,6 +306,16 @@ const EducacaoKidsV2Landing = () => {
                         <h3 className="font-bold text-lg mb-2">3. Eles Amam!</h3>
                         <p className="text-sm text-slate-600">Atividades lúdicas que parecem brincadeira.</p>
                     </div>
+                </div>
+
+                {/* Extra CTA */}
+                <div className="text-center mt-12">
+                    <Button 
+                        onClick={scrollToPricing}
+                        className="btn-hypnotic text-white font-black text-lg md:text-xl py-6 px-10 rounded-full w-full md:w-auto mx-auto shadow-lg"
+                    >
+                        COMEÇAR AGORA POR R$ 9,90
+                    </Button>
                 </div>
             </div>
         </section>
@@ -394,21 +414,21 @@ const EducacaoKidsV2Landing = () => {
                 <div className="grid md:grid-cols-2 gap-8 items-start max-w-4xl mx-auto">
                     
                     {/* Basic Plan */}
-                    <div className="bg-white rounded-3xl p-6 border-4 border-blue-200 opacity-95 hover:opacity-100 transition-opacity mt-4">
-                        <h3 className="text-xl font-bold text-slate-500 text-center uppercase tracking-wide">Kit Básico</h3>
+                    <div className="bg-green-50 rounded-3xl p-6 border-4 border-green-200 opacity-95 hover:opacity-100 transition-opacity mt-4">
+                        <h3 className="text-xl font-bold text-green-800 text-center uppercase tracking-wide">Kit Básico</h3>
                         <div className="text-center my-6">
-                            <span className="text-sm text-slate-400 line-through">De R$ 97,00</span>
-                            <div className="text-4xl font-black text-slate-800">R$ 9,90</div>
+                            <span className="text-sm text-green-700 line-through">De R$ 97,00</span>
+                            <div className="text-4xl font-black text-green-900">R$ 9,90</div>
                         </div>
-                        <ul className="space-y-3 mb-8 text-sm text-slate-600">
-                            <li className="flex items-center gap-2"><Check size={16} className="text-green-500"/> Arquivos em PDF</li>
-                            <li className="flex items-center gap-2"><Check size={16} className="text-green-500"/> Grafismo Fonético</li>
+                        <ul className="space-y-3 mb-8 text-sm text-green-800">
+                            <li className="flex items-center gap-2"><Check size={16} className="text-green-600"/> Arquivos em PDF</li>
+                            <li className="flex items-center gap-2"><Check size={16} className="text-green-600"/> Grafismo Fonético</li>
                             <li className="flex items-center gap-2 text-red-400 line-through"><Lock size={16}/> Sem Bônus Exclusivos</li>
                             <li className="flex items-center gap-2 text-red-400 line-through"><Lock size={16}/> Sem Jogos Educativos</li>
                         </ul>
                         <Button 
                             onClick={() => setIsUpsellModalOpen(true)}
-                            className="w-full bg-green-300 hover:bg-green-400 text-green-900 font-bold py-6 rounded-xl border-b-4 border-green-500 active:border-b-0 active:translate-y-1 transition-all"
+                            className="w-full bg-green-200 hover:bg-green-300 text-green-800 font-bold py-6 rounded-xl border-b-4 border-green-400 active:border-b-0 active:translate-y-1 transition-all"
                         >
                             QUERO O BÁSICO
                         </Button>
@@ -456,9 +476,15 @@ const EducacaoKidsV2Landing = () => {
                 </div>
                 <div className="text-center md:text-left">
                     <h3 className="text-2xl font-black text-slate-800 mb-2">Garantia Incondicional de 7 Dias</h3>
-                    <p className="text-slate-600 leading-relaxed">
+                    <p className="text-slate-600 leading-relaxed mb-6">
                         Se você sentir que o material não ajudou seu filho, nós devolvemos 100% do seu dinheiro. Sem perguntas, sem burocracia. O risco é todo nosso.
                     </p>
+                    <Button 
+                        onClick={scrollToPricing}
+                        className="btn-hypnotic text-white font-black text-lg py-4 px-8 rounded-full shadow-lg"
+                    >
+                        TESTAR SEM RISCO
+                    </Button>
                 </div>
             </div>
         </section>
@@ -526,12 +552,22 @@ const EducacaoKidsV2Landing = () => {
         <section className="py-12 px-4 bg-white">
             <div className="max-w-2xl mx-auto">
                 <h2 className="text-2xl font-black text-center text-slate-800 mb-8">Perguntas Frequentes</h2>
-                <Accordion type="single" collapsible className="space-y-2">
+                <Accordion type="single" collapsible className="space-y-2 mb-10">
                     <FAQItem q="O material é físico ou digital?" a="É 100% digital (PDF). Você recebe no e-mail, baixa e imprime quantas vezes quiser." />
                     <FAQItem q="Para qual idade é indicado?" a="Ideal para crianças de 2 a 12 anos, ou qualquer criança em fase de alfabetização ou com dificuldades." />
                     <FAQItem q="Serve para autistas ou TDAH?" a="Sim! O método visual e prático é altamente recomendado por especialistas para crianças atípicas." />
                     <FAQItem q="Como acesso o material?" a="O acesso chega no seu e-mail imediatamente após a confirmação do pagamento." />
                 </Accordion>
+
+                {/* Extra CTA */}
+                <div className="text-center">
+                    <Button 
+                        onClick={scrollToPricing}
+                        className="btn-hypnotic text-white font-black text-lg md:text-xl py-6 px-10 rounded-full w-full md:w-auto mx-auto shadow-lg"
+                    >
+                        TIRAR MINHAS DÚVIDAS AGORA
+                    </Button>
+                </div>
             </div>
         </section>
 
