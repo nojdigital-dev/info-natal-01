@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { 
   Check, Star, ShieldCheck, 
-  Zap, ChevronRight, Brain, BookOpen, Smile, Baby, Lock, HelpCircle, ArrowRight, Pencil, Puzzle, AlertTriangle, Download, Printer, Heart
+  Zap, ChevronRight, Brain, BookOpen, Smile, Baby, Lock, HelpCircle, ArrowRight, Pencil, Puzzle, Download, Printer, Heart, Clock
 } from "lucide-react";
 import EducacaoKidsV2UpsellModal from './EducacaoKidsV2UpsellModal';
 import UtmifyScript from './UtmifyScript';
@@ -19,7 +19,7 @@ const testimonial2 = "https://randomuser.me/api/portraits/women/68.jpg";
 const testimonial3 = "https://randomuser.me/api/portraits/women/12.jpg";
 const testimonial4 = "https://randomuser.me/api/portraits/men/32.jpg";
 
-// Bonus Images (Placeholders for Kids Material)
+// Bonus Images
 const imgBonus1 = "https://images.unsplash.com/photo-1588072432836-e10032774350?q=80&w=500&auto=format&fit=crop";
 const imgBonus2 = "https://images.unsplash.com/photo-1596464716127-f9a82763ef5c?q=80&w=500&auto=format&fit=crop";
 const imgBonus3 = "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=500&auto=format&fit=crop";
@@ -34,6 +34,16 @@ const carouselImages = [
   { img: "https://images.unsplash.com/photo-1516627145497-ae6968895b74?q=80&w=300&auto=format&fit=crop", name: "Jogos" },
 ];
 
+// Google Icon
+const GoogleIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="24px" height="24px">
+    <path fill="#FFC107" d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12c0-6.627,5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24c0,11.045,8.955,20,20,20c11.045,0,20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"/>
+    <path fill="#FF3D00" d="M6.306,14.691l6.571,4.819C14.655,15.108,18.961,12,24,12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C16.318,4,9.656,8.337,6.306,14.691z"/>
+    <path fill="#4CAF50" d="M24,44c5.166,0,9.86-1.977,13.409-5.192l-6.19-5.238C29.211,35.091,26.715,36,24,36c-5.202,0-9.619-3.317-11.283-7.946l-6.522,5.025C9.505,39.556,16.227,44,24,44z"/>
+    <path fill="#1976D2" d="M43.611,20.083H42V20H24v8h11.303c-0.792,2.237-2.231,4.166-4.087,5.571c0.001-0.001,0.002-0.001,0.003-0.002l6.19,5.238C36.971,39.205,44,34,44,24C44,22.659,43.862,21.35,43.611,20.083z"/>
+  </svg>
+);
+
 const EducacaoKidsV2Landing = () => {
   const [isUpsellModalOpen, setIsUpsellModalOpen] = useState(false);
   const [timeLeft, setTimeLeft] = useState({ hours: 4, minutes: 22, seconds: 35 });
@@ -43,13 +53,12 @@ const EducacaoKidsV2Landing = () => {
   const carouselRef = useRef<HTMLDivElement>(null);
   const [isCarouselHovered, setIsCarouselHovered] = useState(false);
 
-  // Infinite Scroll Logic (JS driven for drag support)
   useEffect(() => {
     const scrollContainer = carouselRef.current;
     if (!scrollContainer) return;
 
     let scrollAmount = 0;
-    const speed = 1; // Pixels per frame
+    const speed = 1;
     let animationId: number;
 
     const step = () => {
@@ -110,20 +119,28 @@ const EducacaoKidsV2Landing = () => {
         <title>Kit Grafismo Fonético - Leitura Acelerada</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
         <style>{`
-          @keyframes bounce-slow {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+          @keyframes shimmer {
+            0% { background-position: 200% center; }
+            100% { background-position: -200% center; }
           }
-          .animate-bounce-slow {
-            animation: bounce-slow 3s infinite ease-in-out;
+          @keyframes scale-only-pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
           }
-          .btn-kid {
-            box-shadow: 0 4px 0 #00000030;
-            transition: all 0.1s;
+          .animate-scale-pulse {
+            animation: scale-only-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
           }
-          .btn-kid:active {
-            transform: translateY(4px);
-            box-shadow: none;
+          .btn-hypnotic {
+            background: linear-gradient(110deg, #16a34a 25%, #4ade80 50%, #16a34a 75%);
+            background-size: 200% 100%;
+            animation: shimmer 3s linear infinite, scale-only-pulse 3s ease-in-out infinite;
+            border-bottom: 4px solid #14532d;
+          }
+          .btn-hypnotic:hover {
+            background: linear-gradient(110deg, #16a34a 35%, #86efac 50%, #16a34a 65%);
+            background-size: 200% 100%;
+            animation: shimmer 1s linear infinite, scale-only-pulse 3s ease-in-out infinite;
+            transform: scale(1.03);
           }
           /* Hide scrollbar for carousel */
           .no-scrollbar::-webkit-scrollbar {
@@ -140,7 +157,7 @@ const EducacaoKidsV2Landing = () => {
       <div className="min-h-screen bg-white font-sans text-slate-900 overflow-x-hidden">
         
         {/* Sticky Bar */}
-        <div className="bg-red-600 text-white text-center py-2 px-2 font-bold text-xs md:text-sm animate-pulse sticky top-0 z-50 shadow-md flex justify-center items-center gap-2 uppercase tracking-wide">
+        <div className="bg-red-600 text-white text-center py-2 px-2 font-bold text-xs md:text-sm animate-pulse sticky top-0 z-50 shadow-md flex justify-center items-center gap-2 uppercase tracking-wide border-b-4 border-red-800">
            🔥 Desconto Liberado Apenas Hoje: {todayDate}
         </div>
 
@@ -168,7 +185,7 @@ const EducacaoKidsV2Landing = () => {
                 <div className="flex flex-col gap-4 w-full md:w-auto items-center md:items-start">
                     <Button 
                         onClick={scrollToPricing}
-                        className="bg-green-500 hover:bg-green-400 text-white font-black text-xl md:text-3xl py-8 px-12 rounded-full btn-kid uppercase flex items-center gap-3 shadow-xl animate-bounce-slow"
+                        className="btn-hypnotic text-white font-black text-xl md:text-3xl py-8 px-12 rounded-full w-full md:w-fit uppercase flex items-center gap-3 shadow-xl"
                     >
                         QUERO MEU PEQUENO LENDO <ArrowRight size={32} strokeWidth={4} />
                     </Button>
@@ -179,7 +196,7 @@ const EducacaoKidsV2Landing = () => {
                 </div>
               </div>
 
-              {/* Image Content - PHOTO FIELD ADDED */}
+              {/* Image Content */}
               <div className="relative order-1 md:order-2 flex justify-center">
                  <div className="relative w-[280px] md:w-[400px] aspect-square group">
                     <div className="absolute inset-0 bg-white rounded-full blur-3xl opacity-40 animate-pulse"></div>
@@ -189,7 +206,7 @@ const EducacaoKidsV2Landing = () => {
                         className="relative rounded-[2rem] shadow-[0_20px_50px_rgba(0,0,0,0.3)] border-4 border-white transform rotate-2 group-hover:rotate-0 transition-all duration-500 object-cover w-full h-full z-10"
                     />
                     {/* Floating Badge */}
-                    <div className="absolute -bottom-6 -right-4 bg-white px-6 py-4 rounded-xl shadow-xl border-b-4 border-blue-600 animate-bounce-slow z-20">
+                    <div className="absolute -bottom-6 -right-4 bg-white px-6 py-4 rounded-xl shadow-xl border-b-4 border-blue-600 animate-bounce z-20">
                         <p className="font-black text-blue-600 text-2xl">10 min</p>
                         <p className="text-xs text-slate-500 font-bold uppercase">Por dia</p>
                     </div>
@@ -227,9 +244,6 @@ const EducacaoKidsV2Landing = () => {
                 </div>
 
                 <div className="text-center mb-10">
-                    <div className="inline-flex items-center justify-center p-2 bg-yellow-100 rounded-full mb-4 animate-pulse">
-                        <AlertTriangle className="text-orange-500" size={32} />
-                    </div>
                     <h3 className="text-3xl font-black text-blue-900 mb-4">
                         A Verdade Que Ninguém Te Conta 🤫
                     </h3>
@@ -240,7 +254,7 @@ const EducacaoKidsV2Landing = () => {
             </div>
         </section>
 
-        {/* Vertical VSL Section (Placeholder) */}
+        {/* Vertical VSL Section */}
         <section className="py-12 px-4 bg-slate-900 text-white text-center">
             <div className="max-w-md mx-auto">
                 <h2 className="text-2xl font-bold mb-6">Veja como é fácil ensinar seu filho(a) a ler...</h2>
@@ -253,153 +267,6 @@ const EducacaoKidsV2Landing = () => {
                         <p className="mt-4 font-bold uppercase tracking-widest">Aperte o Play 👇</p>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        {/* Checklist / Development Section */}
-        <section className="py-16 px-4 bg-blue-50">
-            <div className="max-w-5xl mx-auto">
-                <div className="text-center mb-12">
-                    <h2 className="text-3xl md:text-4xl font-black text-blue-900 mb-2">Por que o Kit Funciona?</h2>
-                    <p className="text-slate-600">Baseado em Neurociência e Pedagogia Ativa</p>
-                </div>
-
-                <div className="grid md:grid-cols-2 gap-8 items-center">
-                    <div className="space-y-4">
-                        <div className="flex gap-4 bg-white p-4 rounded-xl shadow-sm border-l-4 border-green-500">
-                            <Check className="text-green-500 shrink-0" />
-                            <p className="text-slate-700 font-medium">Desenvolve a <strong>coordenação motora fina</strong> (essencial para a escrita).</p>
-                        </div>
-                        <div className="flex gap-4 bg-white p-4 rounded-xl shadow-sm border-l-4 border-blue-500">
-                            <Check className="text-blue-500 shrink-0" />
-                            <p className="text-slate-700 font-medium">Estimula a <strong>criatividade e o foco</strong> (ideal para mentes agitadas).</p>
-                        </div>
-                        <div className="flex gap-4 bg-white p-4 rounded-xl shadow-sm border-l-4 border-purple-500">
-                            <Check className="text-purple-500 shrink-0" />
-                            <p className="text-slate-700 font-medium">Fortalece as <strong>conexões neurais</strong> que "destravam" a leitura.</p>
-                        </div>
-                        <div className="flex gap-4 bg-white p-4 rounded-xl shadow-sm border-l-4 border-yellow-500">
-                            <Check className="text-yellow-500 shrink-0" />
-                            <p className="text-slate-700 font-medium">Desperta o interesse natural pelas palavras, <strong>sem forçar</strong>.</p>
-                        </div>
-                        
-                        <div className="bg-blue-100 p-4 rounded-xl text-center mt-6">
-                            <p className="text-blue-800 font-bold">⏱️ Tudo isso com apenas alguns minutos por dia!</p>
-                        </div>
-                    </div>
-                    
-                    <div className="relative">
-                        <div className="absolute inset-0 bg-yellow-200 rounded-full blur-3xl opacity-50"></div>
-                        <img src={heroImg} alt="Criança estudando" className="relative rounded-2xl shadow-2xl transform rotate-2 hover:rotate-0 transition-all duration-500 border-4 border-white" />
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        {/* Results Transformation */}
-        <section className="py-16 px-4 bg-white">
-            <div className="max-w-4xl mx-auto text-center">
-                <h2 className="text-2xl md:text-4xl font-black text-slate-800 mb-10">
-                    E em poucos dias você vai notar <br/> <span className="text-green-600 bg-green-50 px-2 rounded">a diferença no seu filho:</span>
-                </h2>
-                
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
-                    <div className="flex items-center gap-3 p-4 bg-slate-50 rounded-lg border border-slate-100">
-                        <div className="bg-green-100 p-2 rounded-full text-green-600"><Brain size={20}/></div>
-                        <span className="font-bold text-slate-700">Reconhece sons e sílabas fácil</span>
-                    </div>
-                    <div className="flex items-center gap-3 p-4 bg-slate-50 rounded-lg border border-slate-100">
-                        <div className="bg-blue-100 p-2 rounded-full text-blue-600"><Smile size={20}/></div>
-                        <span className="font-bold text-slate-700">Mais confiante para ler alto</span>
-                    </div>
-                    <div className="flex items-center gap-3 p-4 bg-slate-50 rounded-lg border border-slate-100">
-                        <div className="bg-yellow-100 p-2 rounded-full text-yellow-600"><BookOpen size={20}/></div>
-                        <span className="font-bold text-slate-700">Pede para ler livros e histórias</span>
-                    </div>
-                    <div className="flex items-center gap-3 p-4 bg-slate-50 rounded-lg border border-slate-100">
-                        <div className="bg-purple-100 p-2 rounded-full text-purple-600"><Heart size={20}/></div>
-                        <span className="font-bold text-slate-700">Aprende sem frustração ou choro</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        {/* Curriculum Section */}
-        <section className="py-16 px-4 bg-sky-100">
-            <div className="max-w-5xl mx-auto">
-                <div className="text-center mb-12">
-                    <span className="text-sky-600 font-bold uppercase tracking-widest text-sm">Método Completo</span>
-                    <h2 className="text-3xl md:text-4xl font-black text-slate-800 mt-2">📚 O Que Seu Filho Vai Aprender</h2>
-                </div>
-
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    <Card className="border-0 shadow-lg hover:-translate-y-2 transition-transform duration-300">
-                        <CardContent className="p-6 text-center">
-                            <div className="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4 text-blue-600">
-                                <Zap size={28} />
-                            </div>
-                            <h3 className="font-bold text-lg text-slate-800 mb-2">Sons e Letras</h3>
-                            <p className="text-sm text-slate-600">Associação imediata do som à letra, fortalecendo as conexões cerebrais de forma sólida.</p>
-                        </CardContent>
-                    </Card>
-                    <Card className="border-0 shadow-lg hover:-translate-y-2 transition-transform duration-300">
-                        <CardContent className="p-6 text-center">
-                            <div className="w-14 h-14 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4 text-green-600">
-                                <Puzzle size={28} />
-                            </div>
-                            <h3 className="font-bold text-lg text-slate-800 mb-2">Formação de Palavras</h3>
-                            <p className="text-sm text-slate-600">Atividades dinâmicas que transformam a construção de palavras em diversão.</p>
-                        </CardContent>
-                    </Card>
-                    <Card className="border-0 shadow-lg hover:-translate-y-2 transition-transform duration-300">
-                        <CardContent className="p-6 text-center">
-                            <div className="w-14 h-14 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-4 text-purple-600">
-                                <BookOpen size={28} />
-                            </div>
-                            <h3 className="font-bold text-lg text-slate-800 mb-2">Leitura Fluente</h3>
-                            <p className="text-sm text-slate-600">Exercícios práticos que aprimoram a compreensão, ajudando a ganhar fluência.</p>
-                        </CardContent>
-                    </Card>
-                    <Card className="border-0 shadow-lg hover:-translate-y-2 transition-transform duration-300">
-                        <CardContent className="p-6 text-center">
-                            <div className="w-14 h-14 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4 text-orange-600">
-                                <Check size={28} />
-                            </div>
-                            <h3 className="font-bold text-lg text-slate-800 mb-2">Guia Passo a Passo</h3>
-                            <p className="text-sm text-slate-600">Instruções visuais e detalhadas para que cada fase seja clara e tranquila.</p>
-                        </CardContent>
-                    </Card>
-                </div>
-            </div>
-        </section>
-
-        {/* Image Carousel / What's Included */}
-        <section className="py-12 bg-white border-y border-slate-100 overflow-hidden">
-            <div className="text-center mb-8 px-4">
-                <h2 className="text-2xl font-black text-slate-800">Veja tudo que você vai receber:</h2>
-                <p className="text-slate-500 text-sm">+ de 100 Atividades de Grafismo Fonético</p>
-            </div>
-            
-            <div 
-              className="relative w-full overflow-x-auto no-scrollbar cursor-grab active:cursor-grabbing"
-              ref={carouselRef}
-              onMouseEnter={() => setIsCarouselHovered(true)}
-              onMouseLeave={() => setIsCarouselHovered(false)}
-              onTouchStart={() => setIsCarouselHovered(true)}
-              onTouchEnd={() => setIsCarouselHovered(false)}
-            >
-               <div className="flex w-fit px-4">
-                  {[...carouselImages, ...carouselImages].map((item, index) => (
-                     <div key={index} className="w-[200px] shrink-0 mx-3 select-none">
-                        <div className="relative rounded-xl overflow-hidden shadow-md aspect-[3/4] group pointer-events-none">
-                           <img src={item.img} alt={item.name} className="w-full h-full object-cover transform transition-transform duration-500 group-hover:scale-110" />
-                           <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-blue-900/90 to-transparent p-4 pt-10">
-                              <span className="text-white font-bold text-lg drop-shadow-md">{item.name}</span>
-                           </div>
-                        </div>
-                     </div>
-                  ))}
-               </div>
             </div>
         </section>
 
@@ -433,59 +300,8 @@ const EducacaoKidsV2Landing = () => {
             </div>
         </section>
 
-        {/* Bonus Section - PhotoBonusCard Style */}
-        <section className="py-16 px-4 bg-white relative overflow-hidden">
-            <div className="max-w-6xl mx-auto relative z-10">
-                <div className="text-center mb-12">
-                    <Badge className="bg-red-100 text-red-600 font-bold mb-4 px-4 py-1 text-sm border border-red-200">
-                        🎁 PRESENTE ESPECIAL
-                    </Badge>
-                    <h2 className="text-3xl md:text-4xl font-black text-slate-800">
-                        Leve 6 Bônus Exclusivos <br/><span className="text-green-600">Totalmente de Graça!</span>
-                    </h2>
-                </div>
-
-                <div className="grid md:grid-cols-3 gap-6 md:gap-8">
-                    <PhotoBonusCard 
-                        image={imgBonus1}
-                        title="Alfabeto com Imagens"
-                        desc="Apresenta cada letra com imagens associadas para familiarização visual."
-                        price="37,00"
-                    />
-                    <PhotoBonusCard 
-                        image={imgBonus2}
-                        title="Quebra-Cabeça Alfabeto"
-                        desc="Atividades de quebra-cabeça para fixação divertida das letras."
-                        price="47,00"
-                    />
-                    <PhotoBonusCard 
-                        image={imgBonus3}
-                        title="Formando Palavras"
-                        desc="Exercícios que incentivam a leitura e escrita, construindo vocabulário."
-                        price="57,00"
-                    />
-                    {/* Simplified list for remaining bonuses */}
-                </div>
-                
-                <div className="grid md:grid-cols-3 gap-6 md:gap-8 mt-6">
-                     <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 text-center">
-                        <h4 className="font-bold text-slate-800">Alfabeto com Relógio</h4>
-                        <p className="text-xs text-slate-500">De R$ 39,00 por <span className="text-green-600 font-bold">GRÁTIS</span></p>
-                     </div>
-                     <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 text-center">
-                        <h4 className="font-bold text-slate-800">Alfabeto Traçado</h4>
-                        <p className="text-xs text-slate-500">De R$ 27,00 por <span className="text-green-600 font-bold">GRÁTIS</span></p>
-                     </div>
-                     <div className="bg-slate-50 p-4 rounded-xl border border-slate-200 text-center">
-                        <h4 className="font-bold text-slate-800">Alfabeto com Carinhas</h4>
-                        <p className="text-xs text-slate-500">De R$ 49,00 por <span className="text-green-600 font-bold">GRÁTIS</span></p>
-                     </div>
-                </div>
-            </div>
-        </section>
-
-        {/* Social Proof */}
-        <section className="py-16 px-4 bg-slate-50 border-t border-slate-200">
+        {/* Social Proof (Moved Up) */}
+        <section className="py-16 px-4 bg-white border-y border-slate-200">
             <div className="max-w-4xl mx-auto">
                 <h2 className="text-2xl md:text-3xl font-black text-center text-slate-800 mb-10">
                     O que Pais e Educadores dizem:
@@ -520,6 +336,53 @@ const EducacaoKidsV2Landing = () => {
             </div>
         </section>
 
+        {/* Bonus Section (Reduced to 3 & Anchored) */}
+        <section className="py-16 px-4 bg-blue-50 relative overflow-hidden">
+            <div className="max-w-6xl mx-auto relative z-10">
+                <div className="text-center mb-12">
+                    <Badge className="bg-red-100 text-red-600 font-bold mb-4 px-4 py-1 text-sm border border-red-200">
+                        🎁 PRESENTE EXCLUSIVO
+                    </Badge>
+                    <h2 className="text-3xl md:text-4xl font-black text-slate-800">
+                        Leve 3 Bônus Incríveis <br/><span className="text-green-600">Totalmente de Graça!</span>
+                    </h2>
+                </div>
+
+                <div className="grid md:grid-cols-3 gap-6 md:gap-8">
+                    <PhotoBonusCard 
+                        image={imgBonus1}
+                        title="Alfabeto com Imagens"
+                        desc="Apresenta cada letra com imagens associadas para familiarização visual e rápida memorização."
+                        price="37,00"
+                    />
+                    <PhotoBonusCard 
+                        image={imgBonus2}
+                        title="Quebra-Cabeça Alfabeto"
+                        desc="Atividades de quebra-cabeça para fixação divertida das letras e desenvolvimento lógico."
+                        price="47,00"
+                    />
+                    <PhotoBonusCard 
+                        image={imgBonus3}
+                        title="Formando Palavras"
+                        desc="Exercícios práticos que incentivam a leitura e escrita, construindo vocabulário desde cedo."
+                        price="57,00"
+                    />
+                </div>
+                
+                <div className="mt-12 text-center">
+                    <p className="text-base md:text-xl font-bold text-slate-700 mb-6">
+                        Valor Total dos Bônus: <span className="line-through text-red-400">R$ 141,00</span> = <span className="bg-green-100 text-green-800 px-2 rounded border border-green-200">GRÁTIS HOJE</span>
+                    </p>
+                    <Button 
+                        onClick={scrollToPricing}
+                        className="btn-hypnotic text-white font-black text-base md:text-lg px-8 py-6 rounded-full shadow-lg animate-scale-pulse w-full md:w-auto transform hover:scale-105 transition-transform"
+                    >
+                        QUERO GARANTIR MEUS BÔNUS
+                    </Button>
+                </div>
+            </div>
+        </section>
+
         {/* Pricing Section */}
         <section id="pricing" className="py-16 px-4 bg-gradient-to-br from-blue-600 to-blue-800 relative overflow-hidden">
             <div className="max-w-5xl mx-auto relative z-10">
@@ -528,24 +391,24 @@ const EducacaoKidsV2Landing = () => {
                     <p className="text-blue-100 text-lg">Acesso vitalício e imediato por um valor simbólico.</p>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-8 items-center max-w-4xl mx-auto">
+                <div className="grid md:grid-cols-2 gap-8 items-start max-w-4xl mx-auto">
                     
-                    {/* Basic Plan (Trigger Upsell) */}
-                    <div className="bg-white rounded-3xl p-6 border-4 border-blue-200 opacity-90 hover:opacity-100 transition-opacity">
+                    {/* Basic Plan */}
+                    <div className="bg-white rounded-3xl p-6 border-4 border-blue-200 opacity-95 hover:opacity-100 transition-opacity mt-4">
                         <h3 className="text-xl font-bold text-slate-500 text-center uppercase tracking-wide">Kit Básico</h3>
                         <div className="text-center my-6">
                             <span className="text-sm text-slate-400 line-through">De R$ 97,00</span>
-                            <div className="text-4xl font-black text-slate-800">R$ 17,00</div>
+                            <div className="text-4xl font-black text-slate-800">R$ 9,90</div>
                         </div>
                         <ul className="space-y-3 mb-8 text-sm text-slate-600">
                             <li className="flex items-center gap-2"><Check size={16} className="text-green-500"/> Arquivos em PDF</li>
                             <li className="flex items-center gap-2"><Check size={16} className="text-green-500"/> Grafismo Fonético</li>
-                            <li className="flex items-center gap-2 text-red-400"><Lock size={16}/> Sem Bônus Exclusivos</li>
+                            <li className="flex items-center gap-2 text-red-400 line-through"><Lock size={16}/> Sem Bônus Exclusivos</li>
+                            <li className="flex items-center gap-2 text-red-400 line-through"><Lock size={16}/> Sem Jogos Educativos</li>
                         </ul>
                         <Button 
                             onClick={() => setIsUpsellModalOpen(true)}
-                            variant="outline"
-                            className="w-full py-6 text-slate-600 border-2 border-slate-200 font-bold hover:bg-slate-50"
+                            className="w-full bg-green-300 hover:bg-green-400 text-green-900 font-bold py-6 rounded-xl border-b-4 border-green-500 active:border-b-0 active:translate-y-1 transition-all"
                         >
                             QUERO O BÁSICO
                         </Button>
@@ -559,18 +422,18 @@ const EducacaoKidsV2Landing = () => {
                         <h3 className="text-2xl font-black text-blue-600 text-center uppercase tracking-wide">Kit Completo + Bônus</h3>
                         <div className="text-center my-6 bg-blue-50 py-4 rounded-xl border border-blue-100">
                             <span className="text-sm text-slate-400 line-through">De R$ 197,00</span>
-                            <div className="text-6xl font-black text-green-600 tracking-tighter">R$ 25,00</div>
+                            <div className="text-6xl font-black text-green-600 tracking-tighter">R$ 19,90</div>
                             <span className="text-xs font-bold text-blue-800 bg-blue-200 px-2 py-1 rounded-full">Pagamento Único</span>
                         </div>
                         <ul className="space-y-3 mb-8 text-sm font-bold text-slate-700">
                             <li className="flex items-center gap-2"><div className="bg-green-100 p-1 rounded-full"><Check size={14} className="text-green-600"/></div> Kit Grafismo Completo</li>
                             <li className="flex items-center gap-2"><div className="bg-green-100 p-1 rounded-full"><Check size={14} className="text-green-600"/></div> +100 Atividades PDF</li>
-                            <li className="flex items-center gap-2"><div className="bg-green-100 p-1 rounded-full"><Check size={14} className="text-green-600"/></div> TODOS OS 6 BÔNUS</li>
+                            <li className="flex items-center gap-2"><div className="bg-green-100 p-1 rounded-full"><Check size={14} className="text-green-600"/></div> TODOS OS 3 BÔNUS</li>
                             <li className="flex items-center gap-2"><div className="bg-green-100 p-1 rounded-full"><Check size={14} className="text-green-600"/></div> Suporte Pedagógico</li>
                         </ul>
                         <Button 
-                            onClick={() => window.location.href = applyUtms('https://pay.lowify.com.br/checkout?product_id=kids-complete-25')}
-                            className="w-full bg-green-500 hover:bg-green-400 text-white font-black text-xl py-8 rounded-xl shadow-[0_4px_0_rgb(21,128,61)] btn-kid"
+                            onClick={() => window.location.href = applyUtms('https://pay.lowify.com.br/checkout?product_id=kids-complete-19')}
+                            className="btn-hypnotic w-full text-white font-black text-xl py-8 rounded-xl shadow-[0_4px_0_rgb(21,128,61)]"
                         >
                             QUERO O KIT COMPLETO
                         </Button>
@@ -583,22 +446,78 @@ const EducacaoKidsV2Landing = () => {
             </div>
         </section>
 
-        {/* Aggressive Guarantee */}
-        <section className="py-16 px-4 bg-gradient-to-br from-yellow-400 via-orange-400 to-yellow-500">
-            <div className="max-w-4xl mx-auto bg-white/95 backdrop-blur rounded-[2rem] p-8 md:p-12 shadow-2xl flex flex-col md:flex-row items-center gap-8 md:gap-12 relative overflow-hidden border-4 border-white/50">
-                <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-10 pointer-events-none"></div>
-                
-                <div className="shrink-0 relative z-10">
-                    <div className="w-32 h-32 bg-blue-900 rounded-full flex items-center justify-center border-4 border-white shadow-xl">
-                        <ShieldCheck size={64} className="text-yellow-400"/>
+        {/* Guarantee */}
+        <section className="py-16 px-4 bg-white">
+            <div className="max-w-3xl mx-auto flex flex-col md:flex-row items-center gap-8 border-2 border-dashed border-blue-200 p-8 rounded-3xl bg-blue-50/50">
+                <div className="shrink-0">
+                    <div className="w-32 h-32 bg-white rounded-full flex items-center justify-center border-4 border-yellow-400 shadow-xl">
+                        <ShieldCheck size={64} className="text-green-500"/>
                     </div>
                 </div>
-                <div className="text-center md:text-left z-10">
-                    <h3 className="text-3xl font-black text-slate-900 mb-2 uppercase italic">Garantia Blindada de 7 Dias</h3>
-                    <p className="text-slate-700 leading-relaxed font-medium text-lg">
-                        Estamos tão certos de que o Kit vai ajudar seu filho a ler, que assumimos todo o risco. <br/><br/>
-                        <strong>Se você não ver evolução, nós devolvemos 100% do seu dinheiro.</strong> Sem perguntas, sem burocracia. É só enviar um e-mail.
+                <div className="text-center md:text-left">
+                    <h3 className="text-2xl font-black text-slate-800 mb-2">Garantia Incondicional de 7 Dias</h3>
+                    <p className="text-slate-600 leading-relaxed">
+                        Se você sentir que o material não ajudou seu filho, nós devolvemos 100% do seu dinheiro. Sem perguntas, sem burocracia. O risco é todo nosso.
                     </p>
+                </div>
+            </div>
+        </section>
+
+        {/* Google Reviews Section (New) */}
+        <section className="py-12 md:py-16 px-4 bg-slate-50 border-t border-slate-200">
+            <div className="max-w-6xl mx-auto">
+                <div className="text-center mb-8">
+                    <h3 className="text-lg md:text-2xl font-bold text-slate-800 flex items-center justify-center gap-2">
+                        O que estão falando no <GoogleIcon /> <span className="text-blue-600 sr-only">Google</span>
+                    </h3>
+                    <div className="flex justify-center items-center gap-1 mt-2">
+                        <span className="text-yellow-400 text-lg md:text-xl">★★★★★</span>
+                        <span className="text-slate-500 text-xs md:text-sm">(4.9/5.0 de 2.100+ avaliações)</span>
+                    </div>
+                </div>
+
+                <div className="grid md:grid-cols-3 gap-4 md:gap-6">
+                    {/* G-Review 1 */}
+                    <div className="bg-white p-4 md:p-6 rounded-xl border border-slate-200 shadow-sm relative">
+                        <div className="absolute top-4 right-4"><GoogleIcon /></div>
+                        <div className="flex items-center gap-3 mb-3">
+                            <div className="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center font-bold text-purple-600">AM</div>
+                            <div>
+                                <p className="font-bold text-xs md:text-sm text-slate-900">Ana Maria</p>
+                                <p className="text-[10px] text-slate-500">2 dias atrás</p>
+                            </div>
+                        </div>
+                        <div className="text-yellow-400 text-xs mb-2">★★★★★</div>
+                        <p className="text-slate-600 text-xs md:text-sm">"Comprei para meu filho de 6 anos que estava com dificuldade. Ele amou as atividades de ligar os pontos e o alfabeto! Muito bom."</p>
+                    </div>
+
+                    {/* G-Review 2 */}
+                    <div className="bg-white p-4 md:p-6 rounded-xl border border-slate-200 shadow-sm relative">
+                        <div className="absolute top-4 right-4"><GoogleIcon /></div>
+                        <div className="flex items-center gap-3 mb-3">
+                            <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center font-bold text-blue-600">RP</div>
+                            <div>
+                                <p className="font-bold text-xs md:text-sm text-slate-900">Rafael Pereira</p>
+                                <p className="text-[10px] text-slate-500">1 semana atrás</p>
+                            </div>
+                        </div>
+                        <div className="text-yellow-400 text-xs mb-2">★★★★★</div>
+                        <p className="text-slate-600 text-xs md:text-sm">"Material excelente. Sou professor e uso em sala de aula. As crianças se engajam muito mais do que com o livro didático comum."</p>
+                    </div>
+
+                    {/* G-Review 3 */}
+                    <div className="bg-white p-4 md:p-6 rounded-xl border border-slate-200 shadow-sm relative">
+                        <div className="absolute top-4 right-4"><GoogleIcon /></div>
+                        <div className="flex items-center gap-3 mb-3">
+                            <div className="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center font-bold text-green-600">JC</div>
+                            <div>
+                                <p className="font-bold text-xs md:text-sm text-slate-900">Júlia Costa</p>
+                                <p className="text-[10px] text-slate-500">Ontem</p>
+                            </div>
+                        </div>
+                        <div className="text-yellow-400 text-xs mb-2">★★★★★</div>
+                        <p className="text-slate-600 text-xs md:text-sm">"Chegou no e-mail na hora. Imprimi no trabalho e levei pra casa. Minha filha de 4 anos já aprendeu a escrever o nome!"</p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -613,6 +532,55 @@ const EducacaoKidsV2Landing = () => {
                     <FAQItem q="Serve para autistas ou TDAH?" a="Sim! O método visual e prático é altamente recomendado por especialistas para crianças atípicas." />
                     <FAQItem q="Como acesso o material?" a="O acesso chega no seu e-mail imediatamente após a confirmação do pagamento." />
                 </Accordion>
+            </div>
+        </section>
+
+        {/* Aggressive CTA Section (New) */}
+        <section className="py-16 md:py-20 px-4 bg-slate-900 text-white text-center relative overflow-hidden">
+            {/* Particles */}
+            <div className="absolute inset-0 pointer-events-none opacity-20">
+                {[...Array(20)].map((_, i) => (
+                    <div key={i} className="absolute bg-blue-500 rounded-full animate-pulse" style={{
+                        top: `${Math.random() * 100}%`,
+                        left: `${Math.random() * 100}%`,
+                        width: `${Math.random() * 10 + 2}px`,
+                        height: `${Math.random() * 10 + 2}px`,
+                        animationDuration: `${Math.random() * 2 + 1}s`
+                    }}></div>
+                ))}
+            </div>
+
+            <div className="max-w-3xl mx-auto relative z-10">
+                <div className="inline-block bg-red-600 text-white px-6 py-2 rounded-xl shadow-xl mb-6 animate-bounce">
+                    <div className="text-xs font-bold uppercase tracking-wider mb-1 text-red-100">⚠️ ÚLTIMA CHANCE</div>
+                    <div className="text-3xl font-mono font-black tracking-widest">
+                        {String(timeLeft.hours).padStart(2, '0')}:{String(timeLeft.minutes).padStart(2, '0')}:{String(timeLeft.seconds).padStart(2, '0')}
+                    </div>
+                </div>
+
+                <h2 className="text-2xl md:text-5xl font-black mb-6 uppercase leading-tight">
+                    Não Deixe o Futuro do Seu Filho <br/> <span className="text-yellow-400">Para Depois!</span>
+                </h2>
+                
+                <p className="text-slate-300 text-base md:text-lg mb-8 max-w-xl mx-auto">
+                    A alfabetização é a base de tudo. Cada dia sem o estímulo certo é um dia perdido no desenvolvimento dele. <br/>
+                    <strong className="text-white">Garanta o futuro dele pelo preço de um lanche.</strong>
+                </p>
+
+                <div>
+                    <Button 
+                        onClick={scrollToPricing}
+                        className="btn-hypnotic text-white font-black text-lg md:text-2xl py-8 px-12 rounded-full shadow-[0_0_40px_rgba(37,99,235,0.6)] transform transition hover:scale-105 active:scale-95 animate-pulse w-full md:w-auto mx-auto"
+                    >
+                        SIM! QUERO AJUDAR MEU FILHO <ArrowRight className="ml-2" />
+                    </Button>
+                </div>
+                
+                <div className="mt-8 flex justify-center gap-6 text-slate-400 text-xs md:text-sm">
+                    <span className="flex items-center gap-1"><Lock size={14}/> Compra Segura</span>
+                    <span className="flex items-center gap-1"><Clock size={14}/> Acesso Imediato</span>
+                    <span className="flex items-center gap-1"><ShieldCheck size={14}/> Garantia 7 Dias</span>
+                </div>
             </div>
         </section>
 
@@ -634,10 +602,10 @@ const EducacaoKidsV2Landing = () => {
             isOpen={isUpsellModalOpen}
             onClose={() => setIsUpsellModalOpen(false)}
             onConfirm={() => {
-                window.location.href = applyUtms('https://pay.lowify.com.br/checkout?product_id=kids-offer-20'); // Link Upsell R$ 20
+                window.location.href = applyUtms('https://pay.lowify.com.br/checkout?product_id=kids-offer-14'); // Link Upsell 14.90
             }}
             onReject={() => {
-                window.location.href = applyUtms('https://pay.lowify.com.br/checkout?product_id=kids-basic-17'); // Link Basic R$ 17
+                window.location.href = applyUtms('https://pay.lowify.com.br/checkout?product_id=kids-basic-9'); // Link Basic 9.90
             }}
         />
 
@@ -670,7 +638,7 @@ const FAQItem = ({ q, a }: { q: string, a: string }) => (
 
 const PhotoBonusCard = ({ title, desc, price, image }: { title: string, desc: string, price: string, image: string }) => (
     <div className="bg-white rounded-2xl shadow-lg overflow-hidden border border-slate-100 flex flex-col hover:-translate-y-2 transition-transform duration-300">
-        <div className="h-32 md:h-40 overflow-hidden relative">
+        <div className="h-40 md:h-48 overflow-hidden relative">
             <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
             <img src={image} alt={title} className="w-full h-full object-cover" />
             <div className="absolute top-2 right-2 bg-green-600 text-white text-[10px] md:text-xs font-bold px-2 py-1 rounded">GRÁTIS</div>
