@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { 
   Check, Star, ShieldCheck, 
-  Zap, ChevronRight, Brain, BookOpen, Smile, Baby, Lock, HelpCircle, ArrowRight, Pencil, Puzzle, Download, Printer, Heart, Clock, AlertTriangle
+  Zap, ChevronRight, Brain, BookOpen, Smile, Baby, Lock, HelpCircle, ArrowRight, Pencil, Puzzle, Download, Printer, Heart, Clock, AlertTriangle, Target, Lightbulb
 } from "lucide-react";
 import EducacaoKidsV2UpsellModal from './EducacaoKidsV2UpsellModal';
 import UtmifyScript from './UtmifyScript';
@@ -24,16 +24,6 @@ const imgBonus1 = "https://images.unsplash.com/photo-1588072432836-e10032774350?
 const imgBonus2 = "https://images.unsplash.com/photo-1596464716127-f9a82763ef5c?q=80&w=500&auto=format&fit=crop";
 const imgBonus3 = "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=500&auto=format&fit=crop";
 
-// Carousel Activity Images
-const carouselImages = [
-  { img: "https://images.unsplash.com/photo-1513542789411-b6a5d4412b82?q=80&w=300&auto=format&fit=crop", name: "Alfabeto" },
-  { img: "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?q=80&w=300&auto=format&fit=crop", name: "Coordenação" },
-  { img: "https://images.unsplash.com/photo-1587654780291-39c9404d746b?q=80&w=300&auto=format&fit=crop", name: "Sílabas" },
-  { img: "https://images.unsplash.com/photo-1596464716127-f9a82763ef5c?q=80&w=300&auto=format&fit=crop", name: "Números" },
-  { img: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=300&auto=format&fit=crop", name: "Leitura" },
-  { img: "https://images.unsplash.com/photo-1516627145497-ae6968895b74?q=80&w=300&auto=format&fit=crop", name: "Jogos" },
-];
-
 // Google Icon
 const GoogleIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="24px" height="24px">
@@ -48,37 +38,6 @@ const EducacaoKidsV2Landing = () => {
   const [isUpsellModalOpen, setIsUpsellModalOpen] = useState(false);
   const [timeLeft, setTimeLeft] = useState({ hours: 4, minutes: 22, seconds: 35 });
   const [todayDate, setTodayDate] = useState("");
-  
-  // Carousel Logic
-  const carouselRef = useRef<HTMLDivElement>(null);
-  const [isCarouselHovered, setIsCarouselHovered] = useState(false);
-
-  useEffect(() => {
-    const scrollContainer = carouselRef.current;
-    if (!scrollContainer) return;
-
-    let scrollAmount = 0;
-    const speed = 1;
-    let animationId: number;
-
-    const step = () => {
-      if (!isCarouselHovered) {
-        scrollAmount += speed;
-        if (scrollAmount >= scrollContainer.scrollWidth / 2) {
-          scrollAmount = 0;
-          scrollContainer.scrollLeft = 0;
-        } else {
-          scrollContainer.scrollLeft = scrollAmount;
-        }
-      } else {
-        scrollAmount = scrollContainer.scrollLeft;
-      }
-      animationId = requestAnimationFrame(step);
-    };
-
-    animationId = requestAnimationFrame(step);
-    return () => cancelAnimationFrame(animationId);
-  }, [isCarouselHovered]);
   
   // UTM Helper
   const applyUtms = (url: string) => {
@@ -141,14 +100,6 @@ const EducacaoKidsV2Landing = () => {
             background-size: 200% 100%;
             animation: shimmer 1s linear infinite, scale-only-pulse 3s ease-in-out infinite;
             transform: scale(1.03);
-          }
-          /* Hide scrollbar for carousel */
-          .no-scrollbar::-webkit-scrollbar {
-            display: none;
-          }
-          .no-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
           }
         `}</style>
       </Helmet>
@@ -219,7 +170,7 @@ const EducacaoKidsV2Landing = () => {
           <div className="absolute bottom-0 left-0 w-full h-16 bg-white" style={{clipPath: "polygon(0 100%, 100% 100%, 100% 0)"}}></div>
         </section>
 
-        {/* Agitation / Truth Section */}
+        {/* Agitation / Truth Section (No CTA - Following "Sim, Não" pattern) */}
         <section className="py-12 px-4 bg-white relative -mt-10 z-20">
             <div className="max-w-4xl mx-auto">
                 <div className="bg-slate-50 border-l-8 border-red-500 rounded-r-2xl shadow-xl p-6 md:p-10 mb-12">
@@ -251,20 +202,10 @@ const EducacaoKidsV2Landing = () => {
                         O que realmente atrasa seu filho é a <strong className="text-red-500 bg-red-50 px-1">falta de estímulo fonético na fase certa</strong>. O cérebro precisa "ver" o som antes de ler. Mas calma, a culpa não é sua! Ninguém te ensinou isso... até agora.
                     </p>
                 </div>
-
-                {/* Extra CTA */}
-                <div className="text-center mt-8">
-                    <Button 
-                        onClick={scrollToPricing}
-                        className="btn-hypnotic text-white font-black text-lg md:text-xl py-6 px-10 rounded-full w-full md:w-auto mx-auto shadow-lg"
-                    >
-                        QUERO AJUDAR MEU FILHO AGORA
-                    </Button>
-                </div>
             </div>
         </section>
 
-        {/* Vertical VSL Section */}
+        {/* Vertical VSL Section (With CTA - "Sim") */}
         <section className="py-12 px-4 bg-slate-900 text-white text-center">
             <div className="max-w-md mx-auto">
                 <h2 className="text-2xl font-bold mb-6">Veja como é fácil ensinar seu filho(a) a ler...</h2>
@@ -278,7 +219,6 @@ const EducacaoKidsV2Landing = () => {
                     </div>
                 </div>
                 
-                {/* CTA below VSL */}
                 <Button 
                     onClick={scrollToPricing}
                     className="btn-hypnotic text-white font-black text-lg md:text-xl py-6 px-10 rounded-full w-full md:w-auto mx-auto shadow-lg mt-4"
@@ -288,7 +228,119 @@ const EducacaoKidsV2Landing = () => {
             </div>
         </section>
 
-        {/* How to Start */}
+        {/* RESTORED: Benefits Section (No CTA - "Não") */}
+        <section className="py-16 px-4 bg-yellow-400 relative">
+            <div className="max-w-5xl mx-auto relative z-10">
+                <div className="text-center mb-12">
+                    <h2 className="text-3xl md:text-5xl font-black text-blue-900 mb-4">Por que o Kit Funciona?</h2>
+                    <p className="text-blue-900/80 font-bold text-lg">O segredo está no <span className="bg-white px-2 rounded text-blue-900 border-2 border-blue-900">Grafismo Fonético</span></p>
+                </div>
+
+                <div className="grid md:grid-cols-2 gap-6">
+                    <div className="bg-white p-6 rounded-2xl shadow-lg border-b-8 border-blue-500 transform hover:-translate-y-1 transition-transform">
+                        <div className="flex items-start gap-4">
+                            <div className="bg-blue-100 p-3 rounded-full text-blue-600"><Brain size={32}/></div>
+                            <div>
+                                <h3 className="font-bold text-xl text-slate-800 mb-2">Conexões Cerebrais</h3>
+                                <p className="text-slate-600">Ao traçar linhas e curvas associadas a sons, a criança fortalece as áreas do cérebro responsáveis pela leitura.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="bg-white p-6 rounded-2xl shadow-lg border-b-8 border-green-500 transform hover:-translate-y-1 transition-transform">
+                        <div className="flex items-start gap-4">
+                            <div className="bg-green-100 p-3 rounded-full text-green-600"><Pencil size={32}/></div>
+                            <div>
+                                <h3 className="font-bold text-xl text-slate-800 mb-2">Coordenação Motora</h3>
+                                <p className="text-slate-600">Prepara a mãozinha para a escrita cursiva e bastão, melhorando a caligrafia desde cedo.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="bg-white p-6 rounded-2xl shadow-lg border-b-8 border-purple-500 transform hover:-translate-y-1 transition-transform">
+                        <div className="flex items-start gap-4">
+                            <div className="bg-purple-100 p-3 rounded-full text-purple-600"><Smile size={32}/></div>
+                            <div>
+                                <h3 className="font-bold text-xl text-slate-800 mb-2">Sem Pressão</h3>
+                                <p className="text-slate-600">As atividades parecem brincadeira. A criança aprende se divertindo, sem perceber que está estudando.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="bg-white p-6 rounded-2xl shadow-lg border-b-8 border-red-500 transform hover:-translate-y-1 transition-transform">
+                        <div className="flex items-start gap-4">
+                            <div className="bg-red-100 p-3 rounded-full text-red-600"><Puzzle size={32}/></div>
+                            <div>
+                                <h3 className="font-bold text-xl text-slate-800 mb-2">Inclusivo</h3>
+                                <p className="text-slate-600">Metodologia visual e prática, altamente recomendada para crianças com TDAH, Autismo ou dislexia.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {/* Wave divider */}
+            <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-[0]">
+                <svg className="relative block w-[calc(130%+1.3px)] h-[50px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                    <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" className="fill-white"></path>
+                </svg>
+            </div>
+        </section>
+
+        {/* RESTORED: Transformation Section (With CTA - "Sim") */}
+        <section className="py-16 px-4 bg-white">
+            <div className="max-w-4xl mx-auto text-center">
+                <h2 className="text-2xl md:text-4xl font-extrabold text-slate-800 mb-10">
+                    E em poucos dias você vai notar <br/> <span className="text-green-500">a diferença no seu filho:</span>
+                </h2>
+                
+                <div className="grid md:grid-cols-3 gap-6 mb-10">
+                    <div className="p-6 rounded-2xl border-2 border-slate-100 bg-slate-50">
+                        <Target className="w-12 h-12 text-blue-500 mx-auto mb-4" />
+                        <h3 className="font-bold text-lg text-slate-900 mb-2">Leitura Fluida</h3>
+                        <p className="text-sm text-slate-600">Vai começar a ler placas na rua, embalagens e livrinhos sem gaguejar.</p>
+                    </div>
+                    <div className="p-6 rounded-2xl border-2 border-slate-100 bg-slate-50">
+                        <Smile className="w-12 h-12 text-yellow-500 mx-auto mb-4" />
+                        <h3 className="font-bold text-lg text-slate-900 mb-2">Autoconfiança</h3>
+                        <p className="text-sm text-slate-600">O orgulho de conseguir ler sozinho vai transformar a autoestima dele.</p>
+                    </div>
+                    <div className="p-6 rounded-2xl border-2 border-slate-100 bg-slate-50">
+                        <Lightbulb className="w-12 h-12 text-purple-500 mx-auto mb-4" />
+                        <h3 className="font-bold text-lg text-slate-900 mb-2">Gosto por Estudar</h3>
+                        <p className="text-sm text-slate-600">O momento do dever de casa vai deixar de ser uma briga para ser um prazer.</p>
+                    </div>
+                </div>
+
+                <Button 
+                    onClick={scrollToPricing}
+                    className="btn-hypnotic text-white font-black text-lg md:text-xl py-6 px-10 rounded-full w-full md:w-auto mx-auto shadow-lg"
+                >
+                    QUERO ESSA TRANSFORMAÇÃO
+                </Button>
+            </div>
+        </section>
+
+        {/* RESTORED: What's Included Section (No CTA - "Não") */}
+        <section className="py-16 px-4 bg-slate-900 text-white relative overflow-hidden">
+            <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20"></div>
+            <div className="max-w-6xl mx-auto relative z-10">
+                <div className="text-center mb-12">
+                    <h2 className="text-3xl md:text-5xl font-black mb-4">Veja tudo que você vai receber:</h2>
+                    <p className="text-slate-400">Um material completo, organizado e pronto para imprimir.</p>
+                </div>
+
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    {[
+                        "Caderno do Alfabeto", "Coordenação Motora", "Junção de Sílabas", "Formação de Palavras",
+                        "Pequenos Textos", "Interpretação", "Matemática Básica", "Desenhos para Colorir"
+                    ].map((item, idx) => (
+                        <div key={idx} className="bg-slate-800 p-4 rounded-xl border border-slate-700 flex items-center gap-3">
+                            <div className="bg-green-500/20 p-2 rounded-full text-green-400 shrink-0"><Check size={16} strokeWidth={3}/></div>
+                            <span className="font-bold text-sm md:text-base">{item}</span>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </section>
+
+        {/* How to Start (With CTA - "Sim") */}
         <section className="py-16 px-4 bg-slate-50">
             <div className="max-w-4xl mx-auto text-center">
                 <h2 className="text-3xl font-black text-slate-800 mb-10">Muito Simples de Começar!</h2>
@@ -328,7 +380,7 @@ const EducacaoKidsV2Landing = () => {
             </div>
         </section>
 
-        {/* Social Proof (Moved Up) */}
+        {/* Social Proof (No CTA - "Não") */}
         <section className="py-16 px-4 bg-white border-y border-slate-200">
             <div className="max-w-4xl mx-auto">
                 <h2 className="text-2xl md:text-3xl font-black text-center text-slate-800 mb-10">
@@ -364,7 +416,7 @@ const EducacaoKidsV2Landing = () => {
             </div>
         </section>
 
-        {/* Bonus Section (Reduced to 3 & Anchored) */}
+        {/* Bonus Section (With CTA - "Sim") */}
         <section className="py-16 px-4 bg-blue-50 relative overflow-hidden">
             <div className="max-w-6xl mx-auto relative z-10">
                 <div className="text-center mb-12">
@@ -411,7 +463,7 @@ const EducacaoKidsV2Landing = () => {
             </div>
         </section>
 
-        {/* Pricing Section */}
+        {/* Pricing Section (Updated Prices: 9.90 / 19.90) */}
         <section id="pricing" className="py-16 px-4 bg-gradient-to-br from-blue-600 to-blue-800 relative overflow-hidden">
             <div className="max-w-5xl mx-auto relative z-10">
                 <div className="text-center mb-12">
@@ -436,7 +488,7 @@ const EducacaoKidsV2Landing = () => {
                         </ul>
                         <Button 
                             onClick={() => setIsUpsellModalOpen(true)}
-                            className="w-full bg-green-200 hover:bg-green-300 text-green-800 font-bold py-6 rounded-xl border-b-4 border-green-400 active:border-b-0 active:translate-y-1 transition-all"
+                            className="w-full bg-green-300 hover:bg-green-400 text-green-900 font-bold py-6 rounded-xl border-b-4 border-green-500 active:border-b-0 active:translate-y-1 transition-all"
                         >
                             QUERO O BÁSICO
                         </Button>
@@ -474,7 +526,7 @@ const EducacaoKidsV2Landing = () => {
             </div>
         </section>
 
-        {/* Guarantee */}
+        {/* Guarantee (With CTA - "Sim") */}
         <section className="py-16 px-4 bg-white">
             <div className="max-w-3xl mx-auto flex flex-col md:flex-row items-center gap-8 border-2 border-dashed border-blue-200 p-8 rounded-3xl bg-blue-50/50">
                 <div className="shrink-0">
@@ -497,7 +549,7 @@ const EducacaoKidsV2Landing = () => {
             </div>
         </section>
 
-        {/* Google Reviews Section (New) */}
+        {/* Google Reviews Section (No CTA - "Não") */}
         <section className="py-12 md:py-16 px-4 bg-slate-50 border-t border-slate-200">
             <div className="max-w-6xl mx-auto">
                 <div className="text-center mb-8">
@@ -556,7 +608,7 @@ const EducacaoKidsV2Landing = () => {
             </div>
         </section>
 
-        {/* FAQ */}
+        {/* FAQ (With CTA - "Sim") */}
         <section className="py-12 px-4 bg-white">
             <div className="max-w-2xl mx-auto">
                 <h2 className="text-2xl font-black text-center text-slate-800 mb-8">Perguntas Frequentes</h2>
@@ -579,7 +631,7 @@ const EducacaoKidsV2Landing = () => {
             </div>
         </section>
 
-        {/* Aggressive CTA Section (New) */}
+        {/* Aggressive CTA Section (Final - "Sim") */}
         <section className="py-16 md:py-20 px-4 bg-slate-900 text-white text-center relative overflow-hidden">
             {/* Particles */}
             <div className="absolute inset-0 pointer-events-none opacity-20">
