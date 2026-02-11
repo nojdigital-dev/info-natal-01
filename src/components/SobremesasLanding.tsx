@@ -308,7 +308,7 @@ const SobremesasLanding = () => {
                         className="relative rounded-3xl shadow-2xl border-4 border-white transform rotate-3 hover:rotate-0 transition-all duration-500 object-cover w-full h-full"
                     />
                     <div className="absolute -bottom-4 -left-4 bg-white p-3 rounded-xl shadow-xl border-l-4 border-pink-500 animate-bounce z-20">
-                        <p className="font-bold text-slate-800 text-xs md:text-sm">Brownie Cremoso</p>
+                        <p className="font-bold text-slate-800 text-xs md:text-sm">350+ Sobremesas Fit</p>
                         <p className="text-[10px] md:text-xs text-green-600 font-bold flex items-center gap-1"><Check size={10}/> Zero Açúcar</p>
                     </div>
                  </div>
@@ -521,7 +521,7 @@ const SobremesasLanding = () => {
                 <div className="mt-12 text-center">
                     <Button 
                         onClick={scrollToPricing}
-                        className="btn-shiny text-white font-black text-lg py-6 px-10 rounded-full shadow-xl animate-scale-pulse transition-transform hover:scale-105 flex items-center justify-center gap-2 mx-auto"
+                        className="btn-shiny text-white font-black text-lg py-6 px-10 rounded-full shadow-xl animate-scale-pulse transition-transform hover:scale-105 flex items-center justify-center gap-2 mx-auto w-fit"
                     >
                         <HeartPulse size={20} /> QUERO ESSES RESULTADOS
                     </Button>
@@ -541,20 +541,20 @@ const SobremesasLanding = () => {
                 <div className="grid md:grid-cols-3 gap-6 md:gap-8">
                     <PhotoBonusCard 
                         image={bonusSecaBarriga}
-                        title="GUIA SECA BARRIGA: -7KG EM 30 DIAS"
-                        desc="O protocolo exato para desinflamar o corpo e queimar gordura visceral sem precisar pisar na academia."
+                        title="PROTOCOLO SECA BARRIGA"
+                        desc="Desafio 30 dias: passo a passo validado para destravar seu metabolismo e queimar gordura visceral."
                         price="97,00"
                     />
                     <PhotoBonusCard 
                         image={bonusLanches}
-                        title="50 LANCHES SALGADOS FIT"
-                        desc="Coxinha, empada e salgados proteicos. Opções deliciosas para o lanche da tarde que matam a fome sem engordar."
+                        title="50 LANCHES FIT"
+                        desc="Coxinha, empada e salgados proteicos. Opções deliciosas para o lanche da tarde que matam a fome."
                         price="47,00"
                     />
                     <PhotoBonusCard 
                         image={bonusAlmoco}
-                        title="100 RECEITAS DE ALMOÇO & JANTAR"
-                        desc="Strogonoff, Lasanha e Escondidinho. Transforme suas refeições principais em aliados do emagrecimento."
+                        title="100 RECEITAS DE ALMOÇO"
+                        desc="O guia definitivo de refeições salgadas. Strogonoff, Lasanha e Escondidinho em versões que emagrecem."
                         price="67,00"
                     />
                 </div>
@@ -754,7 +754,7 @@ const SobremesasLanding = () => {
                 <div className="text-center">
                     <Button 
                         onClick={scrollToPricing}
-                        className="bg-pink-600 hover:bg-pink-500 text-white font-bold py-4 px-10 rounded-full shadow-md animate-scale-pulse transition-transform hover:scale-105"
+                        className="bg-pink-600 hover:bg-pink-500 text-white font-bold py-4 px-10 rounded-full shadow-md animate-scale-pulse transition-transform hover:scale-105 mx-auto"
                     >
                         AINDA TENHO DÚVIDAS (GARANTIR AGORA)
                     </Button>
@@ -901,7 +901,7 @@ const SobremesasLanding = () => {
 // Subcomponents (Simple Card for Desktop)
 const PhotoBonusCard = ({ title, desc, price, image }: { title: string, desc: string, price: string, image: string }) => (
     <div className="bg-white rounded-2xl shadow-lg overflow-hidden border border-slate-100 flex flex-col hover:-translate-y-2 transition-transform duration-300">
-        <div className="h-32 md:h-40 overflow-hidden relative">
+        <div className="h-48 md:h-64 overflow-hidden relative">
             <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"></div>
             <img src={image} alt={title} className="w-full h-full object-cover" />
             <div className="absolute top-2 right-2 bg-green-600 text-white text-[10px] md:text-xs font-bold px-2 py-1 rounded">GRÁTIS</div>
