@@ -11,28 +11,39 @@ import {
 import SobremesasUpsellModal from './SobremesasUpsellModal';
 import UtmifyScript from './UtmifyScript';
 
-// Images
-const heroImg = "https://images.unsplash.com/photo-1587314168485-3236d6710814?q=80&w=1000&auto=format&fit=crop"; 
-// Female Expert Image
+// Importing new assets
+import heroImgSrc from '@/assets/images/sobremesas/imagem-secao-1.png';
+import happyEatingImg from '@/assets/images/sobremesas/esqueca-dieta-chata.png';
+
+// Carousel Assets
+import brownieImg from '@/assets/images/sobremesas/brownie.png';
+import pudimImg from '@/assets/images/sobremesas/pudim.png';
+import paveImg from '@/assets/images/sobremesas/pave.png';
+import doceDeLeiteImg from '@/assets/images/sobremesas/doce-de-leite.png';
+import cheesecakeImg from '@/assets/images/sobremesas/cheesecake.png';
+import mousseImg from '@/assets/images/sobremesas/mousse.png';
+import boloPoteImg from '@/assets/images/sobremesas/bolo-no-pote.png';
+import tortaLimaoImg from '@/assets/images/sobremesas/torta-de-limao.png';
+
+// Bonus Assets
+import bonusSecaBarriga from '@/assets/images/sobremesas/protocolo-seca-barriga.png';
+import bonusLanches from '@/assets/images/sobremesas/50-lanches-fit.png';
+import bonusAlmoco from '@/assets/images/sobremesas/receitas-almoco.png';
+
+// Placeholder for expert
 const imgExpert = "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&w=1000&auto=format&fit=crop"; 
-const imgHappyEating = "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?q=80&w=1000&auto=format&fit=crop"; 
 
-// Carousel Images
+// Carousel Images Configuration
 const carouselImages = [
-  { img: "https://images.unsplash.com/photo-1606313564200-e75d5e304abd?q=80&w=300&auto=format&fit=crop", name: "Brownie" },
-  { img: "https://images.unsplash.com/photo-1514517220017-8ce97a34a7b6?q=80&w=300&auto=format&fit=crop", name: "Pudim" },
-  { img: "https://images.unsplash.com/photo-1563805042-7684c019e1cb?q=80&w=300&auto=format&fit=crop", name: "Pavê" },
-  { img: "https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=300&auto=format&fit=crop", name: "Doce de Leite" },
-  { img: "https://images.unsplash.com/photo-1579306194872-64d3b7bac4c2?q=80&w=300&auto=format&fit=crop", name: "Cheesecake" },
-  { img: "https://images.unsplash.com/photo-1621303837174-89787a7d4729?q=80&w=300&auto=format&fit=crop", name: "Mousse" },
-  { img: "https://images.unsplash.com/photo-1551024601-5629636e331c?q=80&w=300&auto=format&fit=crop", name: "Bolo de Pote" },
-  { img: "https://images.unsplash.com/photo-1488477181946-6428a029177b?q=80&w=300&auto=format&fit=crop", name: "Torta de Limão" },
+  { img: brownieImg, name: "Brownie" },
+  { img: pudimImg, name: "Pudim" },
+  { img: paveImg, name: "Pavê" },
+  { img: doceDeLeiteImg, name: "Doce de Leite" },
+  { img: cheesecakeImg, name: "Cheesecake" },
+  { img: mousseImg, name: "Mousse" },
+  { img: boloPoteImg, name: "Bolo de Pote" },
+  { img: tortaLimaoImg, name: "Torta de Limão" },
 ];
-
-// Bonus Images (Updated for stronger offer)
-const imgBonus1 = "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=500&auto=format&fit=crop"; // Weight loss/Tape measure
-const imgBonus2 = "https://images.unsplash.com/photo-1603569283847-aa295f0d016a?q=80&w=500&auto=format&fit=crop"; // Healthy Snacks
-const imgBonus3 = "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=500&auto=format&fit=crop"; // Full Meal
 
 // Social Proof Images
 const avatar1 = "https://randomuser.me/api/portraits/women/44.jpg";
@@ -292,7 +303,7 @@ const SobremesasLanding = () => {
                  <div className="relative w-[280px] md:w-[350px] aspect-square">
                     <div className="absolute inset-0 bg-pink-200 rounded-full blur-3xl opacity-30 animate-pulse"></div>
                     <img 
-                        src={heroImg} 
+                        src={heroImgSrc} 
                         alt="Brownie Zero Açúcar" 
                         className="relative rounded-3xl shadow-2xl border-4 border-white transform rotate-3 hover:rotate-0 transition-all duration-500 object-cover w-full h-full"
                     />
@@ -366,7 +377,7 @@ const SobremesasLanding = () => {
                   >
                       {/* Image Circle */}
                       <div className="w-28 h-28 rounded-full border-4 border-pink-400 overflow-hidden mb-6 shadow-[0_0_30px_rgba(236,72,153,0.4)] shrink-0 bg-slate-800">
-                          <img src={imgHappyEating} alt="Happy" className="w-full h-full object-cover opacity-90" />
+                          <img src={happyEatingImg} alt="Happy" className="w-full h-full object-cover opacity-90" />
                       </div>
 
                       {/* Animated Content */}
@@ -426,7 +437,7 @@ const SobremesasLanding = () => {
                   <div className="w-[350px] shrink-0 relative group">
                       <div className="absolute inset-0 bg-gradient-to-tr from-pink-400 to-purple-600 rounded-full blur-2xl opacity-40 group-hover:opacity-60 transition-opacity duration-700"></div>
                       <img 
-                          src={imgHappyEating} 
+                          src={happyEatingImg} 
                           alt="Mulher feliz comendo doce fit" 
                           className="relative rounded-3xl shadow-2xl border-4 border-slate-900 w-full object-cover aspect-[3/4] transform hover:scale-105 transition-transform duration-500 z-10"
                       />
@@ -529,21 +540,21 @@ const SobremesasLanding = () => {
 
                 <div className="grid md:grid-cols-3 gap-6 md:gap-8">
                     <PhotoBonusCard 
-                        image={imgBonus1}
-                        title="PROTOCOLO SECA BARRIGA"
-                        desc="Desafio 30 dias: passo a passo validado para destravar seu metabolismo e queimar gordura visceral."
+                        image={bonusSecaBarriga}
+                        title="GUIA SECA BARRIGA: -7KG EM 30 DIAS"
+                        desc="O protocolo exato para desinflamar o corpo e queimar gordura visceral sem precisar pisar na academia."
                         price="97,00"
                     />
                     <PhotoBonusCard 
-                        image={imgBonus2}
-                        title="50 LANCHES FIT"
-                        desc="Coxinha, empada e salgados proteicos. Opções deliciosas para o lanche da tarde que matam a fome."
+                        image={bonusLanches}
+                        title="50 LANCHES SALGADOS FIT"
+                        desc="Coxinha, empada e salgados proteicos. Opções deliciosas para o lanche da tarde que matam a fome sem engordar."
                         price="47,00"
                     />
                     <PhotoBonusCard 
-                        image={imgBonus3}
-                        title="100 RECEITAS DE ALMOÇO"
-                        desc="O guia definitivo de refeições salgadas. Strogonoff, Lasanha e Escondidinho em versões que emagrecem."
+                        image={bonusAlmoco}
+                        title="100 RECEITAS DE ALMOÇO & JANTAR"
+                        desc="Strogonoff, Lasanha e Escondidinho. Transforme suas refeições principais em aliados do emagrecimento."
                         price="67,00"
                     />
                 </div>
@@ -622,9 +633,9 @@ const SobremesasLanding = () => {
                  
                  <ul className="space-y-3 mb-6 text-sm font-medium text-slate-700">
                     <li className="flex items-center gap-3"><div className="bg-green-100 p-1 rounded-full text-green-600"><Check size={12} strokeWidth={4}/></div> <span>350+ Receitas Zero</span></li>
-                    <li className="flex items-center gap-3"><div className="bg-green-100 p-1 rounded-full text-green-600"><Check size={12} strokeWidth={4}/></div> <span>BÔNUS 1: Guia Seca Barriga</span></li>
-                    <li className="flex items-center gap-3"><div className="bg-green-100 p-1 rounded-full text-green-600"><Check size={12} strokeWidth={4}/></div> <span>BÔNUS 2: 50 Lanches Fit</span></li>
-                    <li className="flex items-center gap-3"><div className="bg-green-100 p-1 rounded-full text-green-600"><Check size={12} strokeWidth={4}/></div> <span>BÔNUS 3: 100 Receitas Salgadas</span></li>
+                    <li className="flex items-center gap-3"><div className="bg-green-100 p-1 rounded-full text-green-600"><Check size={12} strokeWidth={4}/></div> <span>BÔNUS 1: Guia Seca Barriga 7KG</span></li>
+                    <li className="flex items-center gap-3"><div className="bg-green-100 p-1 rounded-full text-green-600"><Check size={12} strokeWidth={4}/></div> <span>BÔNUS 2: 50 Lanches Salgados Fit</span></li>
+                    <li className="flex items-center gap-3"><div className="bg-green-100 p-1 rounded-full text-green-600"><Check size={12} strokeWidth={4}/></div> <span>BÔNUS 3: 100 Receitas Almoço/Jantar</span></li>
                     <li className="flex items-center gap-3"><div className="bg-green-100 p-1 rounded-full text-green-600"><Check size={12} strokeWidth={4}/></div> <span>Atualizações Gratuitas</span></li>
                  </ul>
 
@@ -896,7 +907,7 @@ const PhotoBonusCard = ({ title, desc, price, image }: { title: string, desc: st
             <div className="absolute top-2 right-2 bg-green-600 text-white text-[10px] md:text-xs font-bold px-2 py-1 rounded">GRÁTIS</div>
         </div>
         <div className="p-4 md:p-6 flex-1 flex flex-col">
-            <h3 className="text-base md:text-lg font-black text-slate-900 mb-2">{title}</h3>
+            <h3 className="text-base md:text-lg font-black text-slate-900 mb-2 leading-tight">{title}</h3>
             <p className="text-slate-600 text-xs md:text-sm mb-4 flex-1">{desc}</p>
             <div className="pt-4 border-t border-slate-100">
                 <span className="text-[10px] md:text-xs text-slate-400 line-through block">Vendido por R$ {price}</span>
