@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { 
   Check, Star, ShieldCheck, 
-  Zap, ChevronRight, Brain, BookOpen, Smile, Baby, Lock, HelpCircle, ArrowRight, Pencil, Puzzle, Download, Printer, Heart, Clock
+  Zap, ChevronRight, Brain, BookOpen, Smile, Baby, Lock, HelpCircle, ArrowRight, Pencil, Puzzle, Download, Printer, Heart, Clock, AlertTriangle
 } from "lucide-react";
 import EducacaoKidsV2UpsellModal from './EducacaoKidsV2UpsellModal';
 import UtmifyScript from './UtmifyScript';
@@ -277,6 +277,14 @@ const EducacaoKidsV2Landing = () => {
                         <p className="mt-4 font-bold uppercase tracking-widest">Aperte o Play 👇</p>
                     </div>
                 </div>
+                
+                {/* CTA below VSL */}
+                <Button 
+                    onClick={scrollToPricing}
+                    className="btn-hypnotic text-white font-black text-lg md:text-xl py-6 px-10 rounded-full w-full md:w-auto mx-auto shadow-lg mt-4"
+                >
+                    QUERO TESTAR O MÉTODO
+                </Button>
             </div>
         </section>
 
