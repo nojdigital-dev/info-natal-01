@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { 
   Check, Star, ShieldCheck, 
-  Zap, ChevronRight, ChefHat, Scale, HeartPulse, Droplet, Candy, Lock, HelpCircle, ArrowRight, ThumbsUp, ArrowLeft
+  Zap, ChevronRight, ChefHat, Scale, HeartPulse, Droplet, Candy, Lock, HelpCircle, ArrowRight, ThumbsUp, ArrowLeft, Flame
 } from "lucide-react";
 import SobremesasUpsellModal from './SobremesasUpsellModal';
 import UtmifyScript from './UtmifyScript';
@@ -29,10 +29,10 @@ const carouselImages = [
   { img: "https://images.unsplash.com/photo-1488477181946-6428a029177b?q=80&w=300&auto=format&fit=crop", name: "Torta de Limão" },
 ];
 
-// Bonus Images
-const imgBonus1 = "https://images.unsplash.com/photo-1535920527002-b35e96722eb9?q=80&w=500&auto=format&fit=crop"; 
-const imgBonus2 = "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?q=80&w=500&auto=format&fit=crop"; 
-const imgBonus3 = "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=500&auto=format&fit=crop"; 
+// Bonus Images (Updated for stronger offer)
+const imgBonus1 = "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=500&auto=format&fit=crop"; // Weight loss/Tape measure
+const imgBonus2 = "https://images.unsplash.com/photo-1603569283847-aa295f0d016a?q=80&w=500&auto=format&fit=crop"; // Healthy Snacks
+const imgBonus3 = "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=500&auto=format&fit=crop"; // Full Meal
 
 // Social Proof Images
 const avatar1 = "https://randomuser.me/api/portraits/women/44.jpg";
@@ -530,26 +530,26 @@ const SobremesasLanding = () => {
                 <div className="grid md:grid-cols-3 gap-6 md:gap-8">
                     <PhotoBonusCard 
                         image={imgBonus1}
-                        title="TORTAS DOCES"
-                        desc="Zero açúcar, zero glúten e zero lactose. Perfeitas para festas."
-                        price="39,90"
+                        title="PROTOCOLO SECA BARRIGA"
+                        desc="Desafio 30 dias: passo a passo validado para destravar seu metabolismo e queimar gordura visceral."
+                        price="97,00"
                     />
                     <PhotoBonusCard 
                         image={imgBonus2}
-                        title="LANCHE DA TARDE"
-                        desc="Salgados e snacks saudáveis para nunca mais passar fome."
-                        price="29,90"
+                        title="50 LANCHES FIT"
+                        desc="Coxinha, empada e salgados proteicos. Opções deliciosas para o lanche da tarde que matam a fome."
+                        price="47,00"
                     />
                     <PhotoBonusCard 
                         image={imgBonus3}
-                        title="ALMOÇO & JANTAR FIT"
-                        desc="Pratos salgados deliciosos para você manter a dieta o dia todo."
-                        price="49,90"
+                        title="100 RECEITAS DE ALMOÇO"
+                        desc="O guia definitivo de refeições salgadas. Strogonoff, Lasanha e Escondidinho em versões que emagrecem."
+                        price="67,00"
                     />
                 </div>
                 
                 <div className="mt-8 md:mt-12 text-center">
-                    <p className="text-base md:text-xl font-bold text-white mb-6">Valor Total dos Bônus: <span className="line-through text-pink-300">R$ 119,70</span> = <span className="bg-yellow-400 text-purple-900 px-2 rounded">GRÁTIS HOJE</span></p>
+                    <p className="text-base md:text-xl font-bold text-white mb-6">Valor Total dos Bônus: <span className="line-through text-pink-300">R$ 211,00</span> = <span className="bg-yellow-400 text-purple-900 px-2 rounded">GRÁTIS HOJE</span></p>
                     <Button 
                         onClick={scrollToPricing}
                         className="btn-shiny text-white font-black text-base md:text-lg px-8 py-6 rounded-full shadow-lg animate-scale-pulse w-full md:w-auto transform hover:scale-105 transition-transform"
@@ -590,9 +590,9 @@ const SobremesasLanding = () => {
                  <ul className="space-y-3 mb-6 text-xs text-slate-500">
                     <li className="flex items-center gap-2"><Check size={14}/> Todas as 350+ Receitas</li>
                     <li className="flex items-center gap-2"><Check size={14}/> Arquivo PDF Completo</li>
-                    <li className="flex items-center gap-2 text-red-400 line-through"><Check size={14}/> Sem Bônus de Tortas</li>
-                    <li className="flex items-center gap-2 text-red-400 line-through"><Check size={14}/> Sem Bônus de Lanches</li>
-                    <li className="flex items-center gap-2 text-red-400 line-through"><Check size={14}/> Sem Bônus de Almoço/Jantar</li>
+                    <li className="flex items-center gap-2 text-red-400 line-through"><Check size={14}/> Sem Guia Seca Barriga</li>
+                    <li className="flex items-center gap-2 text-red-400 line-through"><Check size={14}/> Sem Lanches Fit</li>
+                    <li className="flex items-center gap-2 text-red-400 line-through"><Check size={14}/> Sem 100 Receitas Salgadas</li>
                  </ul>
                  
                  <Button 
@@ -622,9 +622,9 @@ const SobremesasLanding = () => {
                  
                  <ul className="space-y-3 mb-6 text-sm font-medium text-slate-700">
                     <li className="flex items-center gap-3"><div className="bg-green-100 p-1 rounded-full text-green-600"><Check size={12} strokeWidth={4}/></div> <span>350+ Receitas Zero</span></li>
-                    <li className="flex items-center gap-3"><div className="bg-green-100 p-1 rounded-full text-green-600"><Check size={12} strokeWidth={4}/></div> <span>BÔNUS 1: Tortas Doces</span></li>
-                    <li className="flex items-center gap-3"><div className="bg-green-100 p-1 rounded-full text-green-600"><Check size={12} strokeWidth={4}/></div> <span>BÔNUS 2: Lanche da Tarde</span></li>
-                    <li className="flex items-center gap-3"><div className="bg-green-100 p-1 rounded-full text-green-600"><Check size={12} strokeWidth={4}/></div> <span>BÔNUS 3: Almoço & Jantar Fit</span></li>
+                    <li className="flex items-center gap-3"><div className="bg-green-100 p-1 rounded-full text-green-600"><Check size={12} strokeWidth={4}/></div> <span>BÔNUS 1: Guia Seca Barriga</span></li>
+                    <li className="flex items-center gap-3"><div className="bg-green-100 p-1 rounded-full text-green-600"><Check size={12} strokeWidth={4}/></div> <span>BÔNUS 2: 50 Lanches Fit</span></li>
+                    <li className="flex items-center gap-3"><div className="bg-green-100 p-1 rounded-full text-green-600"><Check size={12} strokeWidth={4}/></div> <span>BÔNUS 3: 100 Receitas Salgadas</span></li>
                     <li className="flex items-center gap-3"><div className="bg-green-100 p-1 rounded-full text-green-600"><Check size={12} strokeWidth={4}/></div> <span>Atualizações Gratuitas</span></li>
                  </ul>
 
