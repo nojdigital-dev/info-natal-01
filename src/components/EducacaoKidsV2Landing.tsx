@@ -124,9 +124,9 @@ const EducacaoKidsV2Landing = () => {
         {/* Hero Section */}
         <section className="relative bg-gradient-to-b from-sky-400 via-sky-300 to-white pt-10 pb-20 px-4 overflow-hidden">
           <div className="max-w-6xl mx-auto relative z-10">
-            <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
               
-              {/* Text Content */}
+              {/* Text Content - Order 2 Mobile, Order 1 Desktop */}
               <div className="flex flex-col items-center text-center md:items-start md:text-left order-2 md:order-1">
                 <Badge className="bg-white text-blue-700 hover:bg-blue-50 mb-6 px-4 py-2 text-sm font-bold border-2 border-blue-600 inline-flex items-center gap-2 shadow-lg rounded-full uppercase">
                   <img src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg" className="w-5 h-auto shadow-sm" alt="USA"/> Método Americano de Alfabetização
@@ -145,7 +145,7 @@ const EducacaoKidsV2Landing = () => {
                 <div className="flex flex-col gap-4 w-full md:w-auto items-center md:items-start">
                     <Button 
                         onClick={scrollToPricing}
-                        className="btn-hypnotic text-white font-black text-xl md:text-3xl py-8 px-12 rounded-full w-full md:w-fit uppercase flex items-center gap-3 shadow-xl"
+                        className="btn-hypnotic text-white font-black text-xl md:text-3xl py-8 px-12 rounded-full w-full md:w-fit uppercase flex items-center justify-center gap-3 shadow-xl"
                     >
                         QUERO MEU PEQUENO LENDO <ArrowRight size={32} strokeWidth={4} />
                     </Button>
@@ -156,7 +156,7 @@ const EducacaoKidsV2Landing = () => {
                 </div>
               </div>
 
-              {/* Image Content */}
+              {/* Image Content - Order 1 Mobile, Order 2 Desktop */}
               <div className="relative order-1 md:order-2 flex justify-center">
                  <div className="relative w-[280px] md:w-[400px] aspect-square group">
                     <div className="absolute inset-0 bg-white rounded-full blur-3xl opacity-40 animate-pulse"></div>
@@ -183,21 +183,21 @@ const EducacaoKidsV2Landing = () => {
         <section className="py-12 px-4 bg-white relative -mt-10 z-20">
             <div className="max-w-4xl mx-auto">
                 <div className="bg-slate-50 border-l-8 border-red-500 rounded-r-2xl shadow-xl p-6 md:p-10 mb-12">
-                    <h2 className="text-2xl md:text-3xl font-black text-slate-800 mb-6 flex items-start gap-3">
-                        <AlertTriangle className="text-red-500 shrink-0 mt-1" size={32} fill="currentColor" />
-                        Muitos pais acham que "cada criança tem seu tempo". Até que...
+                    <h2 className="text-2xl md:text-3xl font-black text-slate-800 mb-6 flex flex-col md:flex-row items-center md:items-start gap-3 text-center md:text-left">
+                        <AlertTriangle className="text-red-500 shrink-0 mt-1 mx-auto md:mx-0" size={32} fill="currentColor" />
+                        <span>Muitos pais acham que "cada criança tem seu tempo". Até que...</span>
                     </h2>
                     <div className="space-y-4">
-                        <div className="flex items-center gap-3 text-slate-700 font-medium">
-                            <span className="text-2xl">👎🏻</span> As tarefas de leitura viram um campo de guerra e choro.
+                        <div className="flex items-center gap-3 text-slate-700 font-medium bg-white/50 p-2 rounded-lg">
+                            <span className="text-2xl shrink-0">👎🏻</span> <span>As tarefas de leitura viram um campo de guerra e choro.</span>
                         </div>
-                        <div className="flex items-center gap-3 text-slate-700 font-medium">
-                            <span className="text-2xl">👎🏻</span> As notas baixas começam a aparecer.
+                        <div className="flex items-center gap-3 text-slate-700 font-medium bg-white/50 p-2 rounded-lg">
+                            <span className="text-2xl shrink-0">👎🏻</span> <span>As notas baixas começam a aparecer.</span>
                         </div>
-                        <div className="flex items-center gap-3 text-slate-700 font-medium">
-                            <span className="text-2xl">👎🏻</span> Ela se sente “menos inteligente” do que os coleguinhas.
+                        <div className="flex items-center gap-3 text-slate-700 font-medium bg-white/50 p-2 rounded-lg">
+                            <span className="text-2xl shrink-0">👎🏻</span> <span>Ela se sente “menos inteligente” do que os coleguinhas.</span>
                         </div>
-                        <p className="text-red-600 font-bold mt-4 border-t border-red-200 pt-4">
+                        <p className="text-red-600 font-bold mt-4 border-t border-red-200 pt-4 text-center md:text-left">
                             E o pior: Começa a achar que não é capaz, sem entender o porquê.
                         </p>
                     </div>
@@ -245,10 +245,10 @@ const EducacaoKidsV2Landing = () => {
                     <p className="text-blue-900/80 font-bold text-lg">O segredo está no <span className="bg-white px-2 rounded text-blue-900 border-2 border-blue-900">Grafismo Fonético</span></p>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div className="bg-white p-6 rounded-2xl shadow-lg border-b-8 border-blue-500 transform hover:-translate-y-1 transition-transform">
-                        <div className="flex items-start gap-4">
-                            <div className="bg-blue-100 p-3 rounded-full text-blue-600"><Brain size={32}/></div>
+                        <div className="flex flex-col md:flex-row items-center md:items-start gap-4 text-center md:text-left">
+                            <div className="bg-blue-100 p-3 rounded-full text-blue-600 shrink-0"><Brain size={32}/></div>
                             <div>
                                 <h3 className="font-bold text-xl text-slate-800 mb-2">Conexões Cerebrais</h3>
                                 <p className="text-slate-600">Ao traçar linhas e curvas associadas a sons, a criança fortalece as áreas do cérebro responsáveis pela leitura.</p>
@@ -256,8 +256,8 @@ const EducacaoKidsV2Landing = () => {
                         </div>
                     </div>
                     <div className="bg-white p-6 rounded-2xl shadow-lg border-b-8 border-green-500 transform hover:-translate-y-1 transition-transform">
-                        <div className="flex items-start gap-4">
-                            <div className="bg-green-100 p-3 rounded-full text-green-600"><Pencil size={32}/></div>
+                        <div className="flex flex-col md:flex-row items-center md:items-start gap-4 text-center md:text-left">
+                            <div className="bg-green-100 p-3 rounded-full text-green-600 shrink-0"><Pencil size={32}/></div>
                             <div>
                                 <h3 className="font-bold text-xl text-slate-800 mb-2">Coordenação Motora</h3>
                                 <p className="text-slate-600">Prepara a mãozinha para a escrita cursiva e bastão, melhorando a caligrafia desde cedo.</p>
@@ -265,8 +265,8 @@ const EducacaoKidsV2Landing = () => {
                         </div>
                     </div>
                     <div className="bg-white p-6 rounded-2xl shadow-lg border-b-8 border-purple-500 transform hover:-translate-y-1 transition-transform">
-                        <div className="flex items-start gap-4">
-                            <div className="bg-purple-100 p-3 rounded-full text-purple-600"><Smile size={32}/></div>
+                        <div className="flex flex-col md:flex-row items-center md:items-start gap-4 text-center md:text-left">
+                            <div className="bg-purple-100 p-3 rounded-full text-purple-600 shrink-0"><Smile size={32}/></div>
                             <div>
                                 <h3 className="font-bold text-xl text-slate-800 mb-2">Sem Pressão</h3>
                                 <p className="text-slate-600">As atividades parecem brincadeira. A criança aprende se divertindo, sem perceber que está estudando.</p>
@@ -274,8 +274,8 @@ const EducacaoKidsV2Landing = () => {
                         </div>
                     </div>
                     <div className="bg-white p-6 rounded-2xl shadow-lg border-b-8 border-red-500 transform hover:-translate-y-1 transition-transform">
-                        <div className="flex items-start gap-4">
-                            <div className="bg-red-100 p-3 rounded-full text-red-600"><Puzzle size={32}/></div>
+                        <div className="flex flex-col md:flex-row items-center md:items-start gap-4 text-center md:text-left">
+                            <div className="bg-red-100 p-3 rounded-full text-red-600 shrink-0"><Puzzle size={32}/></div>
                             <div>
                                 <h3 className="font-bold text-xl text-slate-800 mb-2">Inclusivo</h3>
                                 <p className="text-slate-600">Metodologia visual e prática, altamente recomendada para crianças com TDAH, Autismo ou dislexia.</p>
@@ -299,19 +299,19 @@ const EducacaoKidsV2Landing = () => {
                     E em poucos dias você vai notar <br/> <span className="text-green-500">a diferença no seu filho:</span>
                 </h2>
                 
-                <div className="grid md:grid-cols-3 gap-6 mb-10">
-                    <div className="p-6 rounded-2xl border-2 border-slate-100 bg-slate-50">
-                        <Target className="w-12 h-12 text-blue-500 mx-auto mb-4" />
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+                    <div className="p-6 rounded-2xl border-2 border-slate-100 bg-slate-50 flex flex-col items-center">
+                        <Target className="w-12 h-12 text-blue-500 mb-4" />
                         <h3 className="font-bold text-lg text-slate-900 mb-2">Leitura Fluida</h3>
                         <p className="text-sm text-slate-600">Vai começar a ler placas na rua, embalagens e livrinhos sem gaguejar.</p>
                     </div>
-                    <div className="p-6 rounded-2xl border-2 border-slate-100 bg-slate-50">
-                        <Smile className="w-12 h-12 text-yellow-500 mx-auto mb-4" />
+                    <div className="p-6 rounded-2xl border-2 border-slate-100 bg-slate-50 flex flex-col items-center">
+                        <Smile className="w-12 h-12 text-yellow-500 mb-4" />
                         <h3 className="font-bold text-lg text-slate-900 mb-2">Autoconfiança</h3>
                         <p className="text-sm text-slate-600">O orgulho de conseguir ler sozinho vai transformar a autoestima dele.</p>
                     </div>
-                    <div className="p-6 rounded-2xl border-2 border-slate-100 bg-slate-50">
-                        <Lightbulb className="w-12 h-12 text-purple-500 mx-auto mb-4" />
+                    <div className="p-6 rounded-2xl border-2 border-slate-100 bg-slate-50 flex flex-col items-center">
+                        <Lightbulb className="w-12 h-12 text-purple-500 mb-4" />
                         <h3 className="font-bold text-lg text-slate-900 mb-2">Gosto por Estudar</h3>
                         <p className="text-sm text-slate-600">O momento do dever de casa vai deixar de ser uma briga para ser um prazer.</p>
                     </div>
@@ -335,7 +335,7 @@ const EducacaoKidsV2Landing = () => {
                     <p className="text-slate-400 text-lg">Um material completo, organizado e pronto para imprimir.</p>
                 </div>
 
-                {/* Mockup Image Added Here */}
+                {/* Mockup Image */}
                 <div className="flex justify-center mb-12">
                     <img 
                         src={mockupImg} 
@@ -344,14 +344,14 @@ const EducacaoKidsV2Landing = () => {
                     />
                 </div>
 
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
                     {[
                         "Caderno do Alfabeto", "Coordenação Motora", "Junção de Sílabas", "Formação de Palavras",
                         "Pequenos Textos", "Interpretação", "Matemática Básica", "Desenhos para Colorir"
                     ].map((item, idx) => (
-                        <div key={idx} className="bg-slate-800 p-4 rounded-xl border border-slate-700 flex items-center gap-3">
+                        <div key={idx} className="bg-slate-800 p-4 rounded-xl border border-slate-700 flex items-center justify-center md:justify-start gap-3">
                             <div className="bg-green-500/20 p-2 rounded-full text-green-400 shrink-0"><Check size={16} strokeWidth={3}/></div>
-                            <span className="font-bold text-sm md:text-base">{item}</span>
+                            <span className="font-bold text-sm md:text-base text-center md:text-left">{item}</span>
                         </div>
                     ))}
                 </div>
@@ -362,7 +362,7 @@ const EducacaoKidsV2Landing = () => {
         <section className="py-16 px-4 bg-slate-50">
             <div className="max-w-4xl mx-auto text-center">
                 <h2 className="text-3xl font-black text-slate-800 mb-10">Muito Simples de Começar!</h2>
-                <div className="grid md:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     <div className="flex flex-col items-center">
                         <div className="w-20 h-20 bg-blue-500 rounded-full flex items-center justify-center text-white mb-4 shadow-lg border-4 border-blue-200">
                             <Download size={32} />
@@ -405,7 +405,7 @@ const EducacaoKidsV2Landing = () => {
                     O que Pais e Educadores dizem:
                 </h2>
                 
-                <div className="grid md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <TestimonialCard 
                         img={testimonial1}
                         name="Mariana Costa"
@@ -446,7 +446,7 @@ const EducacaoKidsV2Landing = () => {
                     </h2>
                 </div>
 
-                <div className="grid md:grid-cols-3 gap-6 md:gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
                     <PhotoBonusCard 
                         image={bonusAlfabeto}
                         title="Alfabeto com Imagens"
@@ -489,10 +489,10 @@ const EducacaoKidsV2Landing = () => {
                     <p className="text-blue-100 text-lg">Acesso vitalício e imediato por um valor simbólico.</p>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-8 items-start max-w-4xl mx-auto">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start max-w-4xl mx-auto">
                     
                     {/* Basic Plan */}
-                    <div className="bg-green-50 rounded-3xl p-6 border-4 border-green-200 opacity-95 hover:opacity-100 transition-opacity mt-4">
+                    <div className="bg-green-50 rounded-3xl p-6 border-4 border-green-200 opacity-95 hover:opacity-100 transition-opacity mt-4 order-2 md:order-1">
                         <h3 className="text-xl font-bold text-green-800 text-center uppercase tracking-wide">Kit Básico</h3>
                         <div className="text-center my-6">
                             <span className="text-sm text-green-700 line-through">De R$ 97,00</span>
@@ -513,7 +513,7 @@ const EducacaoKidsV2Landing = () => {
                     </div>
 
                     {/* Complete Plan (Hero) */}
-                    <div className="bg-white rounded-3xl p-8 border-4 border-yellow-400 shadow-2xl relative transform md:scale-105">
+                    <div className="bg-white rounded-3xl p-8 border-4 border-yellow-400 shadow-2xl relative transform md:scale-105 order-1 md:order-2">
                         <div className="absolute -top-5 left-1/2 transform -translate-x-1/2 bg-red-600 text-white px-6 py-2 rounded-full font-bold text-sm uppercase tracking-wide shadow-md whitespace-nowrap border-2 border-white animate-pulse">
                             🏆 Oferta Completa
                         </div>
@@ -546,13 +546,13 @@ const EducacaoKidsV2Landing = () => {
 
         {/* Guarantee (With CTA - "Sim") */}
         <section className="py-16 px-4 bg-white">
-            <div className="max-w-3xl mx-auto flex flex-col md:flex-row items-center gap-8 border-2 border-dashed border-blue-200 p-8 rounded-3xl bg-blue-50/50">
+            <div className="max-w-3xl mx-auto flex flex-col md:flex-row items-center gap-8 border-2 border-dashed border-blue-200 p-8 rounded-3xl bg-blue-50/50 text-center md:text-left">
                 <div className="shrink-0">
-                    <div className="w-32 h-32 bg-white rounded-full flex items-center justify-center border-4 border-yellow-400 shadow-xl">
+                    <div className="w-32 h-32 bg-white rounded-full flex items-center justify-center border-4 border-yellow-400 shadow-xl mx-auto md:mx-0">
                         <ShieldCheck size={64} className="text-green-500"/>
                     </div>
                 </div>
-                <div className="text-center md:text-left">
+                <div>
                     <h3 className="text-2xl font-black text-slate-800 mb-2">Garantia Incondicional de 7 Dias</h3>
                     <p className="text-slate-600 leading-relaxed mb-6">
                         Se você sentir que o material não ajudou seu filho, nós devolvemos 100% do seu dinheiro. Sem perguntas, sem burocracia. O risco é todo nosso.
@@ -580,7 +580,7 @@ const EducacaoKidsV2Landing = () => {
                     </div>
                 </div>
 
-                <div className="grid md:grid-cols-3 gap-4 md:gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
                     {/* G-Review 1 */}
                     <div className="bg-white p-4 md:p-6 rounded-xl border border-slate-200 shadow-sm relative">
                         <div className="absolute top-4 right-4"><GoogleIcon /></div>
