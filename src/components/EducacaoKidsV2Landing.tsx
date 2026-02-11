@@ -11,18 +11,19 @@ import {
 import EducacaoKidsV2UpsellModal from './EducacaoKidsV2UpsellModal';
 import UtmifyScript from './UtmifyScript';
 
+// Images
+import heroImg from '@/assets/images/educacao-kids/hero-kids.png';
+import mockupImg from '@/assets/images/educacao-kids/mockup-completo.png';
+import bonusAlfabeto from '@/assets/images/educacao-kids/bonus-alfabeto.png';
+import bonusQuebraCabeca from '@/assets/images/educacao-kids/bonus-quebra-cabeca.png';
+import bonusPalavras from '@/assets/images/educacao-kids/bonus-formando-palavras.png';
+
 // Placeholders
-const heroImg = "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?q=80&w=1000&auto=format&fit=crop"; 
 const vslPlaceholder = "https://images.unsplash.com/photo-1516627145497-ae6968895b74?q=80&w=1000&auto=format&fit=crop";
 const testimonial1 = "https://randomuser.me/api/portraits/women/44.jpg";
 const testimonial2 = "https://randomuser.me/api/portraits/women/68.jpg";
 const testimonial3 = "https://randomuser.me/api/portraits/women/12.jpg";
 const testimonial4 = "https://randomuser.me/api/portraits/men/32.jpg";
-
-// Bonus Images
-const imgBonus1 = "https://images.unsplash.com/photo-1588072432836-e10032774350?q=80&w=500&auto=format&fit=crop";
-const imgBonus2 = "https://images.unsplash.com/photo-1596464716127-f9a82763ef5c?q=80&w=500&auto=format&fit=crop";
-const imgBonus3 = "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?q=80&w=500&auto=format&fit=crop";
 
 // Google Icon
 const GoogleIcon = () => (
@@ -101,6 +102,14 @@ const EducacaoKidsV2Landing = () => {
             animation: shimmer 1s linear infinite, scale-only-pulse 3s ease-in-out infinite;
             transform: scale(1.03);
           }
+          /* Hide scrollbar for carousel */
+          .no-scrollbar::-webkit-scrollbar {
+            display: none;
+          }
+          .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+          }
         `}</style>
       </Helmet>
       <UtmifyScript />
@@ -170,7 +179,7 @@ const EducacaoKidsV2Landing = () => {
           <div className="absolute bottom-0 left-0 w-full h-16 bg-white" style={{clipPath: "polygon(0 100%, 100% 100%, 100% 0)"}}></div>
         </section>
 
-        {/* Agitation / Truth Section (No CTA - Following "Sim, Não" pattern) */}
+        {/* Agitation / Truth Section (No CTA - "Não") */}
         <section className="py-12 px-4 bg-white relative -mt-10 z-20">
             <div className="max-w-4xl mx-auto">
                 <div className="bg-slate-50 border-l-8 border-red-500 rounded-r-2xl shadow-xl p-6 md:p-10 mb-12">
@@ -228,7 +237,7 @@ const EducacaoKidsV2Landing = () => {
             </div>
         </section>
 
-        {/* RESTORED: Benefits Section (No CTA - "Não") */}
+        {/* Benefits Section (No CTA - "Não") */}
         <section className="py-16 px-4 bg-yellow-400 relative">
             <div className="max-w-5xl mx-auto relative z-10">
                 <div className="text-center mb-12">
@@ -283,7 +292,7 @@ const EducacaoKidsV2Landing = () => {
             </div>
         </section>
 
-        {/* RESTORED: Transformation Section (With CTA - "Sim") */}
+        {/* Transformation Section (With CTA - "Sim") */}
         <section className="py-16 px-4 bg-white">
             <div className="max-w-4xl mx-auto text-center">
                 <h2 className="text-2xl md:text-4xl font-extrabold text-slate-800 mb-10">
@@ -317,13 +326,22 @@ const EducacaoKidsV2Landing = () => {
             </div>
         </section>
 
-        {/* RESTORED: What's Included Section (No CTA - "Não") */}
+        {/* What's Included Section (No CTA - "Não") */}
         <section className="py-16 px-4 bg-slate-900 text-white relative overflow-hidden">
             <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20"></div>
             <div className="max-w-6xl mx-auto relative z-10">
                 <div className="text-center mb-12">
                     <h2 className="text-3xl md:text-5xl font-black mb-4">Veja tudo que você vai receber:</h2>
-                    <p className="text-slate-400">Um material completo, organizado e pronto para imprimir.</p>
+                    <p className="text-slate-400 text-lg">Um material completo, organizado e pronto para imprimir.</p>
+                </div>
+
+                {/* Mockup Image Added Here */}
+                <div className="flex justify-center mb-12">
+                    <img 
+                        src={mockupImg} 
+                        alt="Kit Completo Mockup" 
+                        className="w-full max-w-4xl object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-500"
+                    />
                 </div>
 
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -430,19 +448,19 @@ const EducacaoKidsV2Landing = () => {
 
                 <div className="grid md:grid-cols-3 gap-6 md:gap-8">
                     <PhotoBonusCard 
-                        image={imgBonus1}
+                        image={bonusAlfabeto}
                         title="Alfabeto com Imagens"
                         desc="Apresenta cada letra com imagens associadas para familiarização visual e rápida memorização."
                         price="37,00"
                     />
                     <PhotoBonusCard 
-                        image={imgBonus2}
+                        image={bonusQuebraCabeca}
                         title="Quebra-Cabeça Alfabeto"
                         desc="Atividades de quebra-cabeça para fixação divertida das letras e desenvolvimento lógico."
                         price="47,00"
                     />
                     <PhotoBonusCard 
-                        image={imgBonus3}
+                        image={bonusPalavras}
                         title="Formando Palavras"
                         desc="Exercícios práticos que incentivam a leitura e escrita, construindo vocabulário desde cedo."
                         price="57,00"
@@ -488,7 +506,7 @@ const EducacaoKidsV2Landing = () => {
                         </ul>
                         <Button 
                             onClick={() => setIsUpsellModalOpen(true)}
-                            className="w-full bg-green-300 hover:bg-green-400 text-green-900 font-bold py-6 rounded-xl border-b-4 border-green-500 active:border-b-0 active:translate-y-1 transition-all"
+                            className="w-full bg-green-200 hover:bg-green-300 text-green-800 font-bold py-6 rounded-xl border-b-4 border-green-400 active:border-b-0 active:translate-y-1 transition-all"
                         >
                             QUERO O BÁSICO
                         </Button>
