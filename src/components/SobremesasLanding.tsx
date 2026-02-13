@@ -182,6 +182,25 @@ const SobremesasLanding = () => {
       <Helmet>
         <title>350+ Sobremesas Zero - Coma Sem Culpa</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        
+        {/* Meta Pixel Code Sobremesa Zero */}
+        <script>{`
+          !function(f,b,e,v,n,t,s)
+          {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+          n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+          if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+          n.queue=[];t=b.createElement(e);t.async=!0;
+          t.src=v;s=b.getElementsByTagName(e)[0];
+          s.parentNode.insertBefore(t,s)}(window, document,'script',
+          'https://connect.facebook.net/en_US/fbevents.js');
+          fbq('init', '871872252422177');
+          fbq('track', 'PageView');
+        `}</script>
+        <noscript>{`
+          <img height="1" width="1" style="display:none"
+          src="https://www.facebook.com/tr?id=871872252422177&ev=PageView&noscript=1" />
+        `}</noscript>
+
         <style>{`
           @keyframes shimmer {
             0% { background-position: 200% center; }
@@ -534,7 +553,7 @@ const SobremesasLanding = () => {
                  <h3 className="text-lg font-bold text-slate-500 mb-1">Acesso ao Livro Digital</h3>
                  <p className="text-xs text-slate-400 mb-4">Acesso básico aos arquivos</p>
                  <div className="mb-4">
-                    <span className="text-3xl font-extrabold text-slate-700">R$ 10,00</span>
+                    <span className="text-3xl font-extrabold text-slate-700">R$ 9,90</span>
                  </div>
                  <ul className="space-y-3 mb-6 text-xs text-slate-500">
                     <li className="flex items-center gap-2"><Check size={14}/> Todas as 350+ Receitas</li>
