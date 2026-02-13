@@ -251,7 +251,7 @@ const EducacaoKidsV2Landing = () => {
                             <div className="bg-blue-100 p-3 rounded-full text-blue-600 shrink-0"><Brain size={32}/></div>
                             <div>
                                 <h3 className="font-bold text-xl text-slate-800 mb-2">Conexões Cerebrais</h3>
-                                <p className="text-slate-600">Ao traçar linhas e curvas associadas a sons, a criança fortalece as áreas do cérebro responsáveis pela leitura.</p>
+                                <p className="text-slate-600">Ao traçar lines e curvas associadas a sons, a criança fortalece as áreas do cérebro responsáveis pela leitura.</p>
                             </div>
                         </div>
                     </div>
@@ -530,7 +530,7 @@ const EducacaoKidsV2Landing = () => {
                             <li className="flex items-center gap-2"><div className="bg-green-100 p-1 rounded-full"><Check size={14} className="text-green-600"/></div> Suporte Pedagógico</li>
                         </ul>
                         <Button 
-                            onClick={() => window.location.href = applyUtms('https://pay.lowify.com.br/checkout?product_id=kids-complete-19')}
+                            onClick={() => window.location.href = applyUtms('https://pay.lowify.com.br/go.php?offer=65lwvno')}
                             className="btn-hypnotic w-full text-white font-black text-xl py-8 rounded-xl shadow-[0_4px_0_rgb(21,128,61)]"
                         >
                             QUERO O KIT COMPLETO
@@ -684,7 +684,7 @@ const EducacaoKidsV2Landing = () => {
                 <div>
                     <Button 
                         onClick={scrollToPricing}
-                        className="btn-hypnotic text-white font-black text-lg md:text-2xl py-8 px-12 rounded-full shadow-[0_0_40px_rgba(37,99,235,0.6)] transform transition hover:scale-105 active:scale-95 animate-pulse w-full md:w-auto mx-auto"
+                        className="btn-hypnotic text-white font-black text-lg md:text-xl py-8 px-12 rounded-full shadow-[0_0_40px_rgba(37,99,235,0.6)] transform transition hover:scale-105 active:scale-95 animate-pulse w-full md:w-auto mx-auto"
                     >
                         SIM! QUERO AJUDAR MEU FILHO <ArrowRight className="ml-2" />
                     </Button>
@@ -716,10 +716,10 @@ const EducacaoKidsV2Landing = () => {
             isOpen={isUpsellModalOpen}
             onClose={() => setIsUpsellModalOpen(false)}
             onConfirm={() => {
-                window.location.href = applyUtms('https://pay.lowify.com.br/checkout?product_id=kids-offer-14'); // Link Upsell 14.90
+                window.location.href = applyUtms('https://pay.lowify.com.br/go.php?offer=ke895za'); // Link Upsell 14.90
             }}
             onReject={() => {
-                window.location.href = applyUtms('https://pay.lowify.com.br/checkout?product_id=kids-basic-9'); // Link Basic 9.90
+                window.location.href = applyUtms('https://pay.lowify.com.br/checkout.php?product_id=C4T1vY'); // Link Basic 9.90
             }}
         />
 

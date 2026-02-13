@@ -11,7 +11,7 @@ import {
 import SobremesasUpsellModal from './SobremesasUpsellModal';
 import UtmifyScript from './UtmifyScript';
 
-// Importing new assets
+// Images
 import heroImgSrc from '@/assets/images/sobremesas/imagem-secao-1.png';
 import happyEatingImg from '@/assets/images/sobremesas/esqueca-dieta-chata.png';
 
@@ -30,10 +30,8 @@ import bonusSecaBarriga from '@/assets/images/sobremesas/protocolo-seca-barriga.
 import bonusLanches from '@/assets/images/sobremesas/50-lanches-fit.png';
 import bonusAlmoco from '@/assets/images/sobremesas/receitas-almoco.png';
 
-// Placeholder for expert
 const imgExpert = "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?q=80&w=1000&auto=format&fit=crop"; 
 
-// Carousel Images Configuration
 const carouselImages = [
   { img: brownieImg, name: "Brownie" },
   { img: pudimImg, name: "Pudim" },
@@ -45,14 +43,12 @@ const carouselImages = [
   { img: tortaLimaoImg, name: "Torta de Limão" },
 ];
 
-// Social Proof Images
 const avatar1 = "https://randomuser.me/api/portraits/women/44.jpg";
 const avatar2 = "https://randomuser.me/api/portraits/women/68.jpg";
 const avatar3 = "https://randomuser.me/api/portraits/women/12.jpg";
 const avatar5 = "https://randomuser.me/api/portraits/men/32.jpg";
 const avatar6 = "https://randomuser.me/api/portraits/women/22.jpg";
 
-// Google Icon SVG Component
 const GoogleIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="24px" height="24px">
     <path fill="#FFC107" d="M43.611,20.083H42V20H24v8h11.303c-1.649,4.657-6.08,8-11.303,8c-6.627,0-12-5.373-12-12c0-6.627,5.373-12,12-12c3.059,0,5.842,1.154,7.961,3.039l5.657-5.657C34.046,6.053,29.268,4,24,4C12.955,4,4,12.955,4,24c0,11.045,8.955,20,20,20c11.045,0,20-8.955,20-20C44,22.659,43.862,21.35,43.611,20.083z"/>
@@ -67,17 +63,14 @@ const SobremesasLanding = () => {
   const [timeLeft, setTimeLeft] = useState({ hours: 4, minutes: 22, seconds: 35 });
   const [todayDate, setTodayDate] = useState("");
   
-  // Benefits Section Logic
   const [activeBenefit, setActiveBenefit] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const autoPlayRef = useRef<NodeJS.Timeout | null>(null);
   const touchStartX = useRef<number | null>(null);
 
-  // Carousel Logic
   const carouselRef = useRef<HTMLDivElement>(null);
   const [isCarouselHovered, setIsCarouselHovered] = useState(false);
 
-  // Benefits Data
   const benefits = [
     { title: "Fim da Compulsão", text: "Chega de atacar a geladeira de madrugada. Nossas receitas saciam a vontade real de doce.", icon: <Zap size={32} /> },
     { title: "Controle Glicêmico", text: "Perfeito para diabéticos e pré-diabéticos. Desfrute de doces incríveis sem causar picos de insulina.", icon: <Droplet size={32} /> },
@@ -87,13 +80,12 @@ const SobremesasLanding = () => {
     { title: "Digestão Leve", text: "Sem glúten e sem lactose significa zero inchaço. Sinta-se leve após cada sobremesa.", icon: <HeartPulse size={32} /> },
   ];
 
-  // Auto-switch benefits
   const resetAutoPlay = useCallback(() => {
     if (autoPlayRef.current) clearTimeout(autoPlayRef.current);
     setIsAutoPlaying(false);
     autoPlayRef.current = setTimeout(() => {
       setIsAutoPlaying(true);
-    }, 10000); // 10 seconds pause
+    }, 10000);
   }, []);
 
   useEffect(() => {
@@ -116,7 +108,6 @@ const SobremesasLanding = () => {
     setActiveBenefit((prev) => (prev - 1 + benefits.length) % benefits.length);
   };
 
-  // Swipe Logic for Benefits
   const handleTouchStart = (e: React.TouchEvent) => {
     touchStartX.current = e.touches[0].clientX;
   };
@@ -126,22 +117,19 @@ const SobremesasLanding = () => {
     const touchEndX = e.changedTouches[0].clientX;
     const diff = touchStartX.current - touchEndX;
 
-    if (Math.abs(diff) > 50) { // Threshold for swipe
-      if (diff > 0) handleNextBenefit(); // Swipe Left
-      else handlePrevBenefit(); // Swipe Right
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) handleNextBenefit();
+      else handlePrevBenefit();
     }
     touchStartX.current = null;
   };
 
-  // Infinite Scroll Logic (JS driven for drag support)
   useEffect(() => {
     const scrollContainer = carouselRef.current;
     if (!scrollContainer) return;
-
     let scrollAmount = 0;
-    const speed = 1; // Pixels per frame
+    const speed = 1;
     let animationId: number;
-
     const step = () => {
       if (!isCarouselHovered) {
         scrollAmount += speed;
@@ -152,17 +140,14 @@ const SobremesasLanding = () => {
           scrollContainer.scrollLeft = scrollAmount;
         }
       } else {
-        // Sync scrollAmount when user drags manually
         scrollAmount = scrollContainer.scrollLeft;
       }
       animationId = requestAnimationFrame(step);
     };
-
     animationId = requestAnimationFrame(step);
     return () => cancelAnimationFrame(animationId);
   }, [isCarouselHovered]);
 
-  // UTM Helper
   const applyUtms = (url: string) => {
     try {
         const currentSearchParams = new URLSearchParams(window.location.search);
@@ -173,7 +158,6 @@ const SobremesasLanding = () => {
     } catch (e) { return url; }
   };
 
-  // Timer
   useEffect(() => {
     const timer = setInterval(() => {
       setTimeLeft(prev => {
@@ -183,10 +167,8 @@ const SobremesasLanding = () => {
         return prev;
       });
     }, 1000);
-
     const date = new Date();
     setTodayDate(date.toLocaleDateString('pt-BR', { day: 'numeric', month: 'long', year: 'numeric' }));
-
     return () => clearInterval(timer);
   }, []);
 
@@ -200,7 +182,6 @@ const SobremesasLanding = () => {
       <Helmet>
         <title>350+ Sobremesas Zero - Coma Sem Culpa</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-        <meta name="description" content="Descubra como comer suas sobremesas favoritas de domingo a domingo sem engordar. Receitas Zero Açúcar, Glúten e Lactose." />
         <style>{`
           @keyframes shimmer {
             0% { background-position: 200% center; }
@@ -235,7 +216,6 @@ const SobremesasLanding = () => {
             animation: shimmer 3s linear infinite, scale-only-pulse 2s ease-in-out infinite;
             border-bottom: 4px solid #be185d;
           }
-          /* Custom Fade Animation for Mobile Slider */
           .fade-in-slide {
             animation: fadeInSlide 0.5s ease-out forwards;
           }
@@ -243,7 +223,6 @@ const SobremesasLanding = () => {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
           }
-          /* Hide scrollbar for carousel */
           .no-scrollbar::-webkit-scrollbar {
             display: none;
           }
@@ -257,17 +236,14 @@ const SobremesasLanding = () => {
       
       <div className="min-h-screen bg-white font-sans text-slate-900 overflow-x-hidden">
         
-        {/* Sticky Bar */}
         <div className="bg-pink-600 text-white text-center py-2 px-2 font-bold text-[10px] md:text-sm animate-pulse sticky top-0 z-50 shadow-md flex justify-center items-center gap-2 tracking-wide">
            🧁 DESCONTO ESPECIAL SÓ HOJE: {todayDate.toUpperCase()}
         </div>
 
-        {/* Hero Section - Optimized Centering */}
         <section className="relative bg-gradient-to-br from-pink-50 via-purple-50 to-white py-10 md:py-24 px-4 overflow-hidden">
           <div className="max-w-6xl mx-auto relative z-10">
             <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
               
-              {/* Text Content */}
               <div className="flex flex-col items-center text-center md:items-start md:text-left order-2 md:order-1">
                 <Badge className="bg-purple-100 text-purple-700 hover:bg-purple-200 mb-4 px-3 py-1 text-xs md:text-sm font-bold border border-purple-200 inline-flex items-center gap-2 shadow-sm">
                   <ChefHat size={14} /> Receitas Validadas por Nutricionista
@@ -298,7 +274,6 @@ const SobremesasLanding = () => {
                 </div>
               </div>
 
-              {/* Image Content */}
               <div className="relative order-1 md:order-2 flex justify-center mt-2 md:mt-0">
                  <div className="relative w-[280px] md:w-[350px] aspect-square">
                     <div className="absolute inset-0 bg-pink-200 rounded-full blur-3xl opacity-30 animate-pulse"></div>
@@ -318,7 +293,6 @@ const SobremesasLanding = () => {
           </div>
         </section>
 
-        {/* Manual + Auto Scroll Carousel Section */}
         <section className="py-8 bg-white overflow-hidden border-y border-slate-100">
           <div className="text-center mb-6 px-4">
               <h2 className="text-xl md:text-3xl font-extrabold text-slate-900">O Que Você Vai Poder Comer?</h2>
@@ -357,7 +331,6 @@ const SobremesasLanding = () => {
           </div>
         </section>
 
-        {/* Benefits Section (Pink Background) */}
         <section className="py-12 md:py-20 px-4 bg-pink-600 text-white relative overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
           <div className="max-w-6xl mx-auto relative z-10">
@@ -368,19 +341,15 @@ const SobremesasLanding = () => {
                   Veja o que acontece com seu corpo quando você troca o açúcar pelas nossas receitas:
               </p>
               
-              {/* MOBILE LAYOUT */}
               <div className="md:hidden relative">
                   <div 
                     className="bg-slate-900 rounded-3xl p-6 border border-slate-800 shadow-2xl relative overflow-hidden h-[450px] flex flex-col items-center text-center mx-auto max-w-sm"
                     onTouchStart={handleTouchStart}
                     onTouchEnd={handleTouchEnd}
                   >
-                      {/* Image Circle */}
                       <div className="w-28 h-28 rounded-full border-4 border-pink-400 overflow-hidden mb-6 shadow-[0_0_30px_rgba(236,72,153,0.4)] shrink-0 bg-slate-800">
                           <img src={happyEatingImg} alt="Happy" className="w-full h-full object-cover opacity-90" />
                       </div>
-
-                      {/* Animated Content */}
                       <div key={activeBenefit} className="fade-in-slide flex-1 flex flex-col items-center justify-center w-full">
                           <div className="bg-slate-800 p-4 rounded-full text-pink-300 mb-4 inline-block border border-slate-700 shadow-inner">
                               {benefits[activeBenefit].icon}
@@ -390,14 +359,10 @@ const SobremesasLanding = () => {
                               {benefits[activeBenefit].text}
                           </p>
                       </div>
-
-                      {/* Controls */}
                       <div className="flex items-center justify-between w-full mt-4 px-2">
                           <Button size="icon" variant="ghost" onClick={handlePrevBenefit} className="text-slate-500 hover:text-white hover:bg-slate-800 rounded-full">
                               <ArrowLeft />
                           </Button>
-                          
-                          {/* Progress Dots */}
                           <div className="flex gap-1.5">
                               {benefits.map((_, idx) => (
                                   <div 
@@ -407,18 +372,13 @@ const SobremesasLanding = () => {
                                   />
                               ))}
                           </div>
-
                           <Button size="icon" variant="ghost" onClick={handleNextBenefit} className="text-slate-500 hover:text-white hover:bg-slate-800 rounded-full">
                               <ArrowRight />
                           </Button>
                       </div>
                   </div>
-                  <p className="text-center text-pink-200/60 text-xs mt-4 animate-pulse flex items-center justify-center gap-1">
-                      <span className="text-lg">👈</span> Deslize para ver mais <span className="text-lg">👉</span>
-                  </p>
               </div>
 
-              {/* DESKTOP LAYOUT */}
               <div className="hidden md:flex flex-row items-center gap-12">
                   <div className="flex-1 space-y-8">
                       {benefits.slice(0, 3).map((item, idx) => (
@@ -433,7 +393,6 @@ const SobremesasLanding = () => {
                           </div>
                       ))}
                   </div>
-
                   <div className="w-[350px] shrink-0 relative group">
                       <div className="absolute inset-0 bg-gradient-to-tr from-pink-400 to-purple-600 rounded-full blur-2xl opacity-40 group-hover:opacity-60 transition-opacity duration-700"></div>
                       <img 
@@ -442,7 +401,6 @@ const SobremesasLanding = () => {
                           className="relative rounded-3xl shadow-2xl border-4 border-slate-900 w-full object-cover aspect-[3/4] transform hover:scale-105 transition-transform duration-500 z-10"
                       />
                   </div>
-
                   <div className="flex-1 space-y-8">
                       {benefits.slice(3, 6).map((item, idx) => (
                           <div key={idx} className="flex gap-4 items-start group">
@@ -460,16 +418,13 @@ const SobremesasLanding = () => {
           </div>
         </section>
 
-        {/* First Social Proof Section with CTA */}
         <section className="py-16 md:py-20 px-4 bg-white">
             <div className="max-w-6xl mx-auto">
                 <div className="text-center mb-12 md:mb-16">
                     <span className="text-pink-600 font-bold tracking-widest uppercase text-xs md:text-sm bg-pink-50 px-4 py-1 rounded-full">Depoimentos Reais</span>
                     <h2 className="text-2xl md:text-5xl font-black text-slate-900 mt-4">Elas Já Estão <span className="text-purple-600">Amando os Resultados</span></h2>
                 </div>
-
                 <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                    {/* Review 1 */}
                     <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
                         <div className="flex items-center gap-3 mb-4">
                             <img src={avatar1} alt="User" className="w-12 h-12 rounded-full border-2 border-pink-200" />
@@ -480,8 +435,6 @@ const SobremesasLanding = () => {
                         </div>
                         <p className="text-slate-600 text-sm italic">"Eu sou diabética e achava que nunca mais ia comer um pudim gostoso na vida. Fiz o pudim do e-book e chorei de emoção. É idêntico!"</p>
                     </div>
-
-                    {/* Review 2 */}
                     <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 mt-0 md:mt-8">
                         <div className="flex items-center gap-3 mb-4">
                             <img src={avatar2} alt="User" className="w-12 h-12 rounded-full border-2 border-pink-200" />
@@ -492,8 +445,6 @@ const SobremesasLanding = () => {
                         </div>
                         <p className="text-slate-600 text-sm italic">"Perdi 4kg em 1 mês só trocando o doce da padaria pelas receitas da Dra. Isabela. O bolo de pote é sensacional."</p>
                     </div>
-
-                    {/* Review 3 */}
                     <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2">
                         <div className="flex items-center gap-3 mb-4">
                             <img src={avatar3} alt="User" className="w-12 h-12 rounded-full border-2 border-pink-200" />
@@ -504,8 +455,6 @@ const SobremesasLanding = () => {
                         </div>
                         <p className="text-slate-600 text-sm italic">"Meu filho tem intolerância a lactose e glúten. Era uma luta achar lanches pra ele. Esse material salvou a lancheira da escola!"</p>
                     </div>
-
-                    {/* Review 4 */}
                     <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 mt-0 md:mt-8">
                         <div className="flex items-center gap-3 mb-4">
                             <div className="w-12 h-12 rounded-full border-2 border-pink-200 bg-pink-100 flex items-center justify-center font-bold text-pink-600">AS</div>
@@ -517,7 +466,6 @@ const SobremesasLanding = () => {
                         <p className="text-slate-600 text-sm italic">"As receitas de torta são maravilhosas. Ninguém diz que é fit. Servi no almoço de domingo e acabou tudo!"</p>
                     </div>
                 </div>
-
                 <div className="mt-12 text-center">
                     <Button 
                         onClick={scrollToPricing}
@@ -529,7 +477,6 @@ const SobremesasLanding = () => {
             </div>
         </section>
 
-        {/* Bonuses Section (Pink Background) */}
         <section className="py-12 md:py-20 px-4 bg-gradient-to-br from-pink-600 to-pink-800 relative overflow-hidden">
             <div className="max-w-5xl mx-auto relative z-10">
                 <div className="text-center mb-8 md:mb-12">
@@ -537,7 +484,6 @@ const SobremesasLanding = () => {
                     <h2 className="text-2xl md:text-5xl font-extrabold mt-4 mb-2 text-white">GANHE 3 BÔNUS DE GRAÇA</h2>
                     <p className="text-pink-100 text-sm md:text-lg">Levando o pacote hoje, você não paga nada por esses guias extras:</p>
                 </div>
-
                 <div className="grid md:grid-cols-3 gap-6 md:gap-8">
                     <PhotoBonusCard 
                         image={bonusSecaBarriga}
@@ -558,7 +504,6 @@ const SobremesasLanding = () => {
                         price="67,00"
                     />
                 </div>
-                
                 <div className="mt-8 md:mt-12 text-center">
                     <p className="text-base md:text-xl font-bold text-white mb-6">Valor Total dos Bônus: <span className="line-through text-pink-300">R$ 211,00</span> = <span className="bg-yellow-400 text-purple-900 px-2 rounded">GRÁTIS HOJE</span></p>
                     <Button 
@@ -571,10 +516,8 @@ const SobremesasLanding = () => {
             </div>
         </section>
 
-        {/* Pricing Section */}
         <section id="pricing" className="py-12 md:py-20 px-4 bg-slate-50 border-t border-slate-200">
           <div className="max-w-5xl mx-auto">
-            
             <div className="text-center mb-8 md:mb-12">
               <div className="inline-block bg-red-600 text-white px-4 py-1 rounded-xl shadow-xl mb-4 animate-bounce">
                   <div className="text-[10px] md:text-xs font-bold uppercase tracking-wider mb-1 text-red-100">⏳ O PREÇO SOBE EM:</div>
@@ -586,18 +529,13 @@ const SobremesasLanding = () => {
                   Escolha Seu Plano e <br/><span className="text-pink-600">Comece a Emagrecer Comendo</span>
               </h2>
             </div>
-
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-start max-w-4xl mx-auto">
-              
-              {/* Anchor Plan (Decoy) - R$ 10 */}
               <div className="order-2 md:order-1 bg-white p-6 rounded-3xl border border-slate-200 shadow-sm hover:shadow-md transition-all relative mt-4">
                  <h3 className="text-lg font-bold text-slate-500 mb-1">Acesso ao Livro Digital</h3>
                  <p className="text-xs text-slate-400 mb-4">Acesso básico aos arquivos</p>
-                 
                  <div className="mb-4">
                     <span className="text-3xl font-extrabold text-slate-700">R$ 10,00</span>
                  </div>
-
                  <ul className="space-y-3 mb-6 text-xs text-slate-500">
                     <li className="flex items-center gap-2"><Check size={14}/> Todas as 350+ Receitas</li>
                     <li className="flex items-center gap-2"><Check size={14}/> Arquivo PDF Completo</li>
@@ -605,7 +543,6 @@ const SobremesasLanding = () => {
                     <li className="flex items-center gap-2 text-red-400 line-through"><Check size={14}/> Sem Lanches Fit</li>
                     <li className="flex items-center gap-2 text-red-400 line-through"><Check size={14}/> Sem 100 Receitas Salgadas</li>
                  </ul>
-                 
                  <Button 
                     onClick={() => setIsUpsellModalOpen(true)}
                     className="w-full bg-green-100 hover:bg-green-200 text-green-700 font-bold py-6 text-sm border border-green-200 shadow-none transition-colors"
@@ -613,16 +550,12 @@ const SobremesasLanding = () => {
                     QUERO O BÁSICO
                  </Button>
               </div>
-
-              {/* Hero Plan - R$ 19,90 */}
               <div className="order-1 md:order-2 bg-white p-6 md:p-8 rounded-3xl border-4 border-pink-500 shadow-2xl relative transform md:scale-105 z-10">
                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-purple-600 text-white px-4 py-1 rounded-full text-[10px] md:text-sm font-bold uppercase tracking-wide shadow-md whitespace-nowrap">
                     👑 Recomendado • Completo
                  </div>
-                 
                  <h3 className="text-xl md:text-2xl font-black text-pink-600 text-center mb-1 uppercase">Pacote Premium</h3>
                  <p className="text-xs md:text-sm text-center text-slate-500 mb-4">Todas as 350+ Receitas + Bônus</p>
-                 
                  <div className="text-center mb-6 bg-pink-50 py-3 rounded-2xl border border-pink-100">
                     <p className="text-[10px] text-slate-400 line-through mb-1">De R$ 97,00 por</p>
                     <div className="flex justify-center items-baseline gap-1">
@@ -630,7 +563,6 @@ const SobremesasLanding = () => {
                     </div>
                     <p className="text-[10px] md:text-xs text-green-700 font-bold mt-1 bg-green-100 inline-block px-2 py-0.5 rounded">Pagamento Único • Acesso Vitalício</p>
                  </div>
-                 
                  <ul className="space-y-3 mb-6 text-sm font-medium text-slate-700">
                     <li className="flex items-center gap-3"><div className="bg-green-100 p-1 rounded-full text-green-600"><Check size={12} strokeWidth={4}/></div> <span>350+ Receitas Zero</span></li>
                     <li className="flex items-center gap-3"><div className="bg-green-100 p-1 rounded-full text-green-600"><Check size={12} strokeWidth={4}/></div> <span>BÔNUS 1: Guia Seca Barriga 7KG</span></li>
@@ -638,59 +570,47 @@ const SobremesasLanding = () => {
                     <li className="flex items-center gap-3"><div className="bg-green-100 p-1 rounded-full text-green-600"><Check size={12} strokeWidth={4}/></div> <span>BÔNUS 3: 100 Receitas Almoço/Jantar</span></li>
                     <li className="flex items-center gap-3"><div className="bg-green-100 p-1 rounded-full text-green-600"><Check size={12} strokeWidth={4}/></div> <span>Atualizações Gratuitas</span></li>
                  </ul>
-
                  <Button 
-                    onClick={() => window.location.href = applyUtms('https://pay.lowify.com.br/checkout?product_id=sobremesas-premium-19')}
+                    onClick={() => window.location.href = applyUtms('https://pay.lowify.com.br/go.php?offer=0ywam9c')}
                     className="btn-hypnotic w-full text-white font-black text-lg md:text-xl py-8 rounded-xl shadow-[0_4px_0_rgb(21,128,61)] active:shadow-none active:translate-y-1 transition-all whitespace-normal h-auto leading-tight"
                  >
                     QUERO O PACOTE COMPLETO
                  </Button>
-                 
                  <p className="text-[10px] text-center text-slate-400 mt-4 flex items-center justify-center gap-1">
                     <Lock size={10}/> Acesso Imediato no seu E-mail
                  </p>
               </div>
-
             </div>
           </div>
         </section>
 
-        {/* Guarantee Section */}
         <section className="py-12 md:py-16 px-4 bg-gradient-to-br from-yellow-400 via-orange-400 to-red-400 relative overflow-hidden">
-             {/* Background decorative elements */}
              <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20"></div>
-             
-             <div className="max-w-4xl mx-auto bg-white/90 backdrop-blur-md p-8 md:p-12 rounded-[2rem] md:rounded-[3rem] shadow-2xl border-4 border-white/50 flex flex-col md:flex-row items-center gap-8 md:gap-12 relative z-10">
-                 
+             <div className="max-w-4xl mx-auto bg-white/90 backdrop-blur-md p-8 md:p-12 rounded-[2rem] md:rounded-[3rem] shadow-2xl border-4 border-white/50 flex flex-col md:flex-row items-center gap-8 md:gap-12 relative z-10 text-center md:text-left">
                  <div className="shrink-0 relative">
-                     <div className="w-32 h-32 md:w-40 md:h-40 bg-gradient-to-br from-yellow-300 to-orange-500 rounded-full flex items-center justify-center border-4 border-white shadow-xl relative z-10 transform -rotate-12">
+                     <div className="w-32 h-32 md:w-40 md:h-40 bg-gradient-to-br from-yellow-300 to-orange-500 rounded-full flex items-center justify-center border-4 border-white shadow-xl relative z-10 transform -rotate-12 mx-auto md:mx-0">
                         <div className="text-center text-white">
                             <ShieldCheck size={50} className="mx-auto mb-1 drop-shadow-md md:w-16 md:h-16" />
                             <span className="block text-xl md:text-2xl font-black uppercase tracking-tighter drop-shadow-md">7 DIAS</span>
                         </div>
                      </div>
                  </div>
-
-                 <div className="text-center md:text-left flex-1">
+                 <div className="flex-1">
                      <h3 className="text-2xl md:text-4xl font-black text-slate-900 mb-2 uppercase italic tracking-tight">Garantia Blindada</h3>
                      <h4 className="text-lg md:text-xl font-bold text-red-600 mb-4 bg-red-100 px-4 py-1 inline-block rounded-lg transform -rotate-1 border border-red-200">Risco Zero Absoluto para Você</h4>
                      <p className="text-slate-700 text-base md:text-lg leading-relaxed mb-6 font-medium">
                          Você não precisa decidir agora. <span className="font-bold">Entre, baixe as receitas e faça o teste.</span> Se você não amar o sabor ou achar difícil, devolvo 100% do seu dinheiro.
                      </p>
-                     
-                     <div className="text-center md:text-left">
-                        <Button 
-                            onClick={scrollToPricing}
-                            className="bg-red-600 hover:bg-red-500 text-white font-bold py-6 px-8 rounded-full shadow-lg flex items-center gap-2 mx-auto md:mx-0 animate-scale-pulse transition-transform hover:scale-105"
-                        >
-                            QUERO TESTAR SEM RISCOS
-                        </Button>
-                     </div>
+                     <Button 
+                         onClick={scrollToPricing}
+                         className="bg-red-600 hover:bg-red-500 text-white font-bold py-6 px-8 rounded-full shadow-lg flex items-center gap-2 mx-auto md:mx-0 animate-scale-pulse transition-transform hover:scale-105"
+                     >
+                         QUERO TESTAR SEM RISCOS
+                     </Button>
                  </div>
              </div>
         </section>
 
-        {/* Expert/Author Section */}
         <section className="py-12 md:py-20 px-4 bg-slate-50">
             <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-8 md:gap-10">
                 <div className="w-full md:w-1/3">
@@ -703,66 +623,31 @@ const SobremesasLanding = () => {
                     <h3 className="text-lg md:text-xl text-purple-600 font-bold mb-4">Dra. Isabela Mendes</h3>
                     <div className="w-16 h-1 bg-purple-600 mx-auto md:mx-0 mb-6"></div>
                     <p className="text-slate-600 mb-4 leading-relaxed text-sm md:text-base">
-                        Nutricionista especializada em Confeitaria Inclusiva e Pós-Graduada em Nutrição Funcional. Após ver sua própria mãe sofrer com diabetes e a falta de opções doces saborosas, Isabela dedicou 5 anos de pesquisa para desenvolver o método "Doce Saúde".
-                    </p>
-                    <p className="text-slate-600 leading-relaxed text-sm md:text-base">
-                        Hoje, ela já ajudou mais de 12.000 pessoas a voltarem a comer doces sem prejudicar a saúde, provando que restrição não precisa ser sinônimo de comida sem graça.
+                        Nutricionista especializada em Confeitaria Inclusiva e Pós-Graduada em Nutrição Funcional. Isabela dedicou 5 anos de pesquisa para desenvolver o método "Doce Saúde".
                     </p>
                 </div>
             </div>
         </section>
 
-        {/* FAQ Section */}
         <section className="py-12 md:py-16 px-4 bg-white">
-            <div className="max-w-3xl mx-auto">
-                <h2 className="text-2xl md:text-3xl font-extrabold text-center text-slate-900 mb-8 md:mb-10 flex items-center justify-center gap-2">
+            <div className="max-w-3xl mx-auto text-center">
+                <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900 mb-8 md:mb-10 flex items-center justify-center gap-2">
                     <HelpCircle className="text-pink-500"/> Perguntas Frequentes
                 </h2>
                 <Accordion type="single" collapsible className="w-full space-y-3 mb-10">
-                    <AccordionItem value="item-1" className="border border-pink-100 rounded-xl px-4 bg-pink-50/50">
-                        <AccordionTrigger className="text-left font-bold text-slate-800 text-sm md:text-base hover:text-pink-600 hover:no-underline">O acesso é imediato?</AccordionTrigger>
-                        <AccordionContent className="text-slate-600 text-sm">
-                            Sim! Assim que o pagamento for confirmado (PIX e Cartão são na hora), você recebe um e-mail automático com o link para baixar todo o material e os bônus.
-                        </AccordionContent>
-                    </AccordionItem>
-                    <AccordionItem value="item-2" className="border border-pink-100 rounded-xl px-4 bg-pink-50/50">
-                        <AccordionTrigger className="text-left font-bold text-slate-800 text-sm md:text-base hover:text-pink-600 hover:no-underline">É realmente Zero Açúcar?</AccordionTrigger>
-                        <AccordionContent className="text-slate-600 text-sm">
-                            Sim! Todas as receitas utilizam adoçantes naturais (como Xilitol, Eritritol ou Stevia) que não elevam a glicemia e são seguros para diabéticos.
-                        </AccordionContent>
-                    </AccordionItem>
-                    <AccordionItem value="item-3" className="border border-pink-100 rounded-xl px-4 bg-pink-50/50">
-                        <AccordionTrigger className="text-left font-bold text-slate-800 text-sm md:text-base hover:text-pink-600 hover:no-underline">Contém Glúten ou Lactose?</AccordionTrigger>
-                        <AccordionContent className="text-slate-600 text-sm">
-                            Não! Todas as receitas foram adaptadas para serem 100% livres de glúten (usamos farinhas funcionais como amêndoas, coco, arroz) e sem lactose.
-                        </AccordionContent>
-                    </AccordionItem>
-                    <AccordionItem value="item-4" className="border border-pink-100 rounded-xl px-4 bg-pink-50/50">
-                        <AccordionTrigger className="text-left font-bold text-slate-800 text-sm md:text-base hover:text-pink-600 hover:no-underline">Os ingredientes são caros?</AccordionTrigger>
-                        <AccordionContent className="text-slate-600 text-sm">
-                            Não. Focamos em ingredientes acessíveis que você encontra em qualquer supermercado ou loja de produtos naturais. Nada de itens importados impossíveis de achar.
-                        </AccordionContent>
-                    </AccordionItem>
-                    <AccordionItem value="item-5" className="border border-pink-100 rounded-xl px-4 bg-pink-50/50">
-                        <AccordionTrigger className="text-left font-bold text-slate-800 text-sm md:text-base hover:text-pink-600 hover:no-underline">É livro físico ou digital?</AccordionTrigger>
-                        <AccordionContent className="text-slate-600 text-sm">
-                            É um produto 100% digital (E-book em PDF). Você não paga frete e pode acessar pelo celular, tablet ou computador, ou imprimir se preferir.
-                        </AccordionContent>
-                    </AccordionItem>
+                    <FAQItem q="O acesso é imediato?" a="Sim! Assim que o pagamento for confirmado, você recebe um e-mail automático com o link para baixar todo o material e os bônus." />
+                    <FAQItem q="É realmente Zero Açúcar?" a="Sim! Todas as receitas utilizam adoçantes naturais que não elevam a glicemia e são seguros para diabéticos." />
+                    <FAQItem q="Contém Glúten ou Lactose?" a="Não! Todas as receitas foram adaptadas para serem 100% livres de glúten e sem lactose." />
                 </Accordion>
-
-                <div className="text-center">
-                    <Button 
-                        onClick={scrollToPricing}
-                        className="bg-pink-600 hover:bg-pink-500 text-white font-bold py-4 px-10 rounded-full shadow-md animate-scale-pulse transition-transform hover:scale-105 mx-auto"
-                    >
-                        AINDA TENHO DÚVIDAS (GARANTIR AGORA)
-                    </Button>
-                </div>
+                <Button 
+                    onClick={scrollToPricing}
+                    className="bg-pink-600 hover:bg-pink-500 text-white font-bold py-4 px-10 rounded-full shadow-md animate-scale-pulse transition-transform hover:scale-105 mx-auto"
+                >
+                    AINDA TENHO DÚVIDAS (GARANTIR AGORA)
+                </Button>
             </div>
         </section>
 
-        {/* Google Reviews Section (NEW) */}
         <section className="py-12 md:py-16 px-4 bg-slate-50 border-t border-slate-200">
             <div className="max-w-6xl mx-auto">
                 <div className="text-center mb-8">
@@ -774,9 +659,7 @@ const SobremesasLanding = () => {
                         <span className="text-slate-500 text-xs md:text-sm">(4.9/5.0 de 2.100+ avaliações)</span>
                     </div>
                 </div>
-
                 <div className="grid md:grid-cols-3 gap-4 md:gap-6">
-                    {/* G-Review 1 */}
                     <div className="bg-white p-4 md:p-6 rounded-xl border border-slate-200 shadow-sm relative">
                         <div className="absolute top-4 right-4"><GoogleIcon /></div>
                         <div className="flex items-center gap-3 mb-3">
@@ -787,10 +670,8 @@ const SobremesasLanding = () => {
                             </div>
                         </div>
                         <div className="text-yellow-400 text-xs mb-2">★★★★★</div>
-                        <p className="text-slate-600 text-xs md:text-sm">"Comprei para minha esposa que descobriu diabetes gestacional. Ela amou! As receitas são fáceis e salvou a nossa rotina de doces."</p>
+                        <p className="text-slate-600 text-xs md:text-sm text-center md:text-left">"Comprei para minha esposa que descobriu diabetes gestacional. Ela amou! As receitas são fáceis."</p>
                     </div>
-
-                    {/* G-Review 2 */}
                     <div className="bg-white p-4 md:p-6 rounded-xl border border-slate-200 shadow-sm relative">
                         <div className="absolute top-4 right-4"><GoogleIcon /></div>
                         <div className="flex items-center gap-3 mb-3">
@@ -801,10 +682,8 @@ const SobremesasLanding = () => {
                             </div>
                         </div>
                         <div className="text-yellow-400 text-xs mb-2">★★★★★</div>
-                        <p className="text-slate-600 text-xs md:text-sm">"O bônus de almoço fit vale o preço sozinho! Já emagreci 2kg essa semana comendo super bem. Recomendo demais!"</p>
+                        <p className="text-slate-600 text-xs md:text-sm text-center md:text-left">"O bônus de almoço fit vale o preço sozinho! Já emagreci 2kg essa semana. Recomendo demais!"</p>
                     </div>
-
-                    {/* G-Review 3 */}
                     <div className="bg-white p-4 md:p-6 rounded-xl border border-slate-200 shadow-sm relative">
                         <div className="absolute top-4 right-4"><GoogleIcon /></div>
                         <div className="flex items-center gap-3 mb-3">
@@ -815,10 +694,9 @@ const SobremesasLanding = () => {
                             </div>
                         </div>
                         <div className="text-yellow-400 text-xs mb-2">★★★★★</div>
-                        <p className="text-slate-600 text-xs md:text-sm">"Chegou no meu email na hora. O PDF é lindo, dá pra ler no celular tranquilo enquanto cozinha. Amei o bolo de cenoura!"</p>
+                        <p className="text-slate-600 text-xs md:text-sm text-center md:text-left">"Chegou no meu email na hora. O PDF é lindo. Amei o bolo de cenoura!"</p>
                     </div>
                 </div>
-
                 <div className="mt-8 text-center">
                     <Button 
                         onClick={scrollToPricing}
@@ -830,9 +708,7 @@ const SobremesasLanding = () => {
             </div>
         </section>
 
-        {/* Final CTA Section with Timer */}
         <section className="py-16 md:py-20 px-4 bg-slate-900 text-white text-center relative overflow-hidden">
-            {/* Particles */}
             <div className="absolute inset-0 pointer-events-none opacity-20">
                 {[...Array(20)].map((_, i) => (
                     <div key={i} className="absolute bg-pink-500 rounded-full animate-pulse" style={{
@@ -844,19 +720,16 @@ const SobremesasLanding = () => {
                     }}></div>
                 ))}
             </div>
-
             <div className="max-w-3xl mx-auto relative z-10">
                 <h2 className="text-2xl md:text-5xl font-black mb-6 uppercase leading-tight">
                     Não Deixe para Amanhã o Corpo <br/> <span className="text-pink-500">(e o Doce) que Você Pode Ter Hoje!</span>
                 </h2>
-                
                 <div className="bg-white/10 backdrop-blur-sm border border-white/20 p-4 md:p-6 rounded-2xl inline-block mb-8">
                     <p className="text-slate-300 text-xs uppercase tracking-widest font-bold mb-2">Oferta expira em:</p>
                     <div className="text-3xl md:text-6xl font-mono font-black text-white">
                       {String(timeLeft.hours).padStart(2, '0')}:{String(timeLeft.minutes).padStart(2, '0')}:{String(timeLeft.seconds).padStart(2, '0')}
                     </div>
                 </div>
-
                 <div>
                     <Button 
                         onClick={scrollToPricing}
@@ -865,21 +738,16 @@ const SobremesasLanding = () => {
                         QUERO APROVEITAR AGORA <ArrowRight className="ml-2" />
                     </Button>
                 </div>
-                
                 <p className="mt-6 text-slate-400 text-xs md:text-sm">
                     Acesso Imediato • Compra Segura • Garantia de 7 Dias
                 </p>
             </div>
         </section>
 
-        {/* Footer */}
         <footer className="bg-slate-950 text-slate-500 py-8 md:py-12 text-center text-xs md:text-sm border-t-8 border-pink-500">
-          <div className="container mx-auto px-4">
+          <div className="container mx-auto px-4 text-center">
             <p className="mb-4 font-bold text-slate-300 text-base md:text-lg">🧁 Sobremesas Zero</p>
             <p className="mb-4">&copy; {new Date().getFullYear()} Todos os direitos reservados.</p>
-            <p className="text-[10px] md:text-xs text-slate-700 max-w-2xl mx-auto">
-                Os resultados podem variar de pessoa para pessoa. Consulte sempre seu médico ou nutricionista antes de mudar sua dieta. Este produto não substitui o parecer médico profissional.
-            </p>
           </div>
         </footer>
 
@@ -887,10 +755,10 @@ const SobremesasLanding = () => {
           isOpen={isUpsellModalOpen}
           onClose={() => setIsUpsellModalOpen(false)}
           onConfirm={() => {
-              window.location.href = applyUtms('https://pay.lowify.com.br/checkout?product_id=sobremesas-upsell-14'); // Link Upsell 14.90
+              window.location.href = applyUtms('https://pay.lowify.com.br/go.php?offer=cn2ijyo');
           }}
           onReject={() => {
-              window.location.href = applyUtms('https://pay.lowify.com.br/checkout?product_id=sobremesas-basic-10'); // Link Basic 10.00
+              window.location.href = applyUtms('https://pay.lowify.com.br/checkout.php?product_id=nNtdm7');
           }}
         />
       </div>
@@ -898,7 +766,13 @@ const SobremesasLanding = () => {
   );
 };
 
-// Subcomponents (Simple Card for Desktop)
+const FAQItem = ({ q, a }: { q: string, a: string }) => (
+    <AccordionItem value={q} className="border border-pink-100 rounded-xl px-4 bg-pink-50/50">
+        <AccordionTrigger className="text-left font-bold text-slate-800 text-sm md:text-base hover:text-pink-600 hover:no-underline">{q}</AccordionTrigger>
+        <AccordionContent className="text-slate-600 text-sm">{a}</AccordionContent>
+    </AccordionItem>
+);
+
 const PhotoBonusCard = ({ title, desc, price, image }: { title: string, desc: string, price: string, image: string }) => (
     <div className="bg-white rounded-2xl shadow-lg overflow-hidden border border-slate-100 flex flex-col hover:-translate-y-2 transition-transform duration-300">
         <div className="h-48 md:h-64 overflow-hidden relative">
@@ -907,9 +781,9 @@ const PhotoBonusCard = ({ title, desc, price, image }: { title: string, desc: st
             <div className="absolute top-2 right-2 bg-green-600 text-white text-[10px] md:text-xs font-bold px-2 py-1 rounded">GRÁTIS</div>
         </div>
         <div className="p-4 md:p-6 flex-1 flex flex-col">
-            <h3 className="text-base md:text-lg font-black text-slate-900 mb-2 leading-tight">{title}</h3>
-            <p className="text-slate-600 text-xs md:text-sm mb-4 flex-1">{desc}</p>
-            <div className="pt-4 border-t border-slate-100">
+            <h3 className="text-base md:text-lg font-black text-slate-900 mb-2 leading-tight text-center md:text-left">{title}</h3>
+            <p className="text-slate-600 text-xs md:text-sm mb-4 flex-1 text-center md:text-left">{desc}</p>
+            <div className="pt-4 border-t border-slate-100 text-center md:text-left">
                 <span className="text-[10px] md:text-xs text-slate-400 line-through block">Vendido por R$ {price}</span>
                 <span className="text-pink-600 font-bold text-sm md:text-base">Hoje: R$ 0,00</span>
             </div>
