@@ -9,7 +9,6 @@ import {
   Zap, ChevronRight, Brain, BookOpen, Smile, Baby, Lock, HelpCircle, ArrowRight, Pencil, Puzzle, Download, Printer, Heart, Clock, AlertTriangle, Target, Lightbulb
 } from "lucide-react";
 import EducacaoKidsV2UpsellModal from './EducacaoKidsV2UpsellModal';
-import UtmifyScript from './UtmifyScript';
 
 // Images
 import heroImg from '@/assets/images/educacao-kids/hero-kids.png';
@@ -97,6 +96,15 @@ const EducacaoKidsV2Landing = () => {
           src="https://www.facebook.com/tr?id=880360944811912&ev=PageView&noscript=1" />
         `}</noscript>
 
+        {/* UTMify Script */}
+        <script 
+          src="https://cdn.utmify.com.br/scripts/utms/latest.js" 
+          data-utmify-prevent-xcod-sck 
+          data-utmify-prevent-subids 
+          async 
+          defer 
+        />
+
         <style>{`
           @keyframes shimmer {
             0% { background-position: 200% center; }
@@ -131,7 +139,6 @@ const EducacaoKidsV2Landing = () => {
           }
         `}</style>
       </Helmet>
-      <UtmifyScript />
       
       <div className="min-h-screen bg-white font-sans text-slate-900 overflow-x-hidden">
         
@@ -550,7 +557,7 @@ const EducacaoKidsV2Landing = () => {
                         </ul>
                         <Button 
                             onClick={() => window.location.href = applyUtms('https://pay.lowify.com.br/go.php?offer=65lwvno')}
-                            className="btn-hypnotic w-full text-white font-black text-xl py-8 rounded-xl shadow-[0_4px_0_rgb(21,128,61)]"
+                            className="btn-hypnotic w-full text-white font-black text-lg md:text-xl py-8 rounded-xl shadow-[0_4px_0_rgb(21,128,61)]"
                         >
                             QUERO O KIT COMPLETO
                         </Button>

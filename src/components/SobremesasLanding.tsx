@@ -9,7 +9,6 @@ import {
   Zap, ChevronRight, ChefHat, Scale, HeartPulse, Droplet, Candy, Lock, HelpCircle, ArrowRight, ThumbsUp, ArrowLeft, Flame
 } from "lucide-react";
 import SobremesasUpsellModal from './SobremesasUpsellModal';
-import UtmifyScript from './UtmifyScript';
 
 // Images
 import heroImgSrc from '@/assets/images/sobremesas/imagem-secao-1.png';
@@ -201,6 +200,15 @@ const SobremesasLanding = () => {
           src="https://www.facebook.com/tr?id=871872252422177&ev=PageView&noscript=1" />
         `}</noscript>
 
+        {/* UTMify Script */}
+        <script 
+          src="https://cdn.utmify.com.br/scripts/utms/latest.js" 
+          data-utmify-prevent-xcod-sck 
+          data-utmify-prevent-subids 
+          async 
+          defer 
+        />
+
         <style>{`
           @keyframes shimmer {
             0% { background-position: 200% center; }
@@ -251,7 +259,6 @@ const SobremesasLanding = () => {
           }
         `}</style>
       </Helmet>
-      <UtmifyScript />
       
       <div className="min-h-screen bg-white font-sans text-slate-900 overflow-x-hidden">
         
