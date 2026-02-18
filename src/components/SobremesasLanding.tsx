@@ -180,7 +180,12 @@ const SobremesasLanding = () => {
   return (
     <>
       <Helmet>
-        <title>350+ Sobremesas Zero - Coma Sem Culpa</title>
+        <title>Sobremesas Zero | 350+ Receitas Fit e Sem Açúcar</title>
+        <meta name="description" content="Transforme sua dieta com doces deliciosos zero açúcar, glúten e lactose. Baixe agora o ebook com mais de 350 receitas testadas e aprovadas." />
+        <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/4525/4525703.png" />
+        <meta property="og:title" content="Sobremesas Zero | Receitas Fit e Deliciosas" />
+        <meta property="og:description" content="Coma doces todos os dias e continue emagrecendo. Receitas Zero Açúcar, Glúten e Lactose." />
+        <meta property="og:image" content="https://i.imgur.com/kDrXQ2Q.png" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
         
         {/* Meta Pixel Code Sobremesa Zero */}

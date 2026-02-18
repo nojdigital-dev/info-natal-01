@@ -76,7 +76,12 @@ const EducacaoKidsV2Landing = () => {
   return (
     <>
       <Helmet>
-        <title>Kit Grafismo Fonético - Leitura Acelerada</title>
+        <title>Educação Kids | Kit de Alfabetização e Grafismo Fonético</title>
+        <meta name="description" content="Material de apoio escolar para alfabetização. Método fônico e grafismo para crianças de 2 a 12 anos. Ideal para reforço, TDAH e autismo." />
+        <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/2641/2641433.png" />
+        <meta property="og:title" content="Educação Kids | Alfabetização Acelerada" />
+        <meta property="og:description" content="Ensine seu filho a ler até 5x mais rápido com atividades lúdicas e sem pressão. Baixe agora!" />
+        <meta property="og:image" content={heroImg} />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
         
         {/* Meta Pixel Code Educacao Kids */}
@@ -89,12 +94,12 @@ const EducacaoKidsV2Landing = () => {
           t.src=v;s=b.getElementsByTagName(e)[0];
           s.parentNode.insertBefore(t,s)}(window, document,'script',
           'https://connect.facebook.net/en_US/fbevents.js');
-          fbq('init', '1826590801382499');
+          fbq('init', '880360944811912');
           fbq('track', 'PageView');
         `}</script>
         <noscript>{`
           <img height="1" width="1" style="display:none"
-          src="https://www.facebook.com/tr?id=1826590801382499&ev=PageView&noscript=1" />
+          src="https://www.facebook.com/tr?id=880360944811912&ev=PageView&noscript=1" />
         `}</noscript>
 
         {/* UTMify Script */}
