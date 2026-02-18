@@ -9,6 +9,7 @@ import {
   Zap, ChevronRight, Brain, BookOpen, Smile, Baby, Lock, HelpCircle, ArrowRight, Pencil, Puzzle, Download, Printer, Heart, Clock, AlertTriangle, Target, Lightbulb
 } from "lucide-react";
 import EducacaoKidsV2UpsellModal from './EducacaoKidsV2UpsellModal';
+import UtmifyScript from './UtmifyScript';
 
 // Images
 import heroImg from '@/assets/images/educacao-kids/hero-kids.png';
@@ -88,12 +89,12 @@ const EducacaoKidsV2Landing = () => {
           t.src=v;s=b.getElementsByTagName(e)[0];
           s.parentNode.insertBefore(t,s)}(window, document,'script',
           'https://connect.facebook.net/en_US/fbevents.js');
-          fbq('init', '880360944811912');
+          fbq('init', '1826590801382499');
           fbq('track', 'PageView');
         `}</script>
         <noscript>{`
           <img height="1" width="1" style="display:none"
-          src="https://www.facebook.com/tr?id=880360944811912&ev=PageView&noscript=1" />
+          src="https://www.facebook.com/tr?id=1826590801382499&ev=PageView&noscript=1" />
         `}</noscript>
 
         {/* UTMify Script */}
@@ -557,7 +558,7 @@ const EducacaoKidsV2Landing = () => {
                         </ul>
                         <Button 
                             onClick={() => window.location.href = applyUtms('https://pay.lowify.com.br/go.php?offer=65lwvno')}
-                            className="btn-hypnotic w-full text-white font-black text-lg md:text-xl py-8 rounded-xl shadow-[0_4px_0_rgb(21,128,61)]"
+                            className="btn-hypnotic w-full text-white font-black text-xl py-8 rounded-xl shadow-[0_4px_0_rgb(21,128,61)]"
                         >
                             QUERO O KIT COMPLETO
                         </Button>

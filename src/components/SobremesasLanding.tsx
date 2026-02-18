@@ -9,6 +9,7 @@ import {
   Zap, ChevronRight, ChefHat, Scale, HeartPulse, Droplet, Candy, Lock, HelpCircle, ArrowRight, ThumbsUp, ArrowLeft, Flame
 } from "lucide-react";
 import SobremesasUpsellModal from './SobremesasUpsellModal';
+import UtmifyScript from './UtmifyScript';
 
 // Images
 import heroImgSrc from '@/assets/images/sobremesas/imagem-secao-1.png';
@@ -192,12 +193,12 @@ const SobremesasLanding = () => {
           t.src=v;s=b.getElementsByTagName(e)[0];
           s.parentNode.insertBefore(t,s)}(window, document,'script',
           'https://connect.facebook.net/en_US/fbevents.js');
-          fbq('init', '871872252422177');
+          fbq('init', '901377985841239');
           fbq('track', 'PageView');
         `}</script>
         <noscript>{`
           <img height="1" width="1" style="display:none"
-          src="https://www.facebook.com/tr?id=871872252422177&ev=PageView&noscript=1" />
+          src="https://www.facebook.com/tr?id=901377985841239&ev=PageView&noscript=1" />
         `}</noscript>
 
         {/* UTMify Script */}
